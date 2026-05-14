@@ -35,5 +35,6 @@ wheels/
 Thumbs.db
 
 # Project specific
+.env
 analysis_results.json
 *.log

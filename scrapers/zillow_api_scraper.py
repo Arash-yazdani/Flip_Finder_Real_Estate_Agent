@@ -15,6 +15,31 @@ class ZillowAPIScraper:
         self.host = "real-estate101.p.rapidapi.com"
         self.base_url = f"https://{self.host}/api"
 
+    @staticmethod
+    def clean_location(raw_location):
+        """
+        Cleans a raw location string into a proper slug for the API.
+        Examples:
+            'Tarzana, CA'   -> 'tarzana-ca'
+            'Los Angeles'   -> 'los-angeles'
+            'in Tarzana, CA' -> 'tarzana-ca'
+        """
+        loc = raw_location.strip()
+        
+        # Strip leading prepositions that might leak through from NLP
+        for prefix in ['in ', 'at ', 'near ', 'around ', 'for ']:
+            if loc.lower().startswith(prefix):
+                loc = loc[len(prefix):]
+        
+        loc = loc.strip()
+        
+        # Normalize: lowercase, replace ", " and " " with "-"
+        slug = loc.lower()
+        slug = slug.replace(',', ' ')           # "tarzana, ca" -> "tarzana  ca"
+        slug = re.sub(r'\s+', '-', slug.strip()) # "tarzana  ca" -> "tarzana-ca"
+        
+        return slug, loc  # return both slug and cleaned human-readable name
+
     def fetch_properties(self, location, pages=1):
         """
         Fetches properties from Zillow via RapidAPI based on location string.
@@ -25,33 +50,64 @@ class ZillowAPIScraper:
             "X-RapidAPI-Host": self.host
         }
 
-        # The Zillow scraper endpoint for location search is /api/search
         url = f"{self.base_url}/search"
+        loc_slug, clean_name = self.clean_location(location)
+        
+        print(f"DEBUG: Input location: '{location}'", file=sys.stderr)
+        print(f"DEBUG: Cleaned slug:   '{loc_slug}'", file=sys.stderr)
+        print(f"DEBUG: Clean name:     '{clean_name}'", file=sys.stderr)
         
         for page in range(1, pages + 1):
-            # Clean up location string (the API seems to prefer lowercase slugs like 'sacramento-ca')
-            loc_slug = location.lower().replace(', ', '-').replace(' ', '-')
-            querystring = {"location": loc_slug, "page": str(page), "status": "forSale"}
+            # Added filters to exclude land and mobile homes as requested
+            querystring = {
+                "location": loc_slug, 
+                "page": str(page), 
+                "status": "forSale",
+                "isManufactured": "false",  # Exclude mobile/manufactured homes
+                "isLotLand": "false"        # Exclude raw land/lots
+            }
             
-            print(f"Searching Zillow API for '{location}' (Page {page})...")
+            print(f"DEBUG: API request params: {querystring}", file=sys.stderr)
+            print(f"Searching Zillow API for '{clean_name}' (Page {page})...", file=sys.stderr)
+            
             try:
                 response = requests.get(url, headers=headers, params=querystring, timeout=30)
                 
+                # Always save the raw response for debugging
+                debug_path = Path(__file__).parent.parent / "debug_last_api_response.json"
+                try:
+                    with open(debug_path, "w") as df:
+                        debug_data = {
+                            "request_params": querystring,
+                            "status_code": response.status_code,
+                            "response": response.json() if response.status_code == 200 else {"error": response.text}
+                        }
+                        json.dump(debug_data, df, indent=2)
+                    print(f"DEBUG: Saved raw API response to {debug_path}", file=sys.stderr)
+                except Exception as save_err:
+                    print(f"DEBUG: Could not save debug response: {save_err}", file=sys.stderr)
+                
                 if response.status_code != 200:
-                    print(f"API Error ({response.status_code}): {response.text}")
-                    # If bylocation fails, try a simple search endpoint fallback if known, or just return empty
+                    print(f"API Error ({response.status_code}): {response.text}", file=sys.stderr)
                     break
                 
                 data = response.json()
                 results = data.get('results', [])
                 
                 if not results:
-                    print("No results found in API response.")
+                    print("No results found in API response.", file=sys.stderr)
                     break
                 
+                print(f"DEBUG: Got {len(results)} results from API", file=sys.stderr)
+                
                 for item in results:
+                    # Python-side filtering to be 100% sure we catch anything the API missed
+                    home_type = str(item.get('homeType', '')).upper()
+                    if home_type in ['LOT', 'LAND', 'MANUFACTURED', 'MOBILE']:
+                        print(f"DEBUG: Filtering out {home_type} at {item.get('address', {}).get('street')}", file=sys.stderr)
+                        continue
+
                     # Map API fields to our Property dataclass
-                    # Based on the user's sample JSON:
                     price = item.get('unformattedPrice', 0)
                     if not price and 'price' in item:
                         price_str = str(item['price']).replace('$', '').replace(',', '')
@@ -64,11 +120,11 @@ class ZillowAPIScraper:
                     if isinstance(addr_data, dict):
                         address = addr_data.get('street', 'Unknown Address')
                         city = addr_data.get('city', 'Unknown City')
-                        state = addr_data.get('state', 'CA')
+                        state = addr_data.get('state', '')
                     else:
                         address = str(addr_data)
                         city = "Unknown"
-                        state = "CA"
+                        state = ""
                         
                     # Create the property object
                     prop_id = f"ZILLOW-{item.get('id', len(properties)+1)}"
@@ -93,8 +149,15 @@ class ZillowAPIScraper:
                     properties.append(property_obj)
                     
             except Exception as e:
-                print(f"API Request failed: {e}")
+                print(f"API Request failed: {e}", file=sys.stderr)
                 break
+        
+        # Log first result for quick verification
+        if properties:
+            p = properties[0]
+            print(f"DEBUG: First result -> {p.address}, {p.city}, {p.state} (${p.price:,})", file=sys.stderr)
+        else:
+            print("DEBUG: No properties returned.", file=sys.stderr)
                 
         return properties
 
@@ -110,6 +173,7 @@ if __name__ == "__main__":
     
     # Dump to JSON to stdout for telegram_bot.py to read
     # We use a marker to find the JSON start and end
+    # IMPORTANT: Only the JSON marker goes to stdout; all debug goes to stderr
     property_list = [p.to_dict() if hasattr(p, 'to_dict') else p.__dict__ for p in props]
     
-    print("\nJSON_START:" + json.dumps(property_list) + ":JSON_END\n")
+    print("JSON_START:" + json.dumps(property_list) + ":JSON_END")

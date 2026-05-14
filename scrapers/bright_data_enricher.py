@@ -1,0 +1,162 @@
+"""
+Bright Data Zillow enricher.
+
+Calls Bright Data's Web Scraper API to fetch full Zillow listing detail
+(year built, price/tax history, zestimate, description, schools, photos, etc.)
+for a batch of Zillow URLs. Single async snapshot per batch.
+
+Reads BRIGHT_DATA_API_TOKEN from .env (no python-dotenv dependency).
+"""
+import json
+import os
+import sys
+import time
+from pathlib import Path
+from typing import Dict, Iterable, List, Optional
+
+import requests
+
+PROJECT_ROOT = Path(__file__).parent.parent
+CACHE_DIR = PROJECT_ROOT / "data" / "bright_data_cache"
+
+TRIGGER_URL = "https://api.brightdata.com/datasets/v3/trigger"
+SNAPSHOT_URL = "https://api.brightdata.com/datasets/v3/snapshot/{snapshot_id}"
+ZILLOW_DETAIL_DATASET_ID = "gd_lfqkr8wm13ixtbd8f5"
+
+POLL_INTERVAL_SEC = 10
+POLL_TIMEOUT_SEC = 600
+
+
+def _load_token() -> str:
+    token = os.environ.get("BRIGHT_DATA_API_TOKEN")
+    if token:
+        return token
+    env_path = PROJECT_ROOT / ".env"
+    if env_path.exists():
+        for line in env_path.read_text().splitlines():
+            line = line.strip()
+            if not line or line.startswith("#") or "=" not in line:
+                continue
+            k, v = line.split("=", 1)
+            if k.strip() == "BRIGHT_DATA_API_TOKEN":
+                return v.strip().strip('"').strip("'")
+    raise RuntimeError(
+        "BRIGHT_DATA_API_TOKEN not set. Add it to .env or export it."
+    )
+
+
+def _zpid_from_url(url: str) -> Optional[str]:
+    # https://www.zillow.com/homedetails/.../15190324_zpid/
+    for part in url.rstrip("/").split("/"):
+        if part.endswith("_zpid"):
+            return part[: -len("_zpid")]
+    return None
+
+
+def _cache_path(zpid: str) -> Path:
+    return CACHE_DIR / f"{zpid}.json"
+
+
+class BrightDataZillowEnricher:
+    def __init__(self, token: Optional[str] = None, dataset_id: str = ZILLOW_DETAIL_DATASET_ID):
+        self.token = token or _load_token()
+        self.dataset_id = dataset_id
+        CACHE_DIR.mkdir(parents=True, exist_ok=True)
+
+    @property
+    def _headers(self) -> dict:
+        return {
+            "Authorization": f"Bearer {self.token}",
+            "Content-Type": "application/json",
+        }
+
+    def enrich(self, urls: Iterable[str], use_cache: bool = True) -> Dict[str, dict]:
+        """Return {zpid: enriched_record} for every URL. Cached zpids skip the API."""
+        urls = list(urls)
+        results: Dict[str, dict] = {}
+        to_fetch: List[str] = []
+
+        for u in urls:
+            zpid = _zpid_from_url(u)
+            if zpid and use_cache and _cache_path(zpid).exists():
+                try:
+                    results[zpid] = json.loads(_cache_path(zpid).read_text())
+                    continue
+                except Exception:
+                    pass
+            to_fetch.append(u)
+
+        if not to_fetch:
+            return results
+
+        snapshot_id = self._trigger(to_fetch)
+        print(f"  Bright Data snapshot triggered: {snapshot_id}", file=sys.stderr)
+        records = self._wait_for_snapshot(snapshot_id)
+        print(f"  Got {len(records)} enriched records", file=sys.stderr)
+
+        for rec in records:
+            zpid = str(rec.get("zpid") or _zpid_from_url(rec.get("url", "")) or "")
+            if not zpid:
+                continue
+            results[zpid] = rec
+            try:
+                _cache_path(zpid).write_text(json.dumps(rec, indent=2))
+            except Exception as e:
+                print(f"  cache write failed for {zpid}: {e}", file=sys.stderr)
+
+        return results
+
+    def _trigger(self, urls: List[str]) -> str:
+        payload = [{"url": u} for u in urls]
+        r = requests.post(
+            TRIGGER_URL,
+            params={"dataset_id": self.dataset_id, "include_errors": "true"},
+            headers=self._headers,
+            json=payload,
+            timeout=30,
+        )
+        if r.status_code != 200:
+            raise RuntimeError(f"Trigger failed {r.status_code}: {r.text[:500]}")
+        data = r.json()
+        snapshot_id = data.get("snapshot_id") or data.get("id")
+        if not snapshot_id:
+            raise RuntimeError(f"No snapshot_id in trigger response: {data}")
+        return snapshot_id
+
+    def _wait_for_snapshot(self, snapshot_id: str) -> List[dict]:
+        url = SNAPSHOT_URL.format(snapshot_id=snapshot_id)
+        deadline = time.time() + POLL_TIMEOUT_SEC
+        while time.time() < deadline:
+            r = requests.get(url, params={"format": "json"}, headers=self._headers, timeout=30)
+            if r.status_code == 200:
+                data = r.json()
+                if isinstance(data, list):
+                    return data
+                # Some datasets wrap results
+                return data.get("data") or data.get("results") or []
+            if r.status_code == 202:
+                elapsed = int(POLL_TIMEOUT_SEC - (deadline - time.time()))
+                print(f"  ...still running ({elapsed}s elapsed)", file=sys.stderr)
+                time.sleep(POLL_INTERVAL_SEC)
+                continue
+            raise RuntimeError(f"Snapshot poll failed {r.status_code}: {r.text[:500]}")
+        raise TimeoutError(f"Snapshot {snapshot_id} did not complete within {POLL_TIMEOUT_SEC}s")
+
+
+if __name__ == "__main__":
+    # Smoke test: enrich one SF property
+    test_urls = sys.argv[1:] or [
+        "https://www.zillow.com/homedetails/263-Friedell-St-San-Francisco-CA-94124/241586489_zpid/"
+    ]
+    enricher = BrightDataZillowEnricher()
+    out = enricher.enrich(test_urls)
+    for zpid, rec in out.items():
+        print(f"\n=== {zpid} ===")
+        print(f"Fields ({len(rec)}): {sorted(rec.keys())}")
+        for k in ("streetAddress", "city", "state", "price", "yearBuilt", "zestimate",
+                  "rentZestimate", "livingArea", "lotSize", "homeType", "homeStatus",
+                  "propertyTaxRate", "monthlyHoaFee", "description", "daysOnZillow"):
+            if k in rec:
+                v = rec[k]
+                preview = (str(v)[:120] + "...") if len(str(v)) > 120 else v
+                print(f"  {k}: {preview}")
