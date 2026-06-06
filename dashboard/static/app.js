@@ -749,25 +749,35 @@ setInterval(fetchActiveRuns, 5000);
     }
   }
 
+  // Re-run positionSidebarTopAndHandle every rAF for ~300ms so the handle
+  // smoothly tracks the sidebar during its 240ms CSS transition.
+  function trackHandleTransition() {
+    const deadline = Date.now() + 300;
+    (function frame() {
+      positionSidebarTopAndHandle();
+      if (Date.now() < deadline) requestAnimationFrame(frame);
+    })();
+  }
+
   // Start sidebar open on mobile viewports
   if (sidebar && window.innerWidth <= 768) sidebar.classList.add('open');
   // initial positioning after layout
-  setTimeout(positionSidebarTopAndHandle, 60);
+  setTimeout(trackHandleTransition, 60);
   window.addEventListener('resize', positionSidebarTopAndHandle);
 
   if (menuBtn && sidebar) {
-    menuBtn.addEventListener('click', (e) => { e.stopPropagation(); sidebar.classList.toggle('open'); positionSidebarTopAndHandle(); });
+    menuBtn.addEventListener('click', (e) => { e.stopPropagation(); sidebar.classList.toggle('open'); trackHandleTransition(); });
     document.addEventListener('click', (e) => {
       if (!sidebar.classList.contains('open')) return;
       if (e.target.closest('.sidebar') || e.target.closest('#menu-toggle')) return;
-      sidebar.classList.remove('open'); positionSidebarTopAndHandle();
+      sidebar.classList.remove('open'); trackHandleTransition();
     });
   }
 
   if (fab) {
     fab.addEventListener('click', (e) => {
       e.preventDefault();
-      if (sidebar) { sidebar.classList.add('open'); positionSidebarTopAndHandle(); }
+      if (sidebar) { sidebar.classList.add('open'); trackHandleTransition(); }
       const cityInput = document.getElementById('city');
       if (cityInput) { cityInput.focus(); }
     });
@@ -775,7 +785,7 @@ setInterval(fetchActiveRuns, 5000);
 
   // Sidebar collapse button on the right edge of the left panel
   if (collapseBtn && sidebar) {
-    collapseBtn.addEventListener('click', (e) => { e.preventDefault(); e.stopPropagation(); sidebar.classList.toggle('open'); positionSidebarTopAndHandle(); });
+    collapseBtn.addEventListener('click', (e) => { e.preventDefault(); e.stopPropagation(); sidebar.classList.toggle('open'); trackHandleTransition(); });
   }
 
   // Lazy-load card photos using IntersectionObserver
