@@ -1,0 +1,373 @@
+"""
+FastAPI server for the dashboard.
+
+Endpoints:
+  POST   /api/login                    — email + password -> session cookie
+  POST   /api/logout                   — clear session
+  GET    /api/me                       — { email, is_admin, runs_today, daily_cap, remaining }
+  GET    /api/health                   — both APIs status + bot up?
+  GET    /api/search/stream            — SSE: city + count -> stream of events (quota-checked)
+  GET    /api/history                  — [{slug, city, count, queried_at}, ...]
+  GET    /api/history/{slug}           — full cached payload for one city
+  DELETE /api/history/{slug}
+  GET    /api/favorites                — {properties: [], cities: []}
+  POST   /api/favorites/properties/{zpid}
+  DELETE /api/favorites/properties/{zpid}
+  POST   /api/favorites/cities/{slug}
+  DELETE /api/favorites/cities/{slug}
+
+  --- admin only ---
+  GET    /api/admin/users              — [users]
+  POST   /api/admin/users              — create user {email, password, daily_cap?}
+  PATCH  /api/admin/users/{email}      — update cap / disabled / password
+  DELETE /api/admin/users/{email}
+  GET    /api/admin/runs               — recent run log
+  GET    /api/admin/stats              — aggregate metrics
+
+Static frontend served from /.
+"""
+import asyncio
+import json
+import logging
+import os
+import sys
+from pathlib import Path
+from typing import Optional
+
+from fastapi import Cookie, Depends, FastAPI, HTTPException, Query, Request, Response
+from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import FileResponse, JSONResponse, StreamingResponse
+from fastapi.staticfiles import StaticFiles
+from itsdangerous import BadSignature, URLSafeTimedSerializer
+
+PROJECT_ROOT = Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(PROJECT_ROOT))
+
+from dashboard import storage, db
+from dashboard.search_service import stream_search
+
+# --- env loading (no python-dotenv dependency) ---
+def _load_env_file():
+    env_path = PROJECT_ROOT / ".env"
+    if not env_path.exists():
+        return
+    for line in env_path.read_text().splitlines():
+        line = line.strip()
+        if not line or line.startswith("#") or "=" not in line:
+            continue
+        k, v = line.split("=", 1)
+        k = k.strip(); v = v.strip().strip('"').strip("'")
+        os.environ.setdefault(k, v)
+
+_load_env_file()
+
+SECRET_KEY = os.environ.get("DASHBOARD_SECRET_KEY", "dev-secret-change-me-" + os.urandom(8).hex())
+SESSION_COOKIE = "dashboard_session"
+SESSION_MAX_AGE = 60 * 60 * 24 * 30  # 30 days
+
+logger = logging.getLogger("dashboard")
+logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(name)s: %(message)s")
+
+# Bootstrap DB + initial admin
+db.init_db()
+admin_email = db.bootstrap_admin_if_empty()
+if admin_email:
+    logger.info(f"Created initial admin user: {admin_email}")
+
+app = FastAPI(title="Real Estate Investment Dashboard")
+serializer = URLSafeTimedSerializer(SECRET_KEY, salt="session")
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_methods=["*"],
+    allow_headers=["*"],
+    allow_credentials=True,
+)
+
+
+# ---- auth helpers ----
+
+def _issue_session(email: str) -> str:
+    return serializer.dumps({"v": 2, "email": email})
+
+
+def _verify_session(token: Optional[str]) -> Optional[str]:
+    """Return email if the session is valid and the user still exists & not disabled."""
+    if not token:
+        return None
+    try:
+        data = serializer.loads(token, max_age=SESSION_MAX_AGE)
+    except (BadSignature, Exception):
+        return None
+    if not isinstance(data, dict) or data.get("v") != 2:
+        return None
+    email = data.get("email")
+    if not email:
+        return None
+    user = db.get_user(email)
+    if not user or user.disabled:
+        return None
+    return email
+
+
+def current_user_email(session: Optional[str] = Cookie(None, alias=SESSION_COOKIE)) -> str:
+    email = _verify_session(session)
+    if not email:
+        raise HTTPException(status_code=401, detail="auth required")
+    return email
+
+
+def require_admin(email: str = Depends(current_user_email)) -> str:
+    user = db.get_user(email)
+    if not user or not user.is_admin:
+        raise HTTPException(status_code=403, detail="admin required")
+    return email
+
+
+# ---- auth endpoints ----
+
+@app.post("/api/login")
+async def login(request: Request, response: Response):
+    body = await request.json()
+    email = (body.get("email") or "").strip().lower()
+    pw = body.get("password") or ""
+    user = db.authenticate(email, pw)
+    if not user:
+        raise HTTPException(status_code=401, detail="invalid email or password")
+    token = _issue_session(user.email)
+    response.set_cookie(
+        SESSION_COOKIE, token,
+        max_age=SESSION_MAX_AGE,
+        httponly=True, samesite="lax",
+    )
+    return {"ok": True, "email": user.email, "is_admin": user.is_admin}
+
+
+@app.post("/api/logout")
+async def logout(response: Response):
+    response.delete_cookie(SESSION_COOKIE)
+    return {"ok": True}
+
+
+@app.get("/api/me")
+async def me(session: Optional[str] = Cookie(None, alias=SESSION_COOKIE)):
+    email = _verify_session(session)
+    if not email:
+        return {"authenticated": False}
+    user = db.get_user(email)
+    if not user:
+        return {"authenticated": False}
+    runs = db.runs_today(email)
+    remaining = db.remaining_runs(email)
+    return {
+        "authenticated": True,
+        "email": user.email,
+        "is_admin": user.is_admin,
+        "daily_cap": user.daily_cap,
+        "runs_today": runs,
+        "remaining": remaining,  # None = unlimited (admin)
+    }
+
+
+# ---- health ----
+
+@app.get("/api/health")
+async def health(_: str = Depends(current_user_email)):
+    return {
+        "ok": True,
+        "bright_data_token": bool(os.environ.get("BRIGHT_DATA_API_TOKEN")),
+        "cache_dir": str(PROJECT_ROOT / "data" / "bright_data_cache"),
+    }
+
+
+# ---- search (SSE) ----
+
+def _sse(event: str, data: dict) -> bytes:
+    return f"event: {event}\ndata: {json.dumps(data)}\n\n".encode()
+
+
+@app.get("/api/search/stream")
+async def search_stream(
+    city: str = Query(...),
+    count: int = Query(10, ge=1, le=30),
+    intent: str = Query("flip"),
+    email: str = Depends(current_user_email),
+):
+    # Cap check
+    remaining = db.remaining_runs(email)
+    if remaining is not None and remaining <= 0:
+        raise HTTPException(
+            status_code=429,
+            detail="Daily run limit reached. Try again tomorrow or contact your admin.",
+        )
+
+    async def gen():
+        try:
+            async for ev in stream_search(city=city, count=count, intent=intent, user_email=email):
+                yield _sse(ev["event"], ev["data"])
+        except asyncio.CancelledError:
+            return
+        except Exception as e:
+            logger.exception("search stream crashed")
+            yield _sse("error", {"message": str(e)})
+
+    return StreamingResponse(
+        gen(),
+        media_type="text/event-stream",
+        headers={"Cache-Control": "no-cache", "X-Accel-Buffering": "no"},
+    )
+
+
+# ---- history (shared across users — that's the cost-saving point) ----
+
+@app.get("/api/history")
+async def history_list(_: str = Depends(current_user_email)):
+    return {"items": storage.list_history()}
+
+
+@app.get("/api/history/{slug}")
+async def history_get(slug: str, _: str = Depends(current_user_email)):
+    data = storage.load_history(slug)
+    if not data:
+        raise HTTPException(status_code=404, detail="not found")
+    return data
+
+
+@app.delete("/api/history/{slug}")
+async def history_delete(slug: str, _: str = Depends(require_admin)):
+    # Only admins can delete from the shared archive
+    ok = storage.delete_history(slug)
+    return {"ok": ok}
+
+
+# ---- favorites (shared for now; can be per-user later) ----
+
+@app.get("/api/favorites")
+async def favorites_get(_: str = Depends(current_user_email)):
+    return storage.get_favorites()
+
+
+@app.post("/api/favorites/properties/{zpid}")
+async def fav_prop_add(zpid: str, city_slug: Optional[str] = Query(None),
+                       _: str = Depends(current_user_email)):
+    return storage.favorite_property(zpid, True, city_slug=city_slug)
+
+
+@app.delete("/api/favorites/properties/{zpid}")
+async def fav_prop_remove(zpid: str, _: str = Depends(current_user_email)):
+    return storage.favorite_property(zpid, False)
+
+
+@app.post("/api/favorites/cities/{slug}")
+async def fav_city_add(slug: str, _: str = Depends(current_user_email)):
+    return storage.favorite_city(slug, True)
+
+
+@app.delete("/api/favorites/cities/{slug}")
+async def fav_city_remove(slug: str, _: str = Depends(current_user_email)):
+    return storage.favorite_city(slug, False)
+
+
+# ---- admin endpoints ----
+
+@app.get("/api/admin/users")
+async def admin_users_list(_: str = Depends(require_admin)):
+    users = db.list_users()
+    out = []
+    for u in users:
+        out.append({
+            "email": u.email,
+            "daily_cap": u.daily_cap,
+            "is_admin": u.is_admin,
+            "disabled": u.disabled,
+            "created_at": u.created_at,
+            "runs_today": db.runs_today(u.email),
+        })
+    return {"users": out}
+
+
+@app.post("/api/admin/users")
+async def admin_user_create(request: Request, _: str = Depends(require_admin)):
+    body = await request.json()
+    try:
+        u = db.create_user(
+            email=body.get("email", ""),
+            password=body.get("password", ""),
+            daily_cap=int(body.get("daily_cap", db.DEFAULT_DAILY_CAP)),
+            is_admin=bool(body.get("is_admin", False)),
+        )
+    except ValueError as e:
+        raise HTTPException(status_code=400, detail=str(e))
+    return {
+        "ok": True,
+        "user": {"email": u.email, "daily_cap": u.daily_cap, "is_admin": u.is_admin},
+    }
+
+
+@app.patch("/api/admin/users/{email}")
+async def admin_user_update(email: str, request: Request, _: str = Depends(require_admin)):
+    body = await request.json()
+    changed = []
+    try:
+        if "daily_cap" in body:
+            db.update_user_cap(email, int(body["daily_cap"]))
+            changed.append("daily_cap")
+        if "password" in body and body["password"]:
+            db.reset_password(email, body["password"])
+            changed.append("password")
+        if "disabled" in body:
+            db.set_disabled(email, bool(body["disabled"]))
+            changed.append("disabled")
+    except ValueError as e:
+        raise HTTPException(status_code=400, detail=str(e))
+    return {"ok": True, "changed": changed}
+
+
+@app.delete("/api/admin/users/{email}")
+async def admin_user_delete(email: str, current: str = Depends(require_admin)):
+    if email.strip().lower() == current.strip().lower():
+        raise HTTPException(status_code=400, detail="cannot delete yourself")
+    ok = db.delete_user(email)
+    return {"ok": ok}
+
+
+@app.get("/api/admin/runs")
+async def admin_runs(limit: int = Query(100, ge=1, le=500),
+                     _: str = Depends(require_admin)):
+    return {"runs": db.recent_runs(limit=limit)}
+
+
+@app.get("/api/admin/stats")
+async def admin_stats(_: str = Depends(require_admin)):
+    return db.aggregate_stats()
+
+
+# ---- static frontend ----
+
+STATIC_DIR = Path(__file__).parent / "static"
+STATIC_DIR.mkdir(exist_ok=True)
+
+
+@app.get("/")
+async def root():
+    return FileResponse(STATIC_DIR / "index.html")
+
+
+@app.get("/login")
+async def login_page():
+    return FileResponse(STATIC_DIR / "login.html")
+
+
+@app.get("/admin")
+async def admin_page():
+    return FileResponse(STATIC_DIR / "admin.html")
+
+
+app.mount("/static", StaticFiles(directory=str(STATIC_DIR)), name="static")
+
+
+if __name__ == "__main__":
+    import uvicorn
+    port = int(os.environ.get("DASHBOARD_PORT", "8000"))
+    uvicorn.run(app, host="127.0.0.1", port=port, log_level="info")

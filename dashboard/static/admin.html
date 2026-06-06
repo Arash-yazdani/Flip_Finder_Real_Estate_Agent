@@ -1,0 +1,621 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Admin — Real Estate Analyzer</title>
+  <link rel="stylesheet" href="/static/styles.css">
+  <style>
+    /* ── Admin-specific styles ────────────────────────────── */
+    .admin-wrap { max-width: 1160px; margin: 28px auto; padding: 0 24px; }
+    .admin-wrap h1 { margin: 0 0 4px 0; font-size: 1.5rem; font-weight: 700; letter-spacing: -0.01em; }
+    .admin-wrap > .muted { color: var(--text-2); margin-bottom: 28px; font-size: 0.85rem; }
+
+    /* ── Toast notifications ── */
+    .toast {
+      position: fixed; bottom: 24px; right: 24px;
+      padding: 10px 18px; border-radius: var(--radius-sm);
+      font-size: 13px; font-weight: 500;
+      opacity: 0; transform: translateY(8px);
+      transition: opacity 0.2s ease, transform 0.2s ease;
+      z-index: 9999; pointer-events: none;
+      max-width: 320px; line-height: 1.4;
+    }
+    .toast.show    { opacity: 1; transform: translateY(0); }
+    .toast-ok      { background: #071a10; color: var(--success); border: 1px solid rgba(52,211,153,0.4); }
+    .toast-err     { background: #1a0707; color: var(--bad);     border: 1px solid rgba(248,113,113,0.4); }
+    .toast-info    { background: #07101a; color: var(--blue);    border: 1px solid rgba(96,165,250,0.4); }
+
+    /* ── Skeleton shimmer ── */
+    @keyframes shimmer { to { background-position: -200% center; } }
+    .skeleton {
+      background: linear-gradient(90deg, var(--surface-2) 25%, var(--surface-3) 50%, var(--surface-2) 75%);
+      background-size: 200% 100%;
+      animation: shimmer 1.4s infinite linear;
+      border-radius: 3px;
+      display: block;
+    }
+
+    /* ── Section headings ── */
+    section { margin-bottom: 44px; }
+    .section-header {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-bottom: 14px; padding-bottom: 10px;
+      border-bottom: 1px solid var(--border);
+    }
+    .section-header h2 {
+      margin: 0;
+      font-size: 0.72rem; font-weight: 700;
+      color: var(--text-2); text-transform: uppercase; letter-spacing: 0.12em;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .section-header h2::before {
+      content: ''; width: 3px; height: 12px; border-radius: 2px;
+      background: var(--amber); flex-shrink: 0;
+    }
+
+    /* ── Stat cards ── */
+    .stat-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(165px, 1fr));
+      gap: 10px; margin-bottom: 0;
+    }
+    .stat-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px 16px;
+      transition: border-color 0.2s;
+    }
+    .stat-card:hover { border-color: var(--border-hi); }
+    .stat-card[data-key="user_count"] { border-left-color: var(--blue); }
+    .stat-card[data-key="total_runs"] { border-left-color: var(--teal); }
+    .stat-card[data-key="total_cost"] { border-left-color: var(--amber); }
+    .stat-card[data-key="cache_eff"]  { border-left-color: var(--success); }
+    .stat-card[data-key="avg_cost"]   { border-left-color: rgba(232,160,32,0.45); }
+    .stat-card .label {
+      font-size: 10px; color: var(--text-2);
+      text-transform: uppercase; letter-spacing: 0.1em; font-weight: 600;
+    }
+    .stat-card .value {
+      font-size: 1.65rem; font-weight: 700;
+      margin-top: 6px; font-family: var(--mono);
+      color: var(--text); letter-spacing: -0.02em; line-height: 1.1;
+    }
+    .stat-card .sub { font-size: 11px; color: var(--text-3); margin-top: 5px; font-family: var(--mono); }
+
+    /* ── Table base ── */
+    table { width: 100%; border-collapse: collapse; }
+    th, td { text-align: left; padding: 9px 12px; border-bottom: 1px solid var(--border); font-size: 13px; }
+    th {
+      color: var(--text-2); font-weight: 600;
+      font-size: 10px; text-transform: uppercase; letter-spacing: 0.08em;
+      background: var(--surface-2);
+    }
+    tr:last-child td { border-bottom: none; }
+    tr:hover td { background: rgba(255,255,255,0.018); }
+    .num { text-align: right; font-variant-numeric: tabular-nums; font-family: var(--mono); font-size: 12px; }
+
+    /* ── Quota cell (users table) ── */
+    .quota-cell { min-width: 130px; }
+    .quota-nums {
+      display: flex; align-items: center; gap: 4px;
+      font-family: var(--mono); font-size: 12px;
+      color: var(--text); margin-bottom: 5px;
+    }
+    .quota-nums .runs-count { font-weight: 600; }
+    .quota-nums .sep { color: var(--text-3); }
+    .cap-input {
+      width: 52px; padding: 2px 5px; text-align: center;
+      background: var(--surface-2); border: 1px solid var(--border);
+      color: #000; border-radius: 3px;
+      font-family: var(--mono); font-size: 12px;
+      transition: border-color 0.15s, box-shadow 0.15s, background 0.15s;
+    }
+    .cap-input:focus { outline: none; border-color: var(--amber); box-shadow: 0 0 0 2px var(--amber-dim); }
+    .cap-input.dirty { border-color: var(--amber); box-shadow: 0 0 0 2px var(--amber-dim); background: #fff9ed; }
+    .quota-bar-track { height: 3px; background: var(--surface-3); border-radius: 2px; overflow: hidden; }
+    .quota-bar-fill  { height: 3px; border-radius: 2px; transition: width 0.35s, background 0.35s; }
+
+    /* ── Row action buttons ── */
+    .row-actions { display: flex; gap: 5px; align-items: center; flex-wrap: wrap; min-height: 26px; }
+
+    .btn-small {
+      font-size: 11px; padding: 4px 10px;
+      border-radius: var(--radius-sm); font-weight: 600;
+      background: transparent; border: 1px solid var(--border);
+      color: var(--text-2); cursor: pointer; white-space: nowrap;
+      transition: color 0.15s, border-color 0.15s, background 0.15s, opacity 0.15s;
+      letter-spacing: 0.02em;
+    }
+    .btn-small:disabled { opacity: 0.4; cursor: not-allowed; }
+    .btn-small:not(:disabled):hover { color: var(--text); border-color: var(--border-hi); background: var(--surface-3); }
+
+    .btn-small[data-action="save"]          { border-color: rgba(45,212,191,0.35); color: var(--teal); }
+    .btn-small[data-action="save"]:hover    { background: var(--teal-dim); border-color: var(--teal); }
+    .btn-small[data-action="pw"]            { border-color: rgba(232,160,32,0.35); color: var(--amber); }
+    .btn-small[data-action="pw"]:hover      { background: var(--amber-dim); border-color: var(--amber); }
+    .btn-small[data-action="toggle"]        { border-color: rgba(96,165,250,0.35); color: var(--blue); }
+    .btn-small[data-action="toggle"]:hover  { background: var(--blue-dim); border-color: var(--blue); }
+    .btn-small[data-action="del"]           { border-color: rgba(248,113,113,0.35); color: var(--bad); }
+    .btn-small[data-action="del"]:hover     { background: var(--bad-dim); border-color: var(--bad); }
+    .btn-small[data-action="del-confirm"]        { border-color: rgba(248,113,113,0.6); color: var(--bad); }
+    .btn-small[data-action="del-confirm"]:hover  { background: var(--bad-dim); border-color: var(--bad); }
+    .btn-small[data-action="pw-set"]        { border-color: rgba(45,212,191,0.5); color: var(--teal); }
+    .btn-small[data-action="pw-set"]:hover  { background: var(--teal-dim); border-color: var(--teal); }
+    .btn-small[data-action="pw-cancel"],
+    .btn-small[data-action="del-cancel"]    { color: var(--text-3); border-color: var(--border); }
+
+    .pw-input {
+      width: 130px; padding: 4px 8px;
+      background: var(--surface-2); border: 1px solid var(--amber);
+      color: var(--text); border-radius: var(--radius-sm); font-size: 12px;
+    }
+    .pw-input:focus { outline: none; box-shadow: 0 0 0 2px var(--amber-dim); }
+    .inline-label { color: var(--text-2); font-size: 11px; font-weight: 500; white-space: nowrap; }
+
+    /* ── Pills ── */
+    .pill {
+      display: inline-block; padding: 2px 9px; border-radius: 12px;
+      font-size: 10px; font-weight: 600; letter-spacing: 0.04em;
+      font-family: var(--mono); text-transform: uppercase; border: 1px solid transparent;
+    }
+    .pill-admin   { background: var(--amber-dim);   color: var(--amber);   border-color: rgba(232,160,32,0.3); }
+    .pill-user    { background: var(--surface-3);   color: var(--text-2);  border-color: var(--border); }
+    .pill-active  { background: var(--success-dim); color: var(--success); border-color: rgba(52,211,153,0.3); }
+    .pill-disabled { background: var(--bad-dim);    color: var(--bad);     border-color: rgba(248,113,113,0.3); }
+    .pill-ok      { background: var(--success-dim); color: var(--success); border-color: rgba(52,211,153,0.3); }
+    .pill-err     { background: var(--bad-dim);     color: var(--bad);     border-color: rgba(248,113,113,0.3); }
+    .pill-pending { background: var(--surface-3);   color: var(--text-3);  border-color: var(--border); }
+
+    /* ── Runs table ── */
+    .city-intent .intent-tag {
+      display: inline-block; margin-left: 5px;
+      font-size: 10px; color: var(--text-3);
+      font-family: var(--mono); text-transform: uppercase; letter-spacing: 0.04em;
+    }
+    .enrich-num { font-family: var(--mono); font-size: 12px; }
+    .enrich-sub { display: block; font-size: 10px; color: var(--text-3); font-family: var(--mono); }
+
+    /* ── Add-user panel ── */
+    .add-user-panel {
+      margin-top: 12px; padding: 14px 16px;
+      background: var(--surface);
+      border: 1px solid var(--border); border-radius: var(--radius);
+      display: flex; gap: 8px; flex-wrap: wrap; align-items: center;
+      animation: slideDown 0.15s ease;
+    }
+    @keyframes slideDown { from { opacity:0; transform:translateY(-6px); } to { opacity:1; transform:translateY(0); } }
+    .add-user-panel input[type=email],
+    .add-user-panel input[type=password],
+    .add-user-panel input[type=number] {
+      padding: 6px 10px;
+      background: var(--surface-2); border: 1px solid var(--border);
+      color: #000; border-radius: var(--radius-sm); font-size: 13px;
+      transition: border-color 0.15s;
+    }
+    .add-user-panel input:focus { outline: none; border-color: var(--amber); box-shadow: 0 0 0 2px var(--amber-dim); }
+    .add-user-panel label {
+      display: flex; align-items: center; gap: 5px;
+      color: var(--text-2); font-size: 12px; font-weight: 500;
+    }
+    .add-user-panel button[type=submit] {
+      padding: 7px 18px; background: var(--amber); color: #000;
+      border: none; border-radius: var(--radius-sm);
+      font-weight: 700; font-size: 12px; cursor: pointer;
+      transition: background 0.15s, box-shadow 0.15s;
+    }
+    .add-user-panel button[type=submit]:hover { background: var(--amber-hi); box-shadow: 0 0 14px rgba(232,160,32,0.35); }
+
+    /* ── Add user toggle button ── */
+    .btn-add-user {
+      padding: 4px 12px; background: transparent;
+      border: 1px solid rgba(232,160,32,0.4); color: var(--amber);
+      border-radius: var(--radius-sm); font-size: 11px; font-weight: 700;
+      cursor: pointer; letter-spacing: 0.04em;
+      transition: background 0.15s, border-color 0.15s;
+    }
+    .btn-add-user:hover { background: var(--amber-dim); border-color: var(--amber); }
+
+    /* ── Error banner ── */
+    .err-banner {
+      background: var(--bad-dim); color: var(--bad);
+      border: 1px solid rgba(248,113,113,0.3);
+      padding: 10px 14px; border-radius: var(--radius-sm);
+      margin: 0 0 20px 0; font-size: 13px;
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">Admin Console</div>
+    <nav class="nav">
+      <a href="/" class="nav-btn">← Back to app</a>
+      <a href="https://brightdata.com/cp" target="_blank" rel="noopener" class="nav-btn"
+         title="Open Bright Data control panel — check live credit balance & monthly spend">
+        Bright Data balance ↗
+      </a>
+    </nav>
+    <div class="status">
+      <button id="logout-btn" class="link-btn">Sign out</button>
+    </div>
+  </header>
+
+  <div class="admin-wrap">
+    <h1>Admin Dashboard</h1>
+    <p class="muted" id="hello"></p>
+
+    <div id="err-banner" class="err-banner" hidden></div>
+
+    <!-- Overview -->
+    <section>
+      <div class="section-header">
+        <h2>Overview</h2>
+      </div>
+      <div class="stat-grid" id="stat-grid"></div>
+    </section>
+
+    <!-- Users -->
+    <section>
+      <div class="section-header">
+        <h2>Users</h2>
+        <button class="btn-add-user" id="add-user-toggle">+ Add User</button>
+      </div>
+
+      <div id="add-user-panel" class="add-user-panel" hidden>
+        <form id="add-user-form" style="display:contents;">
+          <input type="email"    name="email"     placeholder="user@example.com" required>
+          <input type="password" name="password"  placeholder="initial password" required>
+          <input type="number"   name="daily_cap" placeholder="cap" min="0" value="5" style="width:70px;">
+          <label><input type="checkbox" name="is_admin"> Admin</label>
+          <button type="submit">Create User</button>
+        </form>
+      </div>
+
+      <table id="users-table" style="margin-top:12px;">
+        <thead>
+          <tr>
+            <th>Email</th>
+            <th>Quota</th>
+            <th>Role</th>
+            <th>Status</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </section>
+
+    <!-- Recent runs -->
+    <section>
+      <div class="section-header">
+        <h2>Recent Runs</h2>
+      </div>
+      <table id="runs-table">
+        <thead>
+          <tr>
+            <th>Started</th>
+            <th>User</th>
+            <th>City / Intent</th>
+            <th class="num">Asked</th>
+            <th class="num">Enriched</th>
+            <th class="num">Cost</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </section>
+  </div>
+
+  <script>
+    const $ = s => document.querySelector(s);
+
+    // ── Formatters ──────────────────────────────────────────
+    const fmtUsd = (v, smart = false) => {
+      const n = v ?? 0;
+      if (smart) return n >= 0.01 ? '$' + n.toFixed(2) : '$' + n.toFixed(4);
+      return '$' + n.toFixed(4);
+    };
+
+    const fmtTime = s => {
+      if (!s) return "—";
+      const d = new Date(s.endsWith("Z") || s.includes("T") ? s : s.replace(" ", "T") + "Z");
+      const dt = (Date.now() - d.getTime()) / 1000;
+      if (dt < 60)    return `${Math.floor(dt)}s ago`;
+      if (dt < 3600)  return `${Math.floor(dt / 60)}m ago`;
+      if (dt < 86400) return `${Math.floor(dt / 3600)}h ago`;
+      return d.toLocaleDateString(undefined, {month:'short', day:'numeric'});
+    };
+
+    const statusPill = s => {
+      if (s === "ok")      return `<span class="pill pill-ok">ok</span>`;
+      if (s === "error")   return `<span class="pill pill-err">error</span>`;
+      if (s === "pending") return `<span class="pill pill-pending">pending</span>`;
+      return `<span class="pill pill-pending">${s}</span>`;
+    };
+
+    // ── Toast ───────────────────────────────────────────────
+    function toast(msg, type = "ok") {
+      const t = document.createElement("div");
+      t.className = `toast toast-${type}`;
+      t.textContent = msg;
+      document.body.appendChild(t);
+      requestAnimationFrame(() => requestAnimationFrame(() => t.classList.add("show")));
+      setTimeout(() => {
+        t.classList.remove("show");
+        setTimeout(() => t.remove(), 300);
+      }, 2800);
+    }
+
+    // ── Error banner ────────────────────────────────────────
+    const showError = msg => {
+      const b = $("#err-banner");
+      b.textContent = msg;
+      b.hidden = false;
+    };
+
+    // ── Fetch helper ────────────────────────────────────────
+    async function fetchJSON(url, opts = {}) {
+      const r = await fetch(url, { credentials: "include", ...opts });
+      if (r.status === 401) { window.location.href = "/login"; throw new Error("auth"); }
+      if (r.status === 403) { showError("Admin access required."); throw new Error("not admin"); }
+      const data = await r.json().catch(() => ({}));
+      if (!r.ok) throw new Error(data.detail || ("HTTP " + r.status));
+      return data;
+    }
+
+    // ── Stats ───────────────────────────────────────────────
+    async function loadStats() {
+      const grid = $("#stat-grid");
+      // Skeleton placeholder
+      grid.innerHTML = Array.from({length: 5}, () => `
+        <div class="stat-card">
+          <span class="skeleton" style="width:55%;height:10px;margin-bottom:10px;"></span>
+          <span class="skeleton" style="width:65%;height:26px;margin-bottom:8px;"></span>
+          <span class="skeleton" style="width:40%;height:10px;"></span>
+        </div>`).join("");
+
+      const s = await fetchJSON("/api/admin/stats");
+      const total = s.cache_hits + s.fresh_fetches;
+      const cacheEff = total > 0 ? Math.round(s.cache_hits / total * 100) : 0;
+
+      const cards = [
+        { key: "user_count", label: "Users",      value: s.user_count,             sub: "total accounts" },
+        { key: "total_runs", label: "Total runs",  value: s.total_runs,             sub: "all time" },
+        { key: "total_cost", label: "Total cost",  value: fmtUsd(s.total_cost_usd), sub: `avg ${fmtUsd(s.avg_cost_usd, true)}/run` },
+        { key: "cache_eff",  label: "Cache eff.",  value: `${cacheEff}%`,           sub: `${s.cache_hits} hits · ${s.fresh_fetches} fresh` },
+        { key: "avg_cost",   label: "Avg/run",     value: fmtUsd(s.avg_cost_usd),   sub: "brightdata + api" },
+      ];
+
+      grid.innerHTML = cards.map(c => `
+        <div class="stat-card" data-key="${c.key}">
+          <div class="label">${c.label}</div>
+          <div class="value">${c.value}</div>
+          <div class="sub">${c.sub}</div>
+        </div>`).join("");
+    }
+
+    // ── Users ───────────────────────────────────────────────
+    async function loadUsers() {
+      const tbody = $("#users-table tbody");
+      tbody.innerHTML = Array.from({length: 3}, () => `
+        <tr>${Array.from({length: 5}, () =>
+          `<td><span class="skeleton" style="height:13px;display:block;border-radius:3px;"></span></td>`
+        ).join("")}</tr>`).join("");
+
+      const { users } = await fetchJSON("/api/admin/users");
+      tbody.innerHTML = users.map(u => {
+        const pct = u.daily_cap > 0 ? Math.min(100, Math.round(u.runs_today / u.daily_cap * 100)) : 0;
+        const barColor = pct >= 100 ? 'var(--bad)' : pct >= 70 ? 'var(--warn)' : 'var(--success)';
+        return `
+        <tr data-email="${u.email}">
+          <td style="font-size:13px;">${u.email}</td>
+          <td class="quota-cell">
+            <div class="quota-nums">
+              <span class="runs-count">${u.runs_today}</span>
+              <span class="sep">/</span>
+              <input type="number" min="0" value="${u.daily_cap}" data-field="daily_cap" class="cap-input">
+            </div>
+            <div class="quota-bar-track">
+              <div class="quota-bar-fill" style="width:${pct}%;background:${barColor};"></div>
+            </div>
+          </td>
+          <td>${u.is_admin
+            ? '<span class="pill pill-admin">admin</span>'
+            : '<span class="pill pill-user">user</span>'}</td>
+          <td>${u.disabled
+            ? '<span class="pill pill-disabled">disabled</span>'
+            : '<span class="pill pill-active">active</span>'}</td>
+          <td>
+            <div class="row-actions">
+              <button class="btn-small" data-action="save">Save</button>
+              <button class="btn-small" data-action="pw">Reset PW</button>
+              <button class="btn-small" data-action="toggle">${u.disabled ? "Enable" : "Disable"}</button>
+              ${u.is_admin ? '' : '<button class="btn-small" data-action="del">Delete</button>'}
+            </div>
+          </td>
+        </tr>`;
+      }).join("");
+
+      // Dirty-state indicator: highlight cap input when its value changes
+      tbody.querySelectorAll(".cap-input").forEach(inp => {
+        const original = inp.value;
+        inp.addEventListener("input", () => {
+          inp.classList.toggle("dirty", inp.value !== original);
+        });
+      });
+    }
+
+    // ── Runs ────────────────────────────────────────────────
+    async function loadRuns() {
+      const tbody = $("#runs-table tbody");
+      tbody.innerHTML = Array.from({length: 5}, () => `
+        <tr>${Array.from({length: 7}, () =>
+          `<td><span class="skeleton" style="height:13px;display:block;border-radius:3px;"></span></td>`
+        ).join("")}</tr>`).join("");
+
+      const { runs } = await fetchJSON("/api/admin/runs?limit=100");
+      tbody.innerHTML = runs.map(r => `
+        <tr>
+          <td style="font-family:var(--mono);font-size:12px;white-space:nowrap;color:var(--text-2);">${fmtTime(r.started_at)}</td>
+          <td style="font-size:12px;max-width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${r.user_email}</td>
+          <td class="city-intent">
+            ${r.city}<span class="intent-tag">${r.intent}</span>
+          </td>
+          <td class="num">${r.count_requested}</td>
+          <td class="num" title="Cache hits: ${r.enrich_from_cache} · Fresh: ${r.enrich_fresh} · Total: ${r.enrich_attempted}">
+            <span class="enrich-num">${r.enrich_attempted}</span>
+            ${r.enrich_from_cache > 0 ? `<span class="enrich-sub">${r.enrich_from_cache} cached</span>` : ''}
+          </td>
+          <td class="num">${fmtUsd(r.total_cost_usd, true)}</td>
+          <td>${statusPill(r.status)}</td>
+        </tr>`).join("");
+    }
+
+    // ── User table action delegation (set up once) ──────────
+    function setupUserActions() {
+      const table = $("#users-table");
+      table.addEventListener("click", async e => {
+        const btn = e.target.closest("button[data-action]");
+        if (!btn) return;
+        const tr = btn.closest("tr[data-email]");
+        if (!tr) return;
+
+        const email = tr.dataset.email;
+        const action = btn.dataset.action;
+        const actionsDiv = tr.querySelector(".row-actions");
+
+        try {
+          if (action === "save") {
+            const cap = parseInt(tr.querySelector("[data-field=daily_cap]").value, 10);
+            btn.disabled = true; btn.textContent = "…";
+            await fetchJSON(`/api/admin/users/${encodeURIComponent(email)}`, {
+              method: "PATCH",
+              headers: {"Content-Type": "application/json"},
+              body: JSON.stringify({ daily_cap: cap }),
+            });
+            toast("Daily cap saved");
+            await Promise.all([loadUsers(), loadStats()]);
+
+          } else if (action === "pw") {
+            actionsDiv.innerHTML = `
+              <input class="pw-input" type="password" placeholder="new password" autocomplete="new-password">
+              <button class="btn-small" data-action="pw-set">Set</button>
+              <button class="btn-small" data-action="pw-cancel">Cancel</button>`;
+            actionsDiv.querySelector(".pw-input").focus();
+
+          } else if (action === "pw-set") {
+            const pw = actionsDiv.querySelector(".pw-input")?.value.trim();
+            if (!pw) { toast("Password cannot be empty", "err"); return; }
+            await fetchJSON(`/api/admin/users/${encodeURIComponent(email)}`, {
+              method: "PATCH",
+              headers: {"Content-Type": "application/json"},
+              body: JSON.stringify({ password: pw }),
+            });
+            toast("Password updated");
+            await loadUsers();
+
+          } else if (action === "pw-cancel") {
+            await loadUsers();
+
+          } else if (action === "toggle") {
+            const enabling = btn.textContent.trim() === "Enable";
+            btn.disabled = true;
+            await fetchJSON(`/api/admin/users/${encodeURIComponent(email)}`, {
+              method: "PATCH",
+              headers: {"Content-Type": "application/json"},
+              body: JSON.stringify({ disabled: !enabling }),
+            });
+            toast(enabling ? "User enabled" : "User disabled");
+            await Promise.all([loadUsers(), loadStats()]);
+
+          } else if (action === "del") {
+            actionsDiv.innerHTML = `
+              <span class="inline-label">Delete forever?</span>
+              <button class="btn-small" data-action="del-confirm">Delete</button>
+              <button class="btn-small" data-action="del-cancel">Cancel</button>`;
+
+          } else if (action === "del-confirm") {
+            await fetchJSON(`/api/admin/users/${encodeURIComponent(email)}`, { method: "DELETE" });
+            toast("User deleted");
+            await Promise.all([loadUsers(), loadStats()]);
+
+          } else if (action === "del-cancel") {
+            await loadUsers();
+          }
+        } catch (err) {
+          showError(err.message);
+          await loadUsers();
+        }
+      });
+    }
+
+    // ── Add-user form setup (called once) ───────────────────
+    function setupAddUser() {
+      const toggle = $("#add-user-toggle");
+      const panel  = $("#add-user-panel");
+
+      toggle.addEventListener("click", () => {
+        const open = !panel.hidden;
+        panel.hidden = open;
+        toggle.textContent = open ? "+ Add User" : "− Close";
+        if (!panel.hidden) panel.querySelector("input[type=email]").focus();
+      });
+
+      $("#add-user-form").addEventListener("submit", async e => {
+        e.preventDefault();
+        const fd = new FormData(e.target);
+        const btn = e.target.querySelector("button[type=submit]");
+        btn.disabled = true; btn.textContent = "Creating…";
+        try {
+          await fetchJSON("/api/admin/users", {
+            method: "POST",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify({
+              email:     fd.get("email"),
+              password:  fd.get("password"),
+              daily_cap: parseInt(fd.get("daily_cap") || "5", 10),
+              is_admin:  fd.get("is_admin") === "on",
+            }),
+          });
+          e.target.reset();
+          e.target.querySelector("[name=daily_cap]").value = 5;
+          panel.hidden = true;
+          toggle.textContent = "+ Add User";
+          toast("User created");
+          await Promise.all([loadUsers(), loadStats()]);
+        } catch (err) {
+          showError(err.message);
+        } finally {
+          btn.disabled = false; btn.textContent = "Create User";
+        }
+      });
+    }
+
+    // ── Logout ──────────────────────────────────────────────
+    $("#logout-btn").addEventListener("click", async () => {
+      await fetch("/api/logout", { method: "POST", credentials: "include" });
+      window.location.href = "/login";
+    });
+
+    // ── Init ────────────────────────────────────────────────
+    (async () => {
+      try {
+        const me = await fetchJSON("/api/me");
+        if (!me.authenticated) { window.location.href = "/login"; return; }
+        if (!me.is_admin) { showError("This page is admin-only."); return; }
+        $("#hello").textContent = `Signed in as ${me.email}`;
+
+        setupUserActions();
+        setupAddUser();
+
+        await Promise.all([loadStats(), loadUsers(), loadRuns()]);
+      } catch (e) {
+        // 401/403 already handled in fetchJSON
+      }
+    })();
+  </script>
+</body>
+</html>

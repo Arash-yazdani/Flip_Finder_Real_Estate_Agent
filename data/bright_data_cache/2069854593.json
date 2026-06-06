@@ -1,0 +1,1256 @@
+{
+  "zpid": 2069854593,
+  "city": "San Francisco",
+  "state": "CA",
+  "homeStatus": "FOR_SALE",
+  "address": {
+    "city": "San Francisco",
+    "streetAddress": "523 7th Ave",
+    "zipcode": "94118",
+    "state": "CA"
+  },
+  "bedrooms": 2,
+  "bathrooms": 1,
+  "price": 699000,
+  "yearBuilt": 1907,
+  "streetAddress": "523 7th Ave",
+  "zipcode": "94118",
+  "isVerifiedClaimedByCurrentSignedInUser": "No",
+  "listingDataSource": "Phoenix",
+  "longitude": -122.465454,
+  "latitude": 37.77858,
+  "livingArea": 791,
+  "homeType": "SINGLE_FAMILY",
+  "lotSize": 3001,
+  "lotAreaValue": 3001.284,
+  "lotAreaUnits": "Square Feet",
+  "livingAreaValue": 791,
+  "isUndisclosedAddress": "false",
+  "rentZestimate": 4528,
+  "currency": "USD",
+  "country": "USA",
+  "propertyTaxRate": 1.17,
+  "photoCount": 20,
+  "isPremierBuilder": "false",
+  "ssid": 127,
+  "hdpUrl": "https://www.zillow.com/homedetails/523-7th-Ave-San-Francisco-CA-94118/2069854593_zpid/",
+  "tourViewCount": 0,
+  "hasApprovedThirdPartyVirtualTourUrl": false,
+  "description": "Tucked into the heart of San Francisco's beloved Inner Richmond District, this beautifully renovated TIC (Tenancy in Common) blends classic charm with modern upgrades an increasingly rare find in today's competitive market. 523 (Lower Unit) offers a comfortable and inviting layout with 2 bedrooms and 1 bath, an inviting living room, and an eat-in kitchen perfect for casual dining. French patio doors open gracefully to a landscaped rear yard, creating an easy indoor-outdoor flow ideal for entertaining or quiet relaxation. The space has been thoughtfully updated with engineered flooring, recessed lighting, and modernized systems throughout. Additional improvements include tankless water heaters and fresh interior and exterior paint, offering a turnkey opportunity for owner occupants. Location is everything and the Inner Richmond delivers. Positioned just minutes from Golden Gate Park, residents enjoy unparalleled access to green space, museums, and outdoor recreation. Clement Street's vibrant corridor offers a dynamic mix of acclaimed dining, local markets, and everyday conveniences, while Geary Boulevard provides excellent public transit options for easy commuting across the city.",
+  "parcelId": "1550005",
+  "priceHistory": [
+    {
+      "date": "2026-05-08",
+      "time": 1778198400000,
+      "priceChangeRate": 0,
+      "event": "Listed for sale",
+      "source": "SFAR",
+      "showCountyLink": false,
+      "postingIsRental": false,
+      "attributeSource": {
+        "infoString2": "SFAR",
+        "infoString3": "https://photos.zillowstatic.com/fp/dfe8af10e49656833b8f889de6d4a93b-zillow_web_logo_inf_11.jpg"
+      },
+      "price": 699000,
+      "pricePerSquareFoot": 884,
+      "source_listing_id": "426129077",
+      "source_name": "SFAR"
+    }
+  ],
+  "nearbyHomes": [
+    "{\"zpid\":325645797,\"isSavedByCurrentSignedInUser\":false,\"miniCardPhotos\":[\"https://photos.zillowstatic.com/fp/3689dc20f7098dab726cca08b0ad7b47-p_c.jpg\"],\"price\":1998000,\"currency\":\"USD\",\"bedrooms\":5,\"bathrooms\":3,\"livingArea\":2280,\"livingAreaValue\":2280,\"livingAreaUnits\":\"Square Feet\",\"livingAreaUnitsShort\":\"sqft\",\"listingMetadata\":{\"comminglingCategoryIsRulesApplicable\":false},\"lotSize\":3001,\"lotAreaValue\":3001.284,\"lotAreaUnits\":\"Square Feet\",\"address\":{\"streetAddress\":\"523-525 7th Ave\",\"city\":\"San Francisco\",\"state\":\"CA\",\"zipcode\":\"94118\"},\"formattedChip\":{\"location\":[\"523-525 7th Ave\"]},\"latitude\":37.778557,\"longitude\":-122.465454,\"homeStatus\":\"FOR_SALE\",\"homeType\":\"MULTI_FAMILY\",\"hdpUrl\":\"/homedetails/523-525-7th-Ave-San-Francisco-CA-94118/325645797_zpid/\",\"hdpTypeDimension\":\"ForSale\",\"propertyTypeDimension\":\"Multi Family\",\"listingTypeDimension\":\"For Sale by Agent\",\"listing_sub_type\":{\"is_newHome\":false,\"is_forAuction\":false,\"is_bankOwned\":false,\"is_foreclosure\":false,\"is_FSBO\":false,\"is_comingSoon\":false,\"is_FSBA\":true},\"attributionInfo\":\"{\\\"mlsId\\\":\\\"426126475\\\"}\",\"isShowcaseListing\":false,\"isPremierBuilder\":false,\"state\":\"CA\"}",
+    "{\"zpid\":2094593422,\"isSavedByCurrentSignedInUser\":false,\"miniCardPhotos\":[\"https://photos.zillowstatic.com/fp/e450dcc0b8c685deb8a1e787d0375500-p_c.jpg\"],\"price\":1299000,\"currency\":\"USD\",\"bedrooms\":3,\"bathrooms\":2,\"livingArea\":1489,\"livingAreaValue\":1489,\"livingAreaUnits\":\"Square Feet\",\"livingAreaUnitsShort\":\"sqft\",\"listingMetadata\":{\"comminglingCategoryIsRulesApplicable\":false},\"lotSize\":3001,\"lotAreaValue\":3001.284,\"lotAreaUnits\":\"Square Feet\",\"address\":{\"streetAddress\":\"525 7th Ave\",\"city\":\"San Francisco\",\"state\":\"CA\",\"zipcode\":\"94118\"},\"formattedChip\":{\"location\":[\"525 7th Ave\"]},\"latitude\":37.778534,\"longitude\":-122.465454,\"homeStatus\":\"FOR_SALE\",\"homeType\":\"SINGLE_FAMILY\",\"hdpUrl\":\"/homedetails/525-7th-Ave-San-Francisco-CA-94118/2094593422_zpid/\",\"hdpTypeDimension\":\"ForSale\",\"propertyTypeDimension\":\"Single Family\",\"listingTypeDimension\":\"For Sale by Agent\",\"listing_sub_type\":{\"is_newHome\":false,\"is_forAuction\":false,\"is_bankOwned\":false,\"is_foreclosure\":false,\"is_FSBO\":false,\"is_comingSoon\":false,\"is_FSBA\":true},\"attributionInfo\":\"{\\\"mlsId\\\":\\\"426129078\\\"}\",\"isShowcaseListing\":false,\"isPremierBuilder\":false,\"state\":\"CA\"}",
+    "{\"zpid\":331614850,\"isSavedByCurrentSignedInUser\":false,\"miniCardPhotos\":[\"https://maps.googleapis.com/maps/api/staticmap?mobile=false&sensor=true&maptype=satellite&size=316x234&zoom=17&center=37.77861785888672,-122.46551513671875&key=AIzaSyBWYJWCA8FNMQvSe_k3LKfDGJaEgdKwsco&&signature=BDq0v0K8pqZVq7xntZ4-y_UE9CQ=\"],\"price\":1706000,\"currency\":\"USD\",\"bathrooms\":3,\"livingArea\":2936,\"livingAreaValue\":2936,\"livingAreaUnits\":\"Square Feet\",\"livingAreaUnitsShort\":\"sqft\",\"listingMetadata\":{\"comminglingCategoryIsRulesApplicable\":false},\"lotSize\":3000,\"lotAreaValue\":3000,\"lotAreaUnits\":\"Square Feet\",\"address\":{\"streetAddress\":\"519-521 7th Ave\",\"city\":\"San Francisco\",\"state\":\"CA\",\"zipcode\":\"94118\"},\"formattedChip\":{\"location\":[\"519-521 7th Ave\"]},\"latitude\":37.778618,\"longitude\":-122.465515,\"homeStatus\":\"OTHER\",\"homeType\":\"MULTI_FAMILY\",\"hdpUrl\":\"/homedetails/519-521-7th-Ave-San-Francisco-CA-94118/331614850_zpid/\",\"hdpTypeDimension\":\"Zestimate\",\"propertyTypeDimension\":\"Multi Family\",\"listingTypeDimension\":\"Unknown Listed By\",\"listing_sub_type\":{\"is_newHome\":false,\"is_forAuction\":false,\"is_bankOwned\":false,\"is_foreclosure\":false,\"is_FSBO\":false,\"is_comingSoon\":false,\"is_FSBA\":false},\"isShowcaseListing\":false,\"isPremierBuilder\":false,\"state\":\"CA\"}",
+    "{\"zpid\":332855218,\"isSavedByCurrentSignedInUser\":false,\"miniCardPhotos\":[\"https://maps.googleapis.com/maps/api/staticmap?mobile=false&sensor=true&maptype=satellite&size=316x234&zoom=17&center=37.7786865234375,-122.4654541015625&key=AIzaSyBWYJWCA8FNMQvSe_k3LKfDGJaEgdKwsco&&signature=TLcwEQTD3f9imzLo55mB6inTPRQ=\"],\"price\":1704800,\"currency\":\"USD\",\"bathrooms\":2,\"livingArea\":2875,\"livingAreaValue\":2875,\"livingAreaUnits\":\"Square Feet\",\"livingAreaUnitsShort\":\"sqft\",\"listingMetadata\":{\"comminglingCategoryIsRulesApplicable\":false},\"lotSize\":2060,\"lotAreaValue\":2060,\"lotAreaUnits\":\"Square Feet\",\"address\":{\"streetAddress\":\"515-517 7th Ave\",\"city\":\"San Francisco\",\"state\":\"CA\",\"zipcode\":\"94118\"},\"formattedChip\":{\"location\":[\"515-517 7th Ave\"]},\"latitude\":37.778687,\"longitude\":-122.465454,\"homeStatus\":\"OTHER\",\"homeType\":\"MULTI_FAMILY\",\"hdpUrl\":\"/homedetails/515-517-7th-Ave-San-Francisco-CA-94118/332855218_zpid/\",\"hdpTypeDimension\":\"Zestimate\",\"propertyTypeDimension\":\"Multi Family\",\"listingTypeDimension\":\"Unknown Listed By\",\"listing_sub_type\":{\"is_newHome\":false,\"is_forAuction\":false,\"is_bankOwned\":false,\"is_foreclosure\":false,\"is_FSBO\":false,\"is_comingSoon\":false,\"is_FSBA\":false},\"isShowcaseListing\":false,\"isPremierBuilder\":false,\"state\":\"CA\"}",
+    "{\"zpid\":332855219,\"isSavedByCurrentSignedInUser\":false,\"miniCardPhotos\":[\"https://maps.googleapis.com/maps/api/staticmap?mobile=false&sensor=true&maptype=satellite&size=316x234&zoom=17&center=37.778480529785156,-122.46550750732422&key=AIzaSyBWYJWCA8FNMQvSe_k3LKfDGJaEgdKwsco&&signature=mSLXMkZZcY_KrpGQ4ZkYZ5yo090=\"],\"price\":2277500,\"currency\":\"USD\",\"bedrooms\":8,\"bathrooms\":6,\"livingArea\":5025,\"livingAreaValue\":5025,\"livingAreaUnits\":\"Square Feet\",\"livingAreaUnitsShort\":\"sqft\",\"listingMetadata\":{\"comminglingCategoryIsRulesApplicable\":false},\"lotSize\":3000,\"lotAreaValue\":3000,\"lotAreaUnits\":\"Square Feet\",\"address\":{\"streetAddress\":\"527 7th Ave\",\"city\":\"San Francisco\",\"state\":\"CA\",\"zipcode\":\"94118\"},\"formattedChip\":{\"location\":[\"527 7th Ave\"]},\"latitude\":37.77848,\"longitude\":-122.46551,\"homeStatus\":\"OTHER\",\"homeType\":\"MULTI_FAMILY\",\"hdpUrl\":\"/homedetails/527-7th-Ave-San-Francisco-CA-94118/332855219_zpid/\",\"hdpTypeDimension\":\"Zestimate\",\"propertyTypeDimension\":\"Multi Family\",\"listingTypeDimension\":\"Unknown Listed By\",\"listing_sub_type\":{\"is_newHome\":false,\"is_forAuction\":false,\"is_bankOwned\":false,\"is_foreclosure\":false,\"is_FSBO\":false,\"is_comingSoon\":false,\"is_FSBA\":false},\"isShowcaseListing\":false,\"isPremierBuilder\":false,\"state\":\"CA\"}",
+    "{\"zpid\":61325172,\"isSavedByCurrentSignedInUser\":false,\"miniCardPhotos\":[\"https://photos.zillowstatic.com/fp/d6707097c9ecc05338a52c8a3797d8a5-p_c.jpg\"],\"price\":2322700,\"currency\":\"USD\",\"bedrooms\":5,\"bathrooms\":3,\"livingArea\":2363,\"livingAreaValue\":2363,\"livingAreaUnits\":\"Square Feet\",\"livingAreaUnitsShort\":\"sqft\",\"listingMetadata\":{\"comminglingCategoryIsRulesApplicable\":false},\"lotAreaUnits\":\"sqft\",\"address\":{\"streetAddress\":\"529 7th Ave\",\"city\":\"San Francisco\",\"state\":\"CA\",\"zipcode\":\"94118\"},\"formattedChip\":{\"location\":[\"529 7th Ave\"]},\"latitude\":37.77841,\"longitude\":-122.4655,\"homeStatus\":\"OTHER\",\"homeType\":\"CONDO\",\"hdpUrl\":\"/homedetails/529-7th-Ave-San-Francisco-CA-94118/61325172_zpid/\",\"hdpTypeDimension\":\"Zestimate\",\"propertyTypeDimension\":\"Condo\",\"listingTypeDimension\":\"Unknown Listed By\",\"listing_sub_type\":{\"is_newHome\":false,\"is_forAuction\":false,\"is_bankOwned\":false,\"is_foreclosure\":false,\"is_FSBO\":false,\"is_comingSoon\":false,\"is_FSBA\":false},\"isShowcaseListing\":false,\"isPremierBuilder\":false,\"state\":\"CA\"}",
+    "{\"zpid\":61325173,\"isSavedByCurrentSignedInUser\":false,\"miniCardPhotos\":[\"https://photos.zillowstatic.com/fp/025cfbd9b8a3b71b39e3d53c9e06519d-p_c.jpg\"],\"price\":2365600,\"currency\":\"USD\",\"bedrooms\":3,\"bathrooms\":3,\"livingArea\":2075,\"livingAreaValue\":2075,\"livingAreaUnits\":\"Square Feet\",\"livingAreaUnitsShort\":\"sqft\",\"listingMetadata\":{\"comminglingCategoryIsRulesApplicable\":false},\"lotAreaUnits\":\"sqft\",\"address\":{\"streetAddress\":\"533 7th Ave\",\"city\":\"San Francisco\",\"state\":\"CA\",\"zipcode\":\"94118\"},\"formattedChip\":{\"location\":[\"533 7th Ave\"]},\"latitude\":37.77841,\"longitude\":-122.4655,\"homeStatus\":\"OTHER\",\"homeType\":\"CONDO\",\"hdpUrl\":\"/homedetails/533-7th-Ave-San-Francisco-CA-94118/61325173_zpid/\",\"hdpTypeDimension\":\"Zestimate\",\"propertyTypeDimension\":\"Condo\",\"listingTypeDimension\":\"Unknown Listed By\",\"listing_sub_type\":{\"is_newHome\":false,\"is_forAuction\":false,\"is_bankOwned\":false,\"is_foreclosure\":false,\"is_FSBO\":false,\"is_comingSoon\":false,\"is_FSBA\":false},\"isShowcaseListing\":false,\"isPremierBuilder\":false,\"state\":\"CA\"}",
+    "{\"zpid\":332855217,\"isSavedByCurrentSignedInUser\":false,\"miniCardPhotos\":[\"https://maps.googleapis.com/maps/api/staticmap?mobile=false&sensor=true&maptype=satellite&size=316x234&zoom=17&center=37.77875518798828,-122.46546173095703&key=AIzaSyBWYJWCA8FNMQvSe_k3LKfDGJaEgdKwsco&&signature=tpv5xwD33PWrVDiKKb-FTUdWb0o=\"],\"price\":1582500,\"currency\":\"USD\",\"bedrooms\":4,\"bathrooms\":2,\"livingArea\":2875,\"livingAreaValue\":2875,\"livingAreaUnits\":\"Square Feet\",\"livingAreaUnitsShort\":\"sqft\",\"listingMetadata\":{\"comminglingCategoryIsRulesApplicable\":false},\"lotSize\":2062,\"lotAreaValue\":2062,\"lotAreaUnits\":\"Square Feet\",\"address\":{\"streetAddress\":\"509-511 7th Ave\",\"city\":\"San Francisco\",\"state\":\"CA\",\"zipcode\":\"94118\"},\"formattedChip\":{\"location\":[\"509-511 7th Ave\"]},\"latitude\":37.778755,\"longitude\":-122.46546,\"homeStatus\":\"OTHER\",\"homeType\":\"MULTI_FAMILY\",\"hdpUrl\":\"/homedetails/509-511-7th-Ave-San-Francisco-CA-94118/332855217_zpid/\",\"hdpTypeDimension\":\"Zestimate\",\"propertyTypeDimension\":\"Multi Family\",\"listingTypeDimension\":\"Unknown Listed By\",\"listing_sub_type\":{\"is_newHome\":false,\"is_forAuction\":false,\"is_bankOwned\":false,\"is_foreclosure\":false,\"is_FSBO\":false,\"is_comingSoon\":false,\"is_FSBA\":false},\"isShowcaseListing\":false,\"isPremierBuilder\":false,\"state\":\"CA\"}"
+  ],
+  "schools": [
+    {
+      "distance": 0.2,
+      "name": "Frank McCoppin Elementary School",
+      "rating": 8,
+      "grades": "K-5",
+      "link": "https://www.greatschools.org/california/san-francisco/6406-Mccoppin-Frank-Elementary-School/"
+    },
+    {
+      "distance": 0.5,
+      "name": "Roosevelt Middle School",
+      "rating": 8,
+      "grades": "6-8",
+      "link": "https://www.greatschools.org/california/san-francisco/6427-Roosevelt-Middle-School/"
+    },
+    {
+      "distance": 1.1,
+      "name": "Wallenberg (Raoul) Traditional High School",
+      "rating": 7,
+      "grades": "9-12",
+      "link": "https://www.greatschools.org/california/san-francisco/6449-Wallenberg-Raoul-Traditional-High-School/"
+    }
+  ],
+  "mortgageRates": {
+    "thirtyYearFixedRate": 6.38
+  },
+  "isInstantOfferEnabled": "No",
+  "nearbyCities": [
+    {
+      "regionUrl": {
+        "path": "/san-francisco-ca/"
+      },
+      "name": "San Francisco"
+    }
+  ],
+  "nearbyNeighborhoods": [
+    {
+      "regionUrl": {
+        "path": "/bernal-heights-san-francisco-ca/"
+      },
+      "name": "Bernal Heights"
+    },
+    {
+      "regionUrl": {
+        "path": "/excelsior-san-francisco-ca/"
+      },
+      "name": "Excelsior"
+    },
+    {
+      "regionUrl": {
+        "path": "/inner-richmond-san-francisco-ca/"
+      },
+      "name": "Inner Richmond"
+    },
+    {
+      "regionUrl": {
+        "path": "/mission-san-francisco-ca/"
+      },
+      "name": "Mission"
+    },
+    {
+      "regionUrl": {
+        "path": "/outer-richmond-san-francisco-ca/"
+      },
+      "name": "Outer Richmond"
+    },
+    {
+      "regionUrl": {
+        "path": "/outer-sunset-san-francisco-ca/"
+      },
+      "name": "Outer Sunset"
+    },
+    {
+      "regionUrl": {
+        "path": "/pacific-heights-san-francisco-ca/"
+      },
+      "name": "Pacific Heights"
+    },
+    {
+      "regionUrl": {
+        "path": "/parkside-san-francisco-ca/"
+      },
+      "name": "Parkside"
+    },
+    {
+      "regionUrl": {
+        "path": "/south-of-market-san-francisco-ca/"
+      },
+      "name": "South of Market"
+    },
+    {
+      "regionUrl": {
+        "path": "/tenderloin-san-francisco-ca/"
+      },
+      "name": "Tenderloin"
+    }
+  ],
+  "nearbyZipcodes": [
+    {
+      "regionUrl": {
+        "path": "/san-francisco-ca-94109/"
+      },
+      "name": "94109"
+    },
+    {
+      "regionUrl": {
+        "path": "/san-francisco-ca-94110/"
+      },
+      "name": "94110"
+    },
+    {
+      "regionUrl": {
+        "path": "/san-francisco-ca-94112/"
+      },
+      "name": "94112"
+    },
+    {
+      "regionUrl": {
+        "path": "/san-francisco-ca-94116/"
+      },
+      "name": "94116"
+    },
+    {
+      "regionUrl": {
+        "path": "/san-francisco-ca-94117/"
+      },
+      "name": "94117"
+    },
+    {
+      "regionUrl": {
+        "path": "/san-francisco-ca-94118/"
+      },
+      "name": "94118"
+    },
+    {
+      "regionUrl": {
+        "path": "/san-francisco-ca-94121/"
+      },
+      "name": "94121"
+    },
+    {
+      "regionUrl": {
+        "path": "/san-francisco-ca-94122/"
+      },
+      "name": "94122"
+    },
+    {
+      "regionUrl": {
+        "path": "/san-francisco-ca-94134/"
+      },
+      "name": "94134"
+    },
+    {
+      "regionUrl": {
+        "path": "/san-francisco-ca-94175/"
+      },
+      "name": "94175"
+    }
+  ],
+  "abbreviatedAddress": "523 7th Ave",
+  "daysOnZillow": 5,
+  "propertyTypeDimension": "Single Family",
+  "hdpTypeDimension": "ForSale",
+  "timeZone": "America/Los_Angeles",
+  "tourEligibility": {
+    "isPropertyTourEligible": true
+  },
+  "selfTour": {
+    "hasSelfTour": false
+  },
+  "photos": [
+    {
+      "mixedSources": {
+        "jpeg": [
+          {
+            "url": "https://photos.zillowstatic.com/fp/95a9efba7e7d41ddacad73d519c46600-cc_ft_192.jpg",
+            "width": 192
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/95a9efba7e7d41ddacad73d519c46600-cc_ft_384.jpg",
+            "width": 384
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/95a9efba7e7d41ddacad73d519c46600-cc_ft_576.jpg",
+            "width": 576
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/95a9efba7e7d41ddacad73d519c46600-cc_ft_768.jpg",
+            "width": 768
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/95a9efba7e7d41ddacad73d519c46600-cc_ft_960.jpg",
+            "width": 960
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/95a9efba7e7d41ddacad73d519c46600-cc_ft_1152.jpg",
+            "width": 1152
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/95a9efba7e7d41ddacad73d519c46600-cc_ft_1344.jpg",
+            "width": 1344
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/95a9efba7e7d41ddacad73d519c46600-cc_ft_1536.jpg",
+            "width": 1536
+          }
+        ]
+      }
+    },
+    {
+      "mixedSources": {
+        "jpeg": [
+          {
+            "url": "https://photos.zillowstatic.com/fp/3473219e8eb5397e61716cffd7deccf9-cc_ft_192.jpg",
+            "width": 192
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/3473219e8eb5397e61716cffd7deccf9-cc_ft_384.jpg",
+            "width": 384
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/3473219e8eb5397e61716cffd7deccf9-cc_ft_576.jpg",
+            "width": 576
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/3473219e8eb5397e61716cffd7deccf9-cc_ft_768.jpg",
+            "width": 768
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/3473219e8eb5397e61716cffd7deccf9-cc_ft_960.jpg",
+            "width": 960
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/3473219e8eb5397e61716cffd7deccf9-cc_ft_1152.jpg",
+            "width": 1152
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/3473219e8eb5397e61716cffd7deccf9-cc_ft_1344.jpg",
+            "width": 1344
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/3473219e8eb5397e61716cffd7deccf9-cc_ft_1536.jpg",
+            "width": 1536
+          }
+        ]
+      }
+    },
+    {
+      "mixedSources": {
+        "jpeg": [
+          {
+            "url": "https://photos.zillowstatic.com/fp/30e4f6c1f747efe9b243a93a158a95f6-cc_ft_192.jpg",
+            "width": 192
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/30e4f6c1f747efe9b243a93a158a95f6-cc_ft_384.jpg",
+            "width": 384
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/30e4f6c1f747efe9b243a93a158a95f6-cc_ft_576.jpg",
+            "width": 576
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/30e4f6c1f747efe9b243a93a158a95f6-cc_ft_768.jpg",
+            "width": 768
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/30e4f6c1f747efe9b243a93a158a95f6-cc_ft_960.jpg",
+            "width": 960
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/30e4f6c1f747efe9b243a93a158a95f6-cc_ft_1152.jpg",
+            "width": 1152
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/30e4f6c1f747efe9b243a93a158a95f6-cc_ft_1344.jpg",
+            "width": 1344
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/30e4f6c1f747efe9b243a93a158a95f6-cc_ft_1536.jpg",
+            "width": 1536
+          }
+        ]
+      }
+    },
+    {
+      "mixedSources": {
+        "jpeg": [
+          {
+            "url": "https://photos.zillowstatic.com/fp/157974c925b7216fd758abeb0e7eafb0-cc_ft_192.jpg",
+            "width": 192
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/157974c925b7216fd758abeb0e7eafb0-cc_ft_384.jpg",
+            "width": 384
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/157974c925b7216fd758abeb0e7eafb0-cc_ft_576.jpg",
+            "width": 576
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/157974c925b7216fd758abeb0e7eafb0-cc_ft_768.jpg",
+            "width": 768
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/157974c925b7216fd758abeb0e7eafb0-cc_ft_960.jpg",
+            "width": 960
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/157974c925b7216fd758abeb0e7eafb0-cc_ft_1152.jpg",
+            "width": 1152
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/157974c925b7216fd758abeb0e7eafb0-cc_ft_1344.jpg",
+            "width": 1344
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/157974c925b7216fd758abeb0e7eafb0-cc_ft_1536.jpg",
+            "width": 1536
+          }
+        ]
+      }
+    },
+    {
+      "mixedSources": {
+        "jpeg": [
+          {
+            "url": "https://photos.zillowstatic.com/fp/c3e68befa8a995b3b94861650791caab-cc_ft_192.jpg",
+            "width": 192
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/c3e68befa8a995b3b94861650791caab-cc_ft_384.jpg",
+            "width": 384
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/c3e68befa8a995b3b94861650791caab-cc_ft_576.jpg",
+            "width": 576
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/c3e68befa8a995b3b94861650791caab-cc_ft_768.jpg",
+            "width": 768
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/c3e68befa8a995b3b94861650791caab-cc_ft_960.jpg",
+            "width": 960
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/c3e68befa8a995b3b94861650791caab-cc_ft_1152.jpg",
+            "width": 1152
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/c3e68befa8a995b3b94861650791caab-cc_ft_1344.jpg",
+            "width": 1344
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/c3e68befa8a995b3b94861650791caab-cc_ft_1536.jpg",
+            "width": 1536
+          }
+        ]
+      }
+    },
+    {
+      "mixedSources": {
+        "jpeg": [
+          {
+            "url": "https://photos.zillowstatic.com/fp/51aecfe97aecf2a64c7030a6bc18c25c-cc_ft_192.jpg",
+            "width": 192
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/51aecfe97aecf2a64c7030a6bc18c25c-cc_ft_384.jpg",
+            "width": 384
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/51aecfe97aecf2a64c7030a6bc18c25c-cc_ft_576.jpg",
+            "width": 576
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/51aecfe97aecf2a64c7030a6bc18c25c-cc_ft_768.jpg",
+            "width": 768
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/51aecfe97aecf2a64c7030a6bc18c25c-cc_ft_960.jpg",
+            "width": 960
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/51aecfe97aecf2a64c7030a6bc18c25c-cc_ft_1152.jpg",
+            "width": 1152
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/51aecfe97aecf2a64c7030a6bc18c25c-cc_ft_1344.jpg",
+            "width": 1344
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/51aecfe97aecf2a64c7030a6bc18c25c-cc_ft_1536.jpg",
+            "width": 1536
+          }
+        ]
+      }
+    },
+    {
+      "mixedSources": {
+        "jpeg": [
+          {
+            "url": "https://photos.zillowstatic.com/fp/717075aa6a9c1278f8849bd0e6ab264b-cc_ft_192.jpg",
+            "width": 192
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/717075aa6a9c1278f8849bd0e6ab264b-cc_ft_384.jpg",
+            "width": 384
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/717075aa6a9c1278f8849bd0e6ab264b-cc_ft_576.jpg",
+            "width": 576
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/717075aa6a9c1278f8849bd0e6ab264b-cc_ft_768.jpg",
+            "width": 768
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/717075aa6a9c1278f8849bd0e6ab264b-cc_ft_960.jpg",
+            "width": 960
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/717075aa6a9c1278f8849bd0e6ab264b-cc_ft_1152.jpg",
+            "width": 1152
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/717075aa6a9c1278f8849bd0e6ab264b-cc_ft_1344.jpg",
+            "width": 1344
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/717075aa6a9c1278f8849bd0e6ab264b-cc_ft_1536.jpg",
+            "width": 1536
+          }
+        ]
+      }
+    },
+    {
+      "mixedSources": {
+        "jpeg": [
+          {
+            "url": "https://photos.zillowstatic.com/fp/dd81853109f7f81a053223a9e743c222-cc_ft_192.jpg",
+            "width": 192
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/dd81853109f7f81a053223a9e743c222-cc_ft_384.jpg",
+            "width": 384
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/dd81853109f7f81a053223a9e743c222-cc_ft_576.jpg",
+            "width": 576
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/dd81853109f7f81a053223a9e743c222-cc_ft_768.jpg",
+            "width": 768
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/dd81853109f7f81a053223a9e743c222-cc_ft_960.jpg",
+            "width": 960
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/dd81853109f7f81a053223a9e743c222-cc_ft_1152.jpg",
+            "width": 1152
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/dd81853109f7f81a053223a9e743c222-cc_ft_1344.jpg",
+            "width": 1344
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/dd81853109f7f81a053223a9e743c222-cc_ft_1536.jpg",
+            "width": 1536
+          }
+        ]
+      }
+    },
+    {
+      "mixedSources": {
+        "jpeg": [
+          {
+            "url": "https://photos.zillowstatic.com/fp/d6fd6dfa9a610ad9a937223873e206ab-cc_ft_192.jpg",
+            "width": 192
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/d6fd6dfa9a610ad9a937223873e206ab-cc_ft_384.jpg",
+            "width": 384
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/d6fd6dfa9a610ad9a937223873e206ab-cc_ft_576.jpg",
+            "width": 576
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/d6fd6dfa9a610ad9a937223873e206ab-cc_ft_768.jpg",
+            "width": 768
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/d6fd6dfa9a610ad9a937223873e206ab-cc_ft_960.jpg",
+            "width": 960
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/d6fd6dfa9a610ad9a937223873e206ab-cc_ft_1152.jpg",
+            "width": 1152
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/d6fd6dfa9a610ad9a937223873e206ab-cc_ft_1344.jpg",
+            "width": 1344
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/d6fd6dfa9a610ad9a937223873e206ab-cc_ft_1536.jpg",
+            "width": 1536
+          }
+        ]
+      }
+    },
+    {
+      "mixedSources": {
+        "jpeg": [
+          {
+            "url": "https://photos.zillowstatic.com/fp/81413f20a7af96484afa932a780ae535-cc_ft_192.jpg",
+            "width": 192
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/81413f20a7af96484afa932a780ae535-cc_ft_384.jpg",
+            "width": 384
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/81413f20a7af96484afa932a780ae535-cc_ft_576.jpg",
+            "width": 576
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/81413f20a7af96484afa932a780ae535-cc_ft_768.jpg",
+            "width": 768
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/81413f20a7af96484afa932a780ae535-cc_ft_960.jpg",
+            "width": 960
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/81413f20a7af96484afa932a780ae535-cc_ft_1152.jpg",
+            "width": 1152
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/81413f20a7af96484afa932a780ae535-cc_ft_1344.jpg",
+            "width": 1344
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/81413f20a7af96484afa932a780ae535-cc_ft_1536.jpg",
+            "width": 1536
+          }
+        ]
+      }
+    },
+    {
+      "mixedSources": {
+        "jpeg": [
+          {
+            "url": "https://photos.zillowstatic.com/fp/8abd0c9cf5ebe68d07d4dcfe93bd4b02-cc_ft_192.jpg",
+            "width": 192
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/8abd0c9cf5ebe68d07d4dcfe93bd4b02-cc_ft_384.jpg",
+            "width": 384
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/8abd0c9cf5ebe68d07d4dcfe93bd4b02-cc_ft_576.jpg",
+            "width": 576
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/8abd0c9cf5ebe68d07d4dcfe93bd4b02-cc_ft_768.jpg",
+            "width": 768
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/8abd0c9cf5ebe68d07d4dcfe93bd4b02-cc_ft_960.jpg",
+            "width": 960
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/8abd0c9cf5ebe68d07d4dcfe93bd4b02-cc_ft_1152.jpg",
+            "width": 1152
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/8abd0c9cf5ebe68d07d4dcfe93bd4b02-cc_ft_1344.jpg",
+            "width": 1344
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/8abd0c9cf5ebe68d07d4dcfe93bd4b02-cc_ft_1536.jpg",
+            "width": 1536
+          }
+        ]
+      }
+    },
+    {
+      "mixedSources": {
+        "jpeg": [
+          {
+            "url": "https://photos.zillowstatic.com/fp/b9516e75ab9148affd87ba4478d0aff3-cc_ft_192.jpg",
+            "width": 192
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/b9516e75ab9148affd87ba4478d0aff3-cc_ft_384.jpg",
+            "width": 384
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/b9516e75ab9148affd87ba4478d0aff3-cc_ft_576.jpg",
+            "width": 576
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/b9516e75ab9148affd87ba4478d0aff3-cc_ft_768.jpg",
+            "width": 768
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/b9516e75ab9148affd87ba4478d0aff3-cc_ft_960.jpg",
+            "width": 960
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/b9516e75ab9148affd87ba4478d0aff3-cc_ft_1152.jpg",
+            "width": 1152
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/b9516e75ab9148affd87ba4478d0aff3-cc_ft_1344.jpg",
+            "width": 1344
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/b9516e75ab9148affd87ba4478d0aff3-cc_ft_1536.jpg",
+            "width": 1536
+          }
+        ]
+      }
+    },
+    {
+      "mixedSources": {
+        "jpeg": [
+          {
+            "url": "https://photos.zillowstatic.com/fp/a1f6bd0a8951cf6b1711315f3e484cc3-cc_ft_192.jpg",
+            "width": 192
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/a1f6bd0a8951cf6b1711315f3e484cc3-cc_ft_384.jpg",
+            "width": 384
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/a1f6bd0a8951cf6b1711315f3e484cc3-cc_ft_576.jpg",
+            "width": 576
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/a1f6bd0a8951cf6b1711315f3e484cc3-cc_ft_768.jpg",
+            "width": 768
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/a1f6bd0a8951cf6b1711315f3e484cc3-cc_ft_960.jpg",
+            "width": 960
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/a1f6bd0a8951cf6b1711315f3e484cc3-cc_ft_1152.jpg",
+            "width": 1152
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/a1f6bd0a8951cf6b1711315f3e484cc3-cc_ft_1344.jpg",
+            "width": 1344
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/a1f6bd0a8951cf6b1711315f3e484cc3-cc_ft_1536.jpg",
+            "width": 1536
+          }
+        ]
+      }
+    },
+    {
+      "mixedSources": {
+        "jpeg": [
+          {
+            "url": "https://photos.zillowstatic.com/fp/fc51aa0b9fa2ad2130c5016c631f2cf5-cc_ft_192.jpg",
+            "width": 192
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/fc51aa0b9fa2ad2130c5016c631f2cf5-cc_ft_384.jpg",
+            "width": 384
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/fc51aa0b9fa2ad2130c5016c631f2cf5-cc_ft_576.jpg",
+            "width": 576
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/fc51aa0b9fa2ad2130c5016c631f2cf5-cc_ft_768.jpg",
+            "width": 768
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/fc51aa0b9fa2ad2130c5016c631f2cf5-cc_ft_960.jpg",
+            "width": 960
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/fc51aa0b9fa2ad2130c5016c631f2cf5-cc_ft_1152.jpg",
+            "width": 1152
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/fc51aa0b9fa2ad2130c5016c631f2cf5-cc_ft_1344.jpg",
+            "width": 1344
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/fc51aa0b9fa2ad2130c5016c631f2cf5-cc_ft_1536.jpg",
+            "width": 1536
+          }
+        ]
+      }
+    },
+    {
+      "mixedSources": {
+        "jpeg": [
+          {
+            "url": "https://photos.zillowstatic.com/fp/3556be2b76196e42994092d16d3ef414-cc_ft_192.jpg",
+            "width": 192
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/3556be2b76196e42994092d16d3ef414-cc_ft_384.jpg",
+            "width": 384
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/3556be2b76196e42994092d16d3ef414-cc_ft_576.jpg",
+            "width": 576
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/3556be2b76196e42994092d16d3ef414-cc_ft_768.jpg",
+            "width": 768
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/3556be2b76196e42994092d16d3ef414-cc_ft_960.jpg",
+            "width": 960
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/3556be2b76196e42994092d16d3ef414-cc_ft_1152.jpg",
+            "width": 1152
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/3556be2b76196e42994092d16d3ef414-cc_ft_1344.jpg",
+            "width": 1344
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/3556be2b76196e42994092d16d3ef414-cc_ft_1536.jpg",
+            "width": 1536
+          }
+        ]
+      }
+    },
+    {
+      "mixedSources": {
+        "jpeg": [
+          {
+            "url": "https://photos.zillowstatic.com/fp/f443a8346fddd14144a9bbaef5877bfb-cc_ft_192.jpg",
+            "width": 192
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/f443a8346fddd14144a9bbaef5877bfb-cc_ft_384.jpg",
+            "width": 384
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/f443a8346fddd14144a9bbaef5877bfb-cc_ft_576.jpg",
+            "width": 576
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/f443a8346fddd14144a9bbaef5877bfb-cc_ft_768.jpg",
+            "width": 768
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/f443a8346fddd14144a9bbaef5877bfb-cc_ft_960.jpg",
+            "width": 960
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/f443a8346fddd14144a9bbaef5877bfb-cc_ft_1152.jpg",
+            "width": 1152
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/f443a8346fddd14144a9bbaef5877bfb-cc_ft_1344.jpg",
+            "width": 1344
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/f443a8346fddd14144a9bbaef5877bfb-cc_ft_1536.jpg",
+            "width": 1536
+          }
+        ]
+      }
+    },
+    {
+      "mixedSources": {
+        "jpeg": [
+          {
+            "url": "https://photos.zillowstatic.com/fp/ebfff684e872daf6fdbfaae62fc09e68-cc_ft_192.jpg",
+            "width": 192
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/ebfff684e872daf6fdbfaae62fc09e68-cc_ft_384.jpg",
+            "width": 384
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/ebfff684e872daf6fdbfaae62fc09e68-cc_ft_576.jpg",
+            "width": 576
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/ebfff684e872daf6fdbfaae62fc09e68-cc_ft_768.jpg",
+            "width": 768
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/ebfff684e872daf6fdbfaae62fc09e68-cc_ft_960.jpg",
+            "width": 960
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/ebfff684e872daf6fdbfaae62fc09e68-cc_ft_1152.jpg",
+            "width": 1152
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/ebfff684e872daf6fdbfaae62fc09e68-cc_ft_1344.jpg",
+            "width": 1344
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/ebfff684e872daf6fdbfaae62fc09e68-cc_ft_1536.jpg",
+            "width": 1536
+          }
+        ]
+      }
+    },
+    {
+      "mixedSources": {
+        "jpeg": [
+          {
+            "url": "https://photos.zillowstatic.com/fp/f770b11d3cb846dd7e1bc8a6e4208fd7-cc_ft_192.jpg",
+            "width": 192
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/f770b11d3cb846dd7e1bc8a6e4208fd7-cc_ft_384.jpg",
+            "width": 384
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/f770b11d3cb846dd7e1bc8a6e4208fd7-cc_ft_576.jpg",
+            "width": 576
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/f770b11d3cb846dd7e1bc8a6e4208fd7-cc_ft_768.jpg",
+            "width": 768
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/f770b11d3cb846dd7e1bc8a6e4208fd7-cc_ft_960.jpg",
+            "width": 960
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/f770b11d3cb846dd7e1bc8a6e4208fd7-cc_ft_1152.jpg",
+            "width": 1152
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/f770b11d3cb846dd7e1bc8a6e4208fd7-cc_ft_1344.jpg",
+            "width": 1344
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/f770b11d3cb846dd7e1bc8a6e4208fd7-cc_ft_1536.jpg",
+            "width": 1536
+          }
+        ]
+      }
+    },
+    {
+      "mixedSources": {
+        "jpeg": [
+          {
+            "url": "https://photos.zillowstatic.com/fp/f976102b211c2cd629464ab1b97e0a82-cc_ft_192.jpg",
+            "width": 192
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/f976102b211c2cd629464ab1b97e0a82-cc_ft_384.jpg",
+            "width": 384
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/f976102b211c2cd629464ab1b97e0a82-cc_ft_576.jpg",
+            "width": 576
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/f976102b211c2cd629464ab1b97e0a82-cc_ft_768.jpg",
+            "width": 768
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/f976102b211c2cd629464ab1b97e0a82-cc_ft_960.jpg",
+            "width": 960
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/f976102b211c2cd629464ab1b97e0a82-cc_ft_1152.jpg",
+            "width": 1152
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/f976102b211c2cd629464ab1b97e0a82-cc_ft_1344.jpg",
+            "width": 1344
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/f976102b211c2cd629464ab1b97e0a82-cc_ft_1536.jpg",
+            "width": 1536
+          }
+        ]
+      }
+    },
+    {
+      "mixedSources": {
+        "jpeg": [
+          {
+            "url": "https://photos.zillowstatic.com/fp/635d3a38c41e21ccc16a26213834832d-cc_ft_192.jpg",
+            "width": 192
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/635d3a38c41e21ccc16a26213834832d-cc_ft_384.jpg",
+            "width": 384
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/635d3a38c41e21ccc16a26213834832d-cc_ft_576.jpg",
+            "width": 576
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/635d3a38c41e21ccc16a26213834832d-cc_ft_768.jpg",
+            "width": 768
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/635d3a38c41e21ccc16a26213834832d-cc_ft_960.jpg",
+            "width": 960
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/635d3a38c41e21ccc16a26213834832d-cc_ft_1152.jpg",
+            "width": 1152
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/635d3a38c41e21ccc16a26213834832d-cc_ft_1344.jpg",
+            "width": 1344
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/635d3a38c41e21ccc16a26213834832d-cc_ft_1536.jpg",
+            "width": 1536
+          }
+        ]
+      }
+    }
+  ],
+  "utilities": [],
+  "url": "https://www.zillow.com/homedetails/523-7th-Ave-San-Francisco-CA-94118/2069854593_zpid/",
+  "countyFIPS": null,
+  "countyID": "3227",
+  "listingTypeDimension": "For Sale by Agent",
+  "homeValuation": [
+    "{\"comparables\":{\"comps\":[{\"property\":{\"zestimate\":867700,\"lastSoldPrice\":805814,\"price\":805814,\"daysOnZillow\":250,\"dateSold\":1757030400000,\"currency\":\"USD\",\"bedrooms\":1,\"bathrooms\":1,\"livingAreaValue\":775,\"livingAreaUnits\":\"Square Feet\",\"livingAreaUnitsShort\":\"sqft\",\"lotAreaValue\":2148,\"lotAreaUnits\":\"Square Feet\",\"address\":{\"streetAddress\":\"1600 Anza St\",\"city\":\"San Francisco\",\"state\":\"CA\",\"zipcode\":\"94118\"},\"latitude\":37.779198,\"longitude\":-122.46545,\"zpid\":2087110456,\"homeStatus\":\"RECENTLY_SOLD\",\"homeType\":\"SINGLE_FAMILY\",\"hdpUrl\":\"/homedetails/1600-Anza-St-San-Francisco-CA-94118/2087110456_zpid/\",\"listing_sub_type\":{\"is_newHome\":false,\"is_forAuction\":false,\"is_bankOwned\":false,\"is_foreclosure\":false,\"is_FSBO\":false,\"is_comingSoon\":false},\"isUndisclosedAddress\":false,\"attributionInfo\":{\"mlsId\":\"425051407\",\"mlsName\":\"SFAR\",\"providerLogo\":null,\"agentName\":\"Missy Wyant Smit DRE #01408017\",\"agentPhoneNumber\":null,\"brokerName\":\"Compass\",\"brokerPhoneNumber\":null},\"compsCarouselPropertyPhotos\":[{\"mixedSources\":{\"jpeg\":[{\"url\":\"https://photos.zillowstatic.com/fp/368a4feaee8578a0178d9178dd2b420d-cc_ft_192.jpg\"},{\"url\":\"https://photos.zillowstatic.com/fp/368a4feaee8578a0178d9178dd2b420d-cc_ft_384.jpg\"},{\"url\":\"https://photos.zillowstatic.com/fp/368a4feaee8578a0178d9178dd2b420d-cc_ft_576.jpg\"},{\"url\":\"https://photos.zillowstatic.com/fp/368a4feaee8578a0178d9178dd2b420d-cc_ft_768.jpg\"},{\"url\":\"https://photos.zillowstatic.com/fp/368a4feaee8578a0178d9178dd2b420d-cc_ft_960.jpg\"},{\"url\":\"https://photos.zillowstatic.com/fp/368a4feaee8578a0178d9178dd2b420d-cc_ft_1152.jpg\"},{\"url\":\"https://photos.zillowstatic.com/fp/368a4feaee8578a0178d9178dd2b420d-cc_ft_1344.jpg\"},{\"url\":\"https://photos.zillowstatic.com/fp/368a4feaee8578a0178d9178dd2b420d-cc_ft_1536.jpg\"}]}}]}},{\"property\":{\"zestimate\":1472700,\"lastSoldPrice\":1370000,\"price\":1370000,\"daysOnZillow\":238,\"dateSold\":1758067200000,\"currency\":\"USD\",\"bedrooms\":null,\"bathrooms\":1,\"livingAreaValue\":1080,\"livingAreaUnits\":\"Square Feet\",\"livingAreaUnitsShort\":\"sqft\",\"lotAreaValue\":2770,\"lotAreaUnits\":\"Square Feet\",\"address\":{\"streetAddress\":\"563 23rd Ave\",\"city\":\"San Francisco\",\"state\":\"CA\",\"zipcode\":\"94121\"},\"latitude\":37.777073,\"longitude\":-122.48268,\"zpid\":15095473,\"homeStatus\":\"RECENTLY_SOLD\",\"homeType\":\"SINGLE_FAMILY\",\"hdpUrl\":\"/homedetails/563-23rd-Ave-San-Francisco-CA-94121/15095473_zpid/\",\"listing_sub_type\":{\"is_newHome\":false,\"is_forAuction\":false,\"is_bankOwned\":false,\"is_foreclosure\":false,\"is_FSBO\":false,\"is_comingSoon\":false},\"isUndisclosedAddress\":false,\"attributionInfo\":{\"mlsId\":null,\"mlsName\":null,\"providerLogo\":null,\"agentName\":null,\"agentPhoneNumber\":null,\"brokerName\":null,\"brokerPhoneNumber\":null},\"compsCarouselPropertyPhotos\":[{\"mixedSources\":{\"jpeg\":[{\"url\":\"https://maps.googleapis.com/maps/api/staticmap?mobile=false&sensor=true&maptype=satellite&size=192x144&zoom=17&center=37.77707290649414,-122.48268127441406&key=AIzaSyBWYJWCA8FNMQvSe_k3LKfDGJaEgdKwsco&&signature=ULH2IFOc1e9f94VEewSADiNPiWc=\"},{\"url\":\"https://maps.googleapis.com/maps/api/staticmap?mobile=false&sensor=true&maptype=satellite&size=384x288&zoom=17&center=37.77707290649414,-122.48268127441406&key=AIzaSyBWYJWCA8FNMQvSe_k3LKfDGJaEgdKwsco&&signature=oUzdR48GuvonR_i0lnNciypq3Sg=\"},{\"url\":\"https://maps.googleapis.com/maps/api/staticmap?mobile=false&sensor=true&maptype=satellite&size=576x432&zoom=17&center=37.77707290649414,-122.48268127441406&key=AIzaSyBWYJWCA8FNMQvSe_k3LKfDGJaEgdKwsco&&signature=QVb5ViiQjddXqyxiA-1os0IXj2c=\"},{\"url\":\"https://maps.googleapis.com/maps/api/staticmap?mobile=false&sensor=true&maptype=satellite&size=768x576&zoom=17&center=37.77707290649414,-122.48268127441406&key=AIzaSyBWYJWCA8FNMQvSe_k3LKfDGJaEgdKwsco&&signature=ai6_oWT_Zb5ApUyyMbh5Oy6IGPA=\"},{\"url\":\"https://maps.googleapis.com/maps/api/staticmap?mobile=false&sensor=true&maptype=satellite&size=960x720&zoom=17&center=37.77707290649414,-122.48268127441406&key=AIzaSyBWYJWCA8FNMQvSe_k3LKfDGJaEgdKwsco&&signature=9StKJsLoCYZShjve6VHExIbY2W4=\"},{\"url\":\"https://maps.googleapis.com/maps/api/staticmap?mobile=false&sensor=true&maptype=satellite&size=1152x864&zoom=17&center=37.77707290649414,-122.48268127441406&key=AIzaSyBWYJWCA8FNMQvSe_k3LKfDGJaEgdKwsco&&signature=GfnGtANUFj3xOGJVk1O5qRsBnwY=\"},{\"url\":\"https://maps.googleapis.com/maps/api/staticmap?mobile=false&sensor=true&maptype=satellite&size=1344x1008&zoom=17&center=37.77707290649414,-122.48268127441406&key=AIzaSyBWYJWCA8FNMQvSe_k3LKfDGJaEgdKwsco&&signature=bQIHYONkf6od1sqfoFR74K8FOVc=\"},{\"url\":\"https://maps.googleapis.com/maps/api/staticmap?mobile=false&sensor=true&maptype=satellite&size=1536x1152&zoom=17&center=37.77707290649414,-122.48268127441406&key=AIzaSyBWYJWCA8FNMQvSe_k3LKfDGJaEgdKwsco&&signature=TJwirI9FThuK2sSfoD5Ax-j4m6c=\"}]}}]}},{\"property\":{\"zestimate\":1002900,\"lastSoldPrice\":980000,\"price\":980000,\"daysOnZillow\":82,\"dateSold\":1771545600000,\"currency\":\"USD\",\"bedrooms\":2,\"bathrooms\":2,\"livingAreaValue\":945,\"livingAreaUnits\":\"Square Feet\",\"livingAreaUnitsShort\":\"sqft\",\"lotAreaValue\":2992.572,\"lotAreaUnits\":\"Square Feet\",\"address\":{\"streetAddress\":\"185 7th Ave\",\"city\":\"San Francisco\",\"state\":\"CA\",\"zipcode\":\"94118\"},\"latitude\":37.78508,\"longitude\":-122.46582,\"zpid\":2118574951,\"homeStatus\":\"RECENTLY_SOLD\",\"homeType\":\"SINGLE_FAMILY\",\"hdpUrl\":\"/homedetails/185-7th-Ave-San-Francisco-CA-94118/2118574951_zpid/\",\"listing_sub_type\":{\"is_newHome\":false,\"is_forAuction\":false,\"is_bankOwned\":false,\"is_foreclosure\":false,\"is_FSBO\":false,\"is_comingSoon\":false},\"isUndisclosedAddress\":false,\"attributionInfo\":{\"mlsId\":\"426098567\",\"mlsName\":\"SFAR\",\"providerLogo\":null,\"agentName\":\"Michael Lee DRE #01965026\",\"agentPhoneNumber\":null,\"brokerName\":\"Compass\",\"brokerPhoneNumber\":null},\"compsCarouselPropertyPhotos\":[{\"mixedSources\":{\"jpeg\":[{\"url\":\"https://photos.zillowstatic.com/fp/95301d9f8c866483c6d4570eda2384f6-cc_ft_192.jpg\"},{\"url\":\"https://photos.zillowstatic.com/fp/95301d9f8c866483c6d4570eda2384f6-cc_ft_384.jpg\"},{\"url\":\"https://photos.zillowstatic.com/fp/95301d9f8c866483c6d4570eda2384f6-cc_ft_576.jpg\"},{\"url\":\"https://photos.zillowstatic.com/fp/95301d9f8c866483c6d4570eda2384f6-cc_ft_768.jpg\"},{\"url\":\"https://photos.zillowstatic.com/fp/95301d9f8c866483c6d4570eda2384f6-cc_ft_960.jpg\"},{\"url\":\"https://photos.zillowstatic.com/fp/95301d9f8c866483c6d4570eda2384f6-cc_ft_1152.jpg\"},{\"url\":\"https://photos.zillowstatic.com/fp/95301d9f8c866483c6d4570eda2384f6-cc_ft_1344.jpg\"},{\"url\":\"https://photos.zillowstatic.com/fp/95301d9f8c866483c6d4570eda2384f6-cc_ft_1536.jpg\"}]}}]}},{\"property\":{\"zestimate\":838600,\"lastSoldPrice\":790000,\"price\":790000,\"daysOnZillow\":198,\"dateSold\":1761523200000,\"currency\":\"USD\",\"bedrooms\":1,\"bathrooms\":1,\"livingAreaValue\":776,\"livingAreaUnits\":\"Square Feet\",\"livingAreaUnitsShort\":\"sqft\",\"lotAreaValue\":2500.344,\"lotAreaUnits\":\"Square Feet\",\"address\":{\"streetAddress\":\"1940 Anza St APT 6\",\"city\":\"San Francisco\",\"state\":\"CA\",\"zipcode\":\"94118\"},\"latitude\":37.77911,\"longitude\":-122.46918,\"zpid\":2075614342,\"homeStatus\":\"RECENTLY_SOLD\",\"homeType\":\"SINGLE_FAMILY\",\"hdpUrl\":\"/homedetails/1940-Anza-St-APT-6-San-Francisco-CA-94118/2075614342_zpid/\",\"listing_sub_type\":{\"is_newHome\":false,\"is_forAuction\":false,\"is_bankOwned\":false,\"is_foreclosure\":false,\"is_FSBO\":false,\"is_comingSoon\":false},\"isUndisclosedAddress\":false,\"attributionInfo\":{\"mlsId\":\"425072806\",\"mlsName\":\"SFAR\",\"providerLogo\":null,\"agentName\":\"Jeremy Davidson DRE #02085874\",\"agentPhoneNumber\":null,\"brokerName\":\"Compass\",\"brokerPhoneNumber\":null},\"compsCarouselPropertyPhotos\":[{\"mixedSources\":{\"jpeg\":[{\"url\":\"https://photos.zillowstatic.com/fp/95bc0b3a01156ae24671ccefc374ee23-cc_ft_192.jpg\"},{\"url\":\"https://photos.zillowstatic.com/fp/95bc0b3a01156ae24671ccefc374ee23-cc_ft_384.jpg\"},{\"url\":\"https://photos.zillowstatic.com/fp/95bc0b3a01156ae24671ccefc374ee23-cc_ft_576.jpg\"},{\"url\":\"https://photos.zillowstatic.com/fp/95bc0b3a01156ae24671ccefc374ee23-cc_ft_768.jpg\"},{\"url\":\"https://photos.zillowstatic.com/fp/95bc0b3a01156ae24671ccefc374ee23-cc_ft_960.jpg\"},{\"url\":\"https://photos.zillowstatic.com/fp/95bc0b3a01156ae24671ccefc374ee23-cc_ft_1152.jpg\"},{\"url\":\"https://photos.zillowstatic.com/fp/95bc0b3a01156ae24671ccefc374ee23-cc_ft_1344.jpg\"},{\"url\":\"https://photos.zillowstatic.com/fp/95bc0b3a01156ae24671ccefc374ee23-cc_ft_1536.jpg\"}]}}]}},{\"property\":{\"zestimate\":913800,\"lastSoldPrice\":838000,\"price\":838000,\"daysOnZillow\":309,\"dateSold\":1751932800000,\"currency\":\"USD\",\"bedrooms\":2,\"bathrooms\":2,\"livingAreaValue\":835,\"livingAreaUnits\":\"Square Feet\",\"livingAreaUnitsShort\":\"sqft\",\"lotAreaValue\":2060.388,\"lotAreaUnits\":\"Square Feet\",\"address\":{\"streetAddress\":\"1643 Cabrillo St\",\"city\":\"San Francisco\",\"state\":\"CA\",\"zipcode\":\"94121\"},\"latitude\":37.774647,\"longitude\":-122.47656,\"zpid\":2096572585,\"homeStatus\":\"RECENTLY_SOLD\",\"homeType\":\"SINGLE_FAMILY\",\"hdpUrl\":\"/homedetails/1643-Cabrillo-St-San-Francisco-CA-94121/2096572585_zpid/\",\"listing_sub_type\":{\"is_newHome\":false,\"is_forAuction\":false,\"is_bankOwned\":false,\"is_foreclosure\":false,\"is_FSBO\":false,\"is_comingSoon\":false},\"isUndisclosedAddress\":false,\"attributionInfo\":{\"mlsId\":\"425031022\",\"mlsName\":\"SFAR\",\"providerLogo\":null,\"agentName\":\"Paul Koncar DRE #02005660\",\"agentPhoneNumber\":null,\"brokerName\":\"Focus Realty\",\"brokerPhoneNumber\":null},\"compsCarouselPropertyPhotos\":[{\"mixedSources\":{\"jpeg\":[{\"url\":\"https://maps.googleapis.com/maps/api/streetview?location=1643+Cabrillo+St%2C+San+Francisco%2C+CA+94121&size=192x144&key=AIzaSyARFMLB1na-BBWf7_R3-5YOQQaHqEJf6RQ&source=outdoor&&signature=sLhOdEzHn3BunThPPdLx32l8It8=\"},{\"url\":\"https://maps.googleapis.com/maps/api/streetview?location=1643+Cabrillo+St%2C+San+Francisco%2C+CA+94121&size=384x288&key=AIzaSyARFMLB1na-BBWf7_R3-5YOQQaHqEJf6RQ&source=outdoor&&signature=5O5IsrgmwnAowp9kvfSsiv3CQQI=\"},{\"url\":\"https://maps.googleapis.com/maps/api/streetview?location=1643+Cabrillo+St%2C+San+Francisco%2C+CA+94121&size=576x432&key=AIzaSyARFMLB1na-BBWf7_R3-5YOQQaHqEJf6RQ&source=outdoor&&signature=xiqvt3nRrJo2SgL3iSj3EJaw8Gc=\"},{\"url\":\"https://maps.googleapis.com/maps/api/streetview?location=1643+Cabrillo+St%2C+San+Francisco%2C+CA+94121&size=768x576&key=AIzaSyARFMLB1na-BBWf7_R3-5YOQQaHqEJf6RQ&source=outdoor&&signature=IerdW9qNMaA3o3R3e9IVjyXl_NA=\"},{\"url\":\"https://maps.googleapis.com/maps/api/streetview?location=1643+Cabrillo+St%2C+San+Francisco%2C+CA+94121&size=960x720&key=AIzaSyARFMLB1na-BBWf7_R3-5YOQQaHqEJf6RQ&source=outdoor&&signature=o_HwYqpKeIT-bVcKsIaFS6MtKSk=\"},{\"url\":\"https://maps.googleapis.com/maps/api/streetview?location=1643+Cabrillo+St%2C+San+Francisco%2C+CA+94121&size=1152x864&key=AIzaSyARFMLB1na-BBWf7_R3-5YOQQaHqEJf6RQ&source=outdoor&&signature=syR7Oj7Alo7Hf_ZVW3FYGhdjRHo=\"},{\"url\":\"https://maps.googleapis.com/maps/api/streetview?location=1643+Cabrillo+St%2C+San+Francisco%2C+CA+94121&size=1344x1008&key=AIzaSyARFMLB1na-BBWf7_R3-5YOQQaHqEJf6RQ&source=outdoor&&signature=Wq7sxF2-kWxozqnvVJC6Q42ZTuU=\"},{\"url\":\"https://maps.googleapis.com/maps/api/streetview?location=1643+Cabrillo+St%2C+San+Francisco%2C+CA+94121&size=1536x1152&key=AIzaSyARFMLB1na-BBWf7_R3-5YOQQaHqEJf6RQ&source=outdoor&&signature=llKkoEh-grdEWFt9e7Wg38WgK6M=\"}]}}]}}]}}"
+  ],
+  "isOffMarket": false,
+  "citySearchUrl": {
+    "path": "/san-francisco-ca/",
+    "text": "Homes in San Francisco"
+  },
+  "county": "San Francisco County",
+  "is_showcased": false,
+  "interior": {
+    "bedrooms_and_bathrooms": {
+      "bedrooms": 2,
+      "bathrooms": 1,
+      "full_bathrooms": 1,
+      "half_bathroom": "0"
+    },
+    "kitchen": {
+      "features": "Stone Counters"
+    },
+    "flooring": "Simulated Wood",
+    "heating": "Wall Furnace",
+    "other_interior_features": "Total structure area :791, Total interior livable area :791 sqft"
+  },
+  "overview": {
+    "days_on_zillow": 5,
+    "number_of_views": 2816,
+    "number_of_saves": 165
+  },
+  "is_listed_by_management_company": false,
+  "listing_provided_by": {
+    "name": "Derrick Mar",
+    "email": null,
+    "company": "Christie's Int'l R.E. Sereno",
+    "phone_number": "415-806-6188"
+  },
+  "hoa_details": {
+    "has_hoa": true,
+    "hoa_fee_value": null,
+    "hoa_fee_currency": null,
+    "hoa_fee_period": null,
+    "services_included": null,
+    "amenities_included": null,
+    "hoa_name": "TBD"
+  },
+  "financial": null,
+  "interior_full": [
+    {
+      "title": "MasterBedroom",
+      "values": [
+        "Area: 0"
+      ]
+    },
+    {
+      "title": "Bedroom1",
+      "values": [
+        "Area: 0"
+      ]
+    },
+    {
+      "title": "Bedroom2",
+      "values": [
+        "Area: 0"
+      ]
+    },
+    {
+      "title": "Bedroom3",
+      "values": [
+        "Area: 0"
+      ]
+    },
+    {
+      "title": "Bedroom4",
+      "values": [
+        "Area: 0"
+      ]
+    },
+    {
+      "title": "DiningRoom",
+      "values": [
+        "Area: 0"
+      ]
+    },
+    {
+      "title": "FamilyRoom",
+      "values": [
+        "Area: 0"
+      ]
+    },
+    {
+      "title": "Kitchen",
+      "values": [
+        "Features: Stone Counters",
+        "Area: 0"
+      ]
+    },
+    {
+      "title": "LivingRoom",
+      "values": [
+        "Area: 0"
+      ]
+    },
+    {
+      "title": "Bedrooms & bathrooms",
+      "values": [
+        "Bedrooms: 2",
+        "Bathrooms: 1",
+        "Full bathrooms: 1"
+      ]
+    },
+    {
+      "title": "Heating",
+      "values": [
+        "Heating features: Wall Furnace"
+      ]
+    },
+    {
+      "title": "Appliances",
+      "values": [
+        "Appliances included: Dishwasher,Free-Standing Gas Range,Range Hood,Tankless Water Heater,Washer/Dryer Stacked"
+      ]
+    },
+    {
+      "title": "Features",
+      "values": [
+        "Flooring: Simulated Wood"
+      ]
+    },
+    {
+      "title": "Interior area",
+      "values": [
+        "Total structure area: 791",
+        "Total interior livable area: 791 sqft"
+      ]
+    }
+  ],
+  "property": [
+    {
+      "title": "Features",
+      "values": [
+        "Stories: 1"
+      ]
+    },
+    {
+      "title": "Lot",
+      "values": [
+        "Lot size: 3,001 sqft"
+      ]
+    },
+    {
+      "title": "Details",
+      "values": [
+        "Parcel number: 1550005",
+        "Attached to another structure: Yes",
+        "Special condition: Standard"
+      ]
+    }
+  ],
+  "construction": [
+    {
+      "title": "Type & style",
+      "values": [
+        "Home type: SingleFamily",
+        "Property subType: Tenancy in Common"
+      ]
+    },
+    {
+      "title": "Condition",
+      "values": [
+        "Property condition: Updated/Remodeled",
+        "Year built: 1907"
+      ]
+    }
+  ],
+  "tag": null,
+  "contingent_listing_type": null,
+  "unit_number": null,
+  "unit_amenities": null,
+  "open_house_details": null,
+  "community_details": null,
+  "mls_id": "426129077",
+  "base_rent": null,
+  "sqft": null,
+  "availability_date": null,
+  "special_offer": null,
+  "originating_mls": "San Francisco Association of REALTORS",
+  "tags": [
+    "For sale"
+  ],
+  "getting_around_scores": {
+    "walk_score": "97/100 | Walker's Paradise",
+    "transit_score": "73/100 | Excellent Transit",
+    "bike_score": "90/100 | Biker's Paradise"
+  },
+  "days_on_zillow": 5,
+  "getting_around": {
+    "walk": {
+      "score": 97,
+      "description": "Walker's Paradise"
+    },
+    "transit": {
+      "score": 73,
+      "description": "Excellent Transit"
+    },
+    "bike": {
+      "score": 90,
+      "description": "Biker's Paradise"
+    }
+  },
+  "other": null,
+  "financial_listing_details": null,
+  "publish_url": null,
+  "climate_risks": null,
+  "num_of_contacts": null,
+  "num_of_applications": null,
+  "has_3d_tour": false,
+  "payment_breakdown": [
+    {
+      "name": "Principal & interest",
+      "value": "3491$"
+    },
+    {
+      "name": "Mortgage insurance",
+      "value": "0$"
+    },
+    {
+      "name": "Property taxes",
+      "value": "682$"
+    },
+    {
+      "name": "Home insurance",
+      "value": "233$"
+    },
+    {
+      "name": "HOA fees",
+      "value": "N/A"
+    },
+    {
+      "name": "Utilities",
+      "value": "Not included"
+    }
+  ],
+  "sold_to_list_ratio": null,
+  "sold_to_zestimate_ratio": null,
+  "is_flipped_within_12_months": false,
+  "timestamp": "2026-05-14T03:10:41.706Z",
+  "input": {
+    "url": "https://www.zillow.com/homedetails/523-7th-Ave-San-Francisco-CA-94118/2069854593_zpid/"
+  }
+}

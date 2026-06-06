@@ -1,6 +1,6 @@
 {
   "request_params": {
-    "location": "san-francisco-ca",
+    "location": "calabasas-ca",
     "page": "1",
     "status": "forSale",
     "isManufactured": "false",
@@ -9,1135 +9,308 @@
   "status_code": 200,
   "response": {
     "success": true,
-    "totalCount": 1053,
+    "totalCount": 154,
     "filteredCount": 41,
     "currentPage": "1",
-    "regionId": 20330,
+    "regionId": 37688,
     "results": [
       {
-        "id": "15190324",
-        "price": "$1,488,000",
-        "unformattedPrice": 1488000,
+        "id": "20553508",
+        "price": "$1,395,000",
+        "unformattedPrice": 1395000,
         "beds": 3,
-        "baths": 4,
-        "area": 2032,
-        "livingArea": 2032,
+        "baths": 2,
+        "area": 1892,
+        "livingArea": 1892,
         "homeType": "SINGLE_FAMILY",
         "marketingStatus": "For Sale by Agent",
         "homeStatus": "FOR_SALE",
-        "rentZestimate": 5836,
+        "rentZestimate": 5949,
         "listingSubType": {
           "is_FSBA": true
         },
-        "timeOnZillow": 3808543000,
-        "taxAssessedValue": 1183200,
-        "lotAreaValue": 2482.92,
+        "timeOnZillow": 11656146000,
+        "taxAssessedValue": 472298,
+        "lotAreaValue": 0.2561,
+        "lotAreaUnit": "acres",
+        "has3DModel": false,
+        "address": {
+          "street": "25614 Timpangos Dr",
+          "city": "Calabasas",
+          "state": "CA",
+          "zipcode": "91302"
+        },
+        "latLong": {
+          "latitude": 34.08398,
+          "longitude": -118.68523
+        },
+        "statusText": "House for sale",
+        "imgSrc": "https://photos.zillowstatic.com/fp/5f0da25a316973666e48d410f0052d26-p_e.jpg",
+        "detailUrl": "https://www.zillow.com/homedetails/25614-Timpangos-Dr-Calabasas-CA-91302/20553508_zpid/",
+        "daysOnZillow": 134,
+        "zestimate": 1315700
+      },
+      {
+        "id": "19884984",
+        "price": "$1,350,000",
+        "unformattedPrice": 1350000,
+        "beds": 4,
+        "baths": 2,
+        "area": 1850,
+        "livingArea": 1850,
+        "homeType": "SINGLE_FAMILY",
+        "marketingStatus": "For Sale by Agent",
+        "homeStatus": "FOR_SALE",
+        "rentZestimate": 5755,
+        "listingSubType": {
+          "is_FSBA": true,
+          "is_openHouse": true
+        },
+        "timeOnZillow": 7586853000,
+        "taxAssessedValue": 537916,
+        "lotAreaValue": 10408,
         "lotAreaUnit": "sqft",
         "has3DModel": false,
         "address": {
-          "street": "224 Shields St",
-          "city": "San Francisco",
+          "street": "26261 Veva Way",
+          "city": "Calabasas",
           "state": "CA",
-          "zipcode": "94132"
+          "zipcode": "91302"
         },
         "latLong": {
-          "latitude": 37.718098,
-          "longitude": -122.46494
+          "latitude": 34.160355,
+          "longitude": -118.69931
         },
         "statusText": "House for sale",
-        "imgSrc": "https://photos.zillowstatic.com/fp/1ca06c05906b811a67ae5619d1666581-p_e.jpg",
-        "detailUrl": "https://www.zillow.com/homedetails/224-Shields-St-San-Francisco-CA-94132/15190324_zpid/",
-        "daysOnZillow": 44
+        "imgSrc": "https://photos.zillowstatic.com/fp/052e81947f951ba586bda9a533ee7285-p_e.jpg",
+        "detailUrl": "https://www.zillow.com/homedetails/26261-Veva-Way-Calabasas-CA-91302/19884984_zpid/",
+        "daysOnZillow": 87,
+        "zestimate": 1317000
       },
       {
-        "id": "15167600",
-        "price": "$1,498,888",
-        "unformattedPrice": 1498888,
+        "id": "19895487",
+        "price": "$1,375,000",
+        "unformattedPrice": 1375000,
         "beds": 4,
         "baths": 3,
-        "area": 2036,
-        "livingArea": 2036,
+        "area": 2050,
+        "livingArea": 2050,
         "homeType": "SINGLE_FAMILY",
-        "marketingStatus": "For Sale by Agent",
+        "marketingStatus": "For Sale by Owner",
         "homeStatus": "FOR_SALE",
+        "rentZestimate": 5610,
         "listingSubType": {
-          "is_FSBA": true
+          "is_FSBO": true
         },
-        "timeOnZillow": 12966943000,
-        "taxAssessedValue": 373970,
-        "lotAreaValue": 2090.88,
+        "timeOnZillow": 2775813000,
+        "taxAssessedValue": 757389,
+        "lotAreaValue": 8000,
         "lotAreaUnit": "sqft",
         "has3DModel": false,
         "address": {
-          "street": "1831 Silliman St",
-          "city": "San Francisco",
+          "street": "3911 Cottonwood Grove Trl",
+          "city": "Calabasas",
           "state": "CA",
-          "zipcode": "94134"
+          "zipcode": "91301"
         },
         "latLong": {
-          "latitude": 37.72627,
-          "longitude": -122.42359
+          "latitude": 34.1209,
+          "longitude": -118.662605
         },
-        "statusText": "House for sale",
-        "imgSrc": "https://photos.zillowstatic.com/fp/ef75b28d8b0f7e66511b824e42606d69-p_e.jpg",
-        "detailUrl": "https://www.zillow.com/homedetails/1831-Silliman-St-San-Francisco-CA-94134/15167600_zpid/",
-        "daysOnZillow": 150
+        "statusText": "For sale by owner",
+        "imgSrc": "https://photos.zillowstatic.com/fp/e6fcaa14eac57dc6160acf4dd2c8dc49-p_e.jpg",
+        "detailUrl": "https://www.zillow.com/homedetails/3911-Cottonwood-Grove-Trl-Calabasas-CA-91301/19895487_zpid/",
+        "daysOnZillow": 32
       },
       {
-        "id": "2091257904",
-        "price": "$1,499,000",
-        "unformattedPrice": 1499000,
-        "beds": 3,
-        "baths": 2,
-        "area": 1875,
-        "livingArea": 1875,
-        "homeType": "SINGLE_FAMILY",
-        "marketingStatus": "For Sale by Agent",
-        "homeStatus": "FOR_SALE",
-        "rentZestimate": 7654,
-        "listingSubType": {
-          "is_FSBA": true,
-          "is_openHouse": true
-        },
-        "timeOnZillow": 525343000,
-        "lotAreaValue": 3510.936,
-        "lotAreaUnit": "sqft",
-        "has3DModel": false,
-        "address": {
-          "street": "2833 Sacramento St",
-          "city": "San Francisco",
-          "state": "CA",
-          "zipcode": "94115"
-        },
-        "latLong": {
-          "latitude": 37.78886,
-          "longitude": -122.43954
-        },
-        "statusText": "House for sale",
-        "imgSrc": "https://photos.zillowstatic.com/fp/9bce3b191e3e7b741c2f5cf4e919fb02-p_e.jpg",
-        "detailUrl": "https://www.zillow.com/homedetails/2833-Sacramento-St-San-Francisco-CA-94115/2091257904_zpid/",
-        "daysOnZillow": 6
-      },
-      {
-        "id": "15107003",
-        "price": "$1,495,000",
-        "unformattedPrice": 1495000,
-        "beds": 3,
+        "id": "19894217",
+        "price": "$1,299,950",
+        "unformattedPrice": 1299950,
+        "beds": 4,
         "baths": 3,
-        "area": 1550,
-        "livingArea": 1550,
+        "area": 1866,
+        "livingArea": 1866,
         "homeType": "SINGLE_FAMILY",
         "marketingStatus": "For Sale by Agent",
         "homeStatus": "FOR_SALE",
-        "rentZestimate": 4954,
+        "rentZestimate": 5390,
         "listingSubType": {
-          "is_FSBA": true
+          "is_FSBA": true,
+          "is_openHouse": true
         },
-        "timeOnZillow": 698143000,
-        "taxAssessedValue": 332415,
-        "lotAreaValue": 3001.284,
+        "timeOnZillow": 1404478000,
+        "taxAssessedValue": 921635,
+        "lotAreaValue": 7405.2,
         "lotAreaUnit": "sqft",
         "has3DModel": false,
         "address": {
-          "street": "1546 26th Ave",
-          "city": "San Francisco",
+          "street": "3831 Cottonwood Grove Trl",
+          "city": "Calabasas",
           "state": "CA",
-          "zipcode": "94122"
+          "zipcode": "91301"
         },
         "latLong": {
-          "latitude": 37.758625,
-          "longitude": -122.48407
+          "latitude": 34.13066,
+          "longitude": -118.71012
         },
         "statusText": "House for sale",
-        "imgSrc": "https://photos.zillowstatic.com/fp/c084536440026897a1dec74249578c9b-p_e.jpg",
-        "detailUrl": "https://www.zillow.com/homedetails/1546-26th-Ave-San-Francisco-CA-94122/15107003_zpid/",
-        "daysOnZillow": 8
+        "imgSrc": "https://photos.zillowstatic.com/fp/e0226a40dbca3fea293d82e393bbc139-p_e.jpg",
+        "detailUrl": "https://www.zillow.com/homedetails/3831-Cottonwood-Grove-Trl-Calabasas-CA-91301/19894217_zpid/",
+        "daysOnZillow": 16,
+        "zestimate": 1251600
       },
       {
-        "id": "2144451395",
-        "price": "$778,000",
-        "unformattedPrice": 778000,
-        "beds": 2,
-        "baths": 1,
-        "area": 885,
-        "livingArea": 885,
-        "homeType": "SINGLE_FAMILY",
-        "marketingStatus": "For Sale by Agent",
-        "homeStatus": "FOR_SALE",
-        "listingSubType": {
-          "is_FSBA": true,
-          "is_openHouse": true
-        },
-        "timeOnZillow": 525343000,
-        "lotAreaValue": 2848.824,
-        "lotAreaUnit": "sqft",
-        "has3DModel": true,
-        "address": {
-          "street": "3944 18th St",
-          "city": "San Francisco",
-          "state": "CA",
-          "zipcode": "94114"
-        },
-        "latLong": {
-          "latitude": 37.761337,
-          "longitude": -122.43165
-        },
-        "statusText": "House for sale",
-        "imgSrc": "https://photos.zillowstatic.com/fp/cdb0216d1b2a75801bed1ceacd9e1b70-p_e.jpg",
-        "detailUrl": "https://www.zillow.com/homedetails/3944-18th-St-San-Francisco-CA-94114/2144451395_zpid/",
-        "daysOnZillow": 6
-      },
-      {
-        "id": "2088700495",
-        "price": "$1,595,000",
-        "unformattedPrice": 1595000,
-        "beds": 2,
-        "baths": 2,
-        "area": 1645,
-        "livingArea": 1645,
-        "homeType": "SINGLE_FAMILY",
-        "marketingStatus": "For Sale by Agent",
-        "homeStatus": "FOR_SALE",
-        "listingSubType": {
-          "is_FSBA": true,
-          "is_openHouse": true
-        },
-        "timeOnZillow": 611743000,
-        "lotAreaValue": 0,
-        "lotAreaUnit": "sqft",
-        "has3DModel": true,
-        "address": {
-          "street": "2362 15th St",
-          "city": "San Francisco",
-          "state": "CA",
-          "zipcode": "94114"
-        },
-        "latLong": {
-          "latitude": 37.76584,
-          "longitude": -122.4366
-        },
-        "statusText": "House for sale",
-        "imgSrc": "https://photos.zillowstatic.com/fp/15c0b49908461d72b65db22df7b5eba3-p_e.jpg",
-        "detailUrl": "https://www.zillow.com/homedetails/2362-15th-St-San-Francisco-CA-94114/2088700495_zpid/",
-        "daysOnZillow": 7
-      },
-      {
-        "id": "15178236",
+        "id": "19885888",
         "price": "$599,000",
         "unformattedPrice": 599000,
-        "beds": 2,
-        "baths": 2,
-        "area": 1610,
-        "livingArea": 1610,
-        "homeType": "SINGLE_FAMILY",
-        "marketingStatus": "For Sale by Agent",
-        "homeStatus": "FOR_SALE",
-        "rentZestimate": 5436,
-        "listingSubType": {
-          "is_FSBA": true
-        },
-        "timeOnZillow": 1130143000,
-        "taxAssessedValue": 61157,
-        "lotAreaValue": 3454.308,
-        "lotAreaUnit": "sqft",
-        "has3DModel": false,
-        "address": {
-          "street": "962 Prague St",
-          "city": "San Francisco",
-          "state": "CA",
-          "zipcode": "94112"
-        },
-        "latLong": {
-          "latitude": 37.71024,
-          "longitude": -122.43619
-        },
-        "statusText": "House for sale",
-        "imgSrc": "https://photos.zillowstatic.com/fp/c8574bb1f5ce512d7f3e468a428e1a9c-p_e.jpg",
-        "detailUrl": "https://www.zillow.com/homedetails/962-Prague-St-San-Francisco-CA-94112/15178236_zpid/",
-        "daysOnZillow": 13
-      },
-      {
-        "id": "462300408",
-        "price": "$1,288,000",
-        "unformattedPrice": 1288000,
-        "beds": 3,
-        "baths": 4,
-        "area": 2300,
-        "livingArea": 2300,
-        "homeType": "MULTI_FAMILY",
-        "marketingStatus": "For Sale by Agent",
-        "homeStatus": "FOR_SALE",
-        "listingSubType": {
-          "is_FSBA": true,
-          "is_openHouse": true
-        },
-        "timeOnZillow": 525343000,
-        "lotAreaValue": 2452.428,
-        "lotAreaUnit": "sqft",
-        "has3DModel": false,
-        "address": {
-          "street": "4113-4115 20th St",
-          "city": "San Francisco",
-          "state": "CA",
-          "zipcode": "94114"
-        },
-        "latLong": {
-          "latitude": 37.757607,
-          "longitude": -122.43292
-        },
-        "statusText": "Multi-family home for sale",
-        "imgSrc": "https://photos.zillowstatic.com/fp/c8e41d6e566a6c5a7bb8c667ef5d4489-p_e.jpg",
-        "detailUrl": "https://www.zillow.com/homedetails/4113-4115-20th-St-San-Francisco-CA-94114/462300408_zpid/",
-        "daysOnZillow": 6
-      },
-      {
-        "id": "15107152",
-        "price": "$1,095,000",
-        "unformattedPrice": 1095000,
-        "beds": 3,
-        "baths": 2,
-        "area": 1541,
-        "livingArea": 1541,
-        "homeType": "SINGLE_FAMILY",
-        "marketingStatus": "For Sale by Agent",
-        "homeStatus": "FOR_SALE",
-        "rentZestimate": 4604,
-        "listingSubType": {
-          "is_FSBA": true,
-          "is_openHouse": true
-        },
-        "timeOnZillow": 525343000,
-        "taxAssessedValue": 78708,
-        "lotAreaValue": 2374.02,
-        "lotAreaUnit": "sqft",
-        "has3DModel": false,
-        "address": {
-          "street": "1586 29th Ave",
-          "city": "San Francisco",
-          "state": "CA",
-          "zipcode": "94122"
-        },
-        "latLong": {
-          "latitude": 37.757793,
-          "longitude": -122.48727
-        },
-        "statusText": "House for sale",
-        "imgSrc": "https://photos.zillowstatic.com/fp/d949452175302fdf4719e063b80469fe-p_e.jpg",
-        "detailUrl": "https://www.zillow.com/homedetails/1586-29th-Ave-San-Francisco-CA-94122/15107152_zpid/",
-        "daysOnZillow": 6
-      },
-      {
-        "id": "15072304",
-        "price": "$6,000,000",
-        "unformattedPrice": 6000000,
-        "beds": 5,
-        "baths": 5,
-        "area": 4100,
-        "livingArea": 4100,
-        "homeType": "SINGLE_FAMILY",
-        "marketingStatus": "For Sale by Agent",
-        "homeStatus": "FOR_SALE",
-        "listingSubType": {
-          "is_FSBA": true
-        },
-        "timeOnZillow": 525343000,
-        "taxAssessedValue": 1407814,
-        "lotAreaValue": 2012.472,
-        "lotAreaUnit": "sqft",
-        "has3DModel": false,
-        "address": {
-          "street": "2830 Buchanan St",
-          "city": "San Francisco",
-          "state": "CA",
-          "zipcode": "94123"
-        },
-        "latLong": {
-          "latitude": 37.796177,
-          "longitude": -122.43177
-        },
-        "statusText": "House for sale",
-        "imgSrc": "https://photos.zillowstatic.com/fp/fa1a30e44677a670947445dea1451684-p_e.jpg",
-        "detailUrl": "https://www.zillow.com/homedetails/2830-Buchanan-St-San-Francisco-CA-94123/15072304_zpid/",
-        "daysOnZillow": 6
-      },
-      {
-        "id": "15156021",
-        "price": "$799,000",
-        "unformattedPrice": 799000,
-        "beds": 2,
-        "baths": 1,
-        "area": 1135,
-        "livingArea": 1135,
-        "homeType": "SINGLE_FAMILY",
-        "marketingStatus": "For Sale by Agent",
-        "homeStatus": "FOR_SALE",
-        "rentZestimate": 4251,
-        "listingSubType": {
-          "is_FSBA": true
-        },
-        "timeOnZillow": 1216543000,
-        "taxAssessedValue": 40824,
-        "lotAreaValue": 1742.4,
-        "lotAreaUnit": "sqft",
-        "has3DModel": true,
-        "address": {
-          "street": "1118 Newhall St",
-          "city": "San Francisco",
-          "state": "CA",
-          "zipcode": "94124"
-        },
-        "latLong": {
-          "latitude": 37.737366,
-          "longitude": -122.39096
-        },
-        "statusText": "House for sale",
-        "imgSrc": "https://photos.zillowstatic.com/fp/ac461cf62563e73b21938286ee07cdb6-p_e.jpg",
-        "detailUrl": "https://www.zillow.com/homedetails/1118-Newhall-St-San-Francisco-CA-94124/15156021_zpid/",
-        "daysOnZillow": 14
-      },
-      {
-        "id": "2098022999",
-        "price": "$695,000",
-        "unformattedPrice": 695000,
-        "beds": 1,
-        "baths": 1,
-        "area": 918,
-        "livingArea": 918,
-        "homeType": "SINGLE_FAMILY",
-        "marketingStatus": "For Sale by Agent",
-        "homeStatus": "FOR_SALE",
-        "listingSubType": {
-          "is_FSBA": true,
-          "is_openHouse": true
-        },
-        "timeOnZillow": 1734943000,
-        "lotAreaValue": 10166.904,
-        "lotAreaUnit": "sqft",
-        "has3DModel": false,
-        "address": {
-          "street": "160 Graystone Terrace #9",
-          "city": "San Francisco",
-          "state": "CA",
-          "zipcode": "94114"
-        },
-        "latLong": {
-          "latitude": 37.757217,
-          "longitude": -122.44604
-        },
-        "statusText": "House for sale",
-        "imgSrc": "https://photos.zillowstatic.com/fp/f128492a3ea760dd3140742ecc0d2ab9-p_e.jpg",
-        "detailUrl": "https://www.zillow.com/homedetails/160-Graystone-Terrace-9-San-Francisco-CA-94114/2098022999_zpid/",
-        "daysOnZillow": 20
-      },
-      {
-        "id": "2067738285",
-        "price": "$1,088,000",
-        "unformattedPrice": 1088000,
-        "beds": 3,
-        "baths": 2,
-        "area": 1370,
-        "livingArea": 1370,
-        "homeType": "SINGLE_FAMILY",
-        "marketingStatus": "For Sale by Agent",
-        "homeStatus": "FOR_SALE",
-        "rentZestimate": 5734,
-        "listingSubType": {
-          "is_FSBA": true,
-          "is_openHouse": true
-        },
-        "timeOnZillow": 525343000,
-        "lotAreaValue": 3001.284,
-        "lotAreaUnit": "sqft",
-        "has3DModel": false,
-        "address": {
-          "street": "117 Sutro Heights Ave #117",
-          "city": "San Francisco",
-          "state": "CA",
-          "zipcode": "94121"
-        },
-        "latLong": {
-          "latitude": 37.77596,
-          "longitude": -122.50845
-        },
-        "statusText": "House for sale",
-        "imgSrc": "https://photos.zillowstatic.com/fp/9dcd14c84f5bc0d256ef03c86f56c26f-p_e.jpg",
-        "detailUrl": "https://www.zillow.com/homedetails/117-Sutro-Heights-Ave-117-San-Francisco-CA-94121/2067738285_zpid/",
-        "daysOnZillow": 6,
-        "zestimate": 1387000
-      },
-      {
-        "id": "346920093",
-        "price": "$949,000",
-        "unformattedPrice": 949000,
-        "beds": 2,
-        "baths": 2,
-        "area": 883,
-        "livingArea": 883,
-        "homeType": "SINGLE_FAMILY",
-        "marketingStatus": "For Sale by Agent",
-        "homeStatus": "FOR_SALE",
-        "listingSubType": {
-          "is_FSBA": true,
-          "is_openHouse": true
-        },
-        "timeOnZillow": 525343000,
-        "lotAreaValue": 2700.72,
-        "lotAreaUnit": "sqft",
-        "has3DModel": false,
-        "address": {
-          "street": "136 Parnassus Ave APT 4",
-          "city": "San Francisco",
-          "state": "CA",
-          "zipcode": "94117"
-        },
-        "latLong": {
-          "latitude": 37.764854,
-          "longitude": -122.45074
-        },
-        "statusText": "House for sale",
-        "imgSrc": "https://photos.zillowstatic.com/fp/2acf988fecbc245e8c649eb9ebeb14e7-p_e.jpg",
-        "detailUrl": "https://www.zillow.com/homedetails/136-Parnassus-Ave-APT-4-San-Francisco-CA-94117/346920093_zpid/",
-        "daysOnZillow": 6
-      },
-      {
-        "id": "2101343859",
-        "price": "$1,349,000",
-        "unformattedPrice": 1349000,
-        "beds": 3,
-        "baths": 1,
-        "area": 1667,
-        "livingArea": 1667,
-        "homeType": "SINGLE_FAMILY",
-        "marketingStatus": "For Sale by Agent",
-        "homeStatus": "FOR_SALE",
-        "rentZestimate": 6498,
-        "listingSubType": {
-          "is_FSBA": true
-        },
-        "timeOnZillow": 611743000,
-        "lotAreaValue": 4817.736,
-        "lotAreaUnit": "sqft",
-        "has3DModel": false,
-        "address": {
-          "street": "616 Page St",
-          "city": "San Francisco",
-          "state": "CA",
-          "zipcode": "94117"
-        },
-        "latLong": {
-          "latitude": 37.773186,
-          "longitude": -122.43144
-        },
-        "statusText": "House for sale",
-        "imgSrc": "https://photos.zillowstatic.com/fp/e10b88ca460f8625012903c19b5d658e-p_e.jpg",
-        "detailUrl": "https://www.zillow.com/homedetails/616-Page-St-San-Francisco-CA-94117/2101343859_zpid/",
-        "daysOnZillow": 7
-      },
-      {
-        "id": "2069854593",
-        "price": "$699,000",
-        "unformattedPrice": 699000,
-        "beds": 2,
-        "baths": 1,
-        "area": 791,
-        "livingArea": 791,
-        "homeType": "SINGLE_FAMILY",
-        "marketingStatus": "For Sale by Agent",
-        "homeStatus": "FOR_SALE",
-        "rentZestimate": 4528,
-        "listingSubType": {
-          "is_FSBA": true
-        },
-        "timeOnZillow": 525343000,
-        "lotAreaValue": 3001.284,
-        "lotAreaUnit": "sqft",
-        "has3DModel": false,
-        "address": {
-          "street": "523 7th Ave",
-          "city": "San Francisco",
-          "state": "CA",
-          "zipcode": "94118"
-        },
-        "latLong": {
-          "latitude": 37.77858,
-          "longitude": -122.465454
-        },
-        "statusText": "House for sale",
-        "imgSrc": "https://photos.zillowstatic.com/fp/95a9efba7e7d41ddacad73d519c46600-p_e.jpg",
-        "detailUrl": "https://www.zillow.com/homedetails/523-7th-Ave-San-Francisco-CA-94118/2069854593_zpid/",
-        "daysOnZillow": 6
-      },
-      {
-        "id": "15102209",
-        "price": "$2,195,000",
-        "unformattedPrice": 2195000,
-        "beds": 5,
-        "baths": 3,
-        "area": 2110,
-        "livingArea": 2110,
-        "homeType": "SINGLE_FAMILY",
-        "marketingStatus": "For Sale by Agent",
-        "homeStatus": "FOR_SALE",
-        "rentZestimate": 7330,
-        "listingSubType": {
-          "is_FSBA": true,
-          "is_openHouse": true
-        },
-        "timeOnZillow": 611743000,
-        "taxAssessedValue": 153612,
-        "lotAreaValue": 2996.928,
-        "lotAreaUnit": "sqft",
-        "has3DModel": false,
-        "address": {
-          "street": "1278 11th Ave",
-          "city": "San Francisco",
-          "state": "CA",
-          "zipcode": "94122"
-        },
-        "latLong": {
-          "latitude": 37.76438,
-          "longitude": -122.468285
-        },
-        "statusText": "House for sale",
-        "imgSrc": "https://photos.zillowstatic.com/fp/98b1232fc5a3c7b94f5b16464eb3c7e8-p_e.jpg",
-        "detailUrl": "https://www.zillow.com/homedetails/1278-11th-Ave-San-Francisco-CA-94122/15102209_zpid/",
-        "daysOnZillow": 7
-      },
-      {
-        "id": "15134747",
-        "price": "$1,595,000",
-        "unformattedPrice": 1595000,
-        "beds": 3,
-        "baths": 2,
-        "area": 1625,
-        "livingArea": 1625,
-        "homeType": "SINGLE_FAMILY",
-        "marketingStatus": "For Sale by Agent",
-        "homeStatus": "FOR_SALE",
-        "listingSubType": {
-          "is_FSBA": true
-        },
-        "timeOnZillow": 546063000,
-        "taxAssessedValue": 1078415,
-        "lotAreaValue": 3811,
-        "lotAreaUnit": "sqft",
-        "has3DModel": false,
-        "address": {
-          "street": "75 Chaves Ave",
-          "city": "San Francisco",
-          "state": "CA",
-          "zipcode": "94127"
-        },
-        "latLong": {
-          "latitude": 37.74225,
-          "longitude": -122.453415
-        },
-        "statusText": "House for sale",
-        "imgSrc": "https://photos.zillowstatic.com/fp/09ec4585aa8a5f1f7fb4afc45bc27d55-p_e.jpg",
-        "detailUrl": "https://www.zillow.com/homedetails/75-Chaves-Ave-San-Francisco-CA-94127/15134747_zpid/",
-        "daysOnZillow": 6
-      },
-      {
-        "id": "15126118",
-        "price": "$2,195,000",
-        "unformattedPrice": 2195000,
-        "beds": 6,
-        "baths": 4,
-        "area": 2593,
-        "livingArea": 2593,
-        "homeType": "SINGLE_FAMILY",
-        "marketingStatus": "For Sale by Agent",
-        "homeStatus": "FOR_SALE",
-        "rentZestimate": 6445,
-        "listingSubType": {
-          "is_FSBA": true
-        },
-        "timeOnZillow": 1661523000,
-        "taxAssessedValue": 2120330,
-        "lotAreaValue": 1746,
-        "lotAreaUnit": "sqft",
-        "has3DModel": true,
-        "address": {
-          "street": "2701 41st Ave",
-          "city": "San Francisco",
-          "state": "CA",
-          "zipcode": "94116"
-        },
-        "latLong": {
-          "latitude": 37.736263,
-          "longitude": -122.4991
-        },
-        "statusText": "House for sale",
-        "imgSrc": "https://photos.zillowstatic.com/fp/ac14ed6ba8e24df4e9f570edc010185e-p_e.jpg",
-        "detailUrl": "https://www.zillow.com/homedetails/2701-41st-Ave-San-Francisco-CA-94116/15126118_zpid/",
-        "daysOnZillow": 19
-      },
-      {
-        "id": "15182791",
-        "price": "$1,995,000",
-        "unformattedPrice": 1995000,
-        "beds": 3,
-        "baths": 2,
-        "area": 1955,
-        "livingArea": 1955,
-        "homeType": "SINGLE_FAMILY",
-        "marketingStatus": "For Sale by Agent",
-        "homeStatus": "FOR_SALE",
-        "listingSubType": {
-          "is_FSBA": true
-        },
-        "timeOnZillow": 525343000,
-        "taxAssessedValue": 847099,
-        "lotAreaValue": 2850,
-        "lotAreaUnit": "sqft",
-        "has3DModel": false,
-        "address": {
-          "street": "655 Duncan St",
-          "city": "San Francisco",
-          "state": "CA",
-          "zipcode": "94131"
-        },
-        "latLong": {
-          "latitude": 37.74536,
-          "longitude": -122.43471
-        },
-        "statusText": "House for sale",
-        "imgSrc": "https://photos.zillowstatic.com/fp/39bb826d61e6eea509cde97be99037ef-p_e.jpg",
-        "detailUrl": "https://www.zillow.com/homedetails/655-Duncan-St-San-Francisco-CA-94131/15182791_zpid/",
-        "daysOnZillow": 6
-      },
-      {
-        "id": "15130839",
-        "price": "$2,495,000",
-        "unformattedPrice": 2495000,
         "beds": 3,
         "baths": 3,
-        "area": 0,
-        "livingArea": 0,
-        "homeType": "SINGLE_FAMILY",
-        "marketingStatus": "For Sale by Agent",
-        "homeStatus": "FOR_SALE",
-        "rentZestimate": 7542,
-        "listingSubType": {
-          "is_FSBA": true
-        },
-        "timeOnZillow": 1130143000,
-        "taxAssessedValue": 2893443,
-        "lotAreaValue": 2622.312,
-        "lotAreaUnit": "sqft",
-        "has3DModel": false,
-        "address": {
-          "street": "541 Diamond St",
-          "city": "San Francisco",
-          "state": "CA",
-          "zipcode": "94114"
-        },
-        "latLong": {
-          "latitude": 37.753773,
-          "longitude": -122.43622
-        },
-        "statusText": "House for sale",
-        "imgSrc": "https://photos.zillowstatic.com/fp/17208744bc22323bdd9d2d6cd06454c5-p_e.jpg",
-        "detailUrl": "https://www.zillow.com/homedetails/541-Diamond-St-San-Francisco-CA-94114/15130839_zpid/",
-        "daysOnZillow": 13
-      },
-      {
-        "id": "15087264",
-        "price": "$4,290,000",
-        "unformattedPrice": 4290000,
-        "beds": 5,
-        "baths": 4,
-        "area": 2811,
-        "livingArea": 2811,
-        "homeType": "SINGLE_FAMILY",
-        "marketingStatus": "For Sale by Agent",
-        "homeStatus": "FOR_SALE",
-        "rentZestimate": 7802,
-        "listingSubType": {
-          "is_FSBA": true
-        },
-        "timeOnZillow": 870943000,
-        "taxAssessedValue": 2296738,
-        "lotAreaValue": 3598.056,
-        "lotAreaUnit": "sqft",
-        "has3DModel": false,
-        "address": {
-          "street": "1338 Masonic Ave",
-          "city": "San Francisco",
-          "state": "CA",
-          "zipcode": "94117"
-        },
-        "latLong": {
-          "latitude": 37.768555,
-          "longitude": -122.44471
-        },
-        "statusText": "House for sale",
-        "imgSrc": "https://photos.zillowstatic.com/fp/c9f4df0f64332a0853b8ec9fc671379c-p_e.jpg",
-        "detailUrl": "https://www.zillow.com/homedetails/1338-Masonic-Ave-San-Francisco-CA-94117/15087264_zpid/",
-        "daysOnZillow": 10
-      },
-      {
-        "id": "15125625",
-        "price": "$2,995,000",
-        "unformattedPrice": 2995000,
-        "beds": 4,
-        "baths": 4,
-        "area": 2835,
-        "livingArea": 2835,
-        "homeType": "SINGLE_FAMILY",
-        "marketingStatus": "For Sale by Agent",
-        "homeStatus": "FOR_SALE",
-        "rentZestimate": 7961,
-        "listingSubType": {
-          "is_FSBA": true
-        },
-        "timeOnZillow": 525343000,
-        "taxAssessedValue": 153804,
-        "lotAreaValue": 3184.236,
-        "lotAreaUnit": "sqft",
-        "has3DModel": false,
-        "address": {
-          "street": "2627 14th Ave",
-          "city": "San Francisco",
-          "state": "CA",
-          "zipcode": "94127"
-        },
-        "latLong": {
-          "latitude": 37.73914,
-          "longitude": -122.47023
-        },
-        "statusText": "House for sale",
-        "imgSrc": "https://photos.zillowstatic.com/fp/831b1d107692b2bb79c2338deb48bdc9-p_e.jpg",
-        "detailUrl": "https://www.zillow.com/homedetails/2627-14th-Ave-San-Francisco-CA-94127/15125625_zpid/",
-        "daysOnZillow": 6
-      },
-      {
-        "id": "15093256",
-        "price": "$1,849,000",
-        "unformattedPrice": 1849000,
-        "beds": 4,
-        "baths": 4,
-        "area": 2930,
-        "livingArea": 2930,
-        "homeType": "SINGLE_FAMILY",
-        "marketingStatus": "For Sale by Agent",
-        "homeStatus": "FOR_SALE",
-        "rentZestimate": 6921,
-        "listingSubType": {
-          "is_FSBA": true,
-          "is_openHouse": true
-        },
-        "timeOnZillow": 611743000,
-        "taxAssessedValue": 1734256,
-        "lotAreaValue": 3500,
-        "lotAreaUnit": "sqft",
-        "has3DModel": false,
-        "address": {
-          "street": "535 40th Ave",
-          "city": "San Francisco",
-          "state": "CA",
-          "zipcode": "94121"
-        },
-        "latLong": {
-          "latitude": 37.778633,
-          "longitude": -122.50105
-        },
-        "statusText": "House for sale",
-        "imgSrc": "https://photos.zillowstatic.com/fp/e8b363850e4c84069db62e01049cf61d-p_e.jpg",
-        "detailUrl": "https://www.zillow.com/homedetails/535-40th-Ave-San-Francisco-CA-94121/15093256_zpid/",
-        "daysOnZillow": 7
-      },
-      {
-        "id": "241586489",
-        "price": "$428,441",
-        "unformattedPrice": 428441,
-        "beds": 3,
-        "baths": 3,
-        "area": 1204,
-        "livingArea": 1204,
+        "area": 1565,
+        "livingArea": 1565,
         "homeType": "TOWNHOUSE",
         "marketingStatus": "For Sale by Agent",
         "homeStatus": "FOR_SALE",
-        "rentZestimate": 4834,
+        "rentZestimate": 4554,
         "listingSubType": {
-          "is_FSBA": true
+          "is_FSBA": true,
+          "is_openHouse": true
         },
-        "timeOnZillow": 1734943000,
-        "taxAssessedValue": 361900,
-        "lotAreaValue": 0.4102157943067034,
-        "lotAreaUnit": "acres",
+        "timeOnZillow": 329253000,
+        "taxAssessedValue": 296423,
+        "lotAreaValue": 837,
+        "lotAreaUnit": "sqft",
         "has3DModel": false,
         "address": {
-          "street": "263 Friedell St",
-          "city": "San Francisco",
+          "street": "5460 Las Virgenes Rd",
+          "city": "Calabasas",
           "state": "CA",
-          "zipcode": "94124"
+          "zipcode": "91302"
         },
         "latLong": {
-          "latitude": 37.728127,
-          "longitude": -122.36989
+          "latitude": 34.15657,
+          "longitude": -118.69936
         },
         "statusText": "Townhouse for sale",
-        "imgSrc": "https://photos.zillowstatic.com/fp/667f5e576bbe28013699d2cdbcd67a82-p_e.jpg",
-        "detailUrl": "https://www.zillow.com/homedetails/263-Friedell-St-San-Francisco-CA-94124/241586489_zpid/",
-        "daysOnZillow": 20
+        "imgSrc": "https://photos.zillowstatic.com/fp/578f74d9b42aa79c199224857ced0641-p_e.jpg",
+        "detailUrl": "https://www.zillow.com/homedetails/5460-Las-Virgenes-Rd-Calabasas-CA-91302/19885888_zpid/",
+        "daysOnZillow": 3,
+        "zestimate": 593900
       },
       {
-        "id": "15185278",
-        "price": "$1,095,000",
-        "unformattedPrice": 1095000,
-        "beds": 3,
-        "baths": 2,
-        "area": 1261,
-        "livingArea": 1261,
+        "id": "95648904",
+        "price": "$13,999,000",
+        "unformattedPrice": 13999000,
+        "beds": 7,
+        "baths": 10,
+        "area": 15745,
+        "livingArea": 15745,
         "homeType": "SINGLE_FAMILY",
         "marketingStatus": "For Sale by Agent",
         "homeStatus": "FOR_SALE",
-        "rentZestimate": 6164,
-        "listingSubType": {
-          "is_FSBA": true,
-          "is_openHouse": true
-        },
-        "timeOnZillow": 525343000,
-        "taxAssessedValue": 637821,
-        "lotAreaValue": 2186.712,
-        "lotAreaUnit": "sqft",
-        "has3DModel": false,
-        "address": {
-          "street": "834 Congo St",
-          "city": "San Francisco",
-          "state": "CA",
-          "zipcode": "94131"
-        },
-        "latLong": {
-          "latitude": 37.734703,
-          "longitude": -122.44023
-        },
-        "statusText": "House for sale",
-        "imgSrc": "https://photos.zillowstatic.com/fp/e98a7e1e1ea36aa5d34536355bdc75aa-p_e.jpg",
-        "detailUrl": "https://www.zillow.com/homedetails/834-Congo-St-San-Francisco-CA-94131/15185278_zpid/",
-        "daysOnZillow": 6
-      },
-      {
-        "id": "2094593422",
-        "price": "$1,299,000",
-        "unformattedPrice": 1299000,
-        "beds": 3,
-        "baths": 2,
-        "area": 1489,
-        "livingArea": 1489,
-        "homeType": "SINGLE_FAMILY",
-        "marketingStatus": "For Sale by Agent",
-        "homeStatus": "FOR_SALE",
-        "rentZestimate": 7189,
+        "rentZestimate": 6993,
         "listingSubType": {
           "is_FSBA": true
         },
-        "timeOnZillow": 525343000,
-        "lotAreaValue": 3001.284,
-        "lotAreaUnit": "sqft",
-        "has3DModel": false,
+        "timeOnZillow": 1554847000,
+        "taxAssessedValue": 6763152,
+        "lotAreaValue": 1.2782,
+        "lotAreaUnit": "acres",
+        "has3DModel": true,
         "address": {
-          "street": "525 7th Ave",
-          "city": "San Francisco",
+          "street": "25305 Prado De La Felicidad",
+          "city": "Calabasas",
           "state": "CA",
-          "zipcode": "94118"
+          "zipcode": "91302"
         },
         "latLong": {
-          "latitude": 37.778534,
-          "longitude": -122.465454
+          "latitude": 34.127605,
+          "longitude": -118.67374
         },
         "statusText": "House for sale",
-        "imgSrc": "https://photos.zillowstatic.com/fp/e450dcc0b8c685deb8a1e787d0375500-p_e.jpg",
-        "detailUrl": "https://www.zillow.com/homedetails/525-7th-Ave-San-Francisco-CA-94118/2094593422_zpid/",
-        "daysOnZillow": 6
+        "imgSrc": "https://photos.zillowstatic.com/fp/f0714273d4dedba7ba3fcde3e6aa8109-p_e.jpg",
+        "detailUrl": "https://www.zillow.com/homedetails/25305-Prado-De-La-Felicidad-Calabasas-CA-91302/95648904_zpid/",
+        "daysOnZillow": 17,
+        "zestimate": 13567600
       },
       {
-        "id": "15119177",
-        "price": "$1,750,000",
-        "unformattedPrice": 1750000,
-        "beds": 4,
-        "baths": 5,
-        "area": 2565,
-        "livingArea": 2565,
+        "id": "20553302",
+        "price": "$6,250,000",
+        "unformattedPrice": 6250000,
+        "beds": 7,
+        "baths": 7,
+        "area": 6107,
+        "livingArea": 6107,
         "homeType": "SINGLE_FAMILY",
         "marketingStatus": "For Sale by Agent",
         "homeStatus": "FOR_SALE",
-        "rentZestimate": 7840,
+        "rentZestimate": 14734,
         "listingSubType": {
           "is_FSBA": true
         },
-        "timeOnZillow": 525343000,
-        "taxAssessedValue": 2110740,
-        "lotAreaValue": 1999.404,
-        "lotAreaUnit": "sqft",
-        "has3DModel": false,
-        "address": {
-          "street": "2294 33rd Ave",
-          "city": "San Francisco",
-          "state": "CA",
-          "zipcode": "94116"
-        },
-        "latLong": {
-          "latitude": 37.74447,
-          "longitude": -122.49069
-        },
-        "statusText": "House for sale",
-        "imgSrc": "https://photos.zillowstatic.com/fp/8a0af3b9937b5c24b80f4b4784a34be6-p_e.jpg",
-        "detailUrl": "https://www.zillow.com/homedetails/2294-33rd-Ave-San-Francisco-CA-94116/15119177_zpid/",
-        "daysOnZillow": 6
-      },
-      {
-        "id": "15182422",
-        "price": "$1,159,000",
-        "unformattedPrice": 1159000,
-        "beds": 2,
-        "baths": 1,
-        "area": 1056,
-        "livingArea": 1056,
-        "homeType": "SINGLE_FAMILY",
-        "marketingStatus": "For Sale by Agent",
-        "homeStatus": "FOR_SALE",
-        "rentZestimate": 6073,
-        "listingSubType": {
-          "is_FSBA": true,
-          "is_openHouse": true
-        },
-        "timeOnZillow": 525343000,
-        "taxAssessedValue": 304642,
-        "lotAreaValue": 2736,
-        "lotAreaUnit": "sqft",
-        "has3DModel": false,
-        "address": {
-          "street": "264 Duncan St",
-          "city": "San Francisco",
-          "state": "CA",
-          "zipcode": "94131"
-        },
-        "latLong": {
-          "latitude": 37.746334,
-          "longitude": -122.42617
-        },
-        "statusText": "House for sale",
-        "imgSrc": "https://photos.zillowstatic.com/fp/77fd2499ec3734e190587fbee78d9a78-p_e.jpg",
-        "detailUrl": "https://www.zillow.com/homedetails/264-Duncan-St-San-Francisco-CA-94131/15182422_zpid/",
-        "daysOnZillow": 6
-      },
-      {
-        "id": "15137436",
-        "price": "$3,895,000",
-        "unformattedPrice": 3895000,
-        "beds": 4,
-        "baths": 5,
-        "area": 4655,
-        "livingArea": 4655,
-        "homeType": "SINGLE_FAMILY",
-        "marketingStatus": "For Sale by Agent",
-        "homeStatus": "FOR_SALE",
-        "rentZestimate": 14720,
-        "listingSubType": {
-          "is_FSBA": true
-        },
-        "timeOnZillow": 698143000,
-        "taxAssessedValue": 1436302,
-        "lotAreaValue": 0.3013,
+        "timeOnZillow": 415653000,
+        "taxAssessedValue": 2982696,
+        "lotAreaValue": 1.0112,
         "lotAreaUnit": "acres",
         "has3DModel": false,
         "address": {
-          "street": "222 Maywood Dr",
-          "city": "San Francisco",
+          "street": "24011 Alder Pl",
+          "city": "Calabasas",
           "state": "CA",
-          "zipcode": "94127"
+          "zipcode": "91302"
         },
         "latLong": {
-          "latitude": 37.732716,
-          "longitude": -122.46243
+          "latitude": 34.124664,
+          "longitude": -118.653595
         },
         "statusText": "House for sale",
-        "imgSrc": "https://photos.zillowstatic.com/fp/4cbadfa0088e2462aee387709132f401-p_e.jpg",
-        "detailUrl": "https://www.zillow.com/homedetails/222-Maywood-Dr-San-Francisco-CA-94127/15137436_zpid/",
-        "daysOnZillow": 8
+        "imgSrc": "https://photos.zillowstatic.com/fp/3edf7eb86de4809c0d76a54f2220bde8-p_e.jpg",
+        "detailUrl": "https://www.zillow.com/homedetails/24011-Alder-Pl-Calabasas-CA-91302/20553302_zpid/",
+        "daysOnZillow": 4,
+        "zestimate": 3886000
       },
       {
-        "id": "15088637",
-        "price": "$2,395,000",
-        "unformattedPrice": 2395000,
-        "beds": 3,
-        "baths": 2,
-        "area": 1530,
-        "livingArea": 1530,
+        "id": "2091499259",
+        "price": "$9,950,000",
+        "unformattedPrice": 9950000,
+        "beds": 6,
+        "baths": 7,
+        "area": 12140,
+        "livingArea": 12140,
         "homeType": "SINGLE_FAMILY",
-        "marketingStatus": "For Sale by Agent",
+        "marketingStatus": "New Construction",
         "homeStatus": "FOR_SALE",
-        "rentZestimate": 5956,
+        "rentZestimate": 3499,
         "listingSubType": {
-          "is_FSBA": true,
-          "is_openHouse": true
+          "is_newHome": true
         },
-        "timeOnZillow": 438943000,
-        "taxAssessedValue": 99274,
-        "lotAreaValue": 1398.276,
-        "lotAreaUnit": "sqft",
+        "timeOnZillow": 671100000,
+        "lotAreaValue": 4.4236,
+        "lotAreaUnit": "acres",
         "has3DModel": false,
         "address": {
-          "street": "246 El Camino Del Mar",
-          "city": "San Francisco",
+          "street": "23614 Dry Canyon Cold Creek Rd",
+          "city": "Calabasas",
           "state": "CA",
-          "zipcode": "94121"
+          "zipcode": "91302"
         },
         "latLong": {
-          "latitude": 37.78778,
-          "longitude": -122.486084
+          "latitude": 34.133614,
+          "longitude": -118.64369
         },
-        "statusText": "House for sale",
-        "imgSrc": "https://photos.zillowstatic.com/fp/d1b1f2c7047a01e8541830ee6e2666bf-p_e.jpg",
-        "detailUrl": "https://www.zillow.com/homedetails/246-El-Camino-Del-Mar-San-Francisco-CA-94121/15088637_zpid/",
-        "daysOnZillow": 5,
-        "zestimate": 2088100
+        "statusText": "New construction",
+        "imgSrc": "https://photos.zillowstatic.com/fp/6486a7c6159a7f9674413071686d1a94-p_e.jpg",
+        "detailUrl": "https://www.zillow.com/homedetails/23614-Dry-Canyon-Cold-Creek-Rd-Calabasas-CA-91302/2091499259_zpid/",
+        "daysOnZillow": 7,
+        "zestimate": 9300300
       },
       {
-        "id": "184817144",
-        "price": "$3,098,000",
-        "unformattedPrice": 3098000,
+        "id": "20552859",
+        "price": "$3,000,000",
+        "unformattedPrice": 3000000,
         "beds": 3,
         "baths": 2,
-        "area": 0,
-        "livingArea": 0,
-        "homeType": "CONDO",
-        "marketingStatus": "For Sale by Agent",
-        "homeStatus": "FOR_SALE",
-        "rentZestimate": 7917,
-        "listingSubType": {
-          "is_FSBA": true
-        },
-        "timeOnZillow": 957343000,
-        "taxAssessedValue": 1596802,
-        "lotAreaValue": 3114.54,
-        "lotAreaUnit": "sqft",
-        "has3DModel": false,
-        "address": {
-          "street": "2370 N Point St",
-          "city": "San Francisco",
-          "state": "CA",
-          "zipcode": "94123"
-        },
-        "latLong": {
-          "latitude": 37.802677,
-          "longitude": -122.4463
-        },
-        "statusText": "Condo for sale",
-        "imgSrc": "https://photos.zillowstatic.com/fp/3031c97fca235f5d023744189def4344-p_e.jpg",
-        "detailUrl": "https://www.zillow.com/homedetails/2370-N-Point-St-San-Francisco-CA-94123/184817144_zpid/",
-        "daysOnZillow": 11
-      },
-      {
-        "id": "15150822",
-        "price": "$1,695,000",
-        "unformattedPrice": 1695000,
-        "beds": 4,
-        "baths": 2,
-        "area": 1765,
-        "livingArea": 1765,
+        "area": 2500,
+        "livingArea": 2500,
         "homeType": "SINGLE_FAMILY",
         "marketingStatus": "For Sale by Agent",
         "homeStatus": "FOR_SALE",
@@ -1145,306 +318,1173 @@
           "is_FSBA": true,
           "is_openHouse": true
         },
-        "timeOnZillow": 525343000,
-        "taxAssessedValue": 2042618,
-        "lotAreaValue": 2500.344,
-        "lotAreaUnit": "sqft",
+        "timeOnZillow": 47980000,
+        "taxAssessedValue": 867162,
+        "lotAreaValue": 4.7,
+        "lotAreaUnit": "acres",
         "has3DModel": false,
         "address": {
-          "street": "512 Mississippi St",
-          "city": "San Francisco",
+          "street": "965 Stunt Rd",
+          "city": "Calabasas",
           "state": "CA",
-          "zipcode": "94107"
+          "zipcode": "91302"
         },
         "latLong": {
-          "latitude": 37.759876,
-          "longitude": -122.39459
+          "latitude": 34.088722,
+          "longitude": -118.66378
         },
         "statusText": "House for sale",
-        "imgSrc": "https://photos.zillowstatic.com/fp/e94cfb31434602db8a55052b7e696c0d-p_e.jpg",
-        "detailUrl": "https://www.zillow.com/homedetails/512-Mississippi-St-San-Francisco-CA-94107/15150822_zpid/",
-        "daysOnZillow": 6
+        "imgSrc": "https://photos.zillowstatic.com/fp/098d07d7fd1a80932d8b87a0d8dbfca2-p_e.jpg",
+        "detailUrl": "https://www.zillow.com/homedetails/965-Stunt-Rd-Calabasas-CA-91302/20552859_zpid/",
+        "daysOnZillow": 0
       },
       {
-        "id": "15088605",
-        "price": "$5,948,000",
-        "unformattedPrice": 5948000,
+        "id": "326817461",
+        "price": "$10,999,000",
+        "unformattedPrice": 10999000,
         "beds": 5,
-        "baths": 5,
-        "area": 3542,
-        "livingArea": 3542,
+        "baths": 8,
+        "area": 8953,
+        "livingArea": 8953,
         "homeType": "SINGLE_FAMILY",
-        "marketingStatus": "For Sale by Agent",
+        "marketingStatus": "New Construction",
         "homeStatus": "FOR_SALE",
-        "rentZestimate": 7921,
+        "rentZestimate": 7608,
         "listingSubType": {
-          "is_FSBA": true,
+          "is_newHome": true,
           "is_openHouse": true
         },
-        "timeOnZillow": 266143000,
-        "taxAssessedValue": 3878987,
-        "lotAreaValue": 3301.848,
-        "lotAreaUnit": "sqft",
+        "timeOnZillow": 2080233000,
+        "taxAssessedValue": 1780598,
+        "lotAreaValue": 4.6074,
+        "lotAreaUnit": "acres",
         "has3DModel": false,
         "address": {
-          "street": "22 25th Ave",
-          "city": "San Francisco",
+          "street": "3121 Old Topanga Canyon Rd",
+          "city": "Topanga",
           "state": "CA",
-          "zipcode": "94121"
+          "zipcode": "90290"
         },
         "latLong": {
-          "latitude": 37.78918,
-          "longitude": -122.48438
+          "latitude": 34.128345,
+          "longitude": -118.64341
         },
-        "statusText": "House for sale",
-        "imgSrc": "https://photos.zillowstatic.com/fp/5acdbcef1832703e8f4d557b124196b9-p_e.jpg",
-        "detailUrl": "https://www.zillow.com/homedetails/22-25th-Ave-San-Francisco-CA-94121/15088605_zpid/",
-        "daysOnZillow": 3,
-        "zestimate": 5660900
+        "statusText": "New construction",
+        "imgSrc": "https://photos.zillowstatic.com/fp/4e1e50d7a5348d8b2efe4e5396a2acdd-p_e.jpg",
+        "detailUrl": "https://www.zillow.com/homedetails/3121-Old-Topanga-Canyon-Rd-Topanga-CA-90290/326817461_zpid/",
+        "daysOnZillow": 24,
+        "zestimate": 10274700
       },
       {
-        "id": "15131864",
-        "price": "$3,195,000",
-        "unformattedPrice": 3195000,
+        "id": "19896988",
+        "price": "$3,200,000",
+        "unformattedPrice": 3200000,
         "beds": 4,
         "baths": 4,
-        "area": 3255,
-        "livingArea": 3255,
+        "area": 4470,
+        "livingArea": 4470,
         "homeType": "SINGLE_FAMILY",
         "marketingStatus": "For Sale by Agent",
         "homeStatus": "FOR_SALE",
+        "rentZestimate": 9359,
         "listingSubType": {
           "is_FSBA": true
         },
-        "timeOnZillow": 525343000,
-        "taxAssessedValue": 3468000,
-        "lotAreaValue": 4220.964,
-        "lotAreaUnit": "sqft",
+        "timeOnZillow": 502053000,
+        "taxAssessedValue": 2572555,
+        "lotAreaValue": 0.4591368227731864,
+        "lotAreaUnit": "acres",
         "has3DModel": false,
         "address": {
-          "street": "1990 8th Ave",
-          "city": "San Francisco",
+          "street": "23921 Park Granada",
+          "city": "Calabasas",
           "state": "CA",
-          "zipcode": "94116"
+          "zipcode": "91302"
         },
         "latLong": {
-          "latitude": 37.751263,
-          "longitude": -122.46414
+          "latitude": 34.149136,
+          "longitude": -118.64889
         },
         "statusText": "House for sale",
-        "imgSrc": "https://photos.zillowstatic.com/fp/95b28c99efd714c24b34326cbade3128-p_e.jpg",
-        "detailUrl": "https://www.zillow.com/homedetails/1990-8th-Ave-San-Francisco-CA-94116/15131864_zpid/",
-        "daysOnZillow": 6
+        "imgSrc": "https://photos.zillowstatic.com/fp/4c238e5973e7fed7b0c7806902e22441-p_e.jpg",
+        "detailUrl": "https://www.zillow.com/homedetails/23921-Park-Granada-Calabasas-CA-91302/19896988_zpid/",
+        "daysOnZillow": 5,
+        "zestimate": 3080000
       },
       {
-        "id": "15104267",
-        "price": "$1,195,000",
-        "unformattedPrice": 1195000,
-        "beds": 2,
-        "baths": 1,
-        "area": 1100,
-        "livingArea": 1100,
+        "id": "82879474",
+        "price": "$10,995,000",
+        "unformattedPrice": 10995000,
+        "beds": 7,
+        "baths": 12,
+        "area": 14218,
+        "livingArea": 14218,
         "homeType": "SINGLE_FAMILY",
         "marketingStatus": "For Sale by Agent",
         "homeStatus": "FOR_SALE",
+        "rentZestimate": 7388,
+        "listingSubType": {
+          "is_FSBA": true
+        },
+        "timeOnZillow": 19683878000,
+        "taxAssessedValue": 11417574,
+        "lotAreaValue": 0.9015,
+        "lotAreaUnit": "acres",
+        "has3DModel": false,
+        "address": {
+          "street": "25242 Prado Del Misterio",
+          "city": "Calabasas",
+          "state": "CA",
+          "zipcode": "91302"
+        },
+        "latLong": {
+          "latitude": 34.131275,
+          "longitude": -118.671104
+        },
+        "statusText": "House for sale",
+        "imgSrc": "https://photos.zillowstatic.com/fp/817ab7c489d4302a8b7737ccf991c05b-p_e.jpg",
+        "detailUrl": "https://www.zillow.com/homedetails/25242-Prado-Del-Misterio-Calabasas-CA-91302/82879474_zpid/",
+        "daysOnZillow": 227,
+        "zestimate": 10257000
+      },
+      {
+        "id": "339594271",
+        "price": "$22,500,000",
+        "unformattedPrice": 22500000,
+        "beds": 7,
+        "baths": 11,
+        "area": 14453,
+        "livingArea": 14453,
+        "homeType": "SINGLE_FAMILY",
+        "marketingStatus": "New Construction",
+        "homeStatus": "FOR_SALE",
+        "rentZestimate": 4488,
+        "listingSubType": {
+          "is_newHome": true
+        },
+        "timeOnZillow": 21324453000,
+        "taxAssessedValue": 318362,
+        "lotAreaValue": 3.4455,
+        "lotAreaUnit": "acres",
+        "has3DModel": false,
+        "address": {
+          "street": "5340 Whitman Rd",
+          "city": "Hidden Hills",
+          "state": "CA",
+          "zipcode": "91302"
+        },
+        "latLong": {
+          "latitude": 34.156193,
+          "longitude": -118.65896
+        },
+        "statusText": "New construction",
+        "imgSrc": "https://photos.zillowstatic.com/fp/82b14b6556b4f95c2412105b305c414b-p_e.jpg",
+        "detailUrl": "https://www.zillow.com/homedetails/5340-Whitman-Rd-Hidden-Hills-CA-91302/339594271_zpid/",
+        "daysOnZillow": 246,
+        "zestimate": 20953000
+      },
+      {
+        "id": "20553240",
+        "price": "$4,250,000",
+        "unformattedPrice": 4250000,
+        "beds": 6,
+        "baths": 6,
+        "area": 5328,
+        "livingArea": 5328,
+        "homeType": "SINGLE_FAMILY",
+        "marketingStatus": "For Sale by Agent",
+        "homeStatus": "FOR_SALE",
+        "rentZestimate": 17915,
+        "listingSubType": {
+          "is_FSBA": true
+        },
+        "timeOnZillow": 1563636000,
+        "taxAssessedValue": 2148624,
+        "lotAreaValue": 0.7003,
+        "lotAreaUnit": "acres",
+        "has3DModel": false,
+        "address": {
+          "street": "24049 Chestnut Way",
+          "city": "Calabasas",
+          "state": "CA",
+          "zipcode": "91302"
+        },
+        "latLong": {
+          "latitude": 34.129223,
+          "longitude": -118.65376
+        },
+        "statusText": "House for sale",
+        "imgSrc": "https://photos.zillowstatic.com/fp/9311084532df3d0b90de9e11bf97fb3e-p_e.jpg",
+        "detailUrl": "https://www.zillow.com/homedetails/24049-Chestnut-Way-Calabasas-CA-91302/20553240_zpid/",
+        "daysOnZillow": 18,
+        "zestimate": 4000600
+      },
+      {
+        "id": "20553177",
+        "price": "$2,900,000",
+        "unformattedPrice": 2900000,
+        "beds": 4,
+        "baths": 3,
+        "area": 2784,
+        "livingArea": 2784,
+        "homeType": "SINGLE_FAMILY",
+        "marketingStatus": "For Sale by Agent",
+        "homeStatus": "FOR_SALE",
+        "rentZestimate": 8210,
         "listingSubType": {
           "is_FSBA": true,
           "is_openHouse": true
         },
-        "timeOnZillow": 525343000,
-        "taxAssessedValue": 614943,
-        "lotAreaValue": 2996.928,
-        "lotAreaUnit": "sqft",
+        "timeOnZillow": 865840000,
+        "taxAssessedValue": 3185745,
+        "lotAreaValue": 1.1267,
+        "lotAreaUnit": "acres",
         "has3DModel": false,
         "address": {
-          "street": "1459 45th Ave",
-          "city": "San Francisco",
+          "street": "26094 Mulholland Hwy",
+          "city": "Calabasas",
           "state": "CA",
-          "zipcode": "94122"
+          "zipcode": "91302"
         },
         "latLong": {
-          "latitude": 37.759365,
-          "longitude": -122.50502
+          "latitude": 34.09286,
+          "longitude": -118.69758
         },
         "statusText": "House for sale",
-        "imgSrc": "https://photos.zillowstatic.com/fp/56ddd0d3f5ba88f67a8431cb0d493916-p_e.jpg",
-        "detailUrl": "https://www.zillow.com/homedetails/1459-45th-Ave-San-Francisco-CA-94122/15104267_zpid/",
-        "daysOnZillow": 6
+        "imgSrc": "https://photos.zillowstatic.com/fp/56d047a5c82c12e57d72e292c140d217-p_e.jpg",
+        "detailUrl": "https://www.zillow.com/homedetails/26094-Mulholland-Hwy-Calabasas-CA-91302/20553177_zpid/",
+        "daysOnZillow": 10,
+        "zestimate": 2764600
       },
       {
-        "id": "15074713",
-        "price": "$1,495,000",
-        "unformattedPrice": 1495000,
-        "beds": 2,
-        "baths": 2,
-        "area": 1533,
-        "livingArea": 1533,
-        "homeType": "CONDO",
+        "id": "19901255",
+        "price": "$1,699,000",
+        "unformattedPrice": 1699000,
+        "beds": 5,
+        "baths": 4,
+        "area": 2810,
+        "livingArea": 2810,
+        "homeType": "SINGLE_FAMILY",
         "marketingStatus": "For Sale by Agent",
         "homeStatus": "FOR_SALE",
-        "rentZestimate": 7472,
+        "rentZestimate": 7947,
+        "listingSubType": {
+          "is_FSBA": true,
+          "is_openHouse": true
+        },
+        "timeOnZillow": 3266853000,
+        "taxAssessedValue": 462997,
+        "lotAreaValue": 0.26216712580348944,
+        "lotAreaUnit": "acres",
+        "has3DModel": true,
+        "address": {
+          "street": "22815 Sparrowdell Dr",
+          "city": "Calabasas",
+          "state": "CA",
+          "zipcode": "91302"
+        },
+        "latLong": {
+          "latitude": 34.14136,
+          "longitude": -118.62629
+        },
+        "statusText": "House for sale",
+        "imgSrc": "https://photos.zillowstatic.com/fp/06aea04aea5fe4b6d0127147571ef65d-p_e.jpg",
+        "detailUrl": "https://www.zillow.com/homedetails/22815-Sparrowdell-Dr-Calabasas-CA-91302/19901255_zpid/",
+        "daysOnZillow": 37,
+        "zestimate": 1649700
+      },
+      {
+        "id": "79799510",
+        "price": "$8,995,000",
+        "unformattedPrice": 8995000,
+        "beds": 5,
+        "baths": 6,
+        "area": 7023,
+        "livingArea": 7023,
+        "homeType": "SINGLE_FAMILY",
+        "marketingStatus": "For Sale by Agent",
+        "homeStatus": "FOR_SALE",
+        "rentZestimate": 5763,
         "listingSubType": {
           "is_FSBA": true
         },
-        "timeOnZillow": 870943000,
-        "taxAssessedValue": 782272,
-        "lotAreaValue": 6875,
+        "timeOnZillow": 4327494000,
+        "taxAssessedValue": 3937121,
+        "lotAreaValue": 0.4094,
+        "lotAreaUnit": "acres",
+        "has3DModel": false,
+        "address": {
+          "street": "25324 Prado De Naranja",
+          "city": "Calabasas",
+          "state": "CA",
+          "zipcode": "91302"
+        },
+        "latLong": {
+          "latitude": 34.132313,
+          "longitude": -118.67544
+        },
+        "statusText": "House for sale",
+        "imgSrc": "https://photos.zillowstatic.com/fp/bc0e0f6105990e5427f72cc93dcdc456-p_e.jpg",
+        "detailUrl": "https://www.zillow.com/homedetails/25324-Prado-De-Naranja-Calabasas-CA-91302/79799510_zpid/",
+        "daysOnZillow": 50,
+        "zestimate": 8357200
+      },
+      {
+        "id": "461098922",
+        "price": "$349,000",
+        "unformattedPrice": 349000,
+        "beds": 4,
+        "baths": 4,
+        "area": 2180,
+        "livingArea": 2180,
+        "homeType": "MANUFACTURED",
+        "marketingStatus": "For Sale by Agent",
+        "homeStatus": "FOR_SALE",
+        "listingSubType": {
+          "is_FSBA": true
+        },
+        "timeOnZillow": 4822053000,
+        "has3DModel": false,
+        "address": {
+          "street": "23777 Mulholland Hwy Space 150",
+          "city": "Calabasas",
+          "state": "CA",
+          "zipcode": "91302"
+        },
+        "latLong": {
+          "latitude": 34.134224,
+          "longitude": -118.64717
+        },
+        "statusText": "Home for sale",
+        "imgSrc": "https://photos.zillowstatic.com/fp/430584637ea6920624d610d8d1bd25da-p_e.jpg",
+        "detailUrl": "https://www.zillow.com/homedetails/23777-Mulholland-Hwy-SPACE-150-Calabasas-CA-91302/461098922_zpid/",
+        "daysOnZillow": 55,
+        "zestimate": 337700
+      },
+      {
+        "id": "68979569",
+        "price": "$5,795,000",
+        "unformattedPrice": 5795000,
+        "beds": 5,
+        "baths": 7,
+        "area": 5692,
+        "livingArea": 5692,
+        "homeType": "SINGLE_FAMILY",
+        "marketingStatus": "For Sale by Agent",
+        "homeStatus": "FOR_SALE",
+        "rentZestimate": 17981,
+        "listingSubType": {
+          "is_FSBA": true
+        },
+        "timeOnZillow": 963604000,
+        "taxAssessedValue": 3557609,
+        "lotAreaValue": 0.3258,
+        "lotAreaUnit": "acres",
+        "has3DModel": false,
+        "address": {
+          "street": "3801 Prado Del Trigo",
+          "city": "Calabasas",
+          "state": "CA",
+          "zipcode": "91302"
+        },
+        "latLong": {
+          "latitude": 34.134277,
+          "longitude": -118.67772
+        },
+        "statusText": "House for sale",
+        "imgSrc": "https://photos.zillowstatic.com/fp/607626e035a5a2651f0b2b90bce5627d-p_e.jpg",
+        "detailUrl": "https://www.zillow.com/homedetails/3801-Prado-Del-Trigo-Calabasas-CA-91302/68979569_zpid/",
+        "daysOnZillow": 11,
+        "zestimate": 5485500
+      },
+      {
+        "id": "95620495",
+        "price": "$2,895,000",
+        "unformattedPrice": 2895000,
+        "beds": 4,
+        "baths": 3,
+        "area": 4579,
+        "livingArea": 4579,
+        "homeType": "SINGLE_FAMILY",
+        "marketingStatus": "For Sale by Agent",
+        "homeStatus": "FOR_SALE",
+        "rentZestimate": 16000,
+        "listingSubType": {
+          "is_FSBA": true
+        },
+        "timeOnZillow": 179088000,
+        "taxAssessedValue": 1346066,
+        "lotAreaValue": 0.9723999999999999,
+        "lotAreaUnit": "acres",
+        "has3DModel": false,
+        "address": {
+          "street": "24410 Mulholland Hwy",
+          "city": "Calabasas",
+          "state": "CA",
+          "zipcode": "91302"
+        },
+        "latLong": {
+          "latitude": 34.120167,
+          "longitude": -118.65824
+        },
+        "statusText": "House for sale",
+        "imgSrc": "https://photos.zillowstatic.com/fp/386e204cc2c5c40254b93693f7d7bf8d-p_e.jpg",
+        "detailUrl": "https://www.zillow.com/homedetails/24410-Mulholland-Hwy-Calabasas-CA-91302/95620495_zpid/",
+        "daysOnZillow": 2,
+        "zestimate": 2771700
+      },
+      {
+        "id": "19898445",
+        "price": "$1,199,999",
+        "unformattedPrice": 1199999,
+        "beds": 3,
+        "baths": 2,
+        "area": 1827,
+        "livingArea": 1827,
+        "homeType": "SINGLE_FAMILY",
+        "marketingStatus": "For Sale by Agent",
+        "homeStatus": "FOR_SALE",
+        "rentZestimate": 6930,
+        "listingSubType": {
+          "is_FSBA": true
+        },
+        "timeOnZillow": 2662053000,
+        "taxAssessedValue": 989341,
+        "lotAreaValue": 0.47690541781450874,
+        "lotAreaUnit": "acres",
+        "has3DModel": true,
+        "address": {
+          "street": "3582 Elm Dr",
+          "city": "Calabasas",
+          "state": "CA",
+          "zipcode": "91302"
+        },
+        "latLong": {
+          "latitude": 34.132652,
+          "longitude": -118.647064
+        },
+        "statusText": "House for sale",
+        "imgSrc": "https://photos.zillowstatic.com/fp/c4998f83c54821da7dc521ed99e8eaab-p_e.jpg",
+        "detailUrl": "https://www.zillow.com/homedetails/3582-Elm-Dr-Calabasas-CA-91302/19898445_zpid/",
+        "daysOnZillow": 30,
+        "zestimate": 1164200
+      },
+      {
+        "id": "79799871",
+        "price": "$6,895,000",
+        "unformattedPrice": 6895000,
+        "beds": 5,
+        "baths": 6,
+        "area": 4851,
+        "livingArea": 4851,
+        "homeType": "SINGLE_FAMILY",
+        "marketingStatus": "For Sale by Agent",
+        "homeStatus": "FOR_SALE",
+        "rentZestimate": 18141,
+        "listingSubType": {
+          "is_FSBA": true
+        },
+        "timeOnZillow": 2229907000,
+        "taxAssessedValue": 4692000,
+        "lotAreaValue": 0.30770000000000003,
+        "lotAreaUnit": "acres",
+        "has3DModel": false,
+        "address": {
+          "street": "25471 Prado De Oro",
+          "city": "Calabasas",
+          "state": "CA",
+          "zipcode": "91302"
+        },
+        "latLong": {
+          "latitude": 34.13607,
+          "longitude": -118.68079
+        },
+        "statusText": "House for sale",
+        "imgSrc": "https://photos.zillowstatic.com/fp/0237a11c58267a72241d9d86f13d4cbb-p_e.jpg",
+        "detailUrl": "https://www.zillow.com/homedetails/25471-Prado-De-Oro-Calabasas-CA-91302/79799871_zpid/",
+        "daysOnZillow": 25,
+        "zestimate": 6463900
+      },
+      {
+        "id": "19883507",
+        "price": "$5,300,000",
+        "unformattedPrice": 5300000,
+        "beds": 6,
+        "baths": 7,
+        "area": 6610,
+        "livingArea": 6610,
+        "homeType": "SINGLE_FAMILY",
+        "marketingStatus": "For Sale by Agent",
+        "homeStatus": "FOR_SALE",
+        "rentZestimate": 7411,
+        "listingSubType": {
+          "is_FSBA": true,
+          "is_openHouse": true
+        },
+        "timeOnZillow": 275391000,
+        "taxAssessedValue": 2371239,
+        "lotAreaValue": 0.3498,
+        "lotAreaUnit": "acres",
+        "has3DModel": false,
+        "address": {
+          "street": "5474 Amber Cir",
+          "city": "Calabasas",
+          "state": "CA",
+          "zipcode": "91302"
+        },
+        "latLong": {
+          "latitude": 34.159122,
+          "longitude": -118.685936
+        },
+        "statusText": "House for sale",
+        "imgSrc": "https://photos.zillowstatic.com/fp/13ee290a23adbdb133383958a481d552-p_e.jpg",
+        "detailUrl": "https://www.zillow.com/homedetails/5474-Amber-Cir-Calabasas-CA-91302/19883507_zpid/",
+        "daysOnZillow": 3,
+        "zestimate": 24700
+      },
+      {
+        "id": "19900746",
+        "price": "$749,000",
+        "unformattedPrice": 749000,
+        "beds": 2,
+        "baths": 3,
+        "area": 1400,
+        "livingArea": 1400,
+        "homeType": "TOWNHOUSE",
+        "marketingStatus": "For Sale by Agent",
+        "homeStatus": "FOR_SALE",
+        "rentZestimate": 4362,
+        "listingSubType": {
+          "is_FSBA": true,
+          "is_openHouse": true
+        },
+        "timeOnZillow": 761253000,
+        "taxAssessedValue": 794479,
+        "lotAreaValue": 3.0428,
+        "lotAreaUnit": "acres",
+        "has3DModel": false,
+        "address": {
+          "street": "4341 Freedom Dr Unit C",
+          "city": "Calabasas",
+          "state": "CA",
+          "zipcode": "91302"
+        },
+        "latLong": {
+          "latitude": 34.14853,
+          "longitude": -118.61449
+        },
+        "statusText": "Townhouse for sale",
+        "imgSrc": "https://photos.zillowstatic.com/fp/48ab4b9851c5d6bb75a4a06995a73304-p_e.jpg",
+        "detailUrl": "https://www.zillow.com/homedetails/4341-Freedom-Dr-UNIT-C-Calabasas-CA-91302/19900746_zpid/",
+        "daysOnZillow": 8,
+        "zestimate": 730500
+      },
+      {
+        "id": "65245190",
+        "price": "$5,495,000",
+        "unformattedPrice": 5495000,
+        "beds": 5,
+        "baths": 6,
+        "area": 4618,
+        "livingArea": 4618,
+        "homeType": "SINGLE_FAMILY",
+        "marketingStatus": "For Sale by Agent",
+        "homeStatus": "FOR_SALE",
+        "rentZestimate": 17189,
+        "listingSubType": {
+          "is_FSBA": true
+        },
+        "timeOnZillow": 2143653000,
+        "taxAssessedValue": 3402326,
+        "lotAreaValue": 0.5003673094582185,
+        "lotAreaUnit": "acres",
+        "has3DModel": false,
+        "address": {
+          "street": "25473 Prado De Las Calabazas",
+          "city": "Calabasas",
+          "state": "CA",
+          "zipcode": "91302"
+        },
+        "latLong": {
+          "latitude": 34.140423,
+          "longitude": -118.6798
+        },
+        "statusText": "House for sale",
+        "imgSrc": "https://photos.zillowstatic.com/fp/77879e07a75ad0c3b60639e0f5f32bd2-p_e.jpg",
+        "detailUrl": "https://www.zillow.com/homedetails/25473-Prado-De-Las-Calabazas-Calabasas-CA-91302/65245190_zpid/",
+        "daysOnZillow": 24,
+        "zestimate": 5194000
+      },
+      {
+        "id": "19885688",
+        "price": "$1,740,000",
+        "unformattedPrice": 1740000,
+        "beds": 4,
+        "baths": 3,
+        "area": 2826,
+        "livingArea": 2826,
+        "homeType": "SINGLE_FAMILY",
+        "marketingStatus": "For Sale by Agent",
+        "homeStatus": "FOR_SALE",
+        "rentZestimate": 7323,
+        "listingSubType": {
+          "is_FSBA": true
+        },
+        "timeOnZillow": 3180453000,
+        "taxAssessedValue": 1592055,
+        "lotAreaValue": 0.291643709825528,
+        "lotAreaUnit": "acres",
+        "has3DModel": false,
+        "address": {
+          "street": "26018 Trana Cir",
+          "city": "Calabasas",
+          "state": "CA",
+          "zipcode": "91302"
+        },
+        "latLong": {
+          "latitude": 34.163956,
+          "longitude": -118.69409
+        },
+        "statusText": "House for sale",
+        "imgSrc": "https://photos.zillowstatic.com/fp/754ca09187f77e3d0393e2c27159073d-p_e.jpg",
+        "detailUrl": "https://www.zillow.com/homedetails/26018-Trana-Cir-Calabasas-CA-91302/19885688_zpid/",
+        "daysOnZillow": 36,
+        "zestimate": 1701900
+      },
+      {
+        "id": "20553294",
+        "price": "$4,295,000",
+        "unformattedPrice": 4295000,
+        "beds": 5,
+        "baths": 4,
+        "area": 5216,
+        "livingArea": 5216,
+        "homeType": "SINGLE_FAMILY",
+        "marketingStatus": "For Sale by Agent",
+        "homeStatus": "FOR_SALE",
+        "rentZestimate": 14836,
+        "listingSubType": {
+          "is_FSBA": true
+        },
+        "timeOnZillow": 354649000,
+        "taxAssessedValue": 1809200,
+        "lotAreaValue": 1.3145,
+        "lotAreaUnit": "acres",
+        "has3DModel": false,
+        "address": {
+          "street": "3011 Mountain Park Dr",
+          "city": "Calabasas",
+          "state": "CA",
+          "zipcode": "91302"
+        },
+        "latLong": {
+          "latitude": 34.121742,
+          "longitude": -118.65455
+        },
+        "statusText": "House for sale",
+        "imgSrc": "https://photos.zillowstatic.com/fp/4823296b0f8b437b8b727472f33b48fe-p_e.jpg",
+        "detailUrl": "https://www.zillow.com/homedetails/3011-Mountain-Park-Dr-Calabasas-CA-91302/20553294_zpid/",
+        "daysOnZillow": 4,
+        "zestimate": 4069400
+      },
+      {
+        "id": "19901799",
+        "price": "$1,699,950",
+        "unformattedPrice": 1699950,
+        "beds": 4,
+        "baths": 3,
+        "area": 2382,
+        "livingArea": 2382,
+        "homeType": "SINGLE_FAMILY",
+        "marketingStatus": "For Sale by Agent",
+        "homeStatus": "FOR_SALE",
+        "rentZestimate": 7290,
+        "listingSubType": {
+          "is_FSBA": true,
+          "is_openHouse": true
+        },
+        "timeOnZillow": 247159000,
+        "taxAssessedValue": 1188023,
+        "lotAreaValue": 0.2662,
+        "lotAreaUnit": "acres",
+        "has3DModel": false,
+        "address": {
+          "street": "22525 Dardenne St",
+          "city": "Calabasas",
+          "state": "CA",
+          "zipcode": "91302"
+        },
+        "latLong": {
+          "latitude": 34.138813,
+          "longitude": -118.61817
+        },
+        "statusText": "House for sale",
+        "imgSrc": "https://photos.zillowstatic.com/fp/5283be282321fa291e19cef08af7d1da-p_e.jpg",
+        "detailUrl": "https://www.zillow.com/homedetails/22525-Dardenne-St-Calabasas-CA-91302/19901799_zpid/",
+        "daysOnZillow": 2,
+        "zestimate": 1633400
+      },
+      {
+        "id": "19885773",
+        "price": "$749,000",
+        "unformattedPrice": 749000,
+        "beds": 3,
+        "baths": 2,
+        "area": 1595,
+        "livingArea": 1595,
+        "homeType": "CONDO",
+        "marketingStatus": "For Sale by Agent",
+        "homeStatus": "FOR_SALE",
+        "rentZestimate": 4488,
+        "listingSubType": {
+          "is_FSBA": true,
+          "is_openHouse": true
+        },
+        "timeOnZillow": 847653000,
+        "taxAssessedValue": 596797,
+        "lotAreaValue": 858,
         "lotAreaUnit": "sqft",
         "has3DModel": true,
         "address": {
-          "street": "2201 Sacramento St APT 202",
-          "city": "San Francisco",
+          "street": "5356 Las Virgenes Rd",
+          "city": "Calabasas",
           "state": "CA",
-          "zipcode": "94115"
+          "zipcode": "91302"
         },
         "latLong": {
-          "latitude": 37.790226,
-          "longitude": -122.42932
+          "latitude": 34.15479,
+          "longitude": -118.69808
         },
         "statusText": "Condo for sale",
-        "imgSrc": "https://photos.zillowstatic.com/fp/b1cb8e5bfbbb93b63af69c666f896ab3-p_e.jpg",
-        "detailUrl": "https://www.zillow.com/homedetails/2201-Sacramento-St-APT-202-San-Francisco-CA-94115/15074713_zpid/",
-        "daysOnZillow": 10
+        "imgSrc": "https://photos.zillowstatic.com/fp/b99aff9518f8d5fd0480dc5592411d3a-p_e.jpg",
+        "detailUrl": "https://www.zillow.com/homedetails/5356-Las-Virgenes-Rd-Calabasas-CA-91302/19885773_zpid/",
+        "daysOnZillow": 9,
+        "zestimate": 736100
       },
       {
-        "id": "69819206",
-        "price": "$8,395,000",
-        "unformattedPrice": 8395000,
-        "beds": 2,
+        "id": "2125112136",
+        "price": "$499,000",
+        "unformattedPrice": 499000,
+        "beds": 4,
         "baths": 4,
-        "area": 2800,
-        "livingArea": 2800,
-        "homeType": "CONDO",
+        "homeType": "MANUFACTURED",
         "marketingStatus": "For Sale by Agent",
         "homeStatus": "FOR_SALE",
-        "rentZestimate": 7650,
+        "rentZestimate": 6673,
         "listingSubType": {
           "is_FSBA": true
         },
-        "timeOnZillow": 93343000,
-        "taxAssessedValue": 4851368,
-        "lotAreaValue": 0.7589,
-        "lotAreaUnit": "acres",
+        "timeOnZillow": 10265253000,
         "has3DModel": false,
         "address": {
-          "street": "188 Minna St APT 36E",
-          "city": "San Francisco",
+          "street": "23777 Mulholland Hwy Spc 62",
+          "city": "Calabasas",
           "state": "CA",
-          "zipcode": "94105"
+          "zipcode": "91302"
         },
         "latLong": {
-          "latitude": 37.786224,
-          "longitude": -122.40133
+          "latitude": 34.135998,
+          "longitude": -118.64869
         },
-        "statusText": "Condo for sale",
-        "imgSrc": "https://photos.zillowstatic.com/fp/12353df1c07f0204cb990d6d0a0cd0a3-p_e.jpg",
-        "detailUrl": "https://www.zillow.com/homedetails/188-Minna-St-APT-36E-San-Francisco-CA-94105/69819206_zpid/",
-        "daysOnZillow": 1,
-        "zestimate": 4557900
+        "statusText": "Home for sale",
+        "imgSrc": "https://photos.zillowstatic.com/fp/49be94a8eb0b1f67388a21431f87f646-p_e.jpg",
+        "detailUrl": "https://www.zillow.com/homedetails/23777-Mulholland-Hwy-SPC-62-Calabasas-CA-91302/2125112136_zpid/",
+        "daysOnZillow": 118,
+        "zestimate": 490300
       },
       {
-        "id": "15181027",
-        "price": "$3,500,000",
-        "unformattedPrice": 3500000,
-        "beds": 3,
-        "baths": 3,
-        "area": 2540,
-        "livingArea": 2540,
-        "homeType": "SINGLE_FAMILY",
+        "id": "2099846434",
+        "price": "$285,000",
+        "unformattedPrice": 285000,
+        "beds": 2,
+        "baths": 2,
+        "area": 1440,
+        "livingArea": 1440,
+        "homeType": "MANUFACTURED",
         "marketingStatus": "For Sale by Agent",
         "homeStatus": "FOR_SALE",
-        "rentZestimate": 8366,
+        "rentZestimate": 3460,
         "listingSubType": {
           "is_FSBA": true
         },
-        "timeOnZillow": 611743000,
-        "taxAssessedValue": 2961844,
-        "lotAreaValue": 2850,
-        "lotAreaUnit": "sqft",
+        "timeOnZillow": 4617594000,
         "has3DModel": false,
         "address": {
-          "street": "4356 25th St",
-          "city": "San Francisco",
+          "street": "23777 Mulholland Hwy Space 190",
+          "city": "Calabasas",
           "state": "CA",
-          "zipcode": "94114"
+          "zipcode": "91302"
         },
         "latLong": {
-          "latitude": 37.749672,
-          "longitude": -122.437485
+          "latitude": 34.13553,
+          "longitude": -118.64485
         },
-        "statusText": "House for sale",
-        "imgSrc": "https://photos.zillowstatic.com/fp/cf10c8afe6b0a43a0885eed91089c2b9-p_e.jpg",
-        "detailUrl": "https://www.zillow.com/homedetails/4356-25th-St-San-Francisco-CA-94114/15181027_zpid/",
-        "daysOnZillow": 7
+        "statusText": "Home for sale",
+        "imgSrc": "https://photos.zillowstatic.com/fp/716121886e74fdb6ea8de1b308b74355-p_e.jpg",
+        "detailUrl": "https://www.zillow.com/homedetails/23777-Mulholland-Hwy-SPACE-190-Calabasas-CA-91302/2099846434_zpid/",
+        "daysOnZillow": 53,
+        "zestimate": 278100
       },
       {
-        "id": "15119723",
-        "price": "$1,295,000",
-        "unformattedPrice": 1295000,
-        "beds": 5,
-        "baths": 3,
-        "area": 2568,
-        "livingArea": 2568,
+        "id": "19896627",
+        "price": "$10,999,999",
+        "unformattedPrice": 10999999,
+        "beds": 7,
+        "baths": 9,
+        "area": 11257,
+        "livingArea": 11257,
         "homeType": "SINGLE_FAMILY",
         "marketingStatus": "For Sale by Agent",
         "homeStatus": "FOR_SALE",
+        "rentZestimate": 7205,
         "listingSubType": {
           "is_FSBA": true,
           "is_openHouse": true
         },
-        "timeOnZillow": 266143000,
-        "taxAssessedValue": 81954,
-        "lotAreaValue": 2996.928,
+        "timeOnZillow": 6742807000,
+        "taxAssessedValue": 5410080,
+        "lotAreaValue": 1.008,
+        "lotAreaUnit": "acres",
+        "has3DModel": false,
+        "address": {
+          "street": "4261 Temma Ct",
+          "city": "Calabasas",
+          "state": "CA",
+          "zipcode": "91302"
+        },
+        "latLong": {
+          "latitude": 34.146603,
+          "longitude": -118.63189
+        },
+        "statusText": "House for sale",
+        "imgSrc": "https://photos.zillowstatic.com/fp/794a725eb582ea67bdb978af8da31e6c-p_e.jpg",
+        "detailUrl": "https://www.zillow.com/homedetails/4261-Temma-Ct-Calabasas-CA-91302/19896627_zpid/",
+        "daysOnZillow": 78,
+        "zestimate": 10040500
+      },
+      {
+        "id": "19898568",
+        "price": "$1,690,000",
+        "unformattedPrice": 1690000,
+        "beds": 4,
+        "baths": 3,
+        "area": 2765,
+        "livingArea": 2765,
+        "homeType": "SINGLE_FAMILY",
+        "marketingStatus": "For Sale by Agent",
+        "homeStatus": "FOR_SALE",
+        "rentZestimate": 7571,
+        "listingSubType": {
+          "is_FSBA": true,
+          "is_openHouse": true
+        },
+        "timeOnZillow": 2057253000,
+        "taxAssessedValue": 957475,
+        "lotAreaValue": 5025,
         "lotAreaUnit": "sqft",
         "has3DModel": false,
         "address": {
-          "street": "2227 19th Ave",
-          "city": "San Francisco",
+          "street": "23665 Summit Dr",
+          "city": "Calabasas",
           "state": "CA",
-          "zipcode": "94116"
+          "zipcode": "91302"
         },
         "latLong": {
-          "latitude": 37.746212,
-          "longitude": -122.47621
+          "latitude": 34.129436,
+          "longitude": -118.64477
         },
         "statusText": "House for sale",
-        "imgSrc": "https://photos.zillowstatic.com/fp/d4dccb676b11c941b34ce54ca9c841f1-p_e.jpg",
-        "detailUrl": "https://www.zillow.com/homedetails/2227-19th-Ave-San-Francisco-CA-94116/15119723_zpid/",
-        "daysOnZillow": 3
+        "imgSrc": "https://photos.zillowstatic.com/fp/2980be74bad2f50b4e1a2f0cfe7550ac-p_e.jpg",
+        "detailUrl": "https://www.zillow.com/homedetails/23665-Summit-Dr-Calabasas-CA-91302/19898568_zpid/",
+        "daysOnZillow": 23,
+        "zestimate": 1628400
       },
       {
-        "id": "82789805",
-        "price": "$1,695,000",
-        "unformattedPrice": 1695000,
-        "beds": 3,
-        "baths": 2,
-        "area": 0,
-        "livingArea": 0,
-        "homeType": "CONDO",
+        "id": "19896057",
+        "price": "$2,400,000",
+        "unformattedPrice": 2400000,
+        "beds": 5,
+        "baths": 4,
+        "area": 3250,
+        "livingArea": 3250,
+        "homeType": "SINGLE_FAMILY",
         "marketingStatus": "For Sale by Agent",
         "homeStatus": "FOR_SALE",
+        "rentZestimate": 10749,
+        "listingSubType": {
+          "is_FSBA": true,
+          "is_openHouse": true
+        },
+        "timeOnZillow": 764228000,
+        "taxAssessedValue": 1793097,
+        "lotAreaValue": 0.29,
+        "lotAreaUnit": "acres",
+        "has3DModel": false,
+        "address": {
+          "street": "4359 Park Alisal",
+          "city": "Calabasas",
+          "state": "CA",
+          "zipcode": "91302"
+        },
+        "latLong": {
+          "latitude": 34.14793,
+          "longitude": -118.6396
+        },
+        "statusText": "House for sale",
+        "imgSrc": "https://photos.zillowstatic.com/fp/7146048a6911a00cd369e22f71fc785a-p_e.jpg",
+        "detailUrl": "https://www.zillow.com/homedetails/4359-Park-Alisal-Calabasas-CA-91302/19896057_zpid/",
+        "daysOnZillow": 8,
+        "zestimate": 2257100
+      },
+      {
+        "id": "19900864",
+        "price": "$1,750,000",
+        "unformattedPrice": 1750000,
+        "beds": 4,
+        "baths": 3,
+        "area": 2400,
+        "livingArea": 2400,
+        "homeType": "SINGLE_FAMILY",
+        "marketingStatus": "For Sale by Agent",
+        "homeStatus": "FOR_SALE",
+        "rentZestimate": 6538,
         "listingSubType": {
           "is_FSBA": true
         },
-        "timeOnZillow": 870943000,
-        "taxAssessedValue": 2019642,
-        "lotAreaValue": 3450,
+        "timeOnZillow": 2688429000,
+        "taxAssessedValue": 1242979,
+        "lotAreaValue": 10454.4,
         "lotAreaUnit": "sqft",
         "has3DModel": false,
         "address": {
-          "street": "263 Carl St",
-          "city": "San Francisco",
+          "street": "22406 De Kalb Dr",
+          "city": "Calabasas",
           "state": "CA",
-          "zipcode": "94117"
+          "zipcode": "91302"
         },
         "latLong": {
-          "latitude": 37.765125,
-          "longitude": -122.45376
+          "latitude": 34.145397,
+          "longitude": -118.6158
         },
-        "statusText": "Condo for sale",
-        "imgSrc": "https://photos.zillowstatic.com/fp/8ec26fdc3cc97e70309f3e55ec5caac6-p_e.jpg",
-        "detailUrl": "https://www.zillow.com/homedetails/263-Carl-St-San-Francisco-CA-94117/82789805_zpid/",
-        "daysOnZillow": 10
+        "statusText": "House for sale",
+        "imgSrc": "https://photos.zillowstatic.com/fp/4a83f5dc8cd7f23436a78f6e9519f484-p_e.jpg",
+        "detailUrl": "https://www.zillow.com/homedetails/22406-De-Kalb-Dr-Calabasas-CA-91302/19900864_zpid/",
+        "daysOnZillow": 31,
+        "zestimate": 1635900
+      },
+      {
+        "id": "19895968",
+        "price": "$1,698,000",
+        "unformattedPrice": 1698000,
+        "beds": 3,
+        "baths": 3,
+        "area": 2124,
+        "livingArea": 2124,
+        "homeType": "SINGLE_FAMILY",
+        "marketingStatus": "For Sale by Agent",
+        "homeStatus": "FOR_SALE",
+        "rentZestimate": 6570,
+        "listingSubType": {
+          "is_FSBA": true,
+          "is_openHouse": true
+        },
+        "timeOnZillow": 4649253000,
+        "taxAssessedValue": 1735073,
+        "lotAreaValue": 3511,
+        "lotAreaUnit": "sqft",
+        "has3DModel": true,
+        "address": {
+          "street": "4420 Park Jazmin",
+          "city": "Calabasas",
+          "state": "CA",
+          "zipcode": "91302"
+        },
+        "latLong": {
+          "latitude": 34.14929,
+          "longitude": -118.63315
+        },
+        "statusText": "House for sale",
+        "imgSrc": "https://photos.zillowstatic.com/fp/d2f115171d4bcefc16d0ab6028d84082-p_e.jpg",
+        "detailUrl": "https://www.zillow.com/homedetails/4420-Park-Jazmin-Calabasas-CA-91302/19895968_zpid/",
+        "daysOnZillow": 53,
+        "zestimate": 1648800
+      },
+      {
+        "id": "136686452",
+        "price": "$299,000",
+        "unformattedPrice": 299000,
+        "beds": 3,
+        "baths": 2,
+        "area": 1536,
+        "livingArea": 1536,
+        "homeType": "MANUFACTURED",
+        "marketingStatus": "For Sale by Agent",
+        "homeStatus": "FOR_SALE",
+        "rentZestimate": 5116,
+        "listingSubType": {
+          "is_FSBA": true
+        },
+        "timeOnZillow": 847653000,
+        "taxAssessedValue": 38613,
+        "has3DModel": false,
+        "address": {
+          "street": "23777 Mulholland Hwy Spc 203",
+          "city": "Calabasas",
+          "state": "CA",
+          "zipcode": "91302"
+        },
+        "latLong": {
+          "latitude": 34.13449,
+          "longitude": -118.6479
+        },
+        "statusText": "Home for sale",
+        "imgSrc": "https://photos.zillowstatic.com/fp/d2df84949f46741a248a55ebdc357dc2-p_e.jpg",
+        "detailUrl": "https://www.zillow.com/homedetails/23777-Mulholland-Hwy-SPC-203-Calabasas-CA-91302/136686452_zpid/",
+        "daysOnZillow": 9,
+        "zestimate": 291400
+      },
+      {
+        "id": "19901573",
+        "price": "$1,994,900",
+        "unformattedPrice": 1994900,
+        "beds": 4,
+        "baths": 3,
+        "area": 1989,
+        "livingArea": 1989,
+        "homeType": "SINGLE_FAMILY",
+        "marketingStatus": "For Sale by Agent",
+        "homeStatus": "FOR_SALE",
+        "rentZestimate": 5787,
+        "listingSubType": {
+          "is_FSBA": true
+        },
+        "timeOnZillow": 5167653000,
+        "taxAssessedValue": 1379570,
+        "lotAreaValue": 8524,
+        "lotAreaUnit": "sqft",
+        "has3DModel": false,
+        "address": {
+          "street": "22616 Town Crier Rd",
+          "city": "Calabasas",
+          "state": "CA",
+          "zipcode": "91302"
+        },
+        "latLong": {
+          "latitude": 34.14377,
+          "longitude": -118.62012
+        },
+        "statusText": "House for sale",
+        "imgSrc": "https://photos.zillowstatic.com/fp/b4c576626ff05eb801f4fe0ed5f0dae4-p_e.jpg",
+        "detailUrl": "https://www.zillow.com/homedetails/22616-Town-Crier-Rd-Calabasas-CA-91302/19901573_zpid/",
+        "daysOnZillow": 59,
+        "zestimate": 1941100
+      },
+      {
+        "id": "19896929",
+        "price": "$4,995,000",
+        "unformattedPrice": 4995000,
+        "beds": 5,
+        "baths": 8,
+        "area": 10452,
+        "livingArea": 10452,
+        "homeType": "SINGLE_FAMILY",
+        "marketingStatus": "For Sale by Agent",
+        "homeStatus": "FOR_SALE",
+        "rentZestimate": 7820,
+        "listingSubType": {
+          "is_FSBA": true
+        },
+        "timeOnZillow": 5092479000,
+        "taxAssessedValue": 4803026,
+        "lotAreaValue": 0.4256,
+        "lotAreaUnit": "acres",
+        "has3DModel": false,
+        "address": {
+          "street": "24366 La Masina Ct",
+          "city": "Calabasas",
+          "state": "CA",
+          "zipcode": "91302"
+        },
+        "latLong": {
+          "latitude": 34.147247,
+          "longitude": -118.65581
+        },
+        "statusText": "House for sale",
+        "imgSrc": "https://photos.zillowstatic.com/fp/b382983eabc5e5d07b93d0aec1af6f9f-p_e.jpg",
+        "detailUrl": "https://www.zillow.com/homedetails/24366-La-Masina-Ct-Calabasas-CA-91302/19896929_zpid/",
+        "daysOnZillow": 58
+      },
+      {
+        "id": "20553382",
+        "price": "$1,849,000",
+        "unformattedPrice": 1849000,
+        "beds": 5,
+        "baths": 3,
+        "area": 2335,
+        "livingArea": 2335,
+        "homeType": "SINGLE_FAMILY",
+        "marketingStatus": "For Sale by Agent",
+        "homeStatus": "FOR_SALE",
+        "rentZestimate": 7375,
+        "listingSubType": {
+          "is_FSBA": true
+        },
+        "timeOnZillow": 27631653000,
+        "taxAssessedValue": 878976,
+        "lotAreaValue": 1.056,
+        "lotAreaUnit": "acres",
+        "has3DModel": false,
+        "address": {
+          "street": "548 Live Oak Circle Dr",
+          "city": "Calabasas",
+          "state": "CA",
+          "zipcode": "91302"
+        },
+        "latLong": {
+          "latitude": 34.07933,
+          "longitude": -118.69617
+        },
+        "statusText": "House for sale",
+        "imgSrc": "https://photos.zillowstatic.com/fp/882b64d2b6b481fb48e3898afc82491f-p_e.jpg",
+        "detailUrl": "https://www.zillow.com/homedetails/548-Live-Oak-Circle-Dr-Calabasas-CA-91302/20553382_zpid/",
+        "daysOnZillow": 319,
+        "zestimate": 1785700
+      },
+      {
+        "id": "20553389",
+        "price": "$2,600,000",
+        "unformattedPrice": 2600000,
+        "beds": 4,
+        "baths": 4,
+        "area": 0,
+        "livingArea": 0,
+        "homeType": "SINGLE_FAMILY",
+        "marketingStatus": "For Sale by Agent",
+        "homeStatus": "FOR_SALE",
+        "rentZestimate": 7820,
+        "listingSubType": {
+          "is_FSBA": true
+        },
+        "timeOnZillow": 7676757000,
+        "taxAssessedValue": 3329279,
+        "lotAreaValue": 1.6782,
+        "lotAreaUnit": "acres",
+        "has3DModel": false,
+        "address": {
+          "street": "730 Crater Camp Dr",
+          "city": "Calabasas",
+          "state": "CA",
+          "zipcode": "91302"
+        },
+        "latLong": {
+          "latitude": 34.082363,
+          "longitude": -118.69835
+        },
+        "statusText": "House for sale",
+        "imgSrc": "https://photos.zillowstatic.com/fp/75e4373406af7c0639f7fea17079e5ad-p_e.jpg",
+        "detailUrl": "https://www.zillow.com/homedetails/730-Crater-Camp-Dr-Calabasas-CA-91302/20553389_zpid/",
+        "daysOnZillow": 88,
+        "zestimate": 2613200
       }
     ]
   }

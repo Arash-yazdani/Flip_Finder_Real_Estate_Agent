@@ -1,0 +1,1407 @@
+{
+  "zpid": 19933969,
+  "city": "Tarzana",
+  "state": "CA",
+  "homeStatus": "FOR_SALE",
+  "address": {
+    "city": "Tarzana",
+    "streetAddress": "18645 Hatteras St Unit 285",
+    "zipcode": "91356",
+    "state": "CA"
+  },
+  "isListingClaimedByCurrentSignedInUser": "false",
+  "isCurrentSignedInAgentResponsible": "false",
+  "bedrooms": 1,
+  "bathrooms": 1,
+  "price": 299000,
+  "yearBuilt": 1973,
+  "streetAddress": "18645 Hatteras St Unit 285",
+  "zipcode": "91356",
+  "isCurrentSignedInUserVerifiedOwner": "false",
+  "isVerifiedClaimedByCurrentSignedInUser": "No",
+  "listingDataSource": "Phoenix",
+  "longitude": -118.5399,
+  "latitude": 34.17795,
+  "hasBadGeocode": false,
+  "livingArea": 758,
+  "homeType": "CONDO",
+  "lotSize": 230149,
+  "lotAreaValue": 5.2835,
+  "lotAreaUnits": "Acres",
+  "livingAreaValue": 758,
+  "livingAreaUnitsShort": "sqft",
+  "isUndisclosedAddress": "false",
+  "zestimate": 354100,
+  "rentZestimate": 2342,
+  "currency": "USD",
+  "dateSoldString": "2019-06-21",
+  "taxAssessedValue": 334651,
+  "taxAssessedYear": 2025,
+  "country": "USA",
+  "propertyTaxRate": 1.18,
+  "photoCount": 16,
+  "isPremierBuilder": "false",
+  "ssid": 17327,
+  "hdpUrl": "https://www.zillow.com/homedetails/18645-Hatteras-St-UNIT-285-Tarzana-CA-91356/19933969_zpid/",
+  "tourViewCount": 0,
+  "lastSoldPrice": 300000,
+  "livingAreaUnits": "Square Feet",
+  "zestimateMinus30": "355229",
+  "restimateMinus30": "2332",
+  "zestimateLowPercent": "6",
+  "zestimateHighPercent": "6",
+  "description": "Welcome to 18645 Hatteras St #285, a beautifully maintained 1 bed, 1 bath condo offering 758 sq ft in what may be one of the best condo complexes in all of Tarzana. This is not just buying a unit  it's buying into an incredible lifestyle and community. The resort-style complex features a sparkling pool, spa, sauna, gym, recreation/game room, gated guest parking, and multiple updated laundry rooms with over 10 brand new washers and dryers. The grounds are immaculately maintained, clean, lush, and beautifully updated throughout, giving the community a fresh and modern feel. Conveniently located near the freeway while still offering a peaceful and safe environment where residents enjoy walking both inside and around the complex day and night. An amazing opportunity for first-time buyers, downsizers, or investors looking for one of Tarzana's most desirable communities.",
+  "parcelId": "2156025214",
+  "taxHistory": [
+    {
+      "time": 2025,
+      "taxPaid": 4109.31,
+      "value": 334651,
+      "valueIncreaseRate": 0.019997561
+    },
+    {
+      "time": 2024,
+      "taxPaid": 4060.01,
+      "value": 328090,
+      "valueIncreaseRate": 0.019996393
+    },
+    {
+      "time": 2023,
+      "taxPaid": 3981.89,
+      "value": 321658,
+      "valueIncreaseRate": 0.019996703
+    },
+    {
+      "time": 2022,
+      "taxPaid": 3794.32,
+      "value": 315352,
+      "valueIncreaseRate": 0.01999877
+    },
+    {
+      "time": 2021,
+      "taxPaid": 3746.48,
+      "value": 309169,
+      "valueIncreaseRate": 0.010356209
+    },
+    {
+      "time": 2020,
+      "taxPaid": 3782.94,
+      "value": 306000,
+      "valueIncreaseRate": 0.644728
+    },
+    {
+      "time": 2019,
+      "taxPaid": 3782.94,
+      "value": 186049,
+      "valueIncreaseRate": 0.019994298
+    },
+    {
+      "time": 2018,
+      "taxPaid": 2194.48,
+      "value": 182402,
+      "valueIncreaseRate": 0.019991389
+    },
+    {
+      "time": 2017,
+      "taxPaid": 2194.48,
+      "value": 178827,
+      "valueIncreaseRate": 0.019991787
+    },
+    {
+      "time": 2016,
+      "taxPaid": 2142.79,
+      "value": 175322,
+      "valueIncreaseRate": 0.015247063
+    },
+    {
+      "time": 2015,
+      "taxPaid": 2087.63,
+      "value": 172689,
+      "valueIncreaseRate": 0.019969523
+    },
+    {
+      "time": 2014,
+      "taxPaid": 2068.23,
+      "value": 169308,
+      "valueIncreaseRate": 0.024618736
+    },
+    {
+      "time": 2012,
+      "value": 165240,
+      "valueIncreaseRate": 0.02
+    },
+    {
+      "time": 2011,
+      "value": 162000,
+      "valueIncreaseRate": 0.24361877
+    },
+    {
+      "time": 2010,
+      "value": 130265,
+      "valueIncreaseRate": -0.0023741145
+    },
+    {
+      "time": 2009,
+      "value": 130575,
+      "valueIncreaseRate": 0.019997656
+    },
+    {
+      "time": 2008,
+      "value": 128015,
+      "valueIncreaseRate": 0.019991076
+    },
+    {
+      "time": 2007,
+      "value": 125506,
+      "valueIncreaseRate": 0.019992523
+    },
+    {
+      "time": 2006,
+      "value": 123046,
+      "valueIncreaseRate": 0
+    },
+    {
+      "time": 2005,
+      "value": 123046,
+      "valueIncreaseRate": 0.040382177
+    },
+    {
+      "time": 2004,
+      "value": 118270,
+      "valueIncreaseRate": 0.018655688
+    },
+    {
+      "time": 2003,
+      "value": 116104,
+      "valueIncreaseRate": 0.04222621
+    },
+    {
+      "time": 2002,
+      "value": 111400,
+      "valueIncreaseRate": 0.5914286
+    },
+    {
+      "time": 2000,
+      "value": 70000,
+      "valueIncreaseRate": 0
+    }
+  ],
+  "priceHistory": [
+    {
+      "date": "2026-05-13",
+      "time": 1778630400000,
+      "priceChangeRate": -0.0033333333333333335,
+      "event": "Listed for sale",
+      "source": "CLAW",
+      "showCountyLink": false,
+      "postingIsRental": false,
+      "attributeSource": {
+        "infoString2": "CLAW",
+        "infoString3": "https://photos.zillowstatic.com/fp/d1d7f14ba9e5de22bbf848071a4b8b8e-zillow_web_logo_inf_11.jpg"
+      },
+      "price": 299000,
+      "pricePerSquareFoot": 394,
+      "source_listing_id": "26831775",
+      "source_name": "CLAW"
+    },
+    {
+      "date": "2019-06-21",
+      "time": 1561075200000,
+      "priceChangeRate": 0.008403361344537815,
+      "event": "Sold",
+      "source": "CRISNet / SRAR",
+      "showCountyLink": false,
+      "postingIsRental": false,
+      "attributeSource": {
+        "infoString2": "CRISNet / SRAR"
+      },
+      "price": 300000,
+      "pricePerSquareFoot": 396,
+      "source_listing_id": "SR19111126",
+      "source_name": "CRISNet / SRAR"
+    },
+    {
+      "date": "2019-05-31",
+      "time": 1559260800000,
+      "priceChangeRate": 0,
+      "event": "Pending sale",
+      "source": "Keller Williams Realty Northridge - Central",
+      "showCountyLink": false,
+      "postingIsRental": false,
+      "attributeSource": {
+        "infoString2": "Keller Williams Realty Northridge - Central"
+      },
+      "price": 297500,
+      "pricePerSquareFoot": 392,
+      "source_listing_id": "SR19111126",
+      "source_name": "Keller Williams Realty Northridge - Central"
+    },
+    {
+      "date": "2019-05-23",
+      "time": 1558569600000,
+      "priceChangeRate": 0.8364197530864198,
+      "event": "Listed for sale",
+      "source": "Keller Williams Realty",
+      "showCountyLink": false,
+      "postingIsRental": false,
+      "attributeSource": {
+        "infoString2": "Keller Williams Realty"
+      },
+      "price": 297500,
+      "pricePerSquareFoot": 392,
+      "source_listing_id": "SR19111126",
+      "source_name": "Keller Williams Realty"
+    },
+    {
+      "date": "2010-10-22",
+      "time": 1287705600000,
+      "priceChangeRate": -0.04424778761061947,
+      "event": "Sold",
+      "source": "Public Record",
+      "showCountyLink": false,
+      "postingIsRental": false,
+      "attributeSource": {
+        "infoString2": "Public Record"
+      },
+      "price": 162000,
+      "pricePerSquareFoot": 214,
+      "source_listing_id": null,
+      "source_name": "Public Record"
+    },
+    {
+      "date": "2010-09-05",
+      "time": 1283644800000,
+      "priceChangeRate": -0.02586206896551724,
+      "event": "Price change",
+      "source": "Rodeo Realty",
+      "showCountyLink": false,
+      "postingIsRental": false,
+      "attributeSource": {
+        "infoString2": "Rodeo Realty"
+      },
+      "price": 169500,
+      "pricePerSquareFoot": 224,
+      "source_listing_id": "F1853003",
+      "source_name": "Rodeo Realty"
+    },
+    {
+      "date": "2010-08-15",
+      "time": 1281830400000,
+      "priceChangeRate": 0,
+      "event": "Listed for sale",
+      "source": "Rodeo Realty",
+      "showCountyLink": false,
+      "postingIsRental": false,
+      "attributeSource": {
+        "infoString2": "Rodeo Realty"
+      },
+      "price": 174000,
+      "pricePerSquareFoot": 230,
+      "source_listing_id": "F1853003",
+      "source_name": "Rodeo Realty"
+    }
+  ],
+  "nearbyHomes": [
+    "{\"zpid\":19933784,\"isSavedByCurrentSignedInUser\":false,\"miniCardPhotos\":[\"https://photos.zillowstatic.com/fp/1691e7251d8b306f66a25c855029ec47-p_c.jpg\"],\"price\":370000,\"currency\":\"USD\",\"bedrooms\":1,\"bathrooms\":1,\"livingArea\":605,\"livingAreaValue\":605,\"livingAreaUnits\":\"Square Feet\",\"livingAreaUnitsShort\":\"sqft\",\"listingMetadata\":{\"comminglingCategoryIsRulesApplicable\":false},\"lotSize\":230149,\"lotAreaValue\":5.2835,\"lotAreaUnits\":\"Acres\",\"address\":{\"streetAddress\":\"18645 Hatteras St UNIT 106\",\"city\":\"Tarzana\",\"state\":\"CA\",\"zipcode\":\"91356\"},\"formattedChip\":{\"location\":[\"18645 Hatteras St UNIT 106\"]},\"latitude\":34.17795,\"longitude\":-118.5399,\"homeStatus\":\"SOLD\",\"homeType\":\"CONDO\",\"hdpUrl\":\"/homedetails/18645-Hatteras-St-UNIT-106-Tarzana-CA-91356/19933784_zpid/\",\"hdpTypeDimension\":\"RecentlySold\",\"propertyTypeDimension\":\"Condo\",\"listingTypeDimension\":\"Unknown Listed By\",\"listing_sub_type\":{\"is_newHome\":false,\"is_forAuction\":false,\"is_bankOwned\":false,\"is_foreclosure\":false,\"is_FSBO\":false,\"is_comingSoon\":false,\"is_FSBA\":false},\"attributionInfo\":\"{\\\"mlsId\\\":\\\"25-482307\\\"}\",\"isShowcaseListing\":false,\"isPremierBuilder\":false,\"state\":\"CA\"}",
+    "{\"zpid\":19933788,\"isSavedByCurrentSignedInUser\":false,\"miniCardPhotos\":[\"https://photos.zillowstatic.com/fp/db06fba718342c374bd0679bc3007386-p_c.jpg\"],\"price\":345000,\"currency\":\"USD\",\"bedrooms\":1,\"bathrooms\":1,\"livingArea\":605,\"livingAreaValue\":605,\"livingAreaUnits\":\"Square Feet\",\"livingAreaUnitsShort\":\"sqft\",\"listingMetadata\":{\"comminglingCategoryIsRulesApplicable\":false},\"lotSize\":230149,\"lotAreaValue\":5.2835,\"lotAreaUnits\":\"Acres\",\"address\":{\"streetAddress\":\"18645 Hatteras St UNIT 110\",\"city\":\"Tarzana\",\"state\":\"CA\",\"zipcode\":\"91356\"},\"formattedChip\":{\"location\":[\"18645 Hatteras St UNIT 110\"]},\"latitude\":34.17795,\"longitude\":-118.5399,\"homeStatus\":\"RECENTLY_SOLD\",\"homeType\":\"CONDO\",\"hdpUrl\":\"/homedetails/18645-Hatteras-St-UNIT-110-Tarzana-CA-91356/19933788_zpid/\",\"hdpTypeDimension\":\"RecentlySold\",\"propertyTypeDimension\":\"Condo\",\"listingTypeDimension\":\"Unknown Listed By\",\"listing_sub_type\":{\"is_newHome\":false,\"is_forAuction\":false,\"is_bankOwned\":false,\"is_foreclosure\":false,\"is_FSBO\":false,\"is_comingSoon\":false,\"is_FSBA\":false},\"attributionInfo\":\"{\\\"mlsId\\\":\\\"25525371\\\"}\",\"isShowcaseListing\":false,\"isPremierBuilder\":false,\"state\":\"CA\"}",
+    "{\"zpid\":19933965,\"isSavedByCurrentSignedInUser\":false,\"miniCardPhotos\":[\"https://photos.zillowstatic.com/fp/f1492fa41555bf0b6ac9e0a32cca94bd-p_c.jpg\"],\"price\":415000,\"currency\":\"USD\",\"bedrooms\":1,\"bathrooms\":1,\"livingArea\":758,\"livingAreaValue\":758,\"livingAreaUnits\":\"Square Feet\",\"livingAreaUnitsShort\":\"sqft\",\"listingMetadata\":{\"comminglingCategoryIsRulesApplicable\":false},\"lotSize\":230149,\"lotAreaValue\":5.2835,\"lotAreaUnits\":\"Acres\",\"address\":{\"streetAddress\":\"18645 Hatteras St UNIT 281\",\"city\":\"Tarzana\",\"state\":\"CA\",\"zipcode\":\"91356\"},\"formattedChip\":{\"location\":[\"18645 Hatteras St UNIT 281\"]},\"latitude\":34.17795,\"longitude\":-118.5399,\"homeStatus\":\"RECENTLY_SOLD\",\"homeType\":\"CONDO\",\"hdpUrl\":\"/homedetails/18645-Hatteras-St-UNIT-281-Tarzana-CA-91356/19933965_zpid/\",\"hdpTypeDimension\":\"RecentlySold\",\"propertyTypeDimension\":\"Condo\",\"listingTypeDimension\":\"Unknown Listed By\",\"listing_sub_type\":{\"is_newHome\":false,\"is_forAuction\":false,\"is_bankOwned\":false,\"is_foreclosure\":false,\"is_FSBO\":false,\"is_comingSoon\":false,\"is_FSBA\":false},\"attributionInfo\":\"{\\\"mlsId\\\":\\\"25523767\\\"}\",\"isShowcaseListing\":false,\"isPremierBuilder\":false,\"state\":\"CA\"}",
+    "{\"zpid\":19933780,\"isSavedByCurrentSignedInUser\":false,\"miniCardPhotos\":[\"https://photos.zillowstatic.com/fp/7f70208eb5ba4f36931f7d10aa4a5faf-p_c.jpg\"],\"price\":391700,\"currency\":\"USD\",\"bedrooms\":1,\"bathrooms\":1,\"livingArea\":605,\"livingAreaValue\":605,\"livingAreaUnits\":\"Square Feet\",\"livingAreaUnitsShort\":\"sqft\",\"listingMetadata\":{\"comminglingCategoryIsRulesApplicable\":false},\"lotAreaUnits\":\"sqft\",\"address\":{\"streetAddress\":\"18645 Hatteras St UNIT 102\",\"city\":\"Tarzana\",\"state\":\"CA\",\"zipcode\":\"91356\"},\"formattedChip\":{\"location\":[\"18645 Hatteras St UNIT 102\"]},\"latitude\":34.177937,\"longitude\":-118.5399,\"homeStatus\":\"OTHER\",\"homeType\":\"APARTMENT\",\"hdpUrl\":\"/homedetails/18645-Hatteras-St-UNIT-102-Tarzana-CA-91356/19933780_zpid/\",\"hdpTypeDimension\":\"Zestimate\",\"propertyTypeDimension\":\"Apartment\",\"listingTypeDimension\":\"Unknown Listed By\",\"listing_sub_type\":{\"is_newHome\":false,\"is_forAuction\":false,\"is_bankOwned\":false,\"is_foreclosure\":false,\"is_FSBO\":false,\"is_comingSoon\":false,\"is_FSBA\":false},\"providerListingID\":\"e0bwe47sh0hh\",\"isShowcaseListing\":false,\"isPremierBuilder\":false,\"state\":\"CA\"}",
+    "{\"zpid\":19933790,\"isSavedByCurrentSignedInUser\":false,\"miniCardPhotos\":[\"https://maps.googleapis.com/maps/api/staticmap?mobile=false&sensor=true&maptype=satellite&size=316x234&zoom=17&center=34.17793655395508,-118.53990173339844&key=AIzaSyBWYJWCA8FNMQvSe_k3LKfDGJaEgdKwsco&&signature=2yZDMY22BVXFQrW0U4aQpZqY9SQ=\"],\"price\":282500,\"currency\":\"USD\",\"bedrooms\":1,\"bathrooms\":1,\"livingArea\":605,\"livingAreaValue\":605,\"livingAreaUnits\":\"Square Feet\",\"livingAreaUnitsShort\":\"sqft\",\"listingMetadata\":{\"comminglingCategoryIsRulesApplicable\":false},\"lotSize\":871,\"lotAreaValue\":871,\"lotAreaUnits\":\"Square Feet\",\"address\":{\"streetAddress\":\"18645 Hatteras St UNIT 112\",\"city\":\"Tarzana\",\"state\":\"CA\",\"zipcode\":\"91356\"},\"formattedChip\":{\"location\":[\"18645 Hatteras St UNIT 112\"]},\"latitude\":34.177937,\"longitude\":-118.5399,\"homeStatus\":\"OTHER\",\"homeType\":\"CONDO\",\"hdpUrl\":\"/homedetails/18645-Hatteras-St-UNIT-112-Tarzana-CA-91356/19933790_zpid/\",\"hdpTypeDimension\":\"Zestimate\",\"propertyTypeDimension\":\"Condo\",\"listingTypeDimension\":\"Unknown Listed By\",\"listing_sub_type\":{\"is_newHome\":false,\"is_forAuction\":false,\"is_bankOwned\":false,\"is_foreclosure\":false,\"is_FSBO\":false,\"is_comingSoon\":false,\"is_FSBA\":false},\"isShowcaseListing\":false,\"isPremierBuilder\":false,\"state\":\"CA\"}",
+    "{\"zpid\":19933793,\"isSavedByCurrentSignedInUser\":false,\"miniCardPhotos\":[\"https://maps.googleapis.com/maps/api/streetview?location=18645+Hatteras+St%2C+Tarzana%2C+CA+91356&size=316x234&key=AIzaSyARFMLB1na-BBWf7_R3-5YOQQaHqEJf6RQ&source=outdoor&&signature=CYXVBZUzz7KXDIsw5lKeD8iVPAs=\"],\"price\":228200,\"currency\":\"USD\",\"bedrooms\":0,\"bathrooms\":1,\"livingArea\":472,\"livingAreaValue\":472,\"livingAreaUnits\":\"Square Feet\",\"livingAreaUnitsShort\":\"sqft\",\"listingMetadata\":{\"comminglingCategoryIsRulesApplicable\":false},\"lotSize\":229996,\"lotAreaValue\":5.279981634527089,\"lotAreaUnits\":\"Acres\",\"address\":{\"streetAddress\":\"18645 Hatteras St UNIT 115\",\"city\":\"Tarzana\",\"state\":\"CA\",\"zipcode\":\"91356\"},\"formattedChip\":{\"location\":[\"18645 Hatteras St UNIT 115\"]},\"latitude\":34.177937,\"longitude\":-118.5399,\"homeStatus\":\"OTHER\",\"homeType\":\"CONDO\",\"hdpUrl\":\"/homedetails/18645-Hatteras-St-UNIT-115-Tarzana-CA-91356/19933793_zpid/\",\"hdpTypeDimension\":\"Zestimate\",\"propertyTypeDimension\":\"Condo\",\"listingTypeDimension\":\"Unknown Listed By\",\"listing_sub_type\":{\"is_newHome\":false,\"is_forAuction\":false,\"is_bankOwned\":false,\"is_foreclosure\":false,\"is_FSBO\":false,\"is_comingSoon\":false,\"is_FSBA\":false},\"isShowcaseListing\":false,\"isPremierBuilder\":false,\"state\":\"CA\"}",
+    "{\"zpid\":19933797,\"isSavedByCurrentSignedInUser\":false,\"miniCardPhotos\":[\"https://maps.googleapis.com/maps/api/streetview?location=18645+Hatteras+St%2C+Tarzana%2C+CA+91356&size=316x234&key=AIzaSyARFMLB1na-BBWf7_R3-5YOQQaHqEJf6RQ&source=outdoor&&signature=CYXVBZUzz7KXDIsw5lKeD8iVPAs=\"],\"price\":393400,\"currency\":\"USD\",\"bedrooms\":2,\"bathrooms\":2,\"livingArea\":982,\"livingAreaValue\":982,\"livingAreaUnits\":\"Square Feet\",\"livingAreaUnitsShort\":\"sqft\",\"listingMetadata\":{\"comminglingCategoryIsRulesApplicable\":false},\"lotSize\":230076,\"lotAreaValue\":5.281818181818182,\"lotAreaUnits\":\"Acres\",\"address\":{\"streetAddress\":\"18645 Hatteras St UNIT 119\",\"city\":\"Tarzana\",\"state\":\"CA\",\"zipcode\":\"91356\"},\"formattedChip\":{\"location\":[\"18645 Hatteras St UNIT 119\"]},\"latitude\":34.177937,\"longitude\":-118.5399,\"homeStatus\":\"OTHER\",\"homeType\":\"CONDO\",\"hdpUrl\":\"/homedetails/18645-Hatteras-St-UNIT-119-Tarzana-CA-91356/19933797_zpid/\",\"hdpTypeDimension\":\"Zestimate\",\"propertyTypeDimension\":\"Condo\",\"listingTypeDimension\":\"Unknown Listed By\",\"listing_sub_type\":{\"is_newHome\":false,\"is_forAuction\":false,\"is_bankOwned\":false,\"is_foreclosure\":false,\"is_FSBO\":false,\"is_comingSoon\":false,\"is_FSBA\":false},\"isShowcaseListing\":false,\"isPremierBuilder\":false,\"state\":\"CA\"}",
+    "{\"zpid\":19933808,\"isSavedByCurrentSignedInUser\":false,\"miniCardPhotos\":[\"https://maps.googleapis.com/maps/api/streetview?location=18645+Hatteras+St%2C+Tarzana%2C+CA+91356&size=316x234&key=AIzaSyARFMLB1na-BBWf7_R3-5YOQQaHqEJf6RQ&source=outdoor&&signature=CYXVBZUzz7KXDIsw5lKeD8iVPAs=\"],\"price\":387300,\"currency\":\"USD\",\"bedrooms\":2,\"bathrooms\":2,\"livingArea\":982,\"livingAreaValue\":982,\"livingAreaUnits\":\"Square Feet\",\"livingAreaUnitsShort\":\"sqft\",\"listingMetadata\":{\"comminglingCategoryIsRulesApplicable\":false},\"lotSize\":230076,\"lotAreaValue\":5.281818181818182,\"lotAreaUnits\":\"Acres\",\"address\":{\"streetAddress\":\"18645 Hatteras St UNIT 130\",\"city\":\"Tarzana\",\"state\":\"CA\",\"zipcode\":\"91356\"},\"formattedChip\":{\"location\":[\"18645 Hatteras St UNIT 130\"]},\"latitude\":34.177937,\"longitude\":-118.5399,\"homeStatus\":\"OTHER\",\"homeType\":\"CONDO\",\"hdpUrl\":\"/homedetails/18645-Hatteras-St-UNIT-130-Tarzana-CA-91356/19933808_zpid/\",\"hdpTypeDimension\":\"Zestimate\",\"propertyTypeDimension\":\"Condo\",\"listingTypeDimension\":\"Unknown Listed By\",\"listing_sub_type\":{\"is_newHome\":false,\"is_forAuction\":false,\"is_bankOwned\":false,\"is_foreclosure\":false,\"is_FSBO\":false,\"is_comingSoon\":false,\"is_FSBA\":false},\"isShowcaseListing\":false,\"isPremierBuilder\":false,\"state\":\"CA\"}"
+  ],
+  "schools": [
+    {
+      "distance": 0.4,
+      "name": "Tarzana Elementary School",
+      "rating": 5,
+      "grades": "K-5",
+      "link": "https://www.greatschools.org/california/tarzana/2418-Tarzana-Elementary-School/"
+    },
+    {
+      "distance": 0.7,
+      "name": "Gaspar De Portola Middle School",
+      "rating": 9,
+      "grades": "6-8",
+      "link": "https://www.greatschools.org/california/tarzana/2332-Gaspar-De-Portola-Middle-School/"
+    },
+    {
+      "distance": 1,
+      "name": "Reseda Senior High School",
+      "rating": 4,
+      "grades": "6-12",
+      "link": "https://www.greatschools.org/california/reseda/2343-Reseda-Senior-High-School/"
+    }
+  ],
+  "mortgageRates": {
+    "thirtyYearFixedRate": 6.49
+  },
+  "isInstantOfferEnabled": "No",
+  "nearbyCities": [
+    {
+      "regionUrl": {
+        "path": "/glendale-ca/"
+      },
+      "name": "Glendale"
+    },
+    {
+      "regionUrl": {
+        "path": "/lancaster-ca/"
+      },
+      "name": "Lancaster"
+    },
+    {
+      "regionUrl": {
+        "path": "/long-beach-ca/"
+      },
+      "name": "Long Beach"
+    },
+    {
+      "regionUrl": {
+        "path": "/los-angeles-ca/"
+      },
+      "name": "Los Angeles"
+    },
+    {
+      "regionUrl": {
+        "path": "/palmdale-ca/"
+      },
+      "name": "Palmdale"
+    },
+    {
+      "regionUrl": {
+        "path": "/pasadena-ca/"
+      },
+      "name": "Pasadena"
+    },
+    {
+      "regionUrl": {
+        "path": "/pomona-ca/"
+      },
+      "name": "Pomona"
+    },
+    {
+      "regionUrl": {
+        "path": "/santa-clarita-ca/"
+      },
+      "name": "Santa Clarita"
+    },
+    {
+      "regionUrl": {
+        "path": "/torrance-ca/"
+      },
+      "name": "Torrance"
+    },
+    {
+      "regionUrl": {
+        "path": "/whittier-ca/"
+      },
+      "name": "Whittier"
+    }
+  ],
+  "nearbyNeighborhoods": [
+    {
+      "regionUrl": {
+        "path": "/hollywood-los-angeles-ca/"
+      },
+      "name": "Hollywood"
+    },
+    {
+      "regionUrl": {
+        "path": "/mid-city-los-angeles-ca/"
+      },
+      "name": "Mid City"
+    },
+    {
+      "regionUrl": {
+        "path": "/north-hollywood-los-angeles-ca/"
+      },
+      "name": "North Hollywood"
+    },
+    {
+      "regionUrl": {
+        "path": "/northridge-los-angeles-ca/"
+      },
+      "name": "Northridge"
+    },
+    {
+      "regionUrl": {
+        "path": "/san-pedro-los-angeles-ca/"
+      },
+      "name": "San Pedro"
+    },
+    {
+      "regionUrl": {
+        "path": "/south-los-angeles-los-angeles-ca/"
+      },
+      "name": "South Los Angeles"
+    },
+    {
+      "regionUrl": {
+        "path": "/southeast-los-angeles-los-angeles-ca/"
+      },
+      "name": "Southeast Los Angeles"
+    },
+    {
+      "regionUrl": {
+        "path": "/sylmar-los-angeles-ca/"
+      },
+      "name": "Sylmar"
+    },
+    {
+      "regionUrl": {
+        "path": "/van-nuys-los-angeles-ca/"
+      },
+      "name": "Van Nuys"
+    },
+    {
+      "regionUrl": {
+        "path": "/woodland-hills-los-angeles-ca/"
+      },
+      "name": "Woodland Hills"
+    }
+  ],
+  "nearbyZipcodes": [
+    {
+      "regionUrl": {
+        "path": "/los-angeles-ca-90003/"
+      },
+      "name": "90003"
+    },
+    {
+      "regionUrl": {
+        "path": "/los-angeles-ca-90011/"
+      },
+      "name": "90011"
+    },
+    {
+      "regionUrl": {
+        "path": "/los-angeles-ca-90026/"
+      },
+      "name": "90026"
+    },
+    {
+      "regionUrl": {
+        "path": "/los-angeles-ca-90037/"
+      },
+      "name": "90037"
+    },
+    {
+      "regionUrl": {
+        "path": "/los-angeles-ca-90044/"
+      },
+      "name": "90044"
+    },
+    {
+      "regionUrl": {
+        "path": "/los-angeles-ca-90731/"
+      },
+      "name": "90731"
+    },
+    {
+      "regionUrl": {
+        "path": "/los-angeles-ca-91331/"
+      },
+      "name": "91331"
+    },
+    {
+      "regionUrl": {
+        "path": "/los-angeles-ca-91335/"
+      },
+      "name": "91335"
+    },
+    {
+      "regionUrl": {
+        "path": "/los-angeles-ca-91342/"
+      },
+      "name": "91342"
+    },
+    {
+      "regionUrl": {
+        "path": "/los-angeles-ca-91402/"
+      },
+      "name": "91402"
+    }
+  ],
+  "abbreviatedAddress": "18645 Hatteras St Unit 285",
+  "daysOnZillow": 1,
+  "brokerageName": "TruLine Realty",
+  "propertyTypeDimension": "Condo",
+  "hdpTypeDimension": "ForSale",
+  "timeZone": "America/Los_Angeles",
+  "selfTour": {
+    "hasSelfTour": true
+  },
+  "photos": [
+    {
+      "mixedSources": {
+        "jpeg": [
+          {
+            "url": "https://photos.zillowstatic.com/fp/870d759098b999d38bb1ce7788187a92-cc_ft_192.jpg",
+            "width": 192
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/870d759098b999d38bb1ce7788187a92-cc_ft_384.jpg",
+            "width": 384
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/870d759098b999d38bb1ce7788187a92-cc_ft_576.jpg",
+            "width": 576
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/870d759098b999d38bb1ce7788187a92-cc_ft_768.jpg",
+            "width": 768
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/870d759098b999d38bb1ce7788187a92-cc_ft_960.jpg",
+            "width": 960
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/870d759098b999d38bb1ce7788187a92-cc_ft_1152.jpg",
+            "width": 1152
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/870d759098b999d38bb1ce7788187a92-cc_ft_1344.jpg",
+            "width": 1344
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/870d759098b999d38bb1ce7788187a92-cc_ft_1536.jpg",
+            "width": 1536
+          }
+        ]
+      }
+    },
+    {
+      "mixedSources": {
+        "jpeg": [
+          {
+            "url": "https://photos.zillowstatic.com/fp/0b3db527788cd9c4b1f764a59ede2e8a-cc_ft_192.jpg",
+            "width": 192
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/0b3db527788cd9c4b1f764a59ede2e8a-cc_ft_384.jpg",
+            "width": 384
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/0b3db527788cd9c4b1f764a59ede2e8a-cc_ft_576.jpg",
+            "width": 576
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/0b3db527788cd9c4b1f764a59ede2e8a-cc_ft_768.jpg",
+            "width": 768
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/0b3db527788cd9c4b1f764a59ede2e8a-cc_ft_960.jpg",
+            "width": 960
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/0b3db527788cd9c4b1f764a59ede2e8a-cc_ft_1152.jpg",
+            "width": 1152
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/0b3db527788cd9c4b1f764a59ede2e8a-cc_ft_1344.jpg",
+            "width": 1344
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/0b3db527788cd9c4b1f764a59ede2e8a-cc_ft_1536.jpg",
+            "width": 1536
+          }
+        ]
+      }
+    },
+    {
+      "mixedSources": {
+        "jpeg": [
+          {
+            "url": "https://photos.zillowstatic.com/fp/0a25d5d9cd8d39ccd7e0e8d84ea4d4f2-cc_ft_192.jpg",
+            "width": 192
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/0a25d5d9cd8d39ccd7e0e8d84ea4d4f2-cc_ft_384.jpg",
+            "width": 384
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/0a25d5d9cd8d39ccd7e0e8d84ea4d4f2-cc_ft_576.jpg",
+            "width": 576
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/0a25d5d9cd8d39ccd7e0e8d84ea4d4f2-cc_ft_768.jpg",
+            "width": 768
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/0a25d5d9cd8d39ccd7e0e8d84ea4d4f2-cc_ft_960.jpg",
+            "width": 960
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/0a25d5d9cd8d39ccd7e0e8d84ea4d4f2-cc_ft_1152.jpg",
+            "width": 1152
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/0a25d5d9cd8d39ccd7e0e8d84ea4d4f2-cc_ft_1344.jpg",
+            "width": 1344
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/0a25d5d9cd8d39ccd7e0e8d84ea4d4f2-cc_ft_1536.jpg",
+            "width": 1536
+          }
+        ]
+      }
+    },
+    {
+      "mixedSources": {
+        "jpeg": [
+          {
+            "url": "https://photos.zillowstatic.com/fp/65e052560c345a19d18a6240bbb31e50-cc_ft_192.jpg",
+            "width": 192
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/65e052560c345a19d18a6240bbb31e50-cc_ft_384.jpg",
+            "width": 384
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/65e052560c345a19d18a6240bbb31e50-cc_ft_576.jpg",
+            "width": 576
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/65e052560c345a19d18a6240bbb31e50-cc_ft_768.jpg",
+            "width": 768
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/65e052560c345a19d18a6240bbb31e50-cc_ft_960.jpg",
+            "width": 960
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/65e052560c345a19d18a6240bbb31e50-cc_ft_1152.jpg",
+            "width": 1152
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/65e052560c345a19d18a6240bbb31e50-cc_ft_1344.jpg",
+            "width": 1344
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/65e052560c345a19d18a6240bbb31e50-cc_ft_1536.jpg",
+            "width": 1536
+          }
+        ]
+      }
+    },
+    {
+      "mixedSources": {
+        "jpeg": [
+          {
+            "url": "https://photos.zillowstatic.com/fp/8cd2e31c9bc06c33ae2b8f543de49192-cc_ft_192.jpg",
+            "width": 192
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/8cd2e31c9bc06c33ae2b8f543de49192-cc_ft_384.jpg",
+            "width": 384
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/8cd2e31c9bc06c33ae2b8f543de49192-cc_ft_576.jpg",
+            "width": 576
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/8cd2e31c9bc06c33ae2b8f543de49192-cc_ft_768.jpg",
+            "width": 768
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/8cd2e31c9bc06c33ae2b8f543de49192-cc_ft_960.jpg",
+            "width": 960
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/8cd2e31c9bc06c33ae2b8f543de49192-cc_ft_1152.jpg",
+            "width": 1152
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/8cd2e31c9bc06c33ae2b8f543de49192-cc_ft_1344.jpg",
+            "width": 1344
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/8cd2e31c9bc06c33ae2b8f543de49192-cc_ft_1536.jpg",
+            "width": 1536
+          }
+        ]
+      }
+    },
+    {
+      "mixedSources": {
+        "jpeg": [
+          {
+            "url": "https://photos.zillowstatic.com/fp/5efdbcacb8ab3204b5cfdec2f5c041df-cc_ft_192.jpg",
+            "width": 192
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/5efdbcacb8ab3204b5cfdec2f5c041df-cc_ft_384.jpg",
+            "width": 384
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/5efdbcacb8ab3204b5cfdec2f5c041df-cc_ft_576.jpg",
+            "width": 576
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/5efdbcacb8ab3204b5cfdec2f5c041df-cc_ft_768.jpg",
+            "width": 768
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/5efdbcacb8ab3204b5cfdec2f5c041df-cc_ft_960.jpg",
+            "width": 960
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/5efdbcacb8ab3204b5cfdec2f5c041df-cc_ft_1152.jpg",
+            "width": 1152
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/5efdbcacb8ab3204b5cfdec2f5c041df-cc_ft_1344.jpg",
+            "width": 1344
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/5efdbcacb8ab3204b5cfdec2f5c041df-cc_ft_1536.jpg",
+            "width": 1536
+          }
+        ]
+      }
+    },
+    {
+      "mixedSources": {
+        "jpeg": [
+          {
+            "url": "https://photos.zillowstatic.com/fp/e0d55a77c0e70aa88207786d389c60da-cc_ft_192.jpg",
+            "width": 192
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/e0d55a77c0e70aa88207786d389c60da-cc_ft_384.jpg",
+            "width": 384
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/e0d55a77c0e70aa88207786d389c60da-cc_ft_576.jpg",
+            "width": 576
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/e0d55a77c0e70aa88207786d389c60da-cc_ft_768.jpg",
+            "width": 768
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/e0d55a77c0e70aa88207786d389c60da-cc_ft_960.jpg",
+            "width": 960
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/e0d55a77c0e70aa88207786d389c60da-cc_ft_1152.jpg",
+            "width": 1152
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/e0d55a77c0e70aa88207786d389c60da-cc_ft_1344.jpg",
+            "width": 1344
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/e0d55a77c0e70aa88207786d389c60da-cc_ft_1536.jpg",
+            "width": 1536
+          }
+        ]
+      }
+    },
+    {
+      "mixedSources": {
+        "jpeg": [
+          {
+            "url": "https://photos.zillowstatic.com/fp/36d9cbd769e95fcf6a800383ca71a02c-cc_ft_192.jpg",
+            "width": 192
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/36d9cbd769e95fcf6a800383ca71a02c-cc_ft_384.jpg",
+            "width": 384
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/36d9cbd769e95fcf6a800383ca71a02c-cc_ft_576.jpg",
+            "width": 576
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/36d9cbd769e95fcf6a800383ca71a02c-cc_ft_768.jpg",
+            "width": 768
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/36d9cbd769e95fcf6a800383ca71a02c-cc_ft_960.jpg",
+            "width": 960
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/36d9cbd769e95fcf6a800383ca71a02c-cc_ft_1152.jpg",
+            "width": 1152
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/36d9cbd769e95fcf6a800383ca71a02c-cc_ft_1344.jpg",
+            "width": 1344
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/36d9cbd769e95fcf6a800383ca71a02c-cc_ft_1536.jpg",
+            "width": 1536
+          }
+        ]
+      }
+    },
+    {
+      "mixedSources": {
+        "jpeg": [
+          {
+            "url": "https://photos.zillowstatic.com/fp/2f01c0c8a1b1f172e8f21f7327e81b8a-cc_ft_192.jpg",
+            "width": 192
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/2f01c0c8a1b1f172e8f21f7327e81b8a-cc_ft_384.jpg",
+            "width": 384
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/2f01c0c8a1b1f172e8f21f7327e81b8a-cc_ft_576.jpg",
+            "width": 576
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/2f01c0c8a1b1f172e8f21f7327e81b8a-cc_ft_768.jpg",
+            "width": 768
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/2f01c0c8a1b1f172e8f21f7327e81b8a-cc_ft_960.jpg",
+            "width": 960
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/2f01c0c8a1b1f172e8f21f7327e81b8a-cc_ft_1152.jpg",
+            "width": 1152
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/2f01c0c8a1b1f172e8f21f7327e81b8a-cc_ft_1344.jpg",
+            "width": 1344
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/2f01c0c8a1b1f172e8f21f7327e81b8a-cc_ft_1536.jpg",
+            "width": 1536
+          }
+        ]
+      }
+    },
+    {
+      "mixedSources": {
+        "jpeg": [
+          {
+            "url": "https://photos.zillowstatic.com/fp/9c9d67f108d62d0cbe84ce084fc5d297-cc_ft_192.jpg",
+            "width": 192
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/9c9d67f108d62d0cbe84ce084fc5d297-cc_ft_384.jpg",
+            "width": 384
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/9c9d67f108d62d0cbe84ce084fc5d297-cc_ft_576.jpg",
+            "width": 576
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/9c9d67f108d62d0cbe84ce084fc5d297-cc_ft_768.jpg",
+            "width": 768
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/9c9d67f108d62d0cbe84ce084fc5d297-cc_ft_960.jpg",
+            "width": 960
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/9c9d67f108d62d0cbe84ce084fc5d297-cc_ft_1152.jpg",
+            "width": 1152
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/9c9d67f108d62d0cbe84ce084fc5d297-cc_ft_1344.jpg",
+            "width": 1344
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/9c9d67f108d62d0cbe84ce084fc5d297-cc_ft_1536.jpg",
+            "width": 1536
+          }
+        ]
+      }
+    },
+    {
+      "mixedSources": {
+        "jpeg": [
+          {
+            "url": "https://photos.zillowstatic.com/fp/3888944ee225e21df7d86fae87f6f1dc-cc_ft_192.jpg",
+            "width": 192
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/3888944ee225e21df7d86fae87f6f1dc-cc_ft_384.jpg",
+            "width": 384
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/3888944ee225e21df7d86fae87f6f1dc-cc_ft_576.jpg",
+            "width": 576
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/3888944ee225e21df7d86fae87f6f1dc-cc_ft_768.jpg",
+            "width": 768
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/3888944ee225e21df7d86fae87f6f1dc-cc_ft_960.jpg",
+            "width": 960
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/3888944ee225e21df7d86fae87f6f1dc-cc_ft_1152.jpg",
+            "width": 1152
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/3888944ee225e21df7d86fae87f6f1dc-cc_ft_1344.jpg",
+            "width": 1344
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/3888944ee225e21df7d86fae87f6f1dc-cc_ft_1536.jpg",
+            "width": 1536
+          }
+        ]
+      }
+    },
+    {
+      "mixedSources": {
+        "jpeg": [
+          {
+            "url": "https://photos.zillowstatic.com/fp/bfc3aef4c50503709ecab662a713cd16-cc_ft_192.jpg",
+            "width": 192
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/bfc3aef4c50503709ecab662a713cd16-cc_ft_384.jpg",
+            "width": 384
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/bfc3aef4c50503709ecab662a713cd16-cc_ft_576.jpg",
+            "width": 576
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/bfc3aef4c50503709ecab662a713cd16-cc_ft_768.jpg",
+            "width": 768
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/bfc3aef4c50503709ecab662a713cd16-cc_ft_960.jpg",
+            "width": 960
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/bfc3aef4c50503709ecab662a713cd16-cc_ft_1152.jpg",
+            "width": 1152
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/bfc3aef4c50503709ecab662a713cd16-cc_ft_1344.jpg",
+            "width": 1344
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/bfc3aef4c50503709ecab662a713cd16-cc_ft_1536.jpg",
+            "width": 1536
+          }
+        ]
+      }
+    },
+    {
+      "mixedSources": {
+        "jpeg": [
+          {
+            "url": "https://photos.zillowstatic.com/fp/3859e7fbdbd49a4850cea6491f853c9a-cc_ft_192.jpg",
+            "width": 192
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/3859e7fbdbd49a4850cea6491f853c9a-cc_ft_384.jpg",
+            "width": 384
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/3859e7fbdbd49a4850cea6491f853c9a-cc_ft_576.jpg",
+            "width": 576
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/3859e7fbdbd49a4850cea6491f853c9a-cc_ft_768.jpg",
+            "width": 768
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/3859e7fbdbd49a4850cea6491f853c9a-cc_ft_960.jpg",
+            "width": 960
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/3859e7fbdbd49a4850cea6491f853c9a-cc_ft_1152.jpg",
+            "width": 1152
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/3859e7fbdbd49a4850cea6491f853c9a-cc_ft_1344.jpg",
+            "width": 1344
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/3859e7fbdbd49a4850cea6491f853c9a-cc_ft_1536.jpg",
+            "width": 1536
+          }
+        ]
+      }
+    },
+    {
+      "mixedSources": {
+        "jpeg": [
+          {
+            "url": "https://photos.zillowstatic.com/fp/6873e3e2b6b53a1c8a67c4e3f942a0fd-cc_ft_192.jpg",
+            "width": 192
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/6873e3e2b6b53a1c8a67c4e3f942a0fd-cc_ft_384.jpg",
+            "width": 384
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/6873e3e2b6b53a1c8a67c4e3f942a0fd-cc_ft_576.jpg",
+            "width": 576
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/6873e3e2b6b53a1c8a67c4e3f942a0fd-cc_ft_768.jpg",
+            "width": 768
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/6873e3e2b6b53a1c8a67c4e3f942a0fd-cc_ft_960.jpg",
+            "width": 960
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/6873e3e2b6b53a1c8a67c4e3f942a0fd-cc_ft_1152.jpg",
+            "width": 1152
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/6873e3e2b6b53a1c8a67c4e3f942a0fd-cc_ft_1344.jpg",
+            "width": 1344
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/6873e3e2b6b53a1c8a67c4e3f942a0fd-cc_ft_1536.jpg",
+            "width": 1536
+          }
+        ]
+      }
+    },
+    {
+      "mixedSources": {
+        "jpeg": [
+          {
+            "url": "https://photos.zillowstatic.com/fp/0cbbfa631e2184a4972c857f7b00199c-cc_ft_192.jpg",
+            "width": 192
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/0cbbfa631e2184a4972c857f7b00199c-cc_ft_384.jpg",
+            "width": 384
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/0cbbfa631e2184a4972c857f7b00199c-cc_ft_576.jpg",
+            "width": 576
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/0cbbfa631e2184a4972c857f7b00199c-cc_ft_768.jpg",
+            "width": 768
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/0cbbfa631e2184a4972c857f7b00199c-cc_ft_960.jpg",
+            "width": 960
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/0cbbfa631e2184a4972c857f7b00199c-cc_ft_1152.jpg",
+            "width": 1152
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/0cbbfa631e2184a4972c857f7b00199c-cc_ft_1344.jpg",
+            "width": 1344
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/0cbbfa631e2184a4972c857f7b00199c-cc_ft_1536.jpg",
+            "width": 1536
+          }
+        ]
+      }
+    },
+    {
+      "mixedSources": {
+        "jpeg": [
+          {
+            "url": "https://photos.zillowstatic.com/fp/ad79c821fe91dda9fd4fd2ae79904abe-cc_ft_192.jpg",
+            "width": 192
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/ad79c821fe91dda9fd4fd2ae79904abe-cc_ft_384.jpg",
+            "width": 384
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/ad79c821fe91dda9fd4fd2ae79904abe-cc_ft_576.jpg",
+            "width": 576
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/ad79c821fe91dda9fd4fd2ae79904abe-cc_ft_768.jpg",
+            "width": 768
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/ad79c821fe91dda9fd4fd2ae79904abe-cc_ft_960.jpg",
+            "width": 960
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/ad79c821fe91dda9fd4fd2ae79904abe-cc_ft_1152.jpg",
+            "width": 1152
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/ad79c821fe91dda9fd4fd2ae79904abe-cc_ft_1344.jpg",
+            "width": 1344
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/ad79c821fe91dda9fd4fd2ae79904abe-cc_ft_1536.jpg",
+            "width": 1536
+          }
+        ]
+      }
+    }
+  ],
+  "zestimate_history": [
+    {
+      "as_of_date": null
+    },
+    {
+      "as_of_date": null
+    }
+  ],
+  "utilities": [],
+  "url": "https://www.zillow.com/homedetails/18645-Hatteras-St-UNIT-285-Tarzana-CA-91356/19933969_zpid/",
+  "countyFIPS": "06037",
+  "countyID": "3101",
+  "dateSold": "2019-06-21T00:00:00.000Z",
+  "listingTypeDimension": "For Sale by Agent",
+  "homeValuation": [
+    "{\"comparables\":{\"comps\":[{\"property\":{\"zestimate\":322500,\"lastSoldPrice\":316000,\"price\":316000,\"daysOnZillow\":163,\"dateSold\":1764633600000,\"currency\":\"USD\",\"bedrooms\":1,\"bathrooms\":1,\"livingAreaValue\":758,\"livingAreaUnits\":\"Square Feet\",\"livingAreaUnitsShort\":\"sqft\",\"lotAreaValue\":5.2835,\"lotAreaUnits\":\"Acres\",\"address\":{\"streetAddress\":\"18645 Hatteras St Unit 211\",\"city\":\"Tarzana\",\"state\":\"CA\",\"zipcode\":\"91356\"},\"latitude\":34.17793,\"longitude\":-118.53989,\"zpid\":19933895,\"homeStatus\":\"RECENTLY_SOLD\",\"homeType\":\"CONDO\",\"hdpUrl\":\"/homedetails/18645-Hatteras-St-UNIT-211-Tarzana-CA-91356/19933895_zpid/\",\"listing_sub_type\":{\"is_newHome\":false,\"is_forAuction\":false,\"is_bankOwned\":false,\"is_foreclosure\":false,\"is_FSBO\":false,\"is_comingSoon\":false},\"isUndisclosedAddress\":false,\"attributionInfo\":{\"mlsId\":\"SR25242668\",\"mlsName\":\"CRMLS\",\"providerLogo\":null,\"agentName\":\"Joseph Lung\",\"agentPhoneNumber\":null,\"brokerName\":\"Exclusive Estate Properties Inc\",\"brokerPhoneNumber\":null},\"compsCarouselPropertyPhotos\":[{\"mixedSources\":{\"jpeg\":[{\"url\":\"https://photos.zillowstatic.com/fp/c4d15f92bbc50b0044dc8f367d510376-cc_ft_192.jpg\"},{\"url\":\"https://photos.zillowstatic.com/fp/c4d15f92bbc50b0044dc8f367d510376-cc_ft_384.jpg\"},{\"url\":\"https://photos.zillowstatic.com/fp/c4d15f92bbc50b0044dc8f367d510376-cc_ft_576.jpg\"},{\"url\":\"https://photos.zillowstatic.com/fp/c4d15f92bbc50b0044dc8f367d510376-cc_ft_768.jpg\"},{\"url\":\"https://photos.zillowstatic.com/fp/c4d15f92bbc50b0044dc8f367d510376-cc_ft_960.jpg\"},{\"url\":\"https://photos.zillowstatic.com/fp/c4d15f92bbc50b0044dc8f367d510376-cc_ft_1152.jpg\"},{\"url\":\"https://photos.zillowstatic.com/fp/c4d15f92bbc50b0044dc8f367d510376-cc_ft_1344.jpg\"},{\"url\":\"https://photos.zillowstatic.com/fp/c4d15f92bbc50b0044dc8f367d510376-cc_ft_1536.jpg\"}]}}]}},{\"property\":{\"zestimate\":414300,\"lastSoldPrice\":415000,\"price\":415000,\"daysOnZillow\":351,\"dateSold\":1748390400000,\"currency\":\"USD\",\"bedrooms\":1,\"bathrooms\":1,\"livingAreaValue\":758,\"livingAreaUnits\":\"Square Feet\",\"livingAreaUnitsShort\":\"sqft\",\"lotAreaValue\":5.2835,\"lotAreaUnits\":\"Acres\",\"address\":{\"streetAddress\":\"18645 Hatteras St Unit 281\",\"city\":\"Tarzana\",\"state\":\"CA\",\"zipcode\":\"91356\"},\"latitude\":34.17795,\"longitude\":-118.5399,\"zpid\":19933965,\"homeStatus\":\"RECENTLY_SOLD\",\"homeType\":\"CONDO\",\"hdpUrl\":\"/homedetails/18645-Hatteras-St-UNIT-281-Tarzana-CA-91356/19933965_zpid/\",\"listing_sub_type\":{\"is_newHome\":false,\"is_forAuction\":false,\"is_bankOwned\":false,\"is_foreclosure\":false,\"is_FSBO\":false,\"is_comingSoon\":false},\"isUndisclosedAddress\":false,\"attributionInfo\":{\"mlsId\":\"25523767\",\"mlsName\":\"CLAW\",\"providerLogo\":null,\"agentName\":\"Jean-Pierre Provo DRE # 01316847\",\"agentPhoneNumber\":null,\"brokerName\":\"Rodeo Realty - Pacific Palisades\",\"brokerPhoneNumber\":null},\"compsCarouselPropertyPhotos\":[{\"mixedSources\":{\"jpeg\":[{\"url\":\"https://photos.zillowstatic.com/fp/f1492fa41555bf0b6ac9e0a32cca94bd-cc_ft_192.jpg\"},{\"url\":\"https://photos.zillowstatic.com/fp/f1492fa41555bf0b6ac9e0a32cca94bd-cc_ft_384.jpg\"},{\"url\":\"https://photos.zillowstatic.com/fp/f1492fa41555bf0b6ac9e0a32cca94bd-cc_ft_576.jpg\"},{\"url\":\"https://photos.zillowstatic.com/fp/f1492fa41555bf0b6ac9e0a32cca94bd-cc_ft_768.jpg\"},{\"url\":\"https://photos.zillowstatic.com/fp/f1492fa41555bf0b6ac9e0a32cca94bd-cc_ft_960.jpg\"},{\"url\":\"https://photos.zillowstatic.com/fp/f1492fa41555bf0b6ac9e0a32cca94bd-cc_ft_1152.jpg\"},{\"url\":\"https://photos.zillowstatic.com/fp/f1492fa41555bf0b6ac9e0a32cca94bd-cc_ft_1344.jpg\"},{\"url\":\"https://photos.zillowstatic.com/fp/f1492fa41555bf0b6ac9e0a32cca94bd-cc_ft_1536.jpg\"}]}}]}},{\"property\":{\"zestimate\":350100,\"lastSoldPrice\":350000,\"price\":350000,\"daysOnZillow\":13,\"dateSold\":1777593600000,\"currency\":\"USD\",\"bedrooms\":1,\"bathrooms\":1,\"livingAreaValue\":605,\"livingAreaUnits\":\"Square Feet\",\"livingAreaUnitsShort\":\"sqft\",\"lotAreaValue\":5.2835,\"lotAreaUnits\":\"Acres\",\"address\":{\"streetAddress\":\"18645 Hatteras St Unit 186\",\"city\":\"Tarzana\",\"state\":\"CA\",\"zipcode\":\"91356\"},\"latitude\":34.17793,\"longitude\":-118.53989,\"zpid\":19933864,\"homeStatus\":\"RECENTLY_SOLD\",\"homeType\":\"CONDO\",\"hdpUrl\":\"/homedetails/18645-Hatteras-St-UNIT-186-Tarzana-CA-91356/19933864_zpid/\",\"listing_sub_type\":{\"is_newHome\":false,\"is_forAuction\":false,\"is_bankOwned\":false,\"is_foreclosure\":false,\"is_FSBO\":false,\"is_comingSoon\":false},\"isUndisclosedAddress\":false,\"attributionInfo\":{\"mlsId\":\"SR26037886\",\"mlsName\":\"CRMLS\",\"providerLogo\":null,\"agentName\":\"Cynthia Bell\",\"agentPhoneNumber\":null,\"brokerName\":\"Homesmart Evergreen Realty\",\"brokerPhoneNumber\":null},\"compsCarouselPropertyPhotos\":[{\"mixedSources\":{\"jpeg\":[{\"url\":\"https://photos.zillowstatic.com/fp/742d68be477e4cdd4fe5771ec12181e1-cc_ft_192.jpg\"},{\"url\":\"https://photos.zillowstatic.com/fp/742d68be477e4cdd4fe5771ec12181e1-cc_ft_384.jpg\"},{\"url\":\"https://photos.zillowstatic.com/fp/742d68be477e4cdd4fe5771ec12181e1-cc_ft_576.jpg\"},{\"url\":\"https://photos.zillowstatic.com/fp/742d68be477e4cdd4fe5771ec12181e1-cc_ft_768.jpg\"},{\"url\":\"https://photos.zillowstatic.com/fp/742d68be477e4cdd4fe5771ec12181e1-cc_ft_960.jpg\"},{\"url\":\"https://photos.zillowstatic.com/fp/742d68be477e4cdd4fe5771ec12181e1-cc_ft_1152.jpg\"},{\"url\":\"https://photos.zillowstatic.com/fp/742d68be477e4cdd4fe5771ec12181e1-cc_ft_1344.jpg\"},{\"url\":\"https://photos.zillowstatic.com/fp/742d68be477e4cdd4fe5771ec12181e1-cc_ft_1536.jpg\"}]}}]}},{\"property\":{\"zestimate\":348000,\"lastSoldPrice\":345000,\"price\":345000,\"daysOnZillow\":77,\"dateSold\":1772064000000,\"currency\":\"USD\",\"bedrooms\":1,\"bathrooms\":1,\"livingAreaValue\":605,\"livingAreaUnits\":\"Square Feet\",\"livingAreaUnitsShort\":\"sqft\",\"lotAreaValue\":5.2835,\"lotAreaUnits\":\"Acres\",\"address\":{\"streetAddress\":\"18645 Hatteras St Unit 110\",\"city\":\"Tarzana\",\"state\":\"CA\",\"zipcode\":\"91356\"},\"latitude\":34.17795,\"longitude\":-118.5399,\"zpid\":19933788,\"homeStatus\":\"RECENTLY_SOLD\",\"homeType\":\"CONDO\",\"hdpUrl\":\"/homedetails/18645-Hatteras-St-UNIT-110-Tarzana-CA-91356/19933788_zpid/\",\"listing_sub_type\":{\"is_newHome\":false,\"is_forAuction\":false,\"is_bankOwned\":false,\"is_foreclosure\":false,\"is_FSBO\":false,\"is_comingSoon\":false},\"isUndisclosedAddress\":false,\"attributionInfo\":{\"mlsId\":\"25525371\",\"mlsName\":\"CLAW\",\"providerLogo\":null,\"agentName\":\"Esther Kim DRE # 02159916\",\"agentPhoneNumber\":null,\"brokerName\":\"PARTNERS\",\"brokerPhoneNumber\":null},\"compsCarouselPropertyPhotos\":[{\"mixedSources\":{\"jpeg\":[{\"url\":\"https://photos.zillowstatic.com/fp/db06fba718342c374bd0679bc3007386-cc_ft_192.jpg\"},{\"url\":\"https://photos.zillowstatic.com/fp/db06fba718342c374bd0679bc3007386-cc_ft_384.jpg\"},{\"url\":\"https://photos.zillowstatic.com/fp/db06fba718342c374bd0679bc3007386-cc_ft_576.jpg\"},{\"url\":\"https://photos.zillowstatic.com/fp/db06fba718342c374bd0679bc3007386-cc_ft_768.jpg\"},{\"url\":\"https://photos.zillowstatic.com/fp/db06fba718342c374bd0679bc3007386-cc_ft_960.jpg\"},{\"url\":\"https://photos.zillowstatic.com/fp/db06fba718342c374bd0679bc3007386-cc_ft_1152.jpg\"},{\"url\":\"https://photos.zillowstatic.com/fp/db06fba718342c374bd0679bc3007386-cc_ft_1344.jpg\"},{\"url\":\"https://photos.zillowstatic.com/fp/db06fba718342c374bd0679bc3007386-cc_ft_1536.jpg\"}]}}]}},{\"property\":{\"zestimate\":323300,\"lastSoldPrice\":322000,\"price\":322000,\"daysOnZillow\":44,\"dateSold\":1774915200000,\"currency\":\"USD\",\"bedrooms\":1,\"bathrooms\":1,\"livingAreaValue\":605,\"livingAreaUnits\":\"Square Feet\",\"livingAreaUnitsShort\":\"sqft\",\"lotAreaValue\":5.2818,\"lotAreaUnits\":\"Acres\",\"address\":{\"streetAddress\":\"18645 Hatteras St Unit 184\",\"city\":\"Tarzana\",\"state\":\"CA\",\"zipcode\":\"91356\"},\"latitude\":34.178,\"longitude\":-118.54014,\"zpid\":19933862,\"homeStatus\":\"RECENTLY_SOLD\",\"homeType\":\"CONDO\",\"hdpUrl\":\"/homedetails/18645-Hatteras-St-UNIT-184-Tarzana-CA-91356/19933862_zpid/\",\"listing_sub_type\":{\"is_newHome\":false,\"is_forAuction\":false,\"is_bankOwned\":false,\"is_foreclosure\":false,\"is_FSBO\":false,\"is_comingSoon\":false},\"isUndisclosedAddress\":false,\"attributionInfo\":{\"mlsId\":\"SR26046713\",\"mlsName\":\"CRMLS\",\"providerLogo\":null,\"agentName\":\"Kim Allen\",\"agentPhoneNumber\":null,\"brokerName\":\"RE/MAX One\",\"brokerPhoneNumber\":null},\"compsCarouselPropertyPhotos\":[{\"mixedSources\":{\"jpeg\":[{\"url\":\"https://photos.zillowstatic.com/fp/a3750b014c7277ddaefc1183f752f737-cc_ft_192.jpg\"},{\"url\":\"https://photos.zillowstatic.com/fp/a3750b014c7277ddaefc1183f752f737-cc_ft_384.jpg\"},{\"url\":\"https://photos.zillowstatic.com/fp/a3750b014c7277ddaefc1183f752f737-cc_ft_576.jpg\"},{\"url\":\"https://photos.zillowstatic.com/fp/a3750b014c7277ddaefc1183f752f737-cc_ft_768.jpg\"},{\"url\":\"https://photos.zillowstatic.com/fp/a3750b014c7277ddaefc1183f752f737-cc_ft_960.jpg\"},{\"url\":\"https://photos.zillowstatic.com/fp/a3750b014c7277ddaefc1183f752f737-cc_ft_1152.jpg\"},{\"url\":\"https://photos.zillowstatic.com/fp/a3750b014c7277ddaefc1183f752f737-cc_ft_1344.jpg\"},{\"url\":\"https://photos.zillowstatic.com/fp/a3750b014c7277ddaefc1183f752f737-cc_ft_1536.jpg\"}]}}]}}]}}"
+  ],
+  "isOffMarket": false,
+  "citySearchUrl": {
+    "path": "/los-angeles-ca/",
+    "text": "Homes in Los Angeles"
+  },
+  "county": "Los Angeles County",
+  "is_showcased": true,
+  "interior": {
+    "bedrooms_and_bathrooms": {
+      "bedrooms": 1,
+      "bathrooms": 1,
+      "full_bathrooms": 1,
+      "half_bathroom": "0"
+    },
+    "flooring": "Engineered Hardwood, Carpet",
+    "heating": "Central",
+    "other_interior_features": "Total structure area :758, Total interior livable area :758 sqft"
+  },
+  "overview": {
+    "days_on_zillow": 1,
+    "number_of_views": 760,
+    "number_of_saves": 60
+  },
+  "is_listed_by_management_company": false,
+  "listing_provided_by": {
+    "name": "Sierus Erdelyi, TruLine Realty, Zachary Mink, TruLine Realty",
+    "email": null,
+    "company": "TruLine Realty",
+    "phone_number": "323-389-5432, 323-389-5432, 973-270-4242"
+  },
+  "hoa_details": {
+    "has_hoa": true,
+    "hoa_fee_value": 458,
+    "hoa_fee_currency": "USD",
+    "hoa_fee_period": "monthly",
+    "services_included": null,
+    "amenities_included": [
+      "Assoc Barbecue",
+      "Clubhouse",
+      "Exercise Room",
+      "Gated",
+      "Spa/Hot Tub",
+      "Sauna",
+      "Fitness Center",
+      "Billiard Room",
+      "Pool",
+      "Gated Parking"
+    ],
+    "hoa_name": null
+  },
+  "financial": null,
+  "interior_full": [
+    {
+      "title": "Bedrooms & bathrooms",
+      "values": [
+        "Bedrooms: 1",
+        "Bathrooms: 1",
+        "Full bathrooms: 1"
+      ]
+    },
+    {
+      "title": "Heating",
+      "values": [
+        "Heating features: Central"
+      ]
+    },
+    {
+      "title": "Cooling",
+      "values": [
+        "Cooling features: Central Air"
+      ]
+    },
+    {
+      "title": "Appliances",
+      "values": [
+        "Appliances included: Disposal,Refrigerator,Freezer",
+        "Laundry features: Common Area"
+      ]
+    },
+    {
+      "title": "Features",
+      "values": [
+        "Flooring: Engineered Hardwood,Carpet",
+        "Number of fireplaces: 1",
+        "Fireplace features: Gas",
+        "Fireplace: Yes"
+      ]
+    },
+    {
+      "title": "Interior area",
+      "values": [
+        "Total structure area: 758",
+        "Total interior livable area: 758 sqft"
+      ]
+    },
+    {
+      "title": "Virtual tour",
+      "values": [
+        "View virtual tour: https://www.zillow.com/view-imx/2218e2cc-7c56-40a1-9ecc-3726338669ff?wl=true&setAttribution=mls&initialViewType=pano"
+      ]
+    }
+  ],
+  "property": [
+    {
+      "title": "Parking",
+      "values": [
+        "Total spaces: 1",
+        "Parking features: Guest,Open",
+        "Has uncovered spaces: Yes",
+        "Uncovered spaces: 1"
+      ]
+    },
+    {
+      "title": "Features",
+      "values": [
+        "Levels: One",
+        "Pool features: Community",
+        "Has view: Yes",
+        "View description: None"
+      ]
+    },
+    {
+      "title": "Lot",
+      "values": [
+        "Lot size: 5.28 Acres"
+      ]
+    },
+    {
+      "title": "Details",
+      "values": [
+        "Parcel number: 2156025214",
+        "Attached to another structure: Yes",
+        "Zoning: LAR3",
+        "Special condition: Standard"
+      ]
+    }
+  ],
+  "construction": [
+    {
+      "title": "Type & style",
+      "values": [
+        "Home type: Condo",
+        "Architectural style: Contemporary",
+        "Property subType: Residential,Condominium"
+      ]
+    },
+    {
+      "title": "Condition",
+      "values": [
+        "Year built: 1973"
+      ]
+    }
+  ],
+  "tag": null,
+  "contingent_listing_type": null,
+  "unit_number": null,
+  "unit_amenities": null,
+  "open_house_details": [
+    {
+      "open_house_day": "Monday",
+      "open_house_date": "2026-05-17T13:00:00.000Z",
+      "open_house_start_time": 1779022800000,
+      "open_house_end_time": 1779033600000,
+      "add_to_calendar_link": null
+    }
+  ],
+  "community_details": [
+    {
+      "title": "Subdivision",
+      "values": [
+        "Westcom Property Services"
+      ]
+    },
+    {
+      "title": "Security",
+      "values": [
+        "Automatic Gate"
+      ]
+    }
+  ],
+  "mls_id": "26831775",
+  "base_rent": null,
+  "sqft": null,
+  "availability_date": null,
+  "special_offer": null,
+  "originating_mls": null,
+  "tags": null,
+  "getting_around_scores": {
+    "walk_score": "77/100 | Very Walkable",
+    "transit_score": null,
+    "bike_score": "84/100 | Very Bikeable"
+  },
+  "days_on_zillow": 1,
+  "getting_around": {
+    "walk": {
+      "score": 77,
+      "description": "Very Walkable"
+    },
+    "transit": null,
+    "bike": {
+      "score": 84,
+      "description": "Very Bikeable"
+    }
+  },
+  "other": null,
+  "financial_listing_details": null,
+  "publish_url": null,
+  "climate_risks": null,
+  "num_of_contacts": null,
+  "num_of_applications": null,
+  "has_3d_tour": false,
+  "payment_breakdown": [
+    {
+      "name": "Principal & interest",
+      "value": "1510$"
+    },
+    {
+      "name": "Mortgage insurance",
+      "value": "0$"
+    },
+    {
+      "name": "Property taxes",
+      "value": "294$"
+    },
+    {
+      "name": "Home insurance",
+      "value": "100$"
+    },
+    {
+      "name": "HOA fees",
+      "value": "458"
+    },
+    {
+      "name": "Utilities",
+      "value": "Not included"
+    }
+  ],
+  "sold_to_list_ratio": 1.0033444816053512,
+  "sold_to_zestimate_ratio": 0.8472182999152782,
+  "is_flipped_within_12_months": true,
+  "timestamp": "2026-05-15T19:20:46.671Z",
+  "input": {
+    "url": "https://www.zillow.com/homedetails/18645-Hatteras-St-UNIT-285-Tarzana-CA-91356/19933969_zpid/"
+  }
+}

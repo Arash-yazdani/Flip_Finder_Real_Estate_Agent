@@ -1,0 +1,1871 @@
+{
+  "zpid": 95714544,
+  "city": "Studio City",
+  "state": "CA",
+  "homeStatus": "FOR_SALE",
+  "address": {
+    "city": "Studio City",
+    "streetAddress": "4218 Gentry Ave",
+    "zipcode": "91604",
+    "state": "CA"
+  },
+  "bedrooms": 2,
+  "bathrooms": 3,
+  "price": 1299000,
+  "yearBuilt": 2017,
+  "streetAddress": "4218 Gentry Ave",
+  "zipcode": "91604",
+  "isVerifiedClaimedByCurrentSignedInUser": "No",
+  "listingDataSource": "Phoenix",
+  "longitude": -118.39273,
+  "latitude": 34.147957,
+  "livingArea": 1650,
+  "homeType": "SINGLE_FAMILY",
+  "lotSize": 1711,
+  "lotAreaValue": 1711.908,
+  "lotAreaUnits": "Square Feet",
+  "livingAreaValue": 1650,
+  "isUndisclosedAddress": "false",
+  "rentZestimate": 5072,
+  "currency": "USD",
+  "dateSoldString": "2018-10-16",
+  "taxAssessedValue": 2225703,
+  "taxAssessedYear": 2018,
+  "country": "USA",
+  "propertyTaxRate": 1.18,
+  "photoCount": 29,
+  "isPremierBuilder": "false",
+  "ssid": 17327,
+  "hdpUrl": "https://www.zillow.com/homedetails/4218-Gentry-Ave-Studio-City-CA-91604/95714544_zpid/",
+  "tourViewCount": 0,
+  "lastSoldPrice": 1050000,
+  "hasApprovedThirdPartyVirtualTourUrl": false,
+  "description": "No shared walls, no HOA (no surprise 'special assessments' or an HOA board to deal with), and high-end finishes on this 2017 new build, 2-bedroom, 2 bath single family house! The main picture shows two of these houses side-by-side, but they are not joined. Enjoy a stunning open floorplan, a beautifully designed kitchen, and a modern contemporary living within walking distance to the intersection of Laurel Canyon and Ventura Boulevard and all shops and restaurants. With no grounds or yard, this is ideal if you're a busy professional. Located in the coveted Carpenter School district, with direct garage access and an interior charging station, as well as a massive, private rooftop deck that spans the length of the building. Entertain on summer nights or just use it as your own private oasis. A rare, move-in ready home on a beautiful street, in a stunning neighborhood.",
+  "parcelId": "2368016034",
+  "taxHistory": [
+    {
+      "time": 2018,
+      "taxPaid": 27300.99,
+      "value": 2225703,
+      "valueIncreaseRate": 0.4088529
+    },
+    {
+      "time": 2017,
+      "taxPaid": 27300.99,
+      "value": 1579798,
+      "valueIncreaseRate": 1.7674922
+    },
+    {
+      "time": 2016,
+      "taxPaid": 18948.6,
+      "value": 570841,
+      "valueIncreaseRate": 0.015248983
+    },
+    {
+      "time": 2015,
+      "taxPaid": 6899.68,
+      "value": 562267,
+      "valueIncreaseRate": 0.25226504
+    },
+    {
+      "time": 2014,
+      "taxPaid": 5570.13,
+      "value": 449000,
+      "valueIncreaseRate": 0.08454106
+    },
+    {
+      "time": 2012,
+      "value": 414000,
+      "valueIncreaseRate": 0
+    },
+    {
+      "time": 2011,
+      "value": 414000,
+      "valueIncreaseRate": -0.3816244
+    },
+    {
+      "time": 2010,
+      "value": 669496,
+      "valueIncreaseRate": -0.0023707806
+    },
+    {
+      "time": 2009,
+      "value": 671087,
+      "valueIncreaseRate": 0.019999119
+    },
+    {
+      "time": 2008,
+      "value": 657929,
+      "valueIncreaseRate": 0.0199991
+    },
+    {
+      "time": 2007,
+      "value": 645029,
+      "valueIncreaseRate": 0.019998988
+    },
+    {
+      "time": 2006,
+      "value": 632382,
+      "valueIncreaseRate": 2.2204087
+    },
+    {
+      "time": 2005,
+      "value": 196367,
+      "valueIncreaseRate": 1.5937074
+    },
+    {
+      "time": 2004,
+      "value": 75709,
+      "valueIncreaseRate": 0.018662037
+    },
+    {
+      "time": 2003,
+      "value": 74322,
+      "valueIncreaseRate": 0.019995883
+    },
+    {
+      "time": 2002,
+      "value": 72865,
+      "valueIncreaseRate": 0.040378656
+    },
+    {
+      "time": 2000,
+      "value": 70037,
+      "valueIncreaseRate": 0
+    }
+  ],
+  "priceHistory": [
+    {
+      "date": "2026-05-06",
+      "time": 1778025600000,
+      "priceChangeRate": -0.07147962830593281,
+      "event": "Price change",
+      "source": "CLAW",
+      "showCountyLink": false,
+      "postingIsRental": false,
+      "attributeSource": {
+        "infoString2": "CLAW",
+        "infoString3": "https://photos.zillowstatic.com/fp/d1d7f14ba9e5de22bbf848071a4b8b8e-zillow_web_logo_inf_11.jpg"
+      },
+      "price": 1299000,
+      "pricePerSquareFoot": 787,
+      "source_listing_id": "26718933",
+      "source_name": "CLAW"
+    },
+    {
+      "date": "2026-04-14",
+      "time": 1776124800000,
+      "priceChangeRate": 0.3323809523809524,
+      "event": "Listed for sale",
+      "source": "CLAW",
+      "showCountyLink": false,
+      "postingIsRental": false,
+      "attributeSource": {
+        "infoString2": "CLAW",
+        "infoString3": "https://photos.zillowstatic.com/fp/d1d7f14ba9e5de22bbf848071a4b8b8e-zillow_web_logo_inf_11.jpg"
+      },
+      "price": 1399000,
+      "pricePerSquareFoot": 848,
+      "source_listing_id": "26718933",
+      "source_name": "CLAW"
+    },
+    {
+      "date": "2018-10-16",
+      "time": 1539648000000,
+      "priceChangeRate": -0.19168591224018475,
+      "event": "Sold",
+      "source": "Agent Provided",
+      "showCountyLink": false,
+      "postingIsRental": false,
+      "price": 1050000,
+      "pricePerSquareFoot": 636,
+      "source_listing_id": null,
+      "source_name": null
+    },
+    {
+      "date": "2018-04-20",
+      "time": 1524182400000,
+      "priceChangeRate": 0,
+      "event": "Pending sale",
+      "source": "Keller Williams Encino-Sherman",
+      "showCountyLink": false,
+      "postingIsRental": false,
+      "price": 1299000,
+      "pricePerSquareFoot": 787,
+      "source_listing_id": "SR18091155",
+      "source_name": "Keller Williams Encino-Sherman"
+    },
+    {
+      "date": "2018-04-20",
+      "time": 1524182400000,
+      "priceChangeRate": 0,
+      "event": "Listed for sale",
+      "source": "Keller Williams Encino-Sherman",
+      "showCountyLink": false,
+      "postingIsRental": false,
+      "price": 1299000,
+      "pricePerSquareFoot": 787,
+      "source_listing_id": "SR18078655",
+      "source_name": "Keller Williams Encino-Sherman"
+    },
+    {
+      "date": "2018-04-19",
+      "time": 1524096000000,
+      "priceChangeRate": 0,
+      "event": "Pending sale",
+      "source": "Keller Williams Realty Encino-Sherman Oaks",
+      "showCountyLink": false,
+      "postingIsRental": false,
+      "price": 1299000,
+      "pricePerSquareFoot": 787,
+      "source_listing_id": "SR18078655",
+      "source_name": "Keller Williams Realty Encino-Sherman Oaks"
+    },
+    {
+      "date": "2018-04-06",
+      "time": 1522972800000,
+      "priceChangeRate": 0.25507246376811593,
+      "event": "Listed for sale",
+      "source": "Keller Williams Encino-Sherman",
+      "showCountyLink": false,
+      "postingIsRental": false,
+      "price": 1299000,
+      "pricePerSquareFoot": 787,
+      "source_listing_id": "SR18078655",
+      "source_name": "Keller Williams Encino-Sherman"
+    },
+    {
+      "date": "2014-10-23",
+      "time": 1414022400000,
+      "priceChangeRate": 0.04020100502512563,
+      "event": "Sold",
+      "source": "Agent Provided",
+      "showCountyLink": false,
+      "postingIsRental": false,
+      "price": 1035000,
+      "pricePerSquareFoot": 627,
+      "source_listing_id": null,
+      "source_name": null
+    },
+    {
+      "date": "2014-09-30",
+      "time": 1412035200000,
+      "priceChangeRate": 0,
+      "event": "Pending sale",
+      "source": "Berkshire Hathaway HomeServices California Properties",
+      "showCountyLink": false,
+      "postingIsRental": false,
+      "price": 995000,
+      "pricePerSquareFoot": 603,
+      "source_listing_id": "SR14193734",
+      "source_name": "Berkshire Hathaway HomeServices California Properties"
+    },
+    {
+      "date": "2014-09-09",
+      "time": 1410220800000,
+      "priceChangeRate": 0.4872944693572496,
+      "event": "Listed for sale",
+      "source": "Berkshire Hathaway HomeService",
+      "showCountyLink": false,
+      "postingIsRental": false,
+      "price": 995000,
+      "pricePerSquareFoot": 603,
+      "source_listing_id": "SR14193734",
+      "source_name": "Berkshire Hathaway HomeService"
+    },
+    {
+      "date": "2013-04-03",
+      "time": 1364947200000,
+      "priceChangeRate": 0,
+      "event": "Listing removed",
+      "source": "Prudential California Realty",
+      "showCountyLink": false,
+      "postingIsRental": false,
+      "price": 669000,
+      "pricePerSquareFoot": 405,
+      "source_listing_id": "SR13029476",
+      "source_name": "Prudential California Realty"
+    },
+    {
+      "date": "2013-02-24",
+      "time": 1361664000000,
+      "priceChangeRate": -0.29578947368421055,
+      "event": "Listed for sale",
+      "source": "Prudential California Realty",
+      "showCountyLink": false,
+      "postingIsRental": false,
+      "price": 669000,
+      "pricePerSquareFoot": 405,
+      "source_listing_id": "SR13029476",
+      "source_name": "Prudential California Realty"
+    },
+    {
+      "date": "2005-09-14",
+      "time": 1126656000000,
+      "priceChangeRate": 0,
+      "event": "Sold",
+      "source": "Agent Provided",
+      "showCountyLink": false,
+      "postingIsRental": false,
+      "price": 950000,
+      "pricePerSquareFoot": 576,
+      "source_listing_id": null,
+      "source_name": null
+    }
+  ],
+  "nearbyHomes": [
+    "{\"zpid\":302797998,\"isSavedByCurrentSignedInUser\":false,\"miniCardPhotos\":[\"https://maps.googleapis.com/maps/api/staticmap?mobile=false&sensor=true&maptype=satellite&size=316x234&zoom=17&center=34.14796829223633,-118.39273834228516&key=AIzaSyBWYJWCA8FNMQvSe_k3LKfDGJaEgdKwsco&&signature=ngyxn63jF2jRewXuUJSZebOxVH4=\"],\"price\":1287000,\"currency\":\"USD\",\"bedrooms\":2,\"bathrooms\":3,\"livingArea\":1650,\"livingAreaValue\":1650,\"livingAreaUnits\":\"Square Feet\",\"livingAreaUnitsShort\":\"sqft\",\"listingMetadata\":{\"comminglingCategoryIsRulesApplicable\":false},\"lotSize\":1710,\"lotAreaValue\":1710,\"lotAreaUnits\":\"Square Feet\",\"address\":{\"streetAddress\":\"4218 Gentry Ave\",\"city\":\"Studio City\",\"state\":\"CA\",\"zipcode\":\"91604\"},\"formattedChip\":{\"location\":[\"4218 Gentry Ave\"]},\"latitude\":34.14797,\"longitude\":-118.39274,\"homeStatus\":\"OTHER\",\"homeType\":\"SINGLE_FAMILY\",\"hdpUrl\":\"/homedetails/4218-Gentry-Ave-Studio-City-CA-91604/302797998_zpid/\",\"hdpTypeDimension\":\"Zestimate\",\"propertyTypeDimension\":\"Single Family\",\"listingTypeDimension\":\"Unknown Listed By\",\"listing_sub_type\":{\"is_newHome\":false,\"is_forAuction\":false,\"is_bankOwned\":false,\"is_foreclosure\":false,\"is_FSBO\":false,\"is_comingSoon\":false,\"is_FSBA\":false},\"isShowcaseListing\":false,\"isPremierBuilder\":false,\"state\":\"CA\"}",
+    "{\"zpid\":2086872657,\"isSavedByCurrentSignedInUser\":false,\"miniCardPhotos\":[\"https://maps.googleapis.com/maps/api/streetview?location=+4220+Gentry%2C+Studio+City%2C+CA+91604&size=316x234&key=AIzaSyARFMLB1na-BBWf7_R3-5YOQQaHqEJf6RQ&source=outdoor&&signature=sPAqpTMTqLDRajya1SrTbgT6SzQ=\"],\"price\":1605700,\"currency\":\"USD\",\"bedrooms\":4,\"bathrooms\":3,\"livingArea\":2300,\"livingAreaValue\":2300,\"livingAreaUnits\":\"Square Feet\",\"livingAreaUnitsShort\":\"sqft\",\"listingMetadata\":{\"comminglingCategoryIsRulesApplicable\":false},\"lotAreaUnits\":\"sqft\",\"address\":{\"streetAddress\":\"4220 Gentry\",\"city\":\"Studio City\",\"state\":\"CA\",\"zipcode\":\"91604\"},\"formattedChip\":{\"location\":[\"4220 Gentry\"]},\"latitude\":34.147987,\"longitude\":-118.392845,\"homeStatus\":\"OTHER\",\"homeType\":\"SINGLE_FAMILY\",\"hdpUrl\":\"/homedetails/4220-Gentry-Studio-City-CA-91604/2086872657_zpid/\",\"hdpTypeDimension\":\"Zestimate\",\"propertyTypeDimension\":\"Single Family\",\"listingTypeDimension\":\"Unknown Listed By\",\"listing_sub_type\":{\"is_newHome\":false,\"is_forAuction\":false,\"is_bankOwned\":false,\"is_foreclosure\":false,\"is_FSBO\":false,\"is_comingSoon\":false,\"is_FSBA\":false},\"isShowcaseListing\":false,\"isPremierBuilder\":false,\"state\":\"CA\"}",
+    "{\"zpid\":20027373,\"isSavedByCurrentSignedInUser\":false,\"miniCardPhotos\":[\"https://maps.googleapis.com/maps/api/streetview?location=4216+Gentry+Ave%2C+Studio+City%2C+CA+91604&size=316x234&key=AIzaSyARFMLB1na-BBWf7_R3-5YOQQaHqEJf6RQ&source=outdoor&&signature=LWyAtiHR7ZpD_SFR4WQF-m1iSR8=\"],\"price\":1139800,\"currency\":\"USD\",\"listingMetadata\":{\"comminglingCategoryIsRulesApplicable\":false},\"lotSize\":6919,\"lotAreaValue\":6919,\"lotAreaUnits\":\"Square Feet\",\"address\":{\"streetAddress\":\"4216 Gentry Ave\",\"city\":\"Studio City\",\"state\":\"CA\",\"zipcode\":\"91604\"},\"formattedChip\":{\"location\":[\"4216 Gentry Ave\"]},\"latitude\":34.147858,\"longitude\":-118.39285,\"homeStatus\":\"OTHER\",\"homeType\":\"MULTI_FAMILY\",\"hdpUrl\":\"/homedetails/4216-Gentry-Ave-Studio-City-CA-91604/20027373_zpid/\",\"hdpTypeDimension\":\"Zestimate\",\"propertyTypeDimension\":\"Multi Family\",\"listingTypeDimension\":\"Unknown Listed By\",\"listing_sub_type\":{\"is_newHome\":false,\"is_forAuction\":false,\"is_bankOwned\":false,\"is_foreclosure\":false,\"is_FSBO\":false,\"is_comingSoon\":false,\"is_FSBA\":false},\"isShowcaseListing\":false,\"isPremierBuilder\":false,\"state\":\"CA\"}",
+    "{\"zpid\":20027372,\"isSavedByCurrentSignedInUser\":false,\"miniCardPhotos\":[\"https://photos.zillowstatic.com/fp/f6d7cf422822c58ca29445d43a01b19f-p_c.jpg\"],\"price\":1743500,\"currency\":\"USD\",\"bedrooms\":1,\"bathrooms\":1,\"livingArea\":780,\"livingAreaValue\":780,\"livingAreaUnits\":\"Square Feet\",\"livingAreaUnitsShort\":\"sqft\",\"listingMetadata\":{\"comminglingCategoryIsRulesApplicable\":false},\"lotAreaUnits\":\"sqft\",\"address\":{\"streetAddress\":\"4224 Gentry Ave\",\"city\":\"Studio City\",\"state\":\"CA\",\"zipcode\":\"91604\"},\"formattedChip\":{\"location\":[\"4224 Gentry Ave\"]},\"latitude\":34.14813,\"longitude\":-118.392845,\"homeStatus\":\"OTHER\",\"homeType\":\"APARTMENT\",\"hdpUrl\":\"/homedetails/4224-Gentry-Ave-Studio-City-CA-91604/20027372_zpid/\",\"hdpTypeDimension\":\"Zestimate\",\"propertyTypeDimension\":\"Apartment\",\"listingTypeDimension\":\"Unknown Listed By\",\"listing_sub_type\":{\"is_newHome\":false,\"is_forAuction\":false,\"is_bankOwned\":false,\"is_foreclosure\":false,\"is_FSBO\":false,\"is_comingSoon\":false,\"is_FSBA\":false},\"providerListingID\":\"t75ev4xyyd9v\",\"isShowcaseListing\":false,\"isPremierBuilder\":false,\"state\":\"CA\"}",
+    "{\"zpid\":302798391,\"isSavedByCurrentSignedInUser\":false,\"miniCardPhotos\":[\"https://maps.googleapis.com/maps/api/staticmap?mobile=false&sensor=true&maptype=satellite&size=316x234&zoom=17&center=34.1479606628418,-118.3929672241211&key=AIzaSyBWYJWCA8FNMQvSe_k3LKfDGJaEgdKwsco&&signature=nph6GYHnB6sc_bVX3DH9GUOLNBA=\"],\"price\":1643500,\"currency\":\"USD\",\"bedrooms\":4,\"bathrooms\":4,\"livingArea\":2179,\"livingAreaValue\":2179,\"livingAreaUnits\":\"Square Feet\",\"livingAreaUnitsShort\":\"sqft\",\"listingMetadata\":{\"comminglingCategoryIsRulesApplicable\":false},\"lotSize\":1750,\"lotAreaValue\":1750,\"lotAreaUnits\":\"Square Feet\",\"address\":{\"streetAddress\":\"4220 Gentry Ave\",\"city\":\"Studio City\",\"state\":\"CA\",\"zipcode\":\"91604\"},\"formattedChip\":{\"location\":[\"4220 Gentry Ave\"]},\"latitude\":34.14796,\"longitude\":-118.39297,\"homeStatus\":\"OTHER\",\"homeType\":\"SINGLE_FAMILY\",\"hdpUrl\":\"/homedetails/4220-Gentry-Ave-Studio-City-CA-91604/302798391_zpid/\",\"hdpTypeDimension\":\"Zestimate\",\"propertyTypeDimension\":\"Single Family\",\"listingTypeDimension\":\"Unknown Listed By\",\"listing_sub_type\":{\"is_newHome\":false,\"is_forAuction\":false,\"is_bankOwned\":false,\"is_foreclosure\":false,\"is_FSBO\":false,\"is_comingSoon\":false,\"is_FSBA\":false},\"isShowcaseListing\":false,\"isPremierBuilder\":false,\"state\":\"CA\"}",
+    "{\"zpid\":443096440,\"isSavedByCurrentSignedInUser\":false,\"miniCardPhotos\":[\"https://photos.zillowstatic.com/fp/2c5cfa04c65a62d18f5c8840057d8c08-p_c.jpg\"],\"price\":0,\"currency\":\"USD\",\"bedrooms\":1,\"bathrooms\":1,\"livingArea\":1050,\"livingAreaValue\":1050,\"livingAreaUnits\":\"Square Feet\",\"livingAreaUnitsShort\":\"sqft\",\"listingMetadata\":{\"comminglingCategoryIsRulesApplicable\":false},\"lotAreaUnits\":\"sqft\",\"address\":{\"streetAddress\":\"4224 Gentry Ave #1\",\"city\":\"Studio City\",\"state\":\"CA\",\"zipcode\":\"91604\"},\"formattedChip\":{\"location\":[\"4224 Gentry Ave #1\"]},\"latitude\":34.148132,\"longitude\":-118.39286,\"homeStatus\":\"OTHER\",\"homeType\":\"APARTMENT\",\"hdpUrl\":\"/homedetails/4224-Gentry-Ave-1-Studio-City-CA-91604/443096440_zpid/\",\"hdpTypeDimension\":\"NoZestimate\",\"propertyTypeDimension\":\"Apartment\",\"listingTypeDimension\":\"Unknown Listed By\",\"listing_sub_type\":{\"is_newHome\":false,\"is_forAuction\":false,\"is_bankOwned\":false,\"is_foreclosure\":false,\"is_FSBO\":false,\"is_comingSoon\":false,\"is_FSBA\":false},\"providerListingID\":\"3q11c3rn6j1sh\",\"isShowcaseListing\":false,\"isPremierBuilder\":false,\"state\":\"CA\"}",
+    "{\"zpid\":2078454402,\"isSavedByCurrentSignedInUser\":false,\"miniCardPhotos\":[\"https://photos.zillowstatic.com/fp/2aff5135aa2ad246863b49e78a849920-p_c.jpg\"],\"price\":0,\"currency\":\"USD\",\"bedrooms\":1,\"bathrooms\":1,\"livingArea\":725,\"livingAreaValue\":725,\"livingAreaUnits\":\"Square Feet\",\"livingAreaUnitsShort\":\"sqft\",\"listingMetadata\":{\"comminglingCategoryIsRulesApplicable\":false},\"lotAreaUnits\":\"sqft\",\"address\":{\"streetAddress\":\"4224 Gentry Ave #2\",\"city\":\"Studio City\",\"state\":\"CA\",\"zipcode\":\"91604\"},\"formattedChip\":{\"location\":[\"4224 Gentry Ave #2\"]},\"latitude\":34.148132,\"longitude\":-118.39286,\"homeStatus\":\"OTHER\",\"homeType\":\"APARTMENT\",\"hdpUrl\":\"/homedetails/4224-Gentry-Ave-2-Studio-City-CA-91604/2078454402_zpid/\",\"hdpTypeDimension\":\"NoZestimate\",\"propertyTypeDimension\":\"Apartment\",\"listingTypeDimension\":\"Unknown Listed By\",\"listing_sub_type\":{\"is_newHome\":false,\"is_forAuction\":false,\"is_bankOwned\":false,\"is_foreclosure\":false,\"is_FSBO\":false,\"is_comingSoon\":false,\"is_FSBA\":false},\"providerListingID\":\"26gfeetw4u6c5\",\"isShowcaseListing\":false,\"isPremierBuilder\":false,\"state\":\"CA\"}",
+    "{\"zpid\":302796683,\"isSavedByCurrentSignedInUser\":false,\"miniCardPhotos\":[\"https://maps.googleapis.com/maps/api/staticmap?mobile=false&sensor=true&maptype=satellite&size=316x234&zoom=17&center=34.14802932739258,-118.3929672241211&key=AIzaSyBWYJWCA8FNMQvSe_k3LKfDGJaEgdKwsco&&signature=4cH6GFetAJXROQUakFt0lKO1mhY=\"],\"price\":1674200,\"currency\":\"USD\",\"bedrooms\":4,\"bathrooms\":4,\"livingArea\":2179,\"livingAreaValue\":2179,\"livingAreaUnits\":\"Square Feet\",\"livingAreaUnitsShort\":\"sqft\",\"listingMetadata\":{\"comminglingCategoryIsRulesApplicable\":false},\"lotSize\":1750,\"lotAreaValue\":1750,\"lotAreaUnits\":\"Square Feet\",\"address\":{\"streetAddress\":\"4222 Gentry Ave\",\"city\":\"Studio City\",\"state\":\"CA\",\"zipcode\":\"91604\"},\"formattedChip\":{\"location\":[\"4222 Gentry Ave\"]},\"latitude\":34.14803,\"longitude\":-118.39297,\"homeStatus\":\"OTHER\",\"homeType\":\"SINGLE_FAMILY\",\"hdpUrl\":\"/homedetails/4222-Gentry-Ave-Studio-City-CA-91604/302796683_zpid/\",\"hdpTypeDimension\":\"Zestimate\",\"propertyTypeDimension\":\"Single Family\",\"listingTypeDimension\":\"Unknown Listed By\",\"listing_sub_type\":{\"is_newHome\":false,\"is_forAuction\":false,\"is_bankOwned\":false,\"is_foreclosure\":false,\"is_FSBO\":false,\"is_comingSoon\":false,\"is_FSBA\":false},\"isShowcaseListing\":false,\"isPremierBuilder\":false,\"state\":\"CA\"}"
+  ],
+  "schools": [
+    {
+      "distance": 0.5,
+      "name": "Carpenter Community Charter School",
+      "rating": 10,
+      "grades": "K-5",
+      "link": "https://www.greatschools.org/california/studio-city/1978-Carpenter-Community-Charter-School/"
+    },
+    {
+      "distance": 0.5,
+      "name": "Walter Reed Middle School",
+      "rating": 7,
+      "grades": "6-8",
+      "link": "https://www.greatschools.org/california/north-hollywood/2341-Walter-Reed-Middle-School/"
+    },
+    {
+      "distance": 1.3,
+      "name": "North Hollywood Senior High School",
+      "rating": 8,
+      "grades": "9-12",
+      "link": "https://www.greatschools.org/california/north-hollywood/2264-North-Hollywood-Senior-High-School/"
+    }
+  ],
+  "mortgageRates": {
+    "thirtyYearFixedRate": 6.13
+  },
+  "isInstantOfferEnabled": "No",
+  "nearbyCities": [
+    {
+      "regionUrl": {
+        "path": "/glendale-ca/"
+      },
+      "name": "Glendale"
+    },
+    {
+      "regionUrl": {
+        "path": "/lancaster-ca/"
+      },
+      "name": "Lancaster"
+    },
+    {
+      "regionUrl": {
+        "path": "/long-beach-ca/"
+      },
+      "name": "Long Beach"
+    },
+    {
+      "regionUrl": {
+        "path": "/los-angeles-ca/"
+      },
+      "name": "Los Angeles"
+    },
+    {
+      "regionUrl": {
+        "path": "/palmdale-ca/"
+      },
+      "name": "Palmdale"
+    },
+    {
+      "regionUrl": {
+        "path": "/pasadena-ca/"
+      },
+      "name": "Pasadena"
+    },
+    {
+      "regionUrl": {
+        "path": "/pomona-ca/"
+      },
+      "name": "Pomona"
+    },
+    {
+      "regionUrl": {
+        "path": "/santa-clarita-ca/"
+      },
+      "name": "Santa Clarita"
+    },
+    {
+      "regionUrl": {
+        "path": "/torrance-ca/"
+      },
+      "name": "Torrance"
+    },
+    {
+      "regionUrl": {
+        "path": "/whittier-ca/"
+      },
+      "name": "Whittier"
+    }
+  ],
+  "nearbyNeighborhoods": [
+    {
+      "regionUrl": {
+        "path": "/hollywood-los-angeles-ca/"
+      },
+      "name": "Hollywood"
+    },
+    {
+      "regionUrl": {
+        "path": "/mid-city-los-angeles-ca/"
+      },
+      "name": "Mid City"
+    },
+    {
+      "regionUrl": {
+        "path": "/north-hollywood-los-angeles-ca/"
+      },
+      "name": "North Hollywood"
+    },
+    {
+      "regionUrl": {
+        "path": "/northridge-los-angeles-ca/"
+      },
+      "name": "Northridge"
+    },
+    {
+      "regionUrl": {
+        "path": "/san-pedro-los-angeles-ca/"
+      },
+      "name": "San Pedro"
+    },
+    {
+      "regionUrl": {
+        "path": "/south-los-angeles-los-angeles-ca/"
+      },
+      "name": "South Los Angeles"
+    },
+    {
+      "regionUrl": {
+        "path": "/southeast-los-angeles-los-angeles-ca/"
+      },
+      "name": "Southeast Los Angeles"
+    },
+    {
+      "regionUrl": {
+        "path": "/sylmar-los-angeles-ca/"
+      },
+      "name": "Sylmar"
+    },
+    {
+      "regionUrl": {
+        "path": "/van-nuys-los-angeles-ca/"
+      },
+      "name": "Van Nuys"
+    },
+    {
+      "regionUrl": {
+        "path": "/woodland-hills-los-angeles-ca/"
+      },
+      "name": "Woodland Hills"
+    }
+  ],
+  "nearbyZipcodes": [
+    {
+      "regionUrl": {
+        "path": "/los-angeles-ca-90003/"
+      },
+      "name": "90003"
+    },
+    {
+      "regionUrl": {
+        "path": "/los-angeles-ca-90011/"
+      },
+      "name": "90011"
+    },
+    {
+      "regionUrl": {
+        "path": "/los-angeles-ca-90026/"
+      },
+      "name": "90026"
+    },
+    {
+      "regionUrl": {
+        "path": "/los-angeles-ca-90037/"
+      },
+      "name": "90037"
+    },
+    {
+      "regionUrl": {
+        "path": "/los-angeles-ca-90044/"
+      },
+      "name": "90044"
+    },
+    {
+      "regionUrl": {
+        "path": "/los-angeles-ca-90731/"
+      },
+      "name": "90731"
+    },
+    {
+      "regionUrl": {
+        "path": "/los-angeles-ca-91331/"
+      },
+      "name": "91331"
+    },
+    {
+      "regionUrl": {
+        "path": "/los-angeles-ca-91335/"
+      },
+      "name": "91335"
+    },
+    {
+      "regionUrl": {
+        "path": "/los-angeles-ca-91342/"
+      },
+      "name": "91342"
+    },
+    {
+      "regionUrl": {
+        "path": "/los-angeles-ca-91402/"
+      },
+      "name": "91402"
+    }
+  ],
+  "abbreviatedAddress": "4218 Gentry Ave",
+  "daysOnZillow": 30,
+  "propertyTypeDimension": "Single Family",
+  "hdpTypeDimension": "ForSale",
+  "timeZone": "America/Los_Angeles",
+  "tourEligibility": {
+    "isPropertyTourEligible": true
+  },
+  "selfTour": {
+    "hasSelfTour": false
+  },
+  "photos": [
+    {
+      "mixedSources": {
+        "jpeg": [
+          {
+            "url": "https://photos.zillowstatic.com/fp/f3e1f64f07b5a8454426b4908acc39a0-cc_ft_192.jpg",
+            "width": 192
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/f3e1f64f07b5a8454426b4908acc39a0-cc_ft_384.jpg",
+            "width": 384
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/f3e1f64f07b5a8454426b4908acc39a0-cc_ft_576.jpg",
+            "width": 576
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/f3e1f64f07b5a8454426b4908acc39a0-cc_ft_768.jpg",
+            "width": 768
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/f3e1f64f07b5a8454426b4908acc39a0-cc_ft_960.jpg",
+            "width": 960
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/f3e1f64f07b5a8454426b4908acc39a0-cc_ft_1152.jpg",
+            "width": 1152
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/f3e1f64f07b5a8454426b4908acc39a0-cc_ft_1344.jpg",
+            "width": 1344
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/f3e1f64f07b5a8454426b4908acc39a0-cc_ft_1536.jpg",
+            "width": 1536
+          }
+        ]
+      }
+    },
+    {
+      "mixedSources": {
+        "jpeg": [
+          {
+            "url": "https://photos.zillowstatic.com/fp/4fa63f27ebaad30c9ea3079dbf236048-cc_ft_192.jpg",
+            "width": 192
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/4fa63f27ebaad30c9ea3079dbf236048-cc_ft_384.jpg",
+            "width": 384
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/4fa63f27ebaad30c9ea3079dbf236048-cc_ft_576.jpg",
+            "width": 576
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/4fa63f27ebaad30c9ea3079dbf236048-cc_ft_768.jpg",
+            "width": 768
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/4fa63f27ebaad30c9ea3079dbf236048-cc_ft_960.jpg",
+            "width": 960
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/4fa63f27ebaad30c9ea3079dbf236048-cc_ft_1152.jpg",
+            "width": 1152
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/4fa63f27ebaad30c9ea3079dbf236048-cc_ft_1344.jpg",
+            "width": 1344
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/4fa63f27ebaad30c9ea3079dbf236048-cc_ft_1536.jpg",
+            "width": 1536
+          }
+        ]
+      }
+    },
+    {
+      "mixedSources": {
+        "jpeg": [
+          {
+            "url": "https://photos.zillowstatic.com/fp/13307a33661feb2b59a9913907d94938-cc_ft_192.jpg",
+            "width": 192
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/13307a33661feb2b59a9913907d94938-cc_ft_384.jpg",
+            "width": 384
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/13307a33661feb2b59a9913907d94938-cc_ft_576.jpg",
+            "width": 576
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/13307a33661feb2b59a9913907d94938-cc_ft_768.jpg",
+            "width": 768
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/13307a33661feb2b59a9913907d94938-cc_ft_960.jpg",
+            "width": 960
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/13307a33661feb2b59a9913907d94938-cc_ft_1152.jpg",
+            "width": 1152
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/13307a33661feb2b59a9913907d94938-cc_ft_1344.jpg",
+            "width": 1344
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/13307a33661feb2b59a9913907d94938-cc_ft_1536.jpg",
+            "width": 1536
+          }
+        ]
+      }
+    },
+    {
+      "mixedSources": {
+        "jpeg": [
+          {
+            "url": "https://photos.zillowstatic.com/fp/640a176eec16d2815f68e6381261e2a7-cc_ft_192.jpg",
+            "width": 192
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/640a176eec16d2815f68e6381261e2a7-cc_ft_384.jpg",
+            "width": 384
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/640a176eec16d2815f68e6381261e2a7-cc_ft_576.jpg",
+            "width": 576
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/640a176eec16d2815f68e6381261e2a7-cc_ft_768.jpg",
+            "width": 768
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/640a176eec16d2815f68e6381261e2a7-cc_ft_960.jpg",
+            "width": 960
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/640a176eec16d2815f68e6381261e2a7-cc_ft_1152.jpg",
+            "width": 1152
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/640a176eec16d2815f68e6381261e2a7-cc_ft_1344.jpg",
+            "width": 1344
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/640a176eec16d2815f68e6381261e2a7-cc_ft_1536.jpg",
+            "width": 1536
+          }
+        ]
+      }
+    },
+    {
+      "mixedSources": {
+        "jpeg": [
+          {
+            "url": "https://photos.zillowstatic.com/fp/8cb213db73c0001f2b5ea1eb1b01c01d-cc_ft_192.jpg",
+            "width": 192
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/8cb213db73c0001f2b5ea1eb1b01c01d-cc_ft_384.jpg",
+            "width": 384
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/8cb213db73c0001f2b5ea1eb1b01c01d-cc_ft_576.jpg",
+            "width": 576
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/8cb213db73c0001f2b5ea1eb1b01c01d-cc_ft_768.jpg",
+            "width": 768
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/8cb213db73c0001f2b5ea1eb1b01c01d-cc_ft_960.jpg",
+            "width": 960
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/8cb213db73c0001f2b5ea1eb1b01c01d-cc_ft_1152.jpg",
+            "width": 1152
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/8cb213db73c0001f2b5ea1eb1b01c01d-cc_ft_1344.jpg",
+            "width": 1344
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/8cb213db73c0001f2b5ea1eb1b01c01d-cc_ft_1536.jpg",
+            "width": 1536
+          }
+        ]
+      }
+    },
+    {
+      "mixedSources": {
+        "jpeg": [
+          {
+            "url": "https://photos.zillowstatic.com/fp/9bc34a4ff4fc52e76ee362a1e0ded262-cc_ft_192.jpg",
+            "width": 192
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/9bc34a4ff4fc52e76ee362a1e0ded262-cc_ft_384.jpg",
+            "width": 384
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/9bc34a4ff4fc52e76ee362a1e0ded262-cc_ft_576.jpg",
+            "width": 576
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/9bc34a4ff4fc52e76ee362a1e0ded262-cc_ft_768.jpg",
+            "width": 768
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/9bc34a4ff4fc52e76ee362a1e0ded262-cc_ft_960.jpg",
+            "width": 960
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/9bc34a4ff4fc52e76ee362a1e0ded262-cc_ft_1152.jpg",
+            "width": 1152
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/9bc34a4ff4fc52e76ee362a1e0ded262-cc_ft_1344.jpg",
+            "width": 1344
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/9bc34a4ff4fc52e76ee362a1e0ded262-cc_ft_1536.jpg",
+            "width": 1536
+          }
+        ]
+      }
+    },
+    {
+      "mixedSources": {
+        "jpeg": [
+          {
+            "url": "https://photos.zillowstatic.com/fp/b7b716b91cbea195d30b994a09979157-cc_ft_192.jpg",
+            "width": 192
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/b7b716b91cbea195d30b994a09979157-cc_ft_384.jpg",
+            "width": 384
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/b7b716b91cbea195d30b994a09979157-cc_ft_576.jpg",
+            "width": 576
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/b7b716b91cbea195d30b994a09979157-cc_ft_768.jpg",
+            "width": 768
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/b7b716b91cbea195d30b994a09979157-cc_ft_960.jpg",
+            "width": 960
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/b7b716b91cbea195d30b994a09979157-cc_ft_1152.jpg",
+            "width": 1152
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/b7b716b91cbea195d30b994a09979157-cc_ft_1344.jpg",
+            "width": 1344
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/b7b716b91cbea195d30b994a09979157-cc_ft_1536.jpg",
+            "width": 1536
+          }
+        ]
+      }
+    },
+    {
+      "mixedSources": {
+        "jpeg": [
+          {
+            "url": "https://photos.zillowstatic.com/fp/0347e41f2eb89bbd42fe34d0e2ff3ae5-cc_ft_192.jpg",
+            "width": 192
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/0347e41f2eb89bbd42fe34d0e2ff3ae5-cc_ft_384.jpg",
+            "width": 384
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/0347e41f2eb89bbd42fe34d0e2ff3ae5-cc_ft_576.jpg",
+            "width": 576
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/0347e41f2eb89bbd42fe34d0e2ff3ae5-cc_ft_768.jpg",
+            "width": 768
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/0347e41f2eb89bbd42fe34d0e2ff3ae5-cc_ft_960.jpg",
+            "width": 960
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/0347e41f2eb89bbd42fe34d0e2ff3ae5-cc_ft_1152.jpg",
+            "width": 1152
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/0347e41f2eb89bbd42fe34d0e2ff3ae5-cc_ft_1344.jpg",
+            "width": 1344
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/0347e41f2eb89bbd42fe34d0e2ff3ae5-cc_ft_1536.jpg",
+            "width": 1536
+          }
+        ]
+      }
+    },
+    {
+      "mixedSources": {
+        "jpeg": [
+          {
+            "url": "https://photos.zillowstatic.com/fp/99fcc15e086d7d7570553b2393d34edb-cc_ft_192.jpg",
+            "width": 192
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/99fcc15e086d7d7570553b2393d34edb-cc_ft_384.jpg",
+            "width": 384
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/99fcc15e086d7d7570553b2393d34edb-cc_ft_576.jpg",
+            "width": 576
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/99fcc15e086d7d7570553b2393d34edb-cc_ft_768.jpg",
+            "width": 768
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/99fcc15e086d7d7570553b2393d34edb-cc_ft_960.jpg",
+            "width": 960
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/99fcc15e086d7d7570553b2393d34edb-cc_ft_1152.jpg",
+            "width": 1152
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/99fcc15e086d7d7570553b2393d34edb-cc_ft_1344.jpg",
+            "width": 1344
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/99fcc15e086d7d7570553b2393d34edb-cc_ft_1536.jpg",
+            "width": 1536
+          }
+        ]
+      }
+    },
+    {
+      "mixedSources": {
+        "jpeg": [
+          {
+            "url": "https://photos.zillowstatic.com/fp/660d4688fa5033623278c5799e08e550-cc_ft_192.jpg",
+            "width": 192
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/660d4688fa5033623278c5799e08e550-cc_ft_384.jpg",
+            "width": 384
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/660d4688fa5033623278c5799e08e550-cc_ft_576.jpg",
+            "width": 576
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/660d4688fa5033623278c5799e08e550-cc_ft_768.jpg",
+            "width": 768
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/660d4688fa5033623278c5799e08e550-cc_ft_960.jpg",
+            "width": 960
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/660d4688fa5033623278c5799e08e550-cc_ft_1152.jpg",
+            "width": 1152
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/660d4688fa5033623278c5799e08e550-cc_ft_1344.jpg",
+            "width": 1344
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/660d4688fa5033623278c5799e08e550-cc_ft_1536.jpg",
+            "width": 1536
+          }
+        ]
+      }
+    },
+    {
+      "mixedSources": {
+        "jpeg": [
+          {
+            "url": "https://photos.zillowstatic.com/fp/71ef03e2a5ff112eef717d9b492c8dea-cc_ft_192.jpg",
+            "width": 192
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/71ef03e2a5ff112eef717d9b492c8dea-cc_ft_384.jpg",
+            "width": 384
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/71ef03e2a5ff112eef717d9b492c8dea-cc_ft_576.jpg",
+            "width": 576
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/71ef03e2a5ff112eef717d9b492c8dea-cc_ft_768.jpg",
+            "width": 768
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/71ef03e2a5ff112eef717d9b492c8dea-cc_ft_960.jpg",
+            "width": 960
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/71ef03e2a5ff112eef717d9b492c8dea-cc_ft_1152.jpg",
+            "width": 1152
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/71ef03e2a5ff112eef717d9b492c8dea-cc_ft_1344.jpg",
+            "width": 1344
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/71ef03e2a5ff112eef717d9b492c8dea-cc_ft_1536.jpg",
+            "width": 1536
+          }
+        ]
+      }
+    },
+    {
+      "mixedSources": {
+        "jpeg": [
+          {
+            "url": "https://photos.zillowstatic.com/fp/53aefb0759daf9bcb7057090bfd25e63-cc_ft_192.jpg",
+            "width": 192
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/53aefb0759daf9bcb7057090bfd25e63-cc_ft_384.jpg",
+            "width": 384
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/53aefb0759daf9bcb7057090bfd25e63-cc_ft_576.jpg",
+            "width": 576
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/53aefb0759daf9bcb7057090bfd25e63-cc_ft_768.jpg",
+            "width": 768
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/53aefb0759daf9bcb7057090bfd25e63-cc_ft_960.jpg",
+            "width": 960
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/53aefb0759daf9bcb7057090bfd25e63-cc_ft_1152.jpg",
+            "width": 1152
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/53aefb0759daf9bcb7057090bfd25e63-cc_ft_1344.jpg",
+            "width": 1344
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/53aefb0759daf9bcb7057090bfd25e63-cc_ft_1536.jpg",
+            "width": 1536
+          }
+        ]
+      }
+    },
+    {
+      "mixedSources": {
+        "jpeg": [
+          {
+            "url": "https://photos.zillowstatic.com/fp/e225883315320e689d43d76e81e97bb4-cc_ft_192.jpg",
+            "width": 192
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/e225883315320e689d43d76e81e97bb4-cc_ft_384.jpg",
+            "width": 384
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/e225883315320e689d43d76e81e97bb4-cc_ft_576.jpg",
+            "width": 576
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/e225883315320e689d43d76e81e97bb4-cc_ft_768.jpg",
+            "width": 768
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/e225883315320e689d43d76e81e97bb4-cc_ft_960.jpg",
+            "width": 960
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/e225883315320e689d43d76e81e97bb4-cc_ft_1152.jpg",
+            "width": 1152
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/e225883315320e689d43d76e81e97bb4-cc_ft_1344.jpg",
+            "width": 1344
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/e225883315320e689d43d76e81e97bb4-cc_ft_1536.jpg",
+            "width": 1536
+          }
+        ]
+      }
+    },
+    {
+      "mixedSources": {
+        "jpeg": [
+          {
+            "url": "https://photos.zillowstatic.com/fp/c5d9c9a498cca9e3aa381de5f1d86203-cc_ft_192.jpg",
+            "width": 192
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/c5d9c9a498cca9e3aa381de5f1d86203-cc_ft_384.jpg",
+            "width": 384
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/c5d9c9a498cca9e3aa381de5f1d86203-cc_ft_576.jpg",
+            "width": 576
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/c5d9c9a498cca9e3aa381de5f1d86203-cc_ft_768.jpg",
+            "width": 768
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/c5d9c9a498cca9e3aa381de5f1d86203-cc_ft_960.jpg",
+            "width": 960
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/c5d9c9a498cca9e3aa381de5f1d86203-cc_ft_1152.jpg",
+            "width": 1152
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/c5d9c9a498cca9e3aa381de5f1d86203-cc_ft_1344.jpg",
+            "width": 1344
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/c5d9c9a498cca9e3aa381de5f1d86203-cc_ft_1536.jpg",
+            "width": 1536
+          }
+        ]
+      }
+    },
+    {
+      "mixedSources": {
+        "jpeg": [
+          {
+            "url": "https://photos.zillowstatic.com/fp/45cf6d116715911bb837701d6acf9737-cc_ft_192.jpg",
+            "width": 192
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/45cf6d116715911bb837701d6acf9737-cc_ft_384.jpg",
+            "width": 384
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/45cf6d116715911bb837701d6acf9737-cc_ft_576.jpg",
+            "width": 576
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/45cf6d116715911bb837701d6acf9737-cc_ft_768.jpg",
+            "width": 768
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/45cf6d116715911bb837701d6acf9737-cc_ft_960.jpg",
+            "width": 960
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/45cf6d116715911bb837701d6acf9737-cc_ft_1152.jpg",
+            "width": 1152
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/45cf6d116715911bb837701d6acf9737-cc_ft_1344.jpg",
+            "width": 1344
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/45cf6d116715911bb837701d6acf9737-cc_ft_1536.jpg",
+            "width": 1536
+          }
+        ]
+      }
+    },
+    {
+      "mixedSources": {
+        "jpeg": [
+          {
+            "url": "https://photos.zillowstatic.com/fp/75b473afadf553198246964271a794d8-cc_ft_192.jpg",
+            "width": 192
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/75b473afadf553198246964271a794d8-cc_ft_384.jpg",
+            "width": 384
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/75b473afadf553198246964271a794d8-cc_ft_576.jpg",
+            "width": 576
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/75b473afadf553198246964271a794d8-cc_ft_768.jpg",
+            "width": 768
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/75b473afadf553198246964271a794d8-cc_ft_960.jpg",
+            "width": 960
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/75b473afadf553198246964271a794d8-cc_ft_1152.jpg",
+            "width": 1152
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/75b473afadf553198246964271a794d8-cc_ft_1344.jpg",
+            "width": 1344
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/75b473afadf553198246964271a794d8-cc_ft_1536.jpg",
+            "width": 1536
+          }
+        ]
+      }
+    },
+    {
+      "mixedSources": {
+        "jpeg": [
+          {
+            "url": "https://photos.zillowstatic.com/fp/54ea59555142ab140065b8799bb1d296-cc_ft_192.jpg",
+            "width": 192
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/54ea59555142ab140065b8799bb1d296-cc_ft_384.jpg",
+            "width": 384
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/54ea59555142ab140065b8799bb1d296-cc_ft_576.jpg",
+            "width": 576
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/54ea59555142ab140065b8799bb1d296-cc_ft_768.jpg",
+            "width": 768
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/54ea59555142ab140065b8799bb1d296-cc_ft_960.jpg",
+            "width": 960
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/54ea59555142ab140065b8799bb1d296-cc_ft_1152.jpg",
+            "width": 1152
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/54ea59555142ab140065b8799bb1d296-cc_ft_1344.jpg",
+            "width": 1344
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/54ea59555142ab140065b8799bb1d296-cc_ft_1536.jpg",
+            "width": 1536
+          }
+        ]
+      }
+    },
+    {
+      "mixedSources": {
+        "jpeg": [
+          {
+            "url": "https://photos.zillowstatic.com/fp/c89021244430f37645648aa4839d4bbb-cc_ft_192.jpg",
+            "width": 192
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/c89021244430f37645648aa4839d4bbb-cc_ft_384.jpg",
+            "width": 384
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/c89021244430f37645648aa4839d4bbb-cc_ft_576.jpg",
+            "width": 576
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/c89021244430f37645648aa4839d4bbb-cc_ft_768.jpg",
+            "width": 768
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/c89021244430f37645648aa4839d4bbb-cc_ft_960.jpg",
+            "width": 960
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/c89021244430f37645648aa4839d4bbb-cc_ft_1152.jpg",
+            "width": 1152
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/c89021244430f37645648aa4839d4bbb-cc_ft_1344.jpg",
+            "width": 1344
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/c89021244430f37645648aa4839d4bbb-cc_ft_1536.jpg",
+            "width": 1536
+          }
+        ]
+      }
+    },
+    {
+      "mixedSources": {
+        "jpeg": [
+          {
+            "url": "https://photos.zillowstatic.com/fp/b855dba8c7e0fe4ac86fd12f0ea2cccc-cc_ft_192.jpg",
+            "width": 192
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/b855dba8c7e0fe4ac86fd12f0ea2cccc-cc_ft_384.jpg",
+            "width": 384
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/b855dba8c7e0fe4ac86fd12f0ea2cccc-cc_ft_576.jpg",
+            "width": 576
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/b855dba8c7e0fe4ac86fd12f0ea2cccc-cc_ft_768.jpg",
+            "width": 768
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/b855dba8c7e0fe4ac86fd12f0ea2cccc-cc_ft_960.jpg",
+            "width": 960
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/b855dba8c7e0fe4ac86fd12f0ea2cccc-cc_ft_1152.jpg",
+            "width": 1152
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/b855dba8c7e0fe4ac86fd12f0ea2cccc-cc_ft_1344.jpg",
+            "width": 1344
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/b855dba8c7e0fe4ac86fd12f0ea2cccc-cc_ft_1536.jpg",
+            "width": 1536
+          }
+        ]
+      }
+    },
+    {
+      "mixedSources": {
+        "jpeg": [
+          {
+            "url": "https://photos.zillowstatic.com/fp/c8aa4f84388b95094e8e6432e488c1c3-cc_ft_192.jpg",
+            "width": 192
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/c8aa4f84388b95094e8e6432e488c1c3-cc_ft_384.jpg",
+            "width": 384
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/c8aa4f84388b95094e8e6432e488c1c3-cc_ft_576.jpg",
+            "width": 576
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/c8aa4f84388b95094e8e6432e488c1c3-cc_ft_768.jpg",
+            "width": 768
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/c8aa4f84388b95094e8e6432e488c1c3-cc_ft_960.jpg",
+            "width": 960
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/c8aa4f84388b95094e8e6432e488c1c3-cc_ft_1152.jpg",
+            "width": 1152
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/c8aa4f84388b95094e8e6432e488c1c3-cc_ft_1344.jpg",
+            "width": 1344
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/c8aa4f84388b95094e8e6432e488c1c3-cc_ft_1536.jpg",
+            "width": 1536
+          }
+        ]
+      }
+    },
+    {
+      "mixedSources": {
+        "jpeg": [
+          {
+            "url": "https://photos.zillowstatic.com/fp/a3e78e70b678113e9b7fcd94063ccc3a-cc_ft_192.jpg",
+            "width": 192
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/a3e78e70b678113e9b7fcd94063ccc3a-cc_ft_384.jpg",
+            "width": 384
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/a3e78e70b678113e9b7fcd94063ccc3a-cc_ft_576.jpg",
+            "width": 576
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/a3e78e70b678113e9b7fcd94063ccc3a-cc_ft_768.jpg",
+            "width": 768
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/a3e78e70b678113e9b7fcd94063ccc3a-cc_ft_960.jpg",
+            "width": 960
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/a3e78e70b678113e9b7fcd94063ccc3a-cc_ft_1152.jpg",
+            "width": 1152
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/a3e78e70b678113e9b7fcd94063ccc3a-cc_ft_1344.jpg",
+            "width": 1344
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/a3e78e70b678113e9b7fcd94063ccc3a-cc_ft_1536.jpg",
+            "width": 1536
+          }
+        ]
+      }
+    },
+    {
+      "mixedSources": {
+        "jpeg": [
+          {
+            "url": "https://photos.zillowstatic.com/fp/5bf33f80bf8e567b19bb74a793f103ff-cc_ft_192.jpg",
+            "width": 192
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/5bf33f80bf8e567b19bb74a793f103ff-cc_ft_384.jpg",
+            "width": 384
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/5bf33f80bf8e567b19bb74a793f103ff-cc_ft_576.jpg",
+            "width": 576
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/5bf33f80bf8e567b19bb74a793f103ff-cc_ft_768.jpg",
+            "width": 768
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/5bf33f80bf8e567b19bb74a793f103ff-cc_ft_960.jpg",
+            "width": 960
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/5bf33f80bf8e567b19bb74a793f103ff-cc_ft_1152.jpg",
+            "width": 1152
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/5bf33f80bf8e567b19bb74a793f103ff-cc_ft_1344.jpg",
+            "width": 1344
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/5bf33f80bf8e567b19bb74a793f103ff-cc_ft_1536.jpg",
+            "width": 1536
+          }
+        ]
+      }
+    },
+    {
+      "mixedSources": {
+        "jpeg": [
+          {
+            "url": "https://photos.zillowstatic.com/fp/383320750b4ac4351806902df0fabf98-cc_ft_192.jpg",
+            "width": 192
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/383320750b4ac4351806902df0fabf98-cc_ft_384.jpg",
+            "width": 384
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/383320750b4ac4351806902df0fabf98-cc_ft_576.jpg",
+            "width": 576
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/383320750b4ac4351806902df0fabf98-cc_ft_768.jpg",
+            "width": 768
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/383320750b4ac4351806902df0fabf98-cc_ft_960.jpg",
+            "width": 960
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/383320750b4ac4351806902df0fabf98-cc_ft_1152.jpg",
+            "width": 1152
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/383320750b4ac4351806902df0fabf98-cc_ft_1344.jpg",
+            "width": 1344
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/383320750b4ac4351806902df0fabf98-cc_ft_1536.jpg",
+            "width": 1536
+          }
+        ]
+      }
+    },
+    {
+      "mixedSources": {
+        "jpeg": [
+          {
+            "url": "https://photos.zillowstatic.com/fp/22a98e67d99cba126381ad498720cdd1-cc_ft_192.jpg",
+            "width": 192
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/22a98e67d99cba126381ad498720cdd1-cc_ft_384.jpg",
+            "width": 384
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/22a98e67d99cba126381ad498720cdd1-cc_ft_576.jpg",
+            "width": 576
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/22a98e67d99cba126381ad498720cdd1-cc_ft_768.jpg",
+            "width": 768
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/22a98e67d99cba126381ad498720cdd1-cc_ft_960.jpg",
+            "width": 960
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/22a98e67d99cba126381ad498720cdd1-cc_ft_1152.jpg",
+            "width": 1152
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/22a98e67d99cba126381ad498720cdd1-cc_ft_1344.jpg",
+            "width": 1344
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/22a98e67d99cba126381ad498720cdd1-cc_ft_1536.jpg",
+            "width": 1536
+          }
+        ]
+      }
+    },
+    {
+      "mixedSources": {
+        "jpeg": [
+          {
+            "url": "https://photos.zillowstatic.com/fp/d73fd8357802843ba0365f404e61e6e6-cc_ft_192.jpg",
+            "width": 192
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/d73fd8357802843ba0365f404e61e6e6-cc_ft_384.jpg",
+            "width": 384
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/d73fd8357802843ba0365f404e61e6e6-cc_ft_576.jpg",
+            "width": 576
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/d73fd8357802843ba0365f404e61e6e6-cc_ft_768.jpg",
+            "width": 768
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/d73fd8357802843ba0365f404e61e6e6-cc_ft_960.jpg",
+            "width": 960
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/d73fd8357802843ba0365f404e61e6e6-cc_ft_1152.jpg",
+            "width": 1152
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/d73fd8357802843ba0365f404e61e6e6-cc_ft_1344.jpg",
+            "width": 1344
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/d73fd8357802843ba0365f404e61e6e6-cc_ft_1536.jpg",
+            "width": 1536
+          }
+        ]
+      }
+    },
+    {
+      "mixedSources": {
+        "jpeg": [
+          {
+            "url": "https://photos.zillowstatic.com/fp/a3bc7d2caaa58eaa0536745fbf5f85ec-cc_ft_192.jpg",
+            "width": 192
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/a3bc7d2caaa58eaa0536745fbf5f85ec-cc_ft_384.jpg",
+            "width": 384
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/a3bc7d2caaa58eaa0536745fbf5f85ec-cc_ft_576.jpg",
+            "width": 576
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/a3bc7d2caaa58eaa0536745fbf5f85ec-cc_ft_768.jpg",
+            "width": 768
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/a3bc7d2caaa58eaa0536745fbf5f85ec-cc_ft_960.jpg",
+            "width": 960
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/a3bc7d2caaa58eaa0536745fbf5f85ec-cc_ft_1152.jpg",
+            "width": 1152
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/a3bc7d2caaa58eaa0536745fbf5f85ec-cc_ft_1344.jpg",
+            "width": 1344
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/a3bc7d2caaa58eaa0536745fbf5f85ec-cc_ft_1536.jpg",
+            "width": 1536
+          }
+        ]
+      }
+    },
+    {
+      "mixedSources": {
+        "jpeg": [
+          {
+            "url": "https://photos.zillowstatic.com/fp/4bcd5bbaf38531ebd81beed9fe65c71e-cc_ft_192.jpg",
+            "width": 192
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/4bcd5bbaf38531ebd81beed9fe65c71e-cc_ft_384.jpg",
+            "width": 384
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/4bcd5bbaf38531ebd81beed9fe65c71e-cc_ft_576.jpg",
+            "width": 576
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/4bcd5bbaf38531ebd81beed9fe65c71e-cc_ft_768.jpg",
+            "width": 768
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/4bcd5bbaf38531ebd81beed9fe65c71e-cc_ft_960.jpg",
+            "width": 960
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/4bcd5bbaf38531ebd81beed9fe65c71e-cc_ft_1152.jpg",
+            "width": 1152
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/4bcd5bbaf38531ebd81beed9fe65c71e-cc_ft_1344.jpg",
+            "width": 1344
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/4bcd5bbaf38531ebd81beed9fe65c71e-cc_ft_1536.jpg",
+            "width": 1536
+          }
+        ]
+      }
+    },
+    {
+      "mixedSources": {
+        "jpeg": [
+          {
+            "url": "https://photos.zillowstatic.com/fp/d2452857f09aff3f909acb85b32910e1-cc_ft_192.jpg",
+            "width": 192
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/d2452857f09aff3f909acb85b32910e1-cc_ft_384.jpg",
+            "width": 384
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/d2452857f09aff3f909acb85b32910e1-cc_ft_576.jpg",
+            "width": 576
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/d2452857f09aff3f909acb85b32910e1-cc_ft_768.jpg",
+            "width": 768
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/d2452857f09aff3f909acb85b32910e1-cc_ft_960.jpg",
+            "width": 960
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/d2452857f09aff3f909acb85b32910e1-cc_ft_1152.jpg",
+            "width": 1152
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/d2452857f09aff3f909acb85b32910e1-cc_ft_1344.jpg",
+            "width": 1344
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/d2452857f09aff3f909acb85b32910e1-cc_ft_1536.jpg",
+            "width": 1536
+          }
+        ]
+      }
+    },
+    {
+      "mixedSources": {
+        "jpeg": [
+          {
+            "url": "https://photos.zillowstatic.com/fp/ea7f8c6eca72274e7e3e860e09b23d57-cc_ft_192.jpg",
+            "width": 192
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/ea7f8c6eca72274e7e3e860e09b23d57-cc_ft_384.jpg",
+            "width": 384
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/ea7f8c6eca72274e7e3e860e09b23d57-cc_ft_576.jpg",
+            "width": 576
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/ea7f8c6eca72274e7e3e860e09b23d57-cc_ft_768.jpg",
+            "width": 768
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/ea7f8c6eca72274e7e3e860e09b23d57-cc_ft_960.jpg",
+            "width": 960
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/ea7f8c6eca72274e7e3e860e09b23d57-cc_ft_1152.jpg",
+            "width": 1152
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/ea7f8c6eca72274e7e3e860e09b23d57-cc_ft_1344.jpg",
+            "width": 1344
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/ea7f8c6eca72274e7e3e860e09b23d57-cc_ft_1536.jpg",
+            "width": 1536
+          }
+        ]
+      }
+    }
+  ],
+  "utilities": [],
+  "url": "https://www.zillow.com/homedetails/4218-Gentry-Ave-Studio-City-CA-91604/95714544_zpid/",
+  "countyFIPS": "06037",
+  "countyID": "3101",
+  "dateSold": "2018-10-16T00:00:00.000Z",
+  "listingTypeDimension": "For Sale by Agent",
+  "homeValuation": [
+    "{\"comparables\":null}"
+  ],
+  "isOffMarket": false,
+  "citySearchUrl": {
+    "path": "/los-angeles-ca/",
+    "text": "Homes in Los Angeles"
+  },
+  "county": "Los Angeles County",
+  "is_showcased": false,
+  "interior": {
+    "bedrooms_and_bathrooms": {
+      "bedrooms": 2,
+      "bathrooms": 3,
+      "full_bathrooms": 3,
+      "half_bathroom": "0"
+    },
+    "flooring": "Laminate, Hardwood",
+    "heating": "Central",
+    "other_interior_features": "Total structure area :1,650, Total interior livable area :1,650 sqft"
+  },
+  "overview": {
+    "days_on_zillow": 30,
+    "number_of_views": 1619,
+    "number_of_saves": 78
+  },
+  "is_listed_by_management_company": false,
+  "listing_provided_by": {
+    "name": "Aric Cushing/ Ascent",
+    "email": null,
+    "company": "Meridian Capital Real Estate",
+    "phone_number": "323-493-1159"
+  },
+  "hoa_details": {
+    "has_hoa": false,
+    "hoa_fee_value": null,
+    "hoa_fee_currency": null,
+    "hoa_fee_period": null,
+    "services_included": null,
+    "amenities_included": null,
+    "hoa_name": null
+  },
+  "financial": null,
+  "interior_full": [
+    {
+      "title": "Bedrooms & bathrooms",
+      "values": [
+        "Bedrooms: 2",
+        "Bathrooms: 3",
+        "Full bathrooms: 3"
+      ]
+    },
+    {
+      "title": "Heating",
+      "values": [
+        "Heating features: Central"
+      ]
+    },
+    {
+      "title": "Cooling",
+      "values": [
+        "Cooling features: Central Air"
+      ]
+    },
+    {
+      "title": "Appliances",
+      "values": [
+        "Appliances included: Dishwasher,Dryer",
+        "Laundry features: Laundry Closet,Gas Or Electric Dryer Hookup"
+      ]
+    },
+    {
+      "title": "Features",
+      "values": [
+        "Built-Ins",
+        "Flooring: Laminate,Hardwood",
+        "Fireplace features: None"
+      ]
+    },
+    {
+      "title": "Interior area",
+      "values": [
+        "Total structure area: 1,650",
+        "Total interior livable area: 1,650 sqft"
+      ]
+    }
+  ],
+  "property": [
+    {
+      "title": "Parking",
+      "values": [
+        "Total spaces: 2",
+        "Parking features: Secured,Attached,Direct Access",
+        "Has garage: Yes",
+        "Attached garage spaces: 2",
+        "Covered spaces: 2"
+      ]
+    },
+    {
+      "title": "Features",
+      "values": [
+        "Levels: Multi/Split",
+        "Pool features: None",
+        "Spa features: None",
+        "Has view: Yes",
+        "View description: City Lights"
+      ]
+    },
+    {
+      "title": "Lot",
+      "values": [
+        "Lot size: 1,711 sqft"
+      ]
+    },
+    {
+      "title": "Details",
+      "values": [
+        "Parcel number: 2368016034",
+        "Zoning: LARD1.5",
+        "Special condition: Standard"
+      ]
+    }
+  ],
+  "construction": [
+    {
+      "title": "Type & style",
+      "values": [
+        "Home type: SingleFamily",
+        "Architectural style: Contemporary",
+        "Property subType: Residential,Single Family Residence"
+      ]
+    },
+    {
+      "title": "Condition",
+      "values": [
+        "Year built: 2017"
+      ]
+    }
+  ],
+  "tag": null,
+  "contingent_listing_type": null,
+  "unit_number": null,
+  "unit_amenities": null,
+  "open_house_details": null,
+  "community_details": null,
+  "mls_id": "26718933",
+  "base_rent": null,
+  "sqft": null,
+  "availability_date": null,
+  "special_offer": null,
+  "originating_mls": null,
+  "tags": [
+    "For sale"
+  ],
+  "getting_around_scores": {
+    "walk_score": "87/100 | Very Walkable",
+    "transit_score": null,
+    "bike_score": "55/100 | Bikeable"
+  },
+  "days_on_zillow": 30,
+  "getting_around": {
+    "walk": {
+      "score": 87,
+      "description": "Very Walkable"
+    },
+    "transit": null,
+    "bike": {
+      "score": 55,
+      "description": "Bikeable"
+    }
+  },
+  "other": null,
+  "financial_listing_details": null,
+  "publish_url": null,
+  "climate_risks": null,
+  "num_of_contacts": null,
+  "num_of_applications": null,
+  "has_3d_tour": false,
+  "payment_breakdown": [
+    {
+      "name": "Principal & interest",
+      "value": "6318$"
+    },
+    {
+      "name": "Mortgage insurance",
+      "value": "0$"
+    },
+    {
+      "name": "Property taxes",
+      "value": "1277$"
+    },
+    {
+      "name": "Home insurance",
+      "value": "433$"
+    },
+    {
+      "name": "HOA fees",
+      "value": "N/A"
+    },
+    {
+      "name": "Utilities",
+      "value": "Not included"
+    }
+  ],
+  "sold_to_list_ratio": 0.8083140877598153,
+  "sold_to_zestimate_ratio": null,
+  "is_flipped_within_12_months": true,
+  "timestamp": "2026-05-14T20:27:48.718Z",
+  "input": {
+    "url": "https://www.zillow.com/homedetails/4218-Gentry-Ave-Studio-City-CA-91604/95714544_zpid/"
+  }
+}

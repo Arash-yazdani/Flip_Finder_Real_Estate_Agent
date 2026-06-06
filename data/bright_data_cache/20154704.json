@@ -1,0 +1,1984 @@
+{
+  "zpid": 20154704,
+  "city": "Porter Ranch",
+  "state": "CA",
+  "homeStatus": "FOR_SALE",
+  "address": {
+    "city": "Porter Ranch",
+    "streetAddress": "11311 Tampa Ave Unit 12",
+    "zipcode": "91326",
+    "state": "CA"
+  },
+  "isListingClaimedByCurrentSignedInUser": "false",
+  "isCurrentSignedInAgentResponsible": "false",
+  "bedrooms": 3,
+  "bathrooms": 3,
+  "price": 599000,
+  "yearBuilt": 1974,
+  "streetAddress": "11311 Tampa Ave Unit 12",
+  "zipcode": "91326",
+  "isCurrentSignedInUserVerifiedOwner": "false",
+  "isVerifiedClaimedByCurrentSignedInUser": "No",
+  "listingDataSource": "Phoenix",
+  "longitude": -118.55876,
+  "latitude": 34.27625,
+  "hasBadGeocode": false,
+  "livingArea": 1250,
+  "homeType": "TOWNHOUSE",
+  "lotSize": 153701,
+  "lotAreaValue": 3.5285,
+  "lotAreaUnits": "Acres",
+  "livingAreaValue": 1250,
+  "livingAreaUnitsShort": "sqft",
+  "isUndisclosedAddress": "false",
+  "zestimate": 594600,
+  "rentZestimate": 3548,
+  "currency": "USD",
+  "dateSoldString": "2021-01-19",
+  "taxAssessedValue": 552038,
+  "taxAssessedYear": 2025,
+  "country": "USA",
+  "propertyTaxRate": 1.18,
+  "photoCount": 28,
+  "isPremierBuilder": "false",
+  "ssid": 3,
+  "hdpUrl": "https://www.zillow.com/homedetails/11311-Tampa-Ave-UNIT-12-Porter-Ranch-CA-91326/20154704_zpid/",
+  "tourViewCount": 0,
+  "lastSoldPrice": 510000,
+  "livingAreaUnits": "Square Feet",
+  "zestimateMinus30": "0",
+  "restimateMinus30": "3786",
+  "zestimateLowPercent": "5",
+  "zestimateHighPercent": "5",
+  "description": "Renovated 3-bedroom, 2-bathroom townhome-style condo in Porter Ranch, located north of Rinaldi Street in the Porter Ranch community of Los Angeles. This turnkey two-level residence features an open-concept main floor with a remodeled kitchen, white shaker cabinetry, quartz countertops, a glass tile backsplash, stainless steel gas range, microwave, and dishwasher. The kitchen opens to a combined living and dining great room with luxury vinyl plank flooring, recessed lighting, and a sliding glass door to a private paver patio with built-in bench seating.\r\r\n\r\r\nUpstairs, the primary bedroom includes a walk-in closet and mirrored sliding closet doors. Two additional bedrooms offer hillside and treetop views through large windows, ample closet space, and the same wood-look flooring found throughout. Both full bathrooms are updated with quartz vanities, shaker cabinetry, framed mirrors, and tub-shower combinations with sliding glass enclosures. A separate interior entry off the kitchen connects to the garage and laundry area.\r\r\n\r\r\nThe home sits within an HOA community in Porter Ranch with a swimming pool and is served by the Castlebay Lane Charter and Robert Frost Middle school. Residents are minutes from the Vineyards at Porter Ranch shopping center, Porter Ranch Town Center, Aliso Canyon Park, and the 118 Freeway, with quick access to Northridge and the greater San Fernando Valley.\r\r\n\r\r\nMove-in ready and low-maintenance, this updated Porter Ranch condo offers a turnkey opportunity in one of the northern San Fernando Valley's most established hillside communities.",
+  "parcelId": "2701005019",
+  "taxHistory": [
+    {
+      "time": 2025,
+      "taxPaid": 6791.78,
+      "value": 552038,
+      "valueIncreaseRate": 0.019999482
+    },
+    {
+      "time": 2024,
+      "taxPaid": 6714.21,
+      "value": 541214,
+      "valueIncreaseRate": 0.019998003
+    },
+    {
+      "time": 2023,
+      "taxPaid": 6585.34,
+      "value": 530603,
+      "valueIncreaseRate": 0.019998077
+    },
+    {
+      "time": 2022,
+      "taxPaid": 6278.7,
+      "value": 520200,
+      "valueIncreaseRate": 0.57137334
+    },
+    {
+      "time": 2021,
+      "taxPaid": 6244.37,
+      "value": 331048,
+      "valueIncreaseRate": 0.010358488
+    },
+    {
+      "time": 2020,
+      "taxPaid": 4135.45,
+      "value": 327654,
+      "valueIncreaseRate": 0.019998131
+    },
+    {
+      "time": 2019,
+      "taxPaid": 4135.45,
+      "value": 321230,
+      "valueIncreaseRate": 0.019994728
+    },
+    {
+      "time": 2018,
+      "taxPaid": 3929.24,
+      "value": 314933,
+      "valueIncreaseRate": 0.019996177
+    },
+    {
+      "time": 2017,
+      "taxPaid": 3929.24,
+      "value": 308759,
+      "valueIncreaseRate": 0.0199963
+    },
+    {
+      "time": 2016,
+      "taxPaid": 3842.34,
+      "value": 302706,
+      "valueIncreaseRate": 0.015246848
+    },
+    {
+      "time": 2015,
+      "taxPaid": 3747.81,
+      "value": 298160,
+      "valueIncreaseRate": 0.019978106
+    },
+    {
+      "time": 2014,
+      "taxPaid": 3712.16,
+      "value": 292320,
+      "valueIncreaseRate": 0.16741215
+    },
+    {
+      "time": 2012,
+      "value": 250400,
+      "valueIncreaseRate": 0.019552277
+    },
+    {
+      "time": 2011,
+      "value": 245598,
+      "valueIncreaseRate": 0.0075236703
+    },
+    {
+      "time": 2010,
+      "value": 243764,
+      "valueIncreaseRate": -0.0023737026
+    },
+    {
+      "time": 2009,
+      "value": 244344,
+      "valueIncreaseRate": 0.019995492
+    },
+    {
+      "time": 2008,
+      "value": 239554,
+      "valueIncreaseRate": 0.019995062
+    },
+    {
+      "time": 2007,
+      "value": 234858,
+      "valueIncreaseRate": 0.01999531
+    },
+    {
+      "time": 2006,
+      "value": 230254,
+      "valueIncreaseRate": 0
+    },
+    {
+      "time": 2005,
+      "value": 230254,
+      "valueIncreaseRate": 0.040390395
+    },
+    {
+      "time": 2004,
+      "value": 221315,
+      "valueIncreaseRate": 0.018664273
+    },
+    {
+      "time": 2003,
+      "value": 217260,
+      "valueIncreaseRate": 0.3513463
+    },
+    {
+      "time": 2002,
+      "value": 160773,
+      "valueIncreaseRate": 0.04039319
+    },
+    {
+      "time": 2000,
+      "value": 154531,
+      "valueIncreaseRate": 0
+    }
+  ],
+  "priceHistory": [
+    {
+      "date": "2026-06-03",
+      "time": 1780444800000,
+      "priceChangeRate": 0.17450980392156862,
+      "event": "Listed for sale",
+      "source": "CRMLS",
+      "showCountyLink": false,
+      "postingIsRental": false,
+      "attributeSource": {
+        "infoString2": "CRMLS",
+        "infoString3": "https://photos.zillowstatic.com/fp/cb8caaa629c0af2058e60add67b2f2ee-zillow_web_logo_inf_11.jpg"
+      },
+      "price": 599000,
+      "pricePerSquareFoot": 479,
+      "source_listing_id": "SR26121160",
+      "source_name": "CRMLS"
+    },
+    {
+      "date": "2021-01-19",
+      "time": 1611014400000,
+      "priceChangeRate": 0.040922543116644554,
+      "event": "Sold",
+      "source": "CRISNet / SRAR",
+      "showCountyLink": false,
+      "postingIsRental": false,
+      "attributeSource": {
+        "infoString2": "CRISNet / SRAR"
+      },
+      "price": 510000,
+      "pricePerSquareFoot": 408,
+      "source_listing_id": "SR20228865",
+      "source_name": "CRISNet / SRAR"
+    },
+    {
+      "date": "2021-01-02",
+      "time": 1609545600000,
+      "priceChangeRate": 0,
+      "event": "Pending sale",
+      "source": "RE/MAX One",
+      "showCountyLink": false,
+      "postingIsRental": false,
+      "attributeSource": {
+        "infoString2": "RE/MAX One"
+      },
+      "price": 489950,
+      "pricePerSquareFoot": 392,
+      "source_listing_id": "SR20228865",
+      "source_name": "RE/MAX One"
+    },
+    {
+      "date": "2020-12-31",
+      "time": 1609372800000,
+      "priceChangeRate": 0,
+      "event": "Contingent",
+      "source": "Local MLS",
+      "showCountyLink": false,
+      "postingIsRental": false,
+      "attributeSource": {
+        "infoString2": "Local MLS",
+        "infoString3": "https://photos.zillowstatic.com/fp/cd5a1d62fa18a5e74fcc3dc6aed90a23-zillow_web_logo_inf_11.jpg"
+      },
+      "price": 489950,
+      "pricePerSquareFoot": 392,
+      "source_listing_id": "SR20228865",
+      "source_name": "Local MLS"
+    },
+    {
+      "date": "2020-11-15",
+      "time": 1605398400000,
+      "priceChangeRate": 0.6836769759450172,
+      "event": "Listed for sale",
+      "source": "RE/MAX One",
+      "showCountyLink": false,
+      "postingIsRental": false,
+      "attributeSource": {
+        "infoString2": "RE/MAX One"
+      },
+      "price": 489950,
+      "pricePerSquareFoot": 392,
+      "source_listing_id": "SR20228865",
+      "source_name": "RE/MAX One"
+    },
+    {
+      "date": "2018-01-09",
+      "time": 1515456000000,
+      "priceChangeRate": 0,
+      "event": "Listing removed",
+      "source": "The Olson Agency",
+      "showCountyLink": false,
+      "postingIsRental": true,
+      "attributeSource": {
+        "infoString2": "The Olson Agency"
+      },
+      "price": 2600,
+      "pricePerSquareFoot": 2,
+      "source_listing_id": "SR17279484",
+      "source_name": "The Olson Agency"
+    },
+    {
+      "date": "2017-12-27",
+      "time": 1514332800000,
+      "priceChangeRate": 0,
+      "event": "Listed for rent",
+      "source": "The Olson Agency",
+      "showCountyLink": false,
+      "postingIsRental": true,
+      "attributeSource": {
+        "infoString2": "The Olson Agency"
+      },
+      "price": 2600,
+      "pricePerSquareFoot": 2,
+      "source_listing_id": "SR17279484",
+      "source_name": "The Olson Agency"
+    },
+    {
+      "date": "2012-12-19",
+      "time": 1355875200000,
+      "priceChangeRate": 0.0037944118661607453,
+      "event": "Sold",
+      "source": "Public Record",
+      "showCountyLink": false,
+      "postingIsRental": false,
+      "attributeSource": {
+        "infoString2": "Public Record"
+      },
+      "price": 291000,
+      "pricePerSquareFoot": 233,
+      "source_listing_id": null,
+      "source_name": "Public Record"
+    },
+    {
+      "date": "2012-09-27",
+      "time": 1348704000000,
+      "priceChangeRate": -0.0169548999660902,
+      "event": "Price change",
+      "source": "Pinnacle Estate Properties,In",
+      "showCountyLink": false,
+      "postingIsRental": false,
+      "attributeSource": {
+        "infoString2": "Pinnacle Estate Properties,In"
+      },
+      "price": 289900,
+      "pricePerSquareFoot": 232,
+      "source_listing_id": "F12086792",
+      "source_name": "Pinnacle Estate Properties,In"
+    },
+    {
+      "date": "2012-08-15",
+      "time": 1344988800000,
+      "priceChangeRate": -0.1643525077925758,
+      "event": "Price change",
+      "source": "Pinnacle Estate Properties,In",
+      "showCountyLink": false,
+      "postingIsRental": false,
+      "attributeSource": {
+        "infoString2": "Pinnacle Estate Properties,In"
+      },
+      "price": 294900,
+      "pricePerSquareFoot": 236,
+      "source_listing_id": "F12086792",
+      "source_name": "Pinnacle Estate Properties,In"
+    },
+    {
+      "date": "2012-07-13",
+      "time": 1342137600000,
+      "priceChangeRate": 0.7139388052452647,
+      "event": "Listed for sale",
+      "source": "Homepath",
+      "showCountyLink": false,
+      "postingIsRental": false,
+      "attributeSource": {
+        "infoString2": "Homepath"
+      },
+      "price": 352900,
+      "pricePerSquareFoot": 282,
+      "source_listing_id": "F12086792",
+      "source_name": "Homepath"
+    },
+    {
+      "date": "2012-06-10",
+      "time": 1339286400000,
+      "priceChangeRate": 0,
+      "event": "Listing removed",
+      "source": "Homepath",
+      "showCountyLink": false,
+      "postingIsRental": false,
+      "attributeSource": {
+        "infoString2": "Homepath"
+      },
+      "pricePerSquareFoot": 0,
+      "source_listing_id": null,
+      "source_name": "Homepath"
+    },
+    {
+      "date": "2012-06-07",
+      "time": 1339027200000,
+      "priceChangeRate": 0,
+      "event": "Listed for sale",
+      "source": "Homepath",
+      "showCountyLink": false,
+      "postingIsRental": false,
+      "attributeSource": {
+        "infoString2": "Homepath"
+      },
+      "pricePerSquareFoot": 0,
+      "source_listing_id": null,
+      "source_name": "Homepath"
+    },
+    {
+      "date": "2011-07-20",
+      "time": 1311120000000,
+      "priceChangeRate": -0.03333333333333333,
+      "event": "Sold",
+      "source": "Public Record",
+      "showCountyLink": false,
+      "postingIsRental": false,
+      "attributeSource": {
+        "infoString2": "Public Record"
+      },
+      "price": 205900,
+      "pricePerSquareFoot": 165,
+      "source_listing_id": null,
+      "source_name": "Public Record"
+    },
+    {
+      "date": "2002-03-13",
+      "time": 1015977600000,
+      "priceChangeRate": 0,
+      "event": "Sold",
+      "source": "Public Record",
+      "showCountyLink": false,
+      "postingIsRental": false,
+      "attributeSource": {
+        "infoString2": "Public Record"
+      },
+      "price": 213000,
+      "pricePerSquareFoot": 170,
+      "source_listing_id": null,
+      "source_name": "Public Record"
+    }
+  ],
+  "nearbyHomes": [
+    "{\"zpid\":20154693,\"isSavedByCurrentSignedInUser\":false,\"miniCardPhotos\":[\"https://photos.zillowstatic.com/fp/75ff1293e16713a6175bf819343f0c88-p_c.jpg\"],\"price\":637900,\"currency\":\"USD\",\"bedrooms\":4,\"bathrooms\":3,\"livingArea\":1413,\"livingAreaValue\":1413,\"livingAreaUnits\":\"Square Feet\",\"livingAreaUnitsShort\":\"sqft\",\"listingMetadata\":{\"comminglingCategoryIsRulesApplicable\":false},\"lotSize\":153651,\"lotAreaValue\":3.527341597796143,\"lotAreaUnits\":\"Acres\",\"address\":{\"streetAddress\":\"11311 Tampa Ave UNIT 1\",\"city\":\"Porter Ranch\",\"state\":\"CA\",\"zipcode\":\"91326\"},\"formattedChip\":{\"location\":[\"11311 Tampa Ave UNIT 1\"]},\"latitude\":34.27651,\"longitude\":-118.55897,\"homeStatus\":\"OTHER\",\"homeType\":\"CONDO\",\"hdpUrl\":\"/homedetails/11311-Tampa-Ave-UNIT-1-Porter-Ranch-CA-91326/20154693_zpid/\",\"hdpTypeDimension\":\"Zestimate\",\"propertyTypeDimension\":\"Condo\",\"listingTypeDimension\":\"Unknown Listed By\",\"listing_sub_type\":{\"is_newHome\":false,\"is_forAuction\":false,\"is_bankOwned\":false,\"is_foreclosure\":false,\"is_FSBO\":false,\"is_comingSoon\":false,\"is_FSBA\":false},\"isShowcaseListing\":false,\"isPremierBuilder\":false,\"state\":\"CA\"}",
+    "{\"zpid\":20154694,\"isSavedByCurrentSignedInUser\":false,\"miniCardPhotos\":[\"https://maps.googleapis.com/maps/api/streetview?location=11311+Tampa+Ave%2C+Porter+Ranch%2C+CA+91326&size=316x234&key=AIzaSyARFMLB1na-BBWf7_R3-5YOQQaHqEJf6RQ&source=outdoor&&signature=ypJ3RV5Vey8DJQfQu0SHEJdM-GM=\"],\"price\":612200,\"currency\":\"USD\",\"bedrooms\":3,\"bathrooms\":3,\"livingArea\":1250,\"livingAreaValue\":1250,\"livingAreaUnits\":\"Square Feet\",\"livingAreaUnitsShort\":\"sqft\",\"listingMetadata\":{\"comminglingCategoryIsRulesApplicable\":false},\"lotSize\":153651,\"lotAreaValue\":3.527341597796143,\"lotAreaUnits\":\"Acres\",\"address\":{\"streetAddress\":\"11311 Tampa Ave UNIT 2\",\"city\":\"Porter Ranch\",\"state\":\"CA\",\"zipcode\":\"91326\"},\"formattedChip\":{\"location\":[\"11311 Tampa Ave UNIT 2\"]},\"latitude\":34.27651,\"longitude\":-118.55897,\"homeStatus\":\"OTHER\",\"homeType\":\"CONDO\",\"hdpUrl\":\"/homedetails/11311-Tampa-Ave-UNIT-2-Porter-Ranch-CA-91326/20154694_zpid/\",\"hdpTypeDimension\":\"Zestimate\",\"propertyTypeDimension\":\"Condo\",\"listingTypeDimension\":\"Unknown Listed By\",\"listing_sub_type\":{\"is_newHome\":false,\"is_forAuction\":false,\"is_bankOwned\":false,\"is_foreclosure\":false,\"is_FSBO\":false,\"is_comingSoon\":false,\"is_FSBA\":false},\"isShowcaseListing\":false,\"isPremierBuilder\":false,\"state\":\"CA\"}",
+    "{\"zpid\":20154695,\"isSavedByCurrentSignedInUser\":false,\"miniCardPhotos\":[\"https://maps.googleapis.com/maps/api/streetview?location=11311+Tampa+Ave%2C+Porter+Ranch%2C+CA+91326&size=316x234&key=AIzaSyARFMLB1na-BBWf7_R3-5YOQQaHqEJf6RQ&source=outdoor&&signature=ypJ3RV5Vey8DJQfQu0SHEJdM-GM=\"],\"price\":629100,\"currency\":\"USD\",\"bedrooms\":3,\"bathrooms\":3,\"livingArea\":1242,\"livingAreaValue\":1242,\"livingAreaUnits\":\"Square Feet\",\"livingAreaUnitsShort\":\"sqft\",\"listingMetadata\":{\"comminglingCategoryIsRulesApplicable\":false},\"lotSize\":153651,\"lotAreaValue\":3.527341597796143,\"lotAreaUnits\":\"Acres\",\"address\":{\"streetAddress\":\"11311 Tampa Ave UNIT 3\",\"city\":\"Porter Ranch\",\"state\":\"CA\",\"zipcode\":\"91326\"},\"formattedChip\":{\"location\":[\"11311 Tampa Ave UNIT 3\"]},\"latitude\":34.27651,\"longitude\":-118.55897,\"homeStatus\":\"OTHER\",\"homeType\":\"CONDO\",\"hdpUrl\":\"/homedetails/11311-Tampa-Ave-UNIT-3-Porter-Ranch-CA-91326/20154695_zpid/\",\"hdpTypeDimension\":\"Zestimate\",\"propertyTypeDimension\":\"Condo\",\"listingTypeDimension\":\"Unknown Listed By\",\"listing_sub_type\":{\"is_newHome\":false,\"is_forAuction\":false,\"is_bankOwned\":false,\"is_foreclosure\":false,\"is_FSBO\":false,\"is_comingSoon\":false,\"is_FSBA\":false},\"isShowcaseListing\":false,\"isPremierBuilder\":false,\"state\":\"CA\"}",
+    "{\"zpid\":20154696,\"isSavedByCurrentSignedInUser\":false,\"miniCardPhotos\":[\"https://maps.googleapis.com/maps/api/streetview?location=11311+Tampa+Ave%2C+Porter+Ranch%2C+CA+91326&size=316x234&key=AIzaSyARFMLB1na-BBWf7_R3-5YOQQaHqEJf6RQ&source=outdoor&&signature=ypJ3RV5Vey8DJQfQu0SHEJdM-GM=\"],\"price\":564400,\"currency\":\"USD\",\"bedrooms\":3,\"bathrooms\":2,\"livingArea\":1242,\"livingAreaValue\":1242,\"livingAreaUnits\":\"Square Feet\",\"livingAreaUnitsShort\":\"sqft\",\"listingMetadata\":{\"comminglingCategoryIsRulesApplicable\":false},\"lotSize\":153766,\"lotAreaValue\":3.529981634527089,\"lotAreaUnits\":\"Acres\",\"address\":{\"streetAddress\":\"11311 Tampa Ave UNIT 4\",\"city\":\"Porter Ranch\",\"state\":\"CA\",\"zipcode\":\"91326\"},\"formattedChip\":{\"location\":[\"11311 Tampa Ave UNIT 4\"]},\"latitude\":34.27651,\"longitude\":-118.55897,\"homeStatus\":\"OTHER\",\"homeType\":\"TOWNHOUSE\",\"hdpUrl\":\"/homedetails/11311-Tampa-Ave-UNIT-4-Porter-Ranch-CA-91326/20154696_zpid/\",\"hdpTypeDimension\":\"Zestimate\",\"propertyTypeDimension\":\"Townhouse\",\"listingTypeDimension\":\"Unknown Listed By\",\"listing_sub_type\":{\"is_newHome\":false,\"is_forAuction\":false,\"is_bankOwned\":false,\"is_foreclosure\":false,\"is_FSBO\":false,\"is_comingSoon\":false,\"is_FSBA\":false},\"isShowcaseListing\":false,\"isPremierBuilder\":false,\"state\":\"CA\"}",
+    "{\"zpid\":20154697,\"isSavedByCurrentSignedInUser\":false,\"miniCardPhotos\":[\"https://maps.googleapis.com/maps/api/streetview?location=11311+Tampa+Ave%2C+Porter+Ranch%2C+CA+91326&size=316x234&key=AIzaSyARFMLB1na-BBWf7_R3-5YOQQaHqEJf6RQ&source=outdoor&&signature=ypJ3RV5Vey8DJQfQu0SHEJdM-GM=\"],\"price\":591500,\"currency\":\"USD\",\"bedrooms\":3,\"bathrooms\":3,\"livingArea\":1250,\"livingAreaValue\":1250,\"livingAreaUnits\":\"Square Feet\",\"livingAreaUnitsShort\":\"sqft\",\"listingMetadata\":{\"comminglingCategoryIsRulesApplicable\":false},\"lotSize\":153651,\"lotAreaValue\":3.527341597796143,\"lotAreaUnits\":\"Acres\",\"address\":{\"streetAddress\":\"11311 Tampa Ave UNIT 5\",\"city\":\"Porter Ranch\",\"state\":\"CA\",\"zipcode\":\"91326\"},\"formattedChip\":{\"location\":[\"11311 Tampa Ave UNIT 5\"]},\"latitude\":34.27651,\"longitude\":-118.55897,\"homeStatus\":\"OTHER\",\"homeType\":\"CONDO\",\"hdpUrl\":\"/homedetails/11311-Tampa-Ave-UNIT-5-Porter-Ranch-CA-91326/20154697_zpid/\",\"hdpTypeDimension\":\"Zestimate\",\"propertyTypeDimension\":\"Condo\",\"listingTypeDimension\":\"Unknown Listed By\",\"listing_sub_type\":{\"is_newHome\":false,\"is_forAuction\":false,\"is_bankOwned\":false,\"is_foreclosure\":false,\"is_FSBO\":false,\"is_comingSoon\":false,\"is_FSBA\":false},\"isShowcaseListing\":false,\"isPremierBuilder\":false,\"state\":\"CA\"}",
+    "{\"zpid\":20154698,\"isSavedByCurrentSignedInUser\":false,\"miniCardPhotos\":[\"https://maps.googleapis.com/maps/api/streetview?location=11311+Tampa+Ave%2C+Porter+Ranch%2C+CA+91326&size=316x234&key=AIzaSyARFMLB1na-BBWf7_R3-5YOQQaHqEJf6RQ&source=outdoor&&signature=ypJ3RV5Vey8DJQfQu0SHEJdM-GM=\"],\"price\":642500,\"currency\":\"USD\",\"bedrooms\":3,\"bathrooms\":3,\"livingArea\":1242,\"livingAreaValue\":1242,\"livingAreaUnits\":\"Square Feet\",\"livingAreaUnitsShort\":\"sqft\",\"listingMetadata\":{\"comminglingCategoryIsRulesApplicable\":false},\"lotSize\":3071,\"lotAreaValue\":3071,\"lotAreaUnits\":\"Square Feet\",\"address\":{\"streetAddress\":\"11311 Tampa Ave UNIT 6\",\"city\":\"Porter Ranch\",\"state\":\"CA\",\"zipcode\":\"91326\"},\"formattedChip\":{\"location\":[\"11311 Tampa Ave UNIT 6\"]},\"latitude\":34.27651,\"longitude\":-118.55897,\"homeStatus\":\"OTHER\",\"homeType\":\"TOWNHOUSE\",\"hdpUrl\":\"/homedetails/11311-Tampa-Ave-UNIT-6-Porter-Ranch-CA-91326/20154698_zpid/\",\"hdpTypeDimension\":\"Zestimate\",\"propertyTypeDimension\":\"Townhouse\",\"listingTypeDimension\":\"Unknown Listed By\",\"listing_sub_type\":{\"is_newHome\":false,\"is_forAuction\":false,\"is_bankOwned\":false,\"is_foreclosure\":false,\"is_FSBO\":false,\"is_comingSoon\":false,\"is_FSBA\":false},\"isShowcaseListing\":false,\"isPremierBuilder\":false,\"state\":\"CA\"}",
+    "{\"zpid\":20154699,\"isSavedByCurrentSignedInUser\":false,\"miniCardPhotos\":[\"https://maps.googleapis.com/maps/api/streetview?location=11311+Tampa+Ave%2C+Porter+Ranch%2C+CA+91326&size=316x234&key=AIzaSyARFMLB1na-BBWf7_R3-5YOQQaHqEJf6RQ&source=outdoor&&signature=ypJ3RV5Vey8DJQfQu0SHEJdM-GM=\"],\"price\":580600,\"currency\":\"USD\",\"bedrooms\":3,\"bathrooms\":3,\"livingArea\":1250,\"livingAreaValue\":1250,\"livingAreaUnits\":\"Square Feet\",\"livingAreaUnitsShort\":\"sqft\",\"listingMetadata\":{\"comminglingCategoryIsRulesApplicable\":false},\"lotSize\":153651,\"lotAreaValue\":3.527341597796143,\"lotAreaUnits\":\"Acres\",\"address\":{\"streetAddress\":\"11311 Tampa Ave UNIT 7\",\"city\":\"Porter Ranch\",\"state\":\"CA\",\"zipcode\":\"91326\"},\"formattedChip\":{\"location\":[\"11311 Tampa Ave UNIT 7\"]},\"latitude\":34.27651,\"longitude\":-118.55897,\"homeStatus\":\"OTHER\",\"homeType\":\"CONDO\",\"hdpUrl\":\"/homedetails/11311-Tampa-Ave-UNIT-7-Porter-Ranch-CA-91326/20154699_zpid/\",\"hdpTypeDimension\":\"Zestimate\",\"propertyTypeDimension\":\"Condo\",\"listingTypeDimension\":\"Unknown Listed By\",\"listing_sub_type\":{\"is_newHome\":false,\"is_forAuction\":false,\"is_bankOwned\":false,\"is_foreclosure\":false,\"is_FSBO\":false,\"is_comingSoon\":false,\"is_FSBA\":false},\"isShowcaseListing\":false,\"isPremierBuilder\":false,\"state\":\"CA\"}",
+    "{\"zpid\":20154700,\"isSavedByCurrentSignedInUser\":false,\"miniCardPhotos\":[\"https://photos.zillowstatic.com/fp/069d5ea907a0ff49bc6fa8bb0822d142-p_c.jpg\"],\"price\":658200,\"currency\":\"USD\",\"bedrooms\":3,\"bathrooms\":3,\"livingArea\":1413,\"livingAreaValue\":1413,\"livingAreaUnits\":\"Square Feet\",\"livingAreaUnitsShort\":\"sqft\",\"listingMetadata\":{\"comminglingCategoryIsRulesApplicable\":false},\"lotSize\":153766,\"lotAreaValue\":3.529981634527089,\"lotAreaUnits\":\"Acres\",\"address\":{\"streetAddress\":\"11311 Tampa Ave UNIT 8\",\"city\":\"Porter Ranch\",\"state\":\"CA\",\"zipcode\":\"91326\"},\"formattedChip\":{\"location\":[\"11311 Tampa Ave UNIT 8\"]},\"latitude\":34.27651,\"longitude\":-118.55897,\"homeStatus\":\"OTHER\",\"homeType\":\"TOWNHOUSE\",\"hdpUrl\":\"/homedetails/11311-Tampa-Ave-UNIT-8-Porter-Ranch-CA-91326/20154700_zpid/\",\"hdpTypeDimension\":\"Zestimate\",\"propertyTypeDimension\":\"Townhouse\",\"listingTypeDimension\":\"Unknown Listed By\",\"listing_sub_type\":{\"is_newHome\":false,\"is_forAuction\":false,\"is_bankOwned\":false,\"is_foreclosure\":false,\"is_FSBO\":false,\"is_comingSoon\":false,\"is_FSBA\":false},\"isShowcaseListing\":false,\"isPremierBuilder\":false,\"state\":\"CA\"}"
+  ],
+  "schools": [
+    {
+      "distance": 1.4,
+      "name": "Castlebay Lane Charter School",
+      "rating": 10,
+      "grades": "K-5",
+      "link": "https://www.greatschools.org/california/porter-ranch/1985-Castlebay-Lane-Charter-School/"
+    },
+    {
+      "distance": 3,
+      "name": "Robert Frost Middle School",
+      "rating": 9,
+      "grades": "6-8",
+      "link": "https://www.greatschools.org/california/granada-hills/2092-Robert-Frost-Middle-School/"
+    },
+    {
+      "distance": 2.9,
+      "name": "Northridge Academy High",
+      "rating": 6,
+      "grades": "9-12",
+      "link": "https://www.greatschools.org/california/northridge/13658-Northridge-Academy-High/"
+    }
+  ],
+  "mortgageRates": {
+    "thirtyYearFixedRate": 6.49
+  },
+  "isInstantOfferEnabled": "No",
+  "nearbyCities": [
+    {
+      "regionUrl": {
+        "path": "/glendale-ca/"
+      },
+      "name": "Glendale"
+    },
+    {
+      "regionUrl": {
+        "path": "/lancaster-ca/"
+      },
+      "name": "Lancaster"
+    },
+    {
+      "regionUrl": {
+        "path": "/long-beach-ca/"
+      },
+      "name": "Long Beach"
+    },
+    {
+      "regionUrl": {
+        "path": "/los-angeles-ca/"
+      },
+      "name": "Los Angeles"
+    },
+    {
+      "regionUrl": {
+        "path": "/palmdale-ca/"
+      },
+      "name": "Palmdale"
+    },
+    {
+      "regionUrl": {
+        "path": "/pasadena-ca/"
+      },
+      "name": "Pasadena"
+    },
+    {
+      "regionUrl": {
+        "path": "/pomona-ca/"
+      },
+      "name": "Pomona"
+    },
+    {
+      "regionUrl": {
+        "path": "/santa-clarita-ca/"
+      },
+      "name": "Santa Clarita"
+    },
+    {
+      "regionUrl": {
+        "path": "/torrance-ca/"
+      },
+      "name": "Torrance"
+    },
+    {
+      "regionUrl": {
+        "path": "/whittier-ca/"
+      },
+      "name": "Whittier"
+    }
+  ],
+  "nearbyNeighborhoods": [
+    {
+      "regionUrl": {
+        "path": "/hollywood-los-angeles-ca/"
+      },
+      "name": "Hollywood"
+    },
+    {
+      "regionUrl": {
+        "path": "/mid-city-los-angeles-ca/"
+      },
+      "name": "Mid City"
+    },
+    {
+      "regionUrl": {
+        "path": "/north-hollywood-los-angeles-ca/"
+      },
+      "name": "North Hollywood"
+    },
+    {
+      "regionUrl": {
+        "path": "/northridge-los-angeles-ca/"
+      },
+      "name": "Northridge"
+    },
+    {
+      "regionUrl": {
+        "path": "/san-pedro-los-angeles-ca/"
+      },
+      "name": "San Pedro"
+    },
+    {
+      "regionUrl": {
+        "path": "/south-los-angeles-los-angeles-ca/"
+      },
+      "name": "South Los Angeles"
+    },
+    {
+      "regionUrl": {
+        "path": "/southeast-los-angeles-los-angeles-ca/"
+      },
+      "name": "Southeast Los Angeles"
+    },
+    {
+      "regionUrl": {
+        "path": "/sylmar-los-angeles-ca/"
+      },
+      "name": "Sylmar"
+    },
+    {
+      "regionUrl": {
+        "path": "/van-nuys-los-angeles-ca/"
+      },
+      "name": "Van Nuys"
+    },
+    {
+      "regionUrl": {
+        "path": "/woodland-hills-los-angeles-ca/"
+      },
+      "name": "Woodland Hills"
+    }
+  ],
+  "nearbyZipcodes": [
+    {
+      "regionUrl": {
+        "path": "/los-angeles-ca-90003/"
+      },
+      "name": "90003"
+    },
+    {
+      "regionUrl": {
+        "path": "/los-angeles-ca-90011/"
+      },
+      "name": "90011"
+    },
+    {
+      "regionUrl": {
+        "path": "/los-angeles-ca-90026/"
+      },
+      "name": "90026"
+    },
+    {
+      "regionUrl": {
+        "path": "/los-angeles-ca-90037/"
+      },
+      "name": "90037"
+    },
+    {
+      "regionUrl": {
+        "path": "/los-angeles-ca-90044/"
+      },
+      "name": "90044"
+    },
+    {
+      "regionUrl": {
+        "path": "/los-angeles-ca-90731/"
+      },
+      "name": "90731"
+    },
+    {
+      "regionUrl": {
+        "path": "/los-angeles-ca-91331/"
+      },
+      "name": "91331"
+    },
+    {
+      "regionUrl": {
+        "path": "/los-angeles-ca-91335/"
+      },
+      "name": "91335"
+    },
+    {
+      "regionUrl": {
+        "path": "/los-angeles-ca-91342/"
+      },
+      "name": "91342"
+    },
+    {
+      "regionUrl": {
+        "path": "/los-angeles-ca-91402/"
+      },
+      "name": "91402"
+    }
+  ],
+  "abbreviatedAddress": "11311 Tampa Ave Unit 12",
+  "daysOnZillow": 3,
+  "brokerageName": "Equity Union",
+  "propertyTypeDimension": "Townhouse",
+  "hdpTypeDimension": "ForSale",
+  "timeZone": "America/Los_Angeles",
+  "selfTour": {
+    "hasSelfTour": false
+  },
+  "photos": [
+    {
+      "mixedSources": {
+        "jpeg": [
+          {
+            "url": "https://photos.zillowstatic.com/fp/3f37a3e0ebb6deb90bdd901092ebc5ad-cc_ft_192.jpg",
+            "width": 192
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/3f37a3e0ebb6deb90bdd901092ebc5ad-cc_ft_384.jpg",
+            "width": 384
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/3f37a3e0ebb6deb90bdd901092ebc5ad-cc_ft_576.jpg",
+            "width": 576
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/3f37a3e0ebb6deb90bdd901092ebc5ad-cc_ft_768.jpg",
+            "width": 768
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/3f37a3e0ebb6deb90bdd901092ebc5ad-cc_ft_960.jpg",
+            "width": 960
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/3f37a3e0ebb6deb90bdd901092ebc5ad-cc_ft_1152.jpg",
+            "width": 1152
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/3f37a3e0ebb6deb90bdd901092ebc5ad-cc_ft_1344.jpg",
+            "width": 1344
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/3f37a3e0ebb6deb90bdd901092ebc5ad-cc_ft_1536.jpg",
+            "width": 1536
+          }
+        ]
+      }
+    },
+    {
+      "mixedSources": {
+        "jpeg": [
+          {
+            "url": "https://photos.zillowstatic.com/fp/c275b4f0e3ac4a483d4d13f317e405f3-cc_ft_192.jpg",
+            "width": 192
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/c275b4f0e3ac4a483d4d13f317e405f3-cc_ft_384.jpg",
+            "width": 384
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/c275b4f0e3ac4a483d4d13f317e405f3-cc_ft_576.jpg",
+            "width": 576
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/c275b4f0e3ac4a483d4d13f317e405f3-cc_ft_768.jpg",
+            "width": 768
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/c275b4f0e3ac4a483d4d13f317e405f3-cc_ft_960.jpg",
+            "width": 960
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/c275b4f0e3ac4a483d4d13f317e405f3-cc_ft_1152.jpg",
+            "width": 1152
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/c275b4f0e3ac4a483d4d13f317e405f3-cc_ft_1344.jpg",
+            "width": 1344
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/c275b4f0e3ac4a483d4d13f317e405f3-cc_ft_1536.jpg",
+            "width": 1536
+          }
+        ]
+      }
+    },
+    {
+      "mixedSources": {
+        "jpeg": [
+          {
+            "url": "https://photos.zillowstatic.com/fp/f57f508e152efc4c9b30b212b9d2d8d8-cc_ft_192.jpg",
+            "width": 192
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/f57f508e152efc4c9b30b212b9d2d8d8-cc_ft_384.jpg",
+            "width": 384
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/f57f508e152efc4c9b30b212b9d2d8d8-cc_ft_576.jpg",
+            "width": 576
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/f57f508e152efc4c9b30b212b9d2d8d8-cc_ft_768.jpg",
+            "width": 768
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/f57f508e152efc4c9b30b212b9d2d8d8-cc_ft_960.jpg",
+            "width": 960
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/f57f508e152efc4c9b30b212b9d2d8d8-cc_ft_1152.jpg",
+            "width": 1152
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/f57f508e152efc4c9b30b212b9d2d8d8-cc_ft_1344.jpg",
+            "width": 1344
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/f57f508e152efc4c9b30b212b9d2d8d8-cc_ft_1536.jpg",
+            "width": 1536
+          }
+        ]
+      }
+    },
+    {
+      "mixedSources": {
+        "jpeg": [
+          {
+            "url": "https://photos.zillowstatic.com/fp/b7a4443caa9b533c582cc54d78ef8442-cc_ft_192.jpg",
+            "width": 192
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/b7a4443caa9b533c582cc54d78ef8442-cc_ft_384.jpg",
+            "width": 384
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/b7a4443caa9b533c582cc54d78ef8442-cc_ft_576.jpg",
+            "width": 576
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/b7a4443caa9b533c582cc54d78ef8442-cc_ft_768.jpg",
+            "width": 768
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/b7a4443caa9b533c582cc54d78ef8442-cc_ft_960.jpg",
+            "width": 960
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/b7a4443caa9b533c582cc54d78ef8442-cc_ft_1152.jpg",
+            "width": 1152
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/b7a4443caa9b533c582cc54d78ef8442-cc_ft_1344.jpg",
+            "width": 1344
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/b7a4443caa9b533c582cc54d78ef8442-cc_ft_1536.jpg",
+            "width": 1536
+          }
+        ]
+      }
+    },
+    {
+      "mixedSources": {
+        "jpeg": [
+          {
+            "url": "https://photos.zillowstatic.com/fp/eb5701a46caca39b85227da7f6fe43fe-cc_ft_192.jpg",
+            "width": 192
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/eb5701a46caca39b85227da7f6fe43fe-cc_ft_384.jpg",
+            "width": 384
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/eb5701a46caca39b85227da7f6fe43fe-cc_ft_576.jpg",
+            "width": 576
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/eb5701a46caca39b85227da7f6fe43fe-cc_ft_768.jpg",
+            "width": 768
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/eb5701a46caca39b85227da7f6fe43fe-cc_ft_960.jpg",
+            "width": 960
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/eb5701a46caca39b85227da7f6fe43fe-cc_ft_1152.jpg",
+            "width": 1152
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/eb5701a46caca39b85227da7f6fe43fe-cc_ft_1344.jpg",
+            "width": 1344
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/eb5701a46caca39b85227da7f6fe43fe-cc_ft_1536.jpg",
+            "width": 1536
+          }
+        ]
+      }
+    },
+    {
+      "mixedSources": {
+        "jpeg": [
+          {
+            "url": "https://photos.zillowstatic.com/fp/40a0b7bd651adb71e690a9c1ea464709-cc_ft_192.jpg",
+            "width": 192
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/40a0b7bd651adb71e690a9c1ea464709-cc_ft_384.jpg",
+            "width": 384
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/40a0b7bd651adb71e690a9c1ea464709-cc_ft_576.jpg",
+            "width": 576
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/40a0b7bd651adb71e690a9c1ea464709-cc_ft_768.jpg",
+            "width": 768
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/40a0b7bd651adb71e690a9c1ea464709-cc_ft_960.jpg",
+            "width": 960
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/40a0b7bd651adb71e690a9c1ea464709-cc_ft_1152.jpg",
+            "width": 1152
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/40a0b7bd651adb71e690a9c1ea464709-cc_ft_1344.jpg",
+            "width": 1344
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/40a0b7bd651adb71e690a9c1ea464709-cc_ft_1536.jpg",
+            "width": 1536
+          }
+        ]
+      }
+    },
+    {
+      "mixedSources": {
+        "jpeg": [
+          {
+            "url": "https://photos.zillowstatic.com/fp/10f8d57e56a26380e3eeba377266be11-cc_ft_192.jpg",
+            "width": 192
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/10f8d57e56a26380e3eeba377266be11-cc_ft_384.jpg",
+            "width": 384
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/10f8d57e56a26380e3eeba377266be11-cc_ft_576.jpg",
+            "width": 576
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/10f8d57e56a26380e3eeba377266be11-cc_ft_768.jpg",
+            "width": 768
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/10f8d57e56a26380e3eeba377266be11-cc_ft_960.jpg",
+            "width": 960
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/10f8d57e56a26380e3eeba377266be11-cc_ft_1152.jpg",
+            "width": 1152
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/10f8d57e56a26380e3eeba377266be11-cc_ft_1344.jpg",
+            "width": 1344
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/10f8d57e56a26380e3eeba377266be11-cc_ft_1536.jpg",
+            "width": 1536
+          }
+        ]
+      }
+    },
+    {
+      "mixedSources": {
+        "jpeg": [
+          {
+            "url": "https://photos.zillowstatic.com/fp/4fc2897caee5785dc19c9329e108a651-cc_ft_192.jpg",
+            "width": 192
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/4fc2897caee5785dc19c9329e108a651-cc_ft_384.jpg",
+            "width": 384
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/4fc2897caee5785dc19c9329e108a651-cc_ft_576.jpg",
+            "width": 576
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/4fc2897caee5785dc19c9329e108a651-cc_ft_768.jpg",
+            "width": 768
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/4fc2897caee5785dc19c9329e108a651-cc_ft_960.jpg",
+            "width": 960
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/4fc2897caee5785dc19c9329e108a651-cc_ft_1152.jpg",
+            "width": 1152
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/4fc2897caee5785dc19c9329e108a651-cc_ft_1344.jpg",
+            "width": 1344
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/4fc2897caee5785dc19c9329e108a651-cc_ft_1536.jpg",
+            "width": 1536
+          }
+        ]
+      }
+    },
+    {
+      "mixedSources": {
+        "jpeg": [
+          {
+            "url": "https://photos.zillowstatic.com/fp/dc3ffca4ae7b33560fb710e5a6829cd2-cc_ft_192.jpg",
+            "width": 192
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/dc3ffca4ae7b33560fb710e5a6829cd2-cc_ft_384.jpg",
+            "width": 384
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/dc3ffca4ae7b33560fb710e5a6829cd2-cc_ft_576.jpg",
+            "width": 576
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/dc3ffca4ae7b33560fb710e5a6829cd2-cc_ft_768.jpg",
+            "width": 768
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/dc3ffca4ae7b33560fb710e5a6829cd2-cc_ft_960.jpg",
+            "width": 960
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/dc3ffca4ae7b33560fb710e5a6829cd2-cc_ft_1152.jpg",
+            "width": 1152
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/dc3ffca4ae7b33560fb710e5a6829cd2-cc_ft_1344.jpg",
+            "width": 1344
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/dc3ffca4ae7b33560fb710e5a6829cd2-cc_ft_1536.jpg",
+            "width": 1536
+          }
+        ]
+      }
+    },
+    {
+      "mixedSources": {
+        "jpeg": [
+          {
+            "url": "https://photos.zillowstatic.com/fp/0f957031f14ae0fea0e8313915abb732-cc_ft_192.jpg",
+            "width": 192
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/0f957031f14ae0fea0e8313915abb732-cc_ft_384.jpg",
+            "width": 384
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/0f957031f14ae0fea0e8313915abb732-cc_ft_576.jpg",
+            "width": 576
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/0f957031f14ae0fea0e8313915abb732-cc_ft_768.jpg",
+            "width": 768
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/0f957031f14ae0fea0e8313915abb732-cc_ft_960.jpg",
+            "width": 960
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/0f957031f14ae0fea0e8313915abb732-cc_ft_1152.jpg",
+            "width": 1152
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/0f957031f14ae0fea0e8313915abb732-cc_ft_1344.jpg",
+            "width": 1344
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/0f957031f14ae0fea0e8313915abb732-cc_ft_1536.jpg",
+            "width": 1536
+          }
+        ]
+      }
+    },
+    {
+      "mixedSources": {
+        "jpeg": [
+          {
+            "url": "https://photos.zillowstatic.com/fp/3341b8d63a095b47c31069d6f61d4477-cc_ft_192.jpg",
+            "width": 192
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/3341b8d63a095b47c31069d6f61d4477-cc_ft_384.jpg",
+            "width": 384
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/3341b8d63a095b47c31069d6f61d4477-cc_ft_576.jpg",
+            "width": 576
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/3341b8d63a095b47c31069d6f61d4477-cc_ft_768.jpg",
+            "width": 768
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/3341b8d63a095b47c31069d6f61d4477-cc_ft_960.jpg",
+            "width": 960
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/3341b8d63a095b47c31069d6f61d4477-cc_ft_1152.jpg",
+            "width": 1152
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/3341b8d63a095b47c31069d6f61d4477-cc_ft_1344.jpg",
+            "width": 1344
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/3341b8d63a095b47c31069d6f61d4477-cc_ft_1536.jpg",
+            "width": 1536
+          }
+        ]
+      }
+    },
+    {
+      "mixedSources": {
+        "jpeg": [
+          {
+            "url": "https://photos.zillowstatic.com/fp/efc08fa9437d7387ba178a509d4fde49-cc_ft_192.jpg",
+            "width": 192
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/efc08fa9437d7387ba178a509d4fde49-cc_ft_384.jpg",
+            "width": 384
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/efc08fa9437d7387ba178a509d4fde49-cc_ft_576.jpg",
+            "width": 576
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/efc08fa9437d7387ba178a509d4fde49-cc_ft_768.jpg",
+            "width": 768
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/efc08fa9437d7387ba178a509d4fde49-cc_ft_960.jpg",
+            "width": 960
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/efc08fa9437d7387ba178a509d4fde49-cc_ft_1152.jpg",
+            "width": 1152
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/efc08fa9437d7387ba178a509d4fde49-cc_ft_1344.jpg",
+            "width": 1344
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/efc08fa9437d7387ba178a509d4fde49-cc_ft_1536.jpg",
+            "width": 1536
+          }
+        ]
+      }
+    },
+    {
+      "mixedSources": {
+        "jpeg": [
+          {
+            "url": "https://photos.zillowstatic.com/fp/6ab3b25554cbbf76ee4446c2942a35f3-cc_ft_192.jpg",
+            "width": 192
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/6ab3b25554cbbf76ee4446c2942a35f3-cc_ft_384.jpg",
+            "width": 384
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/6ab3b25554cbbf76ee4446c2942a35f3-cc_ft_576.jpg",
+            "width": 576
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/6ab3b25554cbbf76ee4446c2942a35f3-cc_ft_768.jpg",
+            "width": 768
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/6ab3b25554cbbf76ee4446c2942a35f3-cc_ft_960.jpg",
+            "width": 960
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/6ab3b25554cbbf76ee4446c2942a35f3-cc_ft_1152.jpg",
+            "width": 1152
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/6ab3b25554cbbf76ee4446c2942a35f3-cc_ft_1344.jpg",
+            "width": 1344
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/6ab3b25554cbbf76ee4446c2942a35f3-cc_ft_1536.jpg",
+            "width": 1536
+          }
+        ]
+      }
+    },
+    {
+      "mixedSources": {
+        "jpeg": [
+          {
+            "url": "https://photos.zillowstatic.com/fp/30d908b63a57cf13fa5a1ffa293e2769-cc_ft_192.jpg",
+            "width": 192
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/30d908b63a57cf13fa5a1ffa293e2769-cc_ft_384.jpg",
+            "width": 384
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/30d908b63a57cf13fa5a1ffa293e2769-cc_ft_576.jpg",
+            "width": 576
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/30d908b63a57cf13fa5a1ffa293e2769-cc_ft_768.jpg",
+            "width": 768
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/30d908b63a57cf13fa5a1ffa293e2769-cc_ft_960.jpg",
+            "width": 960
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/30d908b63a57cf13fa5a1ffa293e2769-cc_ft_1152.jpg",
+            "width": 1152
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/30d908b63a57cf13fa5a1ffa293e2769-cc_ft_1344.jpg",
+            "width": 1344
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/30d908b63a57cf13fa5a1ffa293e2769-cc_ft_1536.jpg",
+            "width": 1536
+          }
+        ]
+      }
+    },
+    {
+      "mixedSources": {
+        "jpeg": [
+          {
+            "url": "https://photos.zillowstatic.com/fp/a58910d129664a882f64ff0697136642-cc_ft_192.jpg",
+            "width": 192
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/a58910d129664a882f64ff0697136642-cc_ft_384.jpg",
+            "width": 384
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/a58910d129664a882f64ff0697136642-cc_ft_576.jpg",
+            "width": 576
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/a58910d129664a882f64ff0697136642-cc_ft_768.jpg",
+            "width": 768
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/a58910d129664a882f64ff0697136642-cc_ft_960.jpg",
+            "width": 960
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/a58910d129664a882f64ff0697136642-cc_ft_1152.jpg",
+            "width": 1152
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/a58910d129664a882f64ff0697136642-cc_ft_1344.jpg",
+            "width": 1344
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/a58910d129664a882f64ff0697136642-cc_ft_1536.jpg",
+            "width": 1536
+          }
+        ]
+      }
+    },
+    {
+      "mixedSources": {
+        "jpeg": [
+          {
+            "url": "https://photos.zillowstatic.com/fp/41c317c21c1979f80e6496d5159803cf-cc_ft_192.jpg",
+            "width": 192
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/41c317c21c1979f80e6496d5159803cf-cc_ft_384.jpg",
+            "width": 384
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/41c317c21c1979f80e6496d5159803cf-cc_ft_576.jpg",
+            "width": 576
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/41c317c21c1979f80e6496d5159803cf-cc_ft_768.jpg",
+            "width": 768
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/41c317c21c1979f80e6496d5159803cf-cc_ft_960.jpg",
+            "width": 960
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/41c317c21c1979f80e6496d5159803cf-cc_ft_1152.jpg",
+            "width": 1152
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/41c317c21c1979f80e6496d5159803cf-cc_ft_1344.jpg",
+            "width": 1344
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/41c317c21c1979f80e6496d5159803cf-cc_ft_1536.jpg",
+            "width": 1536
+          }
+        ]
+      }
+    },
+    {
+      "mixedSources": {
+        "jpeg": [
+          {
+            "url": "https://photos.zillowstatic.com/fp/599688b9469860c0b122171ce017b6d7-cc_ft_192.jpg",
+            "width": 192
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/599688b9469860c0b122171ce017b6d7-cc_ft_384.jpg",
+            "width": 384
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/599688b9469860c0b122171ce017b6d7-cc_ft_576.jpg",
+            "width": 576
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/599688b9469860c0b122171ce017b6d7-cc_ft_768.jpg",
+            "width": 768
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/599688b9469860c0b122171ce017b6d7-cc_ft_960.jpg",
+            "width": 960
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/599688b9469860c0b122171ce017b6d7-cc_ft_1152.jpg",
+            "width": 1152
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/599688b9469860c0b122171ce017b6d7-cc_ft_1344.jpg",
+            "width": 1344
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/599688b9469860c0b122171ce017b6d7-cc_ft_1536.jpg",
+            "width": 1536
+          }
+        ]
+      }
+    },
+    {
+      "mixedSources": {
+        "jpeg": [
+          {
+            "url": "https://photos.zillowstatic.com/fp/850c1af0a5b01eff973db4a284ce4134-cc_ft_192.jpg",
+            "width": 192
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/850c1af0a5b01eff973db4a284ce4134-cc_ft_384.jpg",
+            "width": 384
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/850c1af0a5b01eff973db4a284ce4134-cc_ft_576.jpg",
+            "width": 576
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/850c1af0a5b01eff973db4a284ce4134-cc_ft_768.jpg",
+            "width": 768
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/850c1af0a5b01eff973db4a284ce4134-cc_ft_960.jpg",
+            "width": 960
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/850c1af0a5b01eff973db4a284ce4134-cc_ft_1152.jpg",
+            "width": 1152
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/850c1af0a5b01eff973db4a284ce4134-cc_ft_1344.jpg",
+            "width": 1344
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/850c1af0a5b01eff973db4a284ce4134-cc_ft_1536.jpg",
+            "width": 1536
+          }
+        ]
+      }
+    },
+    {
+      "mixedSources": {
+        "jpeg": [
+          {
+            "url": "https://photos.zillowstatic.com/fp/5795bd5144933302c37f541f272e82dc-cc_ft_192.jpg",
+            "width": 192
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/5795bd5144933302c37f541f272e82dc-cc_ft_384.jpg",
+            "width": 384
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/5795bd5144933302c37f541f272e82dc-cc_ft_576.jpg",
+            "width": 576
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/5795bd5144933302c37f541f272e82dc-cc_ft_768.jpg",
+            "width": 768
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/5795bd5144933302c37f541f272e82dc-cc_ft_960.jpg",
+            "width": 960
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/5795bd5144933302c37f541f272e82dc-cc_ft_1152.jpg",
+            "width": 1152
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/5795bd5144933302c37f541f272e82dc-cc_ft_1344.jpg",
+            "width": 1344
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/5795bd5144933302c37f541f272e82dc-cc_ft_1536.jpg",
+            "width": 1536
+          }
+        ]
+      }
+    },
+    {
+      "mixedSources": {
+        "jpeg": [
+          {
+            "url": "https://photos.zillowstatic.com/fp/8cc12ff6447eef3eaed077cdaa42a8ff-cc_ft_192.jpg",
+            "width": 192
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/8cc12ff6447eef3eaed077cdaa42a8ff-cc_ft_384.jpg",
+            "width": 384
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/8cc12ff6447eef3eaed077cdaa42a8ff-cc_ft_576.jpg",
+            "width": 576
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/8cc12ff6447eef3eaed077cdaa42a8ff-cc_ft_768.jpg",
+            "width": 768
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/8cc12ff6447eef3eaed077cdaa42a8ff-cc_ft_960.jpg",
+            "width": 960
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/8cc12ff6447eef3eaed077cdaa42a8ff-cc_ft_1152.jpg",
+            "width": 1152
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/8cc12ff6447eef3eaed077cdaa42a8ff-cc_ft_1344.jpg",
+            "width": 1344
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/8cc12ff6447eef3eaed077cdaa42a8ff-cc_ft_1536.jpg",
+            "width": 1536
+          }
+        ]
+      }
+    },
+    {
+      "mixedSources": {
+        "jpeg": [
+          {
+            "url": "https://photos.zillowstatic.com/fp/4dc53ffae310fb47d9f6d07b9ddee24d-cc_ft_192.jpg",
+            "width": 192
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/4dc53ffae310fb47d9f6d07b9ddee24d-cc_ft_384.jpg",
+            "width": 384
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/4dc53ffae310fb47d9f6d07b9ddee24d-cc_ft_576.jpg",
+            "width": 576
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/4dc53ffae310fb47d9f6d07b9ddee24d-cc_ft_768.jpg",
+            "width": 768
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/4dc53ffae310fb47d9f6d07b9ddee24d-cc_ft_960.jpg",
+            "width": 960
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/4dc53ffae310fb47d9f6d07b9ddee24d-cc_ft_1152.jpg",
+            "width": 1152
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/4dc53ffae310fb47d9f6d07b9ddee24d-cc_ft_1344.jpg",
+            "width": 1344
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/4dc53ffae310fb47d9f6d07b9ddee24d-cc_ft_1536.jpg",
+            "width": 1536
+          }
+        ]
+      }
+    },
+    {
+      "mixedSources": {
+        "jpeg": [
+          {
+            "url": "https://photos.zillowstatic.com/fp/e8f3376916256cceafa99cb37644b3f9-cc_ft_192.jpg",
+            "width": 192
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/e8f3376916256cceafa99cb37644b3f9-cc_ft_384.jpg",
+            "width": 384
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/e8f3376916256cceafa99cb37644b3f9-cc_ft_576.jpg",
+            "width": 576
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/e8f3376916256cceafa99cb37644b3f9-cc_ft_768.jpg",
+            "width": 768
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/e8f3376916256cceafa99cb37644b3f9-cc_ft_960.jpg",
+            "width": 960
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/e8f3376916256cceafa99cb37644b3f9-cc_ft_1152.jpg",
+            "width": 1152
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/e8f3376916256cceafa99cb37644b3f9-cc_ft_1344.jpg",
+            "width": 1344
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/e8f3376916256cceafa99cb37644b3f9-cc_ft_1536.jpg",
+            "width": 1536
+          }
+        ]
+      }
+    },
+    {
+      "mixedSources": {
+        "jpeg": [
+          {
+            "url": "https://photos.zillowstatic.com/fp/c4745118a7a05f6a15764b37c3ce0f25-cc_ft_192.jpg",
+            "width": 192
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/c4745118a7a05f6a15764b37c3ce0f25-cc_ft_384.jpg",
+            "width": 384
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/c4745118a7a05f6a15764b37c3ce0f25-cc_ft_576.jpg",
+            "width": 576
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/c4745118a7a05f6a15764b37c3ce0f25-cc_ft_768.jpg",
+            "width": 768
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/c4745118a7a05f6a15764b37c3ce0f25-cc_ft_960.jpg",
+            "width": 960
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/c4745118a7a05f6a15764b37c3ce0f25-cc_ft_1152.jpg",
+            "width": 1152
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/c4745118a7a05f6a15764b37c3ce0f25-cc_ft_1344.jpg",
+            "width": 1344
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/c4745118a7a05f6a15764b37c3ce0f25-cc_ft_1536.jpg",
+            "width": 1536
+          }
+        ]
+      }
+    },
+    {
+      "mixedSources": {
+        "jpeg": [
+          {
+            "url": "https://photos.zillowstatic.com/fp/bd89d3653943f289061d9dcd3dda38bd-cc_ft_192.jpg",
+            "width": 192
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/bd89d3653943f289061d9dcd3dda38bd-cc_ft_384.jpg",
+            "width": 384
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/bd89d3653943f289061d9dcd3dda38bd-cc_ft_576.jpg",
+            "width": 576
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/bd89d3653943f289061d9dcd3dda38bd-cc_ft_768.jpg",
+            "width": 768
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/bd89d3653943f289061d9dcd3dda38bd-cc_ft_960.jpg",
+            "width": 960
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/bd89d3653943f289061d9dcd3dda38bd-cc_ft_1152.jpg",
+            "width": 1152
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/bd89d3653943f289061d9dcd3dda38bd-cc_ft_1344.jpg",
+            "width": 1344
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/bd89d3653943f289061d9dcd3dda38bd-cc_ft_1536.jpg",
+            "width": 1536
+          }
+        ]
+      }
+    },
+    {
+      "mixedSources": {
+        "jpeg": [
+          {
+            "url": "https://photos.zillowstatic.com/fp/99ba5409113051f7785090405aed3af9-cc_ft_192.jpg",
+            "width": 192
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/99ba5409113051f7785090405aed3af9-cc_ft_384.jpg",
+            "width": 384
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/99ba5409113051f7785090405aed3af9-cc_ft_576.jpg",
+            "width": 576
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/99ba5409113051f7785090405aed3af9-cc_ft_768.jpg",
+            "width": 768
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/99ba5409113051f7785090405aed3af9-cc_ft_960.jpg",
+            "width": 960
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/99ba5409113051f7785090405aed3af9-cc_ft_1152.jpg",
+            "width": 1152
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/99ba5409113051f7785090405aed3af9-cc_ft_1344.jpg",
+            "width": 1344
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/99ba5409113051f7785090405aed3af9-cc_ft_1536.jpg",
+            "width": 1536
+          }
+        ]
+      }
+    },
+    {
+      "mixedSources": {
+        "jpeg": [
+          {
+            "url": "https://photos.zillowstatic.com/fp/fb8cf29edc84d8dc57887d9d41b85e7e-cc_ft_192.jpg",
+            "width": 192
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/fb8cf29edc84d8dc57887d9d41b85e7e-cc_ft_384.jpg",
+            "width": 384
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/fb8cf29edc84d8dc57887d9d41b85e7e-cc_ft_576.jpg",
+            "width": 576
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/fb8cf29edc84d8dc57887d9d41b85e7e-cc_ft_768.jpg",
+            "width": 768
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/fb8cf29edc84d8dc57887d9d41b85e7e-cc_ft_960.jpg",
+            "width": 960
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/fb8cf29edc84d8dc57887d9d41b85e7e-cc_ft_1152.jpg",
+            "width": 1152
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/fb8cf29edc84d8dc57887d9d41b85e7e-cc_ft_1344.jpg",
+            "width": 1344
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/fb8cf29edc84d8dc57887d9d41b85e7e-cc_ft_1536.jpg",
+            "width": 1536
+          }
+        ]
+      }
+    },
+    {
+      "mixedSources": {
+        "jpeg": [
+          {
+            "url": "https://photos.zillowstatic.com/fp/82d2ad39c28e6d65d6d3d7089ac80e53-cc_ft_192.jpg",
+            "width": 192
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/82d2ad39c28e6d65d6d3d7089ac80e53-cc_ft_384.jpg",
+            "width": 384
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/82d2ad39c28e6d65d6d3d7089ac80e53-cc_ft_576.jpg",
+            "width": 576
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/82d2ad39c28e6d65d6d3d7089ac80e53-cc_ft_768.jpg",
+            "width": 768
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/82d2ad39c28e6d65d6d3d7089ac80e53-cc_ft_960.jpg",
+            "width": 960
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/82d2ad39c28e6d65d6d3d7089ac80e53-cc_ft_1152.jpg",
+            "width": 1152
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/82d2ad39c28e6d65d6d3d7089ac80e53-cc_ft_1344.jpg",
+            "width": 1344
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/82d2ad39c28e6d65d6d3d7089ac80e53-cc_ft_1536.jpg",
+            "width": 1536
+          }
+        ]
+      }
+    },
+    {
+      "mixedSources": {
+        "jpeg": [
+          {
+            "url": "https://photos.zillowstatic.com/fp/0b21831b29f82969a99998bbefba9a9a-cc_ft_192.jpg",
+            "width": 192
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/0b21831b29f82969a99998bbefba9a9a-cc_ft_384.jpg",
+            "width": 384
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/0b21831b29f82969a99998bbefba9a9a-cc_ft_576.jpg",
+            "width": 576
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/0b21831b29f82969a99998bbefba9a9a-cc_ft_768.jpg",
+            "width": 768
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/0b21831b29f82969a99998bbefba9a9a-cc_ft_960.jpg",
+            "width": 960
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/0b21831b29f82969a99998bbefba9a9a-cc_ft_1152.jpg",
+            "width": 1152
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/0b21831b29f82969a99998bbefba9a9a-cc_ft_1344.jpg",
+            "width": 1344
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/0b21831b29f82969a99998bbefba9a9a-cc_ft_1536.jpg",
+            "width": 1536
+          }
+        ]
+      }
+    }
+  ],
+  "zestimate_history": [
+    {
+      "as_of_date": null
+    },
+    {
+      "as_of_date": null
+    }
+  ],
+  "resoFacts:sewer": "Public Sewer",
+  "resoFacts:waterSource": "Public",
+  "utilities": [
+    "Water: Public",
+    "Sewer: Public Sewer"
+  ],
+  "url": "https://www.zillow.com/homedetails/11311-Tampa-Ave-UNIT-12-Porter-Ranch-CA-91326/20154704_zpid/",
+  "countyFIPS": "06037",
+  "countyID": "3101",
+  "dateSold": "2021-01-19T00:00:00.000Z",
+  "listingTypeDimension": "For Sale by Agent",
+  "homeValuation": [
+    "{\"comparables\":{\"comps\":[{\"property\":{\"zestimate\":632400,\"lastSoldPrice\":630000,\"price\":630000,\"daysOnZillow\":77,\"dateSold\":1773964800000,\"currency\":\"USD\",\"bedrooms\":3,\"bathrooms\":3,\"livingAreaValue\":1409,\"livingAreaUnits\":\"Square Feet\",\"livingAreaUnitsShort\":\"sqft\",\"lotAreaValue\":12.4772,\"lotAreaUnits\":\"Acres\",\"address\":{\"streetAddress\":\"11427 Tampa Ave Unit 76\",\"city\":\"Porter Ranch\",\"state\":\"CA\",\"zipcode\":\"91326\"},\"latitude\":34.278156,\"longitude\":-118.56102,\"zpid\":20154743,\"homeStatus\":\"RECENTLY_SOLD\",\"homeType\":\"TOWNHOUSE\",\"hdpUrl\":\"/homedetails/11427-Tampa-Ave-UNIT-76-Porter-Ranch-CA-91326/20154743_zpid/\",\"listing_sub_type\":{\"is_newHome\":false,\"is_forAuction\":false,\"is_bankOwned\":false,\"is_foreclosure\":false,\"is_FSBO\":false,\"is_comingSoon\":false},\"isUndisclosedAddress\":false,\"attributionInfo\":{\"mlsId\":\"SR25280696\",\"mlsName\":\"CRMLS\",\"providerLogo\":null,\"agentName\":\"Adrienne Mc Cune\",\"agentPhoneNumber\":null,\"brokerName\":\"RE/MAX One\",\"brokerPhoneNumber\":null},\"compsCarouselPropertyPhotos\":[{\"mixedSources\":{\"jpeg\":[{\"url\":\"https://photos.zillowstatic.com/fp/42a3a381abf957a790f380fe4c059b92-cc_ft_192.jpg\"},{\"url\":\"https://photos.zillowstatic.com/fp/42a3a381abf957a790f380fe4c059b92-cc_ft_384.jpg\"},{\"url\":\"https://photos.zillowstatic.com/fp/42a3a381abf957a790f380fe4c059b92-cc_ft_576.jpg\"},{\"url\":\"https://photos.zillowstatic.com/fp/42a3a381abf957a790f380fe4c059b92-cc_ft_768.jpg\"},{\"url\":\"https://photos.zillowstatic.com/fp/42a3a381abf957a790f380fe4c059b92-cc_ft_960.jpg\"},{\"url\":\"https://photos.zillowstatic.com/fp/42a3a381abf957a790f380fe4c059b92-cc_ft_1152.jpg\"},{\"url\":\"https://photos.zillowstatic.com/fp/42a3a381abf957a790f380fe4c059b92-cc_ft_1344.jpg\"},{\"url\":\"https://photos.zillowstatic.com/fp/42a3a381abf957a790f380fe4c059b92-cc_ft_1536.jpg\"}]}}]}},{\"property\":{\"zestimate\":692300,\"lastSoldPrice\":685000,\"price\":685000,\"daysOnZillow\":168,\"dateSold\":1766102400000,\"currency\":\"USD\",\"bedrooms\":3,\"bathrooms\":3,\"livingAreaValue\":1409,\"livingAreaUnits\":\"Square Feet\",\"livingAreaUnitsShort\":\"sqft\",\"lotAreaValue\":12.4772,\"lotAreaUnits\":\"Acres\",\"address\":{\"streetAddress\":\"11467 Tampa Ave Unit 154\",\"city\":\"Porter Ranch\",\"state\":\"CA\",\"zipcode\":\"91326\"},\"latitude\":34.279514,\"longitude\":-118.56218,\"zpid\":20154820,\"homeStatus\":\"RECENTLY_SOLD\",\"homeType\":\"TOWNHOUSE\",\"hdpUrl\":\"/homedetails/11467-Tampa-Ave-UNIT-154-Porter-Ranch-CA-91326/20154820_zpid/\",\"listing_sub_type\":{\"is_newHome\":false,\"is_forAuction\":false,\"is_bankOwned\":false,\"is_foreclosure\":false,\"is_FSBO\":false,\"is_comingSoon\":false},\"isUndisclosedAddress\":false,\"attributionInfo\":{\"mlsId\":\"SR25115034\",\"mlsName\":\"CRMLS\",\"providerLogo\":null,\"agentName\":\"Adrienne Mc Cune\",\"agentPhoneNumber\":null,\"brokerName\":\"RE/MAX One\",\"brokerPhoneNumber\":null},\"compsCarouselPropertyPhotos\":[{\"mixedSources\":{\"jpeg\":[{\"url\":\"https://photos.zillowstatic.com/fp/788e4bf42c99ba62e81a612c1ac52249-cc_ft_192.jpg\"},{\"url\":\"https://photos.zillowstatic.com/fp/788e4bf42c99ba62e81a612c1ac52249-cc_ft_384.jpg\"},{\"url\":\"https://photos.zillowstatic.com/fp/788e4bf42c99ba62e81a612c1ac52249-cc_ft_576.jpg\"},{\"url\":\"https://photos.zillowstatic.com/fp/788e4bf42c99ba62e81a612c1ac52249-cc_ft_768.jpg\"},{\"url\":\"https://photos.zillowstatic.com/fp/788e4bf42c99ba62e81a612c1ac52249-cc_ft_960.jpg\"},{\"url\":\"https://photos.zillowstatic.com/fp/788e4bf42c99ba62e81a612c1ac52249-cc_ft_1152.jpg\"},{\"url\":\"https://photos.zillowstatic.com/fp/788e4bf42c99ba62e81a612c1ac52249-cc_ft_1344.jpg\"},{\"url\":\"https://photos.zillowstatic.com/fp/788e4bf42c99ba62e81a612c1ac52249-cc_ft_1536.jpg\"}]}}]}},{\"property\":{\"zestimate\":676200,\"lastSoldPrice\":675777,\"price\":675777,\"daysOnZillow\":65,\"dateSold\":1775001600000,\"currency\":\"USD\",\"bedrooms\":4,\"bathrooms\":3,\"livingAreaValue\":1637,\"livingAreaUnits\":\"Square Feet\",\"livingAreaUnitsShort\":\"sqft\",\"lotAreaValue\":12.4772,\"lotAreaUnits\":\"Acres\",\"address\":{\"streetAddress\":\"11435 Tampa Ave Unit 90\",\"city\":\"Porter Ranch\",\"state\":\"CA\",\"zipcode\":\"91326\"},\"latitude\":34.278156,\"longitude\":-118.56102,\"zpid\":20154757,\"homeStatus\":\"RECENTLY_SOLD\",\"homeType\":\"TOWNHOUSE\",\"hdpUrl\":\"/homedetails/11435-Tampa-Ave-UNIT-90-Porter-Ranch-CA-91326/20154757_zpid/\",\"listing_sub_type\":{\"is_newHome\":false,\"is_forAuction\":false,\"is_bankOwned\":false,\"is_foreclosure\":false,\"is_FSBO\":false,\"is_comingSoon\":false},\"isUndisclosedAddress\":false,\"attributionInfo\":{\"mlsId\":\"SR26025089\",\"mlsName\":\"CRMLS\",\"providerLogo\":null,\"agentName\":\"Olga Safonoff\",\"agentPhoneNumber\":null,\"brokerName\":\"Pinnacle Estate Properties, Inc.\",\"brokerPhoneNumber\":null},\"compsCarouselPropertyPhotos\":[{\"mixedSources\":{\"jpeg\":[{\"url\":\"https://photos.zillowstatic.com/fp/a9c2219ac78103c1bb80dcfbbb7f87c9-cc_ft_192.jpg\"},{\"url\":\"https://photos.zillowstatic.com/fp/a9c2219ac78103c1bb80dcfbbb7f87c9-cc_ft_384.jpg\"},{\"url\":\"https://photos.zillowstatic.com/fp/a9c2219ac78103c1bb80dcfbbb7f87c9-cc_ft_576.jpg\"},{\"url\":\"https://photos.zillowstatic.com/fp/a9c2219ac78103c1bb80dcfbbb7f87c9-cc_ft_768.jpg\"},{\"url\":\"https://photos.zillowstatic.com/fp/a9c2219ac78103c1bb80dcfbbb7f87c9-cc_ft_960.jpg\"},{\"url\":\"https://photos.zillowstatic.com/fp/a9c2219ac78103c1bb80dcfbbb7f87c9-cc_ft_1152.jpg\"},{\"url\":\"https://photos.zillowstatic.com/fp/a9c2219ac78103c1bb80dcfbbb7f87c9-cc_ft_1344.jpg\"},{\"url\":\"https://photos.zillowstatic.com/fp/a9c2219ac78103c1bb80dcfbbb7f87c9-cc_ft_1536.jpg\"}]}}]}},{\"property\":{\"zestimate\":651700,\"lastSoldPrice\":645000,\"price\":645000,\"daysOnZillow\":157,\"dateSold\":1767052800000,\"currency\":\"USD\",\"bedrooms\":4,\"bathrooms\":3,\"livingAreaValue\":1631,\"livingAreaUnits\":\"Square Feet\",\"livingAreaUnitsShort\":\"sqft\",\"lotAreaValue\":12.473,\"lotAreaUnits\":\"Acres\",\"address\":{\"streetAddress\":\"11471 Tampa Ave Unit 149\",\"city\":\"Porter Ranch\",\"state\":\"CA\",\"zipcode\":\"91326\"},\"latitude\":34.278156,\"longitude\":-118.56102,\"zpid\":20154816,\"homeStatus\":\"RECENTLY_SOLD\",\"homeType\":\"TOWNHOUSE\",\"hdpUrl\":\"/homedetails/11471-Tampa-Ave-UNIT-149-Porter-Ranch-CA-91326/20154816_zpid/\",\"listing_sub_type\":{\"is_newHome\":false,\"is_forAuction\":false,\"is_bankOwned\":false,\"is_foreclosure\":false,\"is_FSBO\":false,\"is_comingSoon\":false},\"isUndisclosedAddress\":false,\"attributionInfo\":{\"mlsId\":\"SR25221275\",\"mlsName\":\"CRMLS\",\"providerLogo\":null,\"agentName\":\"Giovany Kirakossian\",\"agentPhoneNumber\":null,\"brokerName\":\"JohnHart Real Estate\",\"brokerPhoneNumber\":null},\"compsCarouselPropertyPhotos\":[{\"mixedSources\":{\"jpeg\":[{\"url\":\"https://photos.zillowstatic.com/fp/dba9b3547c36944447d49970a925c37c-cc_ft_192.jpg\"},{\"url\":\"https://photos.zillowstatic.com/fp/dba9b3547c36944447d49970a925c37c-cc_ft_384.jpg\"},{\"url\":\"https://photos.zillowstatic.com/fp/dba9b3547c36944447d49970a925c37c-cc_ft_576.jpg\"},{\"url\":\"https://photos.zillowstatic.com/fp/dba9b3547c36944447d49970a925c37c-cc_ft_768.jpg\"},{\"url\":\"https://photos.zillowstatic.com/fp/dba9b3547c36944447d49970a925c37c-cc_ft_960.jpg\"},{\"url\":\"https://photos.zillowstatic.com/fp/dba9b3547c36944447d49970a925c37c-cc_ft_1152.jpg\"},{\"url\":\"https://photos.zillowstatic.com/fp/dba9b3547c36944447d49970a925c37c-cc_ft_1344.jpg\"},{\"url\":\"https://photos.zillowstatic.com/fp/dba9b3547c36944447d49970a925c37c-cc_ft_1536.jpg\"}]}}]}},{\"property\":{\"zestimate\":793100,\"lastSoldPrice\":790000,\"price\":790000,\"daysOnZillow\":78,\"dateSold\":1773878400000,\"currency\":\"USD\",\"bedrooms\":3,\"bathrooms\":3,\"livingAreaValue\":1679,\"livingAreaUnits\":\"Square Feet\",\"livingAreaUnitsShort\":\"sqft\",\"lotAreaValue\":5.1292,\"lotAreaUnits\":\"Acres\",\"address\":{\"streetAddress\":\"19237 Index St Unit 4\",\"city\":\"Porter Ranch\",\"state\":\"CA\",\"zipcode\":\"91326\"},\"latitude\":34.27367,\"longitude\":-118.55339,\"zpid\":20200676,\"homeStatus\":\"RECENTLY_SOLD\",\"homeType\":\"TOWNHOUSE\",\"hdpUrl\":\"/homedetails/19237-Index-St-UNIT-4-Porter-Ranch-CA-91326/20200676_zpid/\",\"listing_sub_type\":{\"is_newHome\":false,\"is_forAuction\":false,\"is_bankOwned\":false,\"is_foreclosure\":false,\"is_FSBO\":false,\"is_comingSoon\":false},\"isUndisclosedAddress\":false,\"attributionInfo\":{\"mlsId\":\"GD26007792\",\"mlsName\":\"CRMLS\",\"providerLogo\":null,\"agentName\":\"Dan Kobeissi\",\"agentPhoneNumber\":null,\"brokerName\":\"Compass\",\"brokerPhoneNumber\":null},\"compsCarouselPropertyPhotos\":[{\"mixedSources\":{\"jpeg\":[{\"url\":\"https://photos.zillowstatic.com/fp/9f34686871d44b65489bdd64d6f2e887-cc_ft_192.jpg\"},{\"url\":\"https://photos.zillowstatic.com/fp/9f34686871d44b65489bdd64d6f2e887-cc_ft_384.jpg\"},{\"url\":\"https://photos.zillowstatic.com/fp/9f34686871d44b65489bdd64d6f2e887-cc_ft_576.jpg\"},{\"url\":\"https://photos.zillowstatic.com/fp/9f34686871d44b65489bdd64d6f2e887-cc_ft_768.jpg\"},{\"url\":\"https://photos.zillowstatic.com/fp/9f34686871d44b65489bdd64d6f2e887-cc_ft_960.jpg\"},{\"url\":\"https://photos.zillowstatic.com/fp/9f34686871d44b65489bdd64d6f2e887-cc_ft_1152.jpg\"},{\"url\":\"https://photos.zillowstatic.com/fp/9f34686871d44b65489bdd64d6f2e887-cc_ft_1344.jpg\"},{\"url\":\"https://photos.zillowstatic.com/fp/9f34686871d44b65489bdd64d6f2e887-cc_ft_1536.jpg\"}]}}]}}]}}"
+  ],
+  "isOffMarket": false,
+  "resofacts_sewer": "Public Sewer",
+  "resofacts_water_source": "Public",
+  "citySearchUrl": {
+    "path": "/los-angeles-ca/",
+    "text": "Homes in Los Angeles"
+  },
+  "county": "Los Angeles County",
+  "is_showcased": true,
+  "interior": {
+    "bedrooms_and_bathrooms": {
+      "bedrooms": 3,
+      "bathrooms": 3,
+      "full_bathrooms": 3,
+      "half_bathroom": "undefined"
+    },
+    "kitchen": {
+      "features": "Remodeled, Updated Kitchen"
+    },
+    "flooring": "Laminate",
+    "heating": "Central",
+    "other_interior_features": "Total interior livable area :1,250 sqft"
+  },
+  "overview": {
+    "days_on_zillow": 3,
+    "number_of_views": 667,
+    "number_of_saves": 35
+  },
+  "is_listed_by_management_company": false,
+  "listing_provided_by": {
+    "name": "Jose Schnaider, Equity Union",
+    "email": null,
+    "company": "Equity Union",
+    "phone_number": "818-723-4109"
+  },
+  "hoa_details": {
+    "has_hoa": true,
+    "hoa_fee_value": 834,
+    "hoa_fee_currency": "USD",
+    "hoa_fee_period": "monthly",
+    "services_included": null,
+    "amenities_included": [
+      "Pool",
+      "Spa/Hot Tub"
+    ],
+    "hoa_name": "Tampa Terrace"
+  },
+  "financial": null,
+  "interior_full": [
+    {
+      "title": "Bedroom",
+      "values": [
+        "Features: All Bedrooms Up"
+      ]
+    },
+    {
+      "title": "Kitchen",
+      "values": [
+        "Features: Remodeled,Updated Kitchen"
+      ]
+    },
+    {
+      "title": "Bedrooms & bathrooms",
+      "values": [
+        "Bedrooms: 3",
+        "Bathrooms: 3",
+        "Full bathrooms: 3",
+        "Main level bathrooms: 1"
+      ]
+    },
+    {
+      "title": "Heating",
+      "values": [
+        "Heating features: Central"
+      ]
+    },
+    {
+      "title": "Cooling",
+      "values": [
+        "Cooling features: Central Air"
+      ]
+    },
+    {
+      "title": "Appliances",
+      "values": [
+        "Appliances included: Gas Range",
+        "Laundry features: Washer Hookup,Electric Dryer Hookup,Inside"
+      ]
+    },
+    {
+      "title": "Features",
+      "values": [
+        "All Bedrooms Up",
+        "Flooring: Laminate",
+        "Fireplace features: None",
+        "Common walls with other units/homes: 2+ Common Walls,No One Above,No One Below"
+      ]
+    },
+    {
+      "title": "Interior area",
+      "values": [
+        "Total interior livable area: 1,250 sqft"
+      ]
+    }
+  ],
+  "property": [
+    {
+      "title": "Features",
+      "values": [
+        "Levels: Two",
+        "Stories: 2",
+        "Entry location: 1",
+        "Pool features: Community,Association",
+        "Has view: Yes",
+        "View description: Canyon"
+      ]
+    },
+    {
+      "title": "Lot",
+      "values": [
+        "Lot size: 3.53 Acres"
+      ]
+    },
+    {
+      "title": "Details",
+      "values": [
+        "Parcel number: 2701005019",
+        "Attached to another structure: Yes",
+        "Special condition: Standard"
+      ]
+    }
+  ],
+  "construction": [
+    {
+      "title": "Type & style",
+      "values": [
+        "Home type: Townhouse",
+        "Property subType: Townhouse"
+      ]
+    },
+    {
+      "title": "Condition",
+      "values": [
+        "Year built: 1974"
+      ]
+    }
+  ],
+  "tag": null,
+  "contingent_listing_type": null,
+  "unit_number": null,
+  "unit_amenities": null,
+  "open_house_details": [
+    {
+      "open_house_day": "Monday",
+      "open_house_date": "2026-06-07T14:00:00.000Z",
+      "open_house_start_time": 1780840800000,
+      "open_house_end_time": 1780851600000,
+      "add_to_calendar_link": null
+    }
+  ],
+  "community_details": [
+    {
+      "title": "Features",
+      "values": [
+        "Suburban",
+        "Pool"
+      ]
+    }
+  ],
+  "mls_id": "SR26121160",
+  "base_rent": null,
+  "sqft": null,
+  "availability_date": null,
+  "special_offer": null,
+  "originating_mls": "California Regional MLS",
+  "tags": null,
+  "getting_around_scores": {
+    "walk_score": "64/100 | Somewhat Walkable",
+    "transit_score": null,
+    "bike_score": "36/100 | Somewhat Bikeable"
+  },
+  "days_on_zillow": 3,
+  "getting_around": {
+    "walk": {
+      "score": 64,
+      "description": "Somewhat Walkable"
+    },
+    "transit": null,
+    "bike": {
+      "score": 36,
+      "description": "Somewhat Bikeable"
+    }
+  },
+  "other": null,
+  "financial_listing_details": null,
+  "publish_url": null,
+  "climate_risks": null,
+  "num_of_contacts": null,
+  "num_of_applications": null,
+  "has_3d_tour": false,
+  "payment_breakdown": [
+    {
+      "name": "Principal & interest",
+      "value": "3026$"
+    },
+    {
+      "name": "Mortgage insurance",
+      "value": "0$"
+    },
+    {
+      "name": "Property taxes",
+      "value": "589$"
+    },
+    {
+      "name": "Home insurance",
+      "value": "200$"
+    },
+    {
+      "name": "HOA fees",
+      "value": "834"
+    },
+    {
+      "name": "Utilities",
+      "value": "Not included"
+    }
+  ],
+  "sold_to_list_ratio": 0.8514190317195326,
+  "sold_to_zestimate_ratio": 0.8577194752774975,
+  "is_flipped_within_12_months": true,
+  "timestamp": "2026-06-06T18:31:32.420Z",
+  "input": {
+    "url": "https://www.zillow.com/homedetails/11311-Tampa-Ave-UNIT-12-Porter-Ranch-CA-91326/20154704_zpid/"
+  }
+}

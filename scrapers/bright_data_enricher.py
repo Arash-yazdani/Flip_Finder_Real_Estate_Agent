@@ -24,7 +24,7 @@ SNAPSHOT_URL = "https://api.brightdata.com/datasets/v3/snapshot/{snapshot_id}"
 ZILLOW_DETAIL_DATASET_ID = "gd_lfqkr8wm13ixtbd8f5"
 
 POLL_INTERVAL_SEC = 10
-POLL_TIMEOUT_SEC = 600
+POLL_TIMEOUT_SEC = 1200
 
 
 def _load_token() -> str:
@@ -61,6 +61,8 @@ class BrightDataZillowEnricher:
     def __init__(self, token: Optional[str] = None, dataset_id: str = ZILLOW_DETAIL_DATASET_ID):
         self.token = token or _load_token()
         self.dataset_id = dataset_id
+        # Populated by enrich(): {"attempted": int, "from_cache": int, "fresh": int}
+        self.last_stats: Dict[str, int] = {"attempted": 0, "from_cache": 0, "fresh": 0}
         CACHE_DIR.mkdir(parents=True, exist_ok=True)
 
     @property
@@ -71,39 +73,51 @@ class BrightDataZillowEnricher:
         }
 
     def enrich(self, urls: Iterable[str], use_cache: bool = True) -> Dict[str, dict]:
-        """Return {zpid: enriched_record} for every URL. Cached zpids skip the API."""
+        """Return {zpid: enriched_record} for every URL. Cached zpids skip the API.
+
+        Side effect: populates self.last_stats with:
+            {"attempted": N, "from_cache": C, "fresh": F}
+        Callers (e.g. dashboard/search_service) read this for cost telemetry.
+        """
         urls = list(urls)
         results: Dict[str, dict] = {}
         to_fetch: List[str] = []
+        cache_hits = 0
 
         for u in urls:
             zpid = _zpid_from_url(u)
             if zpid and use_cache and _cache_path(zpid).exists():
                 try:
                     results[zpid] = json.loads(_cache_path(zpid).read_text())
+                    cache_hits += 1
                     continue
                 except Exception:
                     pass
             to_fetch.append(u)
 
-        if not to_fetch:
-            return results
+        fresh_count = 0
+        if to_fetch:
+            snapshot_id = self._trigger(to_fetch)
+            print(f"  Bright Data snapshot triggered: {snapshot_id}", file=sys.stderr)
+            records = self._wait_for_snapshot(snapshot_id)
+            print(f"  Got {len(records)} enriched records", file=sys.stderr)
 
-        snapshot_id = self._trigger(to_fetch)
-        print(f"  Bright Data snapshot triggered: {snapshot_id}", file=sys.stderr)
-        records = self._wait_for_snapshot(snapshot_id)
-        print(f"  Got {len(records)} enriched records", file=sys.stderr)
+            for rec in records:
+                zpid = str(rec.get("zpid") or _zpid_from_url(rec.get("url", "")) or "")
+                if not zpid:
+                    continue
+                results[zpid] = rec
+                fresh_count += 1
+                try:
+                    _cache_path(zpid).write_text(json.dumps(rec, indent=2))
+                except Exception as e:
+                    print(f"  cache write failed for {zpid}: {e}", file=sys.stderr)
 
-        for rec in records:
-            zpid = str(rec.get("zpid") or _zpid_from_url(rec.get("url", "")) or "")
-            if not zpid:
-                continue
-            results[zpid] = rec
-            try:
-                _cache_path(zpid).write_text(json.dumps(rec, indent=2))
-            except Exception as e:
-                print(f"  cache write failed for {zpid}: {e}", file=sys.stderr)
-
+        self.last_stats = {
+            "attempted": len(urls),
+            "from_cache": cache_hits,
+            "fresh": fresh_count,
+        }
         return results
 
     def _trigger(self, urls: List[str]) -> str:

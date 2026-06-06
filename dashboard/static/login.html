@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Sign in — Real Estate Analyzer</title>
+  <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body class="login-body">
+  <main class="login-card">
+    <h1>Real Estate Analyzer</h1>
+    <p class="muted">Sign in to continue</p>
+    <form id="login-form">
+      <input type="email" id="email" name="email" autocomplete="username"
+             placeholder="Email" autofocus required>
+      <input type="password" id="password" name="password"
+             autocomplete="current-password" placeholder="Password" required>
+      <button type="submit">Sign in</button>
+      <p id="error" class="error" hidden></p>
+    </form>
+  </main>
+  <script>
+    document.getElementById("login-form").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const email = document.getElementById("email").value.trim();
+      const pw = document.getElementById("password").value;
+      const err = document.getElementById("error");
+      err.hidden = true;
+      try {
+        const r = await fetch("/api/login", {
+          method: "POST",
+          credentials: "include",
+          headers: {"Content-Type": "application/json"},
+          body: JSON.stringify({email: email, password: pw}),
+        });
+        if (r.ok) {
+          window.location = "/";
+        } else {
+          const data = await r.json().catch(() => ({}));
+          err.textContent = data.detail || "Sign-in failed";
+          err.hidden = false;
+        }
+      } catch (e) {
+        err.textContent = e.message;
+        err.hidden = false;
+      }
+    });
+  </script>
+</body>
+</html>

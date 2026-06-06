@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Real Estate Analyzer</title>
+  <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">Real Estate Analyzer</div>
+    <nav class="nav">
+      <button id="nav-archive" class="nav-btn">Archive ▾</button>
+      <button id="nav-favorites" class="nav-btn">Favorites ★</button>
+    </nav>
+    <div class="status">
+      <span id="quota-chip" class="quota-chip" hidden></span>
+      <a id="admin-link" class="nav-btn" href="/admin" hidden>Admin</a>
+      <span id="api-status" class="status-dot status-ok" title="APIs healthy"></span>
+      <button id="logout-btn" class="link-btn">Sign out</button>
+    </div>
+  </header>
+  <style>
+    .quota-chip {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 3px 10px; border-radius: 10px;
+      background: #1a2a1a; color: #8ec98e; border: 1px solid #2a4a2a;
+      font-size: 12px; font-variant-numeric: tabular-nums;
+    }
+    .quota-chip.warn  { background: #3a2a1a; color: #d8a36e; border-color: #5a3a1a; }
+    .quota-chip.empty { background: #3a1a1a; color: #d86e6e; border-color: #5a1a1a; }
+    .quota-chip .quota-email { opacity: .7; font-size: 11px; }
+  </style>
+
+  <!-- Quota banner (hidden by default) -->
+  <div id="quota-banner" class="quota-banner" hidden>
+    <span id="quota-banner-text"></span>
+    <button id="quota-banner-close" class="link-btn">Dismiss</button>
+  </div>
+
+  <main class="layout">
+    <aside class="sidebar">
+      <h2>New Search</h2>
+      <form id="search-form">
+        <label>City
+          <input type="text" id="city" placeholder="Sausalito, CA" required>
+        </label>
+        <label>Top N
+          <input type="number" id="count" value="10" min="1" max="30">
+        </label>
+        <label>Intent
+          <select id="intent">
+            <option value="flip">Flip</option>
+            <option value="rent">Rent</option>
+            <option value="both" selected>Both (Flip + Rent)</option>
+          </select>
+        </label>
+        <button type="submit" id="search-btn">Run Analysis</button>
+      </form>
+
+      <h3 id="archive-heading">Archive — Recent Searches</h3>
+      <ul id="history-list" class="history-list"></ul>
+    </aside>
+
+    <section class="results">
+      <div class="results-header">
+        <div id="status-line" class="status-line"></div>
+        <button id="save-city-btn" class="save-city" hidden>☆ Save this city</button>
+      </div>
+      <div id="results-grid" class="results-grid"></div>
+    </section>
+  </main>
+
+  <!-- Favorites modal -->
+  <div id="modal-favorites" class="modal" hidden>
+    <div class="modal-card">
+      <header><h3>Favorites</h3><button class="link-btn" data-close>×</button></header>
+      <div class="tabs">
+        <button class="tab active" data-tab="props">Saved Listings</button>
+        <button class="tab" data-tab="cities">Watched Cities</button>
+      </div>
+      <div id="fav-props" class="tab-pane active"></div>
+      <div id="fav-cities" class="tab-pane" hidden></div>
+    </div>
+  </div>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>

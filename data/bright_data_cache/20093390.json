@@ -1,0 +1,1460 @@
+{
+  "zpid": 20093390,
+  "city": "Sunland",
+  "state": "CA",
+  "homeStatus": "FOR_SALE",
+  "address": {
+    "city": "Sunland",
+    "streetAddress": "10831 Odell Ave",
+    "zipcode": "91040",
+    "state": "CA"
+  },
+  "isListingClaimedByCurrentSignedInUser": "false",
+  "isCurrentSignedInAgentResponsible": "false",
+  "bedrooms": 3,
+  "bathrooms": 1,
+  "price": 599000,
+  "yearBuilt": 1948,
+  "streetAddress": "10831 Odell Ave",
+  "zipcode": "91040",
+  "isCurrentSignedInUserVerifiedOwner": "false",
+  "isVerifiedClaimedByCurrentSignedInUser": "No",
+  "listingDataSource": "Phoenix",
+  "longitude": -118.312515,
+  "latitude": 34.26597,
+  "hasBadGeocode": false,
+  "livingArea": 844,
+  "homeType": "SINGLE_FAMILY",
+  "lotSize": 3978,
+  "lotAreaValue": 3978,
+  "lotAreaUnits": "Square Feet",
+  "livingAreaValue": 844,
+  "livingAreaUnitsShort": "sqft",
+  "isUndisclosedAddress": "false",
+  "zestimate": 602500,
+  "rentZestimate": 2829,
+  "currency": "USD",
+  "dateSoldString": "2023-11-09",
+  "taxAssessedValue": 693600,
+  "taxAssessedYear": 2025,
+  "country": "USA",
+  "propertyTaxRate": 1.18,
+  "photoCount": 17,
+  "isPremierBuilder": "false",
+  "ssid": 3,
+  "hdpUrl": "https://www.zillow.com/homedetails/10831-Odell-Ave-Sunland-CA-91040/20093390_zpid/",
+  "tourViewCount": 0,
+  "lastSoldPrice": 680000,
+  "livingAreaUnits": "Square Feet",
+  "zestimateMinus30": "0",
+  "restimateMinus30": "2789",
+  "zestimateLowPercent": "5",
+  "zestimateHighPercent": "5",
+  "description": "Welcome home to 10831 Odell Ave \u2014 a sun-drenched 1948 Mid-Century charmer tucked into the Sunland foothills and priced to be the most affordable detached home story you'll tell this year. Inside, original wood-beamed ceilings, hardwood-style flooring, and oversized windows pour natural light across an open living and dining flow. French doors swing open to a private outdoor patio \u2014 quintessential California indoor-outdoor living for morning coffee, weekend BBQs, or stargazing under the San Gabriels. Two true bedrooms, a clean full bath, and a converted 1-car garage that works beautifully as a third bedroom, home office, creative studio, or future ADU. Step outside and you're minutes from Angeles National Forest trails, Oro Vista Park, Tujunga Ponds Wildlife Sanctuary, and the caf\u00e9s, taquerias, and antique shops of Foothill Blvd. Quick I-210 access puts Burbank studios, Glendale, Pasadena, and Downtown LA (\u02dc 20 mi) within easy commute. Zoned for Apperson Street Elementary, Mount Gleason Middle, and Verdugo Hills High. A rare under-$600K entry point into one of LA's most up-and-coming foothill neighborhoods \u2014 perfect for first-time buyers, creative professionals working from home, or investors eyeing long-term value and ADU upside. Don't miss this one.",
+  "parcelId": "2555014015",
+  "taxHistory": [
+    {
+      "time": 2025,
+      "taxPaid": 8416.14,
+      "value": 693600,
+      "valueIncreaseRate": 0.02
+    },
+    {
+      "time": 2024,
+      "taxPaid": 8329.06,
+      "value": 680000,
+      "valueIncreaseRate": 0.18835413
+    },
+    {
+      "time": 2023,
+      "taxPaid": 7034.34,
+      "value": 572220,
+      "valueIncreaseRate": 0.02
+    },
+    {
+      "time": 2022,
+      "taxPaid": 6704.52,
+      "value": 561000,
+      "valueIncreaseRate": 14.70241
+    },
+    {
+      "time": 2021,
+      "taxPaid": 579.46,
+      "value": 35727,
+      "valueIncreaseRate": 0.010321815
+    },
+    {
+      "time": 2020,
+      "taxPaid": 581.35,
+      "value": 35362,
+      "valueIncreaseRate": 0.01995962
+    },
+    {
+      "time": 2019,
+      "taxPaid": 581.35,
+      "value": 34670,
+      "valueIncreaseRate": 0.019975876
+    },
+    {
+      "time": 2018,
+      "taxPaid": 521.12,
+      "value": 33991,
+      "valueIncreaseRate": 0.019984996
+    },
+    {
+      "time": 2017,
+      "taxPaid": 521.12,
+      "value": 33325,
+      "valueIncreaseRate": 0.019986533
+    },
+    {
+      "time": 2016,
+      "taxPaid": 508.43,
+      "value": 32672,
+      "valueIncreaseRate": 0.015194357
+    },
+    {
+      "time": 2015,
+      "taxPaid": 487.61,
+      "value": 32183,
+      "valueIncreaseRate": 0.019966405
+    },
+    {
+      "time": 2014,
+      "taxPaid": 492.96,
+      "value": 31553,
+      "valueIncreaseRate": 0.024547845
+    },
+    {
+      "time": 2012,
+      "value": 30797,
+      "valueIncreaseRate": 0.019970855
+    },
+    {
+      "time": 2011,
+      "value": 30194,
+      "valueIncreaseRate": 0.0074741407
+    },
+    {
+      "time": 2010,
+      "value": 29970,
+      "valueIncreaseRate": -0.0023966448
+    },
+    {
+      "time": 2009,
+      "value": 30042,
+      "valueIncreaseRate": 0.019963333
+    },
+    {
+      "time": 2008,
+      "value": 29454,
+      "valueIncreaseRate": 0.0199813
+    },
+    {
+      "time": 2007,
+      "value": 28877,
+      "valueIncreaseRate": 0.019992229
+    },
+    {
+      "time": 2006,
+      "value": 28311,
+      "valueIncreaseRate": 0
+    },
+    {
+      "time": 2005,
+      "value": 28311,
+      "valueIncreaseRate": 0.040348362
+    },
+    {
+      "time": 2004,
+      "value": 27213,
+      "valueIncreaseRate": 0.018641213
+    },
+    {
+      "time": 2003,
+      "value": 26715,
+      "valueIncreaseRate": 0.019967929
+    },
+    {
+      "time": 2002,
+      "value": 26192,
+      "valueIncreaseRate": 0.040314574
+    },
+    {
+      "time": 2000,
+      "value": 25177,
+      "valueIncreaseRate": 0
+    }
+  ],
+  "priceHistory": [
+    {
+      "date": "2026-05-28",
+      "time": 1779926400000,
+      "priceChangeRate": -0.20122683024403254,
+      "event": "Listed for sale",
+      "source": "CRMLS",
+      "showCountyLink": false,
+      "postingIsRental": false,
+      "attributeSource": {
+        "infoString2": "CRMLS",
+        "infoString3": "https://photos.zillowstatic.com/fp/cb8caaa629c0af2058e60add67b2f2ee-zillow_web_logo_inf_11.jpg"
+      },
+      "price": 599000,
+      "pricePerSquareFoot": 710,
+      "source_listing_id": "SR26115112",
+      "source_name": "CRMLS"
+    },
+    {
+      "date": "2025-10-17",
+      "time": 1760659200000,
+      "priceChangeRate": 0,
+      "event": "Listing removed",
+      "source": "NextHome",
+      "showCountyLink": false,
+      "postingIsRental": false,
+      "attributeSource": {
+        "infoString2": "NextHome",
+        "infoString3": "https://photos.zillowstatic.com/fp/47e4996940320a069e548e045714c68c-zillow_web_logo_inf_11.jpg"
+      },
+      "price": 749900,
+      "pricePerSquareFoot": 889,
+      "source_listing_id": "GD25159943",
+      "source_name": "NextHome"
+    },
+    {
+      "date": "2025-08-04",
+      "time": 1754265600000,
+      "priceChangeRate": 0,
+      "event": "Listed for sale",
+      "source": "NextHome",
+      "showCountyLink": false,
+      "postingIsRental": false,
+      "attributeSource": {
+        "infoString2": "NextHome",
+        "infoString3": "https://photos.zillowstatic.com/fp/47e4996940320a069e548e045714c68c-zillow_web_logo_inf_11.jpg"
+      },
+      "price": 749900,
+      "pricePerSquareFoot": 889,
+      "source_listing_id": "GD25159943",
+      "source_name": "NextHome"
+    },
+    {
+      "date": "2025-07-23",
+      "time": 1753228800000,
+      "priceChangeRate": 0,
+      "event": "Listing removed",
+      "source": "NextHome",
+      "showCountyLink": false,
+      "postingIsRental": false,
+      "attributeSource": {
+        "infoString2": "NextHome",
+        "infoString3": "https://photos.zillowstatic.com/fp/47e4996940320a069e548e045714c68c-zillow_web_logo_inf_11.jpg"
+      },
+      "price": 749900,
+      "pricePerSquareFoot": 889,
+      "source_listing_id": "GD25159943",
+      "source_name": "NextHome"
+    },
+    {
+      "date": "2025-07-17",
+      "time": 1752710400000,
+      "priceChangeRate": 0.10279411764705883,
+      "event": "Listed for sale",
+      "source": "NextHome",
+      "showCountyLink": false,
+      "postingIsRental": false,
+      "attributeSource": {
+        "infoString2": "NextHome",
+        "infoString3": "https://photos.zillowstatic.com/fp/47e4996940320a069e548e045714c68c-zillow_web_logo_inf_11.jpg"
+      },
+      "price": 749900,
+      "pricePerSquareFoot": 889,
+      "source_listing_id": "GD25159943",
+      "source_name": "NextHome"
+    },
+    {
+      "date": "2023-11-09",
+      "time": 1699488000000,
+      "priceChangeRate": 0.03186646433990895,
+      "event": "Sold",
+      "source": "Public Record",
+      "showCountyLink": false,
+      "postingIsRental": false,
+      "attributeSource": {
+        "infoString2": "Public Record"
+      },
+      "price": 680000,
+      "pricePerSquareFoot": 806,
+      "source_listing_id": null,
+      "source_name": "Public Record"
+    },
+    {
+      "date": "2023-10-14",
+      "time": 1697241600000,
+      "priceChangeRate": 0,
+      "event": "Pending sale",
+      "source": "CLAW",
+      "showCountyLink": false,
+      "postingIsRental": false,
+      "attributeSource": {
+        "infoString2": "CLAW",
+        "infoString3": "https://photos.zillowstatic.com/fp/d1d7f14ba9e5de22bbf848071a4b8b8e-zillow_web_logo_inf_11.jpg"
+      },
+      "price": 659000,
+      "pricePerSquareFoot": 781,
+      "source_listing_id": "23-314651",
+      "source_name": "CLAW"
+    },
+    {
+      "date": "2023-09-28",
+      "time": 1695859200000,
+      "priceChangeRate": 0,
+      "event": "Listed for sale",
+      "source": "CLAW",
+      "showCountyLink": false,
+      "postingIsRental": false,
+      "attributeSource": {
+        "infoString2": "CLAW",
+        "infoString3": "https://photos.zillowstatic.com/fp/d1d7f14ba9e5de22bbf848071a4b8b8e-zillow_web_logo_inf_11.jpg"
+      },
+      "price": 659000,
+      "pricePerSquareFoot": 781,
+      "source_listing_id": "23-314651",
+      "source_name": "CLAW"
+    }
+  ],
+  "nearbyHomes": [
+    "{\"zpid\":20093389,\"isSavedByCurrentSignedInUser\":false,\"miniCardPhotos\":[\"https://maps.googleapis.com/maps/api/streetview?location=10835+Odell+Ave%2C+Sunland%2C+CA+91040&size=316x234&key=AIzaSyARFMLB1na-BBWf7_R3-5YOQQaHqEJf6RQ&source=outdoor&&signature=NrEyKNRRxrmA25hn7cfcPeoRvmM=\"],\"price\":717600,\"currency\":\"USD\",\"bedrooms\":2,\"bathrooms\":1,\"livingArea\":881,\"livingAreaValue\":881,\"livingAreaUnits\":\"Square Feet\",\"livingAreaUnitsShort\":\"sqft\",\"listingMetadata\":{\"comminglingCategoryIsRulesApplicable\":false},\"lotSize\":3978,\"lotAreaValue\":3978,\"lotAreaUnits\":\"Square Feet\",\"address\":{\"streetAddress\":\"10835 Odell Ave\",\"city\":\"Sunland\",\"state\":\"CA\",\"zipcode\":\"91040\"},\"formattedChip\":{\"location\":[\"10835 Odell Ave\"]},\"latitude\":34.266068,\"longitude\":-118.312515,\"homeStatus\":\"OTHER\",\"homeType\":\"SINGLE_FAMILY\",\"hdpUrl\":\"/homedetails/10835-Odell-Ave-Sunland-CA-91040/20093389_zpid/\",\"hdpTypeDimension\":\"Zestimate\",\"propertyTypeDimension\":\"Single Family\",\"listingTypeDimension\":\"Unknown Listed By\",\"listing_sub_type\":{\"is_newHome\":false,\"is_forAuction\":false,\"is_bankOwned\":false,\"is_foreclosure\":false,\"is_FSBO\":false,\"is_comingSoon\":false,\"is_FSBA\":false},\"isShowcaseListing\":false,\"isPremierBuilder\":false,\"state\":\"CA\"}",
+    "{\"zpid\":20093391,\"isSavedByCurrentSignedInUser\":false,\"miniCardPhotos\":[\"https://photos.zillowstatic.com/fp/3f1a9965c41a00865c11025c99d86ab4-p_c.jpg\"],\"price\":1026600,\"currency\":\"USD\",\"bedrooms\":4,\"bathrooms\":3,\"livingArea\":1522,\"livingAreaValue\":1522,\"livingAreaUnits\":\"Square Feet\",\"livingAreaUnitsShort\":\"sqft\",\"listingMetadata\":{\"comminglingCategoryIsRulesApplicable\":false},\"lotSize\":7954,\"lotAreaValue\":7954,\"lotAreaUnits\":\"Square Feet\",\"address\":{\"streetAddress\":\"10823 Odell Ave\",\"city\":\"Sunland\",\"state\":\"CA\",\"zipcode\":\"91040\"},\"formattedChip\":{\"location\":[\"10823 Odell Ave\"]},\"latitude\":34.26582,\"longitude\":-118.312515,\"homeStatus\":\"OTHER\",\"homeType\":\"SINGLE_FAMILY\",\"hdpUrl\":\"/homedetails/10823-Odell-Ave-Sunland-CA-91040/20093391_zpid/\",\"hdpTypeDimension\":\"Zestimate\",\"propertyTypeDimension\":\"Single Family\",\"listingTypeDimension\":\"Unknown Listed By\",\"listing_sub_type\":{\"is_newHome\":false,\"is_forAuction\":false,\"is_bankOwned\":false,\"is_foreclosure\":false,\"is_FSBO\":false,\"is_comingSoon\":false,\"is_FSBA\":false},\"isShowcaseListing\":false,\"isPremierBuilder\":false,\"state\":\"CA\"}",
+    "{\"zpid\":20093388,\"isSavedByCurrentSignedInUser\":false,\"miniCardPhotos\":[\"https://maps.googleapis.com/maps/api/streetview?location=10841+Odell+Ave%2C+Sunland%2C+CA+91040&size=316x234&key=AIzaSyARFMLB1na-BBWf7_R3-5YOQQaHqEJf6RQ&source=outdoor&&signature=aGICNzJ8kjwoOv9x1QisxKsiImY=\"],\"price\":905900,\"currency\":\"USD\",\"bedrooms\":3,\"bathrooms\":2,\"livingArea\":1107,\"livingAreaValue\":1107,\"livingAreaUnits\":\"Square Feet\",\"livingAreaUnitsShort\":\"sqft\",\"listingMetadata\":{\"comminglingCategoryIsRulesApplicable\":false},\"lotSize\":7840,\"lotAreaValue\":7840,\"lotAreaUnits\":\"Square Feet\",\"address\":{\"streetAddress\":\"10841 Odell Ave\",\"city\":\"Sunland\",\"state\":\"CA\",\"zipcode\":\"91040\"},\"formattedChip\":{\"location\":[\"10841 Odell Ave\"]},\"latitude\":34.26622,\"longitude\":-118.31253,\"homeStatus\":\"OTHER\",\"homeType\":\"SINGLE_FAMILY\",\"hdpUrl\":\"/homedetails/10841-Odell-Ave-Sunland-CA-91040/20093388_zpid/\",\"hdpTypeDimension\":\"Zestimate\",\"propertyTypeDimension\":\"Single Family\",\"listingTypeDimension\":\"Unknown Listed By\",\"listing_sub_type\":{\"is_newHome\":false,\"is_forAuction\":false,\"is_bankOwned\":false,\"is_foreclosure\":false,\"is_FSBO\":false,\"is_comingSoon\":false,\"is_FSBA\":false},\"isShowcaseListing\":false,\"isPremierBuilder\":false,\"state\":\"CA\"}",
+    "{\"zpid\":20093394,\"isSavedByCurrentSignedInUser\":false,\"miniCardPhotos\":[\"https://photos.zillowstatic.com/fp/5082ae733b341b625037ee686a7eee1e-p_c.jpg\"],\"price\":701000,\"currency\":\"USD\",\"bedrooms\":2,\"bathrooms\":1,\"livingArea\":888,\"livingAreaValue\":888,\"livingAreaUnits\":\"Square Feet\",\"livingAreaUnitsShort\":\"sqft\",\"listingMetadata\":{\"comminglingCategoryIsRulesApplicable\":false},\"lotSize\":3982,\"lotAreaValue\":3982,\"lotAreaUnits\":\"Square Feet\",\"address\":{\"streetAddress\":\"10830 Parr Ave\",\"city\":\"Sunland\",\"state\":\"CA\",\"zipcode\":\"91040\"},\"formattedChip\":{\"location\":[\"10830 Parr Ave\"]},\"latitude\":34.26597,\"longitude\":-118.31288,\"homeStatus\":\"OTHER\",\"homeType\":\"SINGLE_FAMILY\",\"hdpUrl\":\"/homedetails/10830-Parr-Ave-Sunland-CA-91040/20093394_zpid/\",\"hdpTypeDimension\":\"Zestimate\",\"propertyTypeDimension\":\"Single Family\",\"listingTypeDimension\":\"Unknown Listed By\",\"listing_sub_type\":{\"is_newHome\":false,\"is_forAuction\":false,\"is_bankOwned\":false,\"is_foreclosure\":false,\"is_FSBO\":false,\"is_comingSoon\":false,\"is_FSBA\":false},\"isShowcaseListing\":false,\"isPremierBuilder\":false,\"state\":\"CA\"}",
+    "{\"zpid\":20093395,\"isSavedByCurrentSignedInUser\":false,\"miniCardPhotos\":[\"https://photos.zillowstatic.com/fp/69083137efabb65ecc156b31367a47e4-p_c.jpg\"],\"price\":846600,\"currency\":\"USD\",\"bedrooms\":3,\"bathrooms\":3,\"livingArea\":1144,\"livingAreaValue\":1144,\"livingAreaUnits\":\"Square Feet\",\"livingAreaUnitsShort\":\"sqft\",\"listingMetadata\":{\"comminglingCategoryIsRulesApplicable\":false},\"lotSize\":3981,\"lotAreaValue\":3981,\"lotAreaUnits\":\"Square Feet\",\"address\":{\"streetAddress\":\"10834 Parr Ave\",\"city\":\"Sunland\",\"state\":\"CA\",\"zipcode\":\"91040\"},\"formattedChip\":{\"location\":[\"10834 Parr Ave\"]},\"latitude\":34.266068,\"longitude\":-118.31288,\"homeStatus\":\"OTHER\",\"homeType\":\"SINGLE_FAMILY\",\"hdpUrl\":\"/homedetails/10834-Parr-Ave-Sunland-CA-91040/20093395_zpid/\",\"hdpTypeDimension\":\"Zestimate\",\"propertyTypeDimension\":\"Single Family\",\"listingTypeDimension\":\"Unknown Listed By\",\"listing_sub_type\":{\"is_newHome\":false,\"is_forAuction\":false,\"is_bankOwned\":false,\"is_foreclosure\":false,\"is_FSBO\":false,\"is_comingSoon\":false,\"is_FSBA\":false},\"isShowcaseListing\":false,\"isPremierBuilder\":false,\"state\":\"CA\"}",
+    "{\"zpid\":20093393,\"isSavedByCurrentSignedInUser\":false,\"miniCardPhotos\":[\"https://maps.googleapis.com/maps/api/streetview?location=10826+Parr+Ave%2C+Sunland%2C+CA+91040&size=316x234&key=AIzaSyARFMLB1na-BBWf7_R3-5YOQQaHqEJf6RQ&source=outdoor&&signature=EC1zc4hhuEt0v2Ik6gIxMNG2D0Y=\"],\"price\":743300,\"currency\":\"USD\",\"bedrooms\":2,\"bathrooms\":2,\"livingArea\":1140,\"livingAreaValue\":1140,\"livingAreaUnits\":\"Square Feet\",\"livingAreaUnitsShort\":\"sqft\",\"listingMetadata\":{\"comminglingCategoryIsRulesApplicable\":false},\"lotSize\":3981,\"lotAreaValue\":3981,\"lotAreaUnits\":\"Square Feet\",\"address\":{\"streetAddress\":\"10826 Parr Ave\",\"city\":\"Sunland\",\"state\":\"CA\",\"zipcode\":\"91040\"},\"formattedChip\":{\"location\":[\"10826 Parr Ave\"]},\"latitude\":34.26587,\"longitude\":-118.31288,\"homeStatus\":\"OTHER\",\"homeType\":\"SINGLE_FAMILY\",\"hdpUrl\":\"/homedetails/10826-Parr-Ave-Sunland-CA-91040/20093393_zpid/\",\"hdpTypeDimension\":\"Zestimate\",\"propertyTypeDimension\":\"Single Family\",\"listingTypeDimension\":\"Unknown Listed By\",\"listing_sub_type\":{\"is_newHome\":false,\"is_forAuction\":false,\"is_bankOwned\":false,\"is_foreclosure\":false,\"is_FSBO\":false,\"is_comingSoon\":false,\"is_FSBA\":false},\"isShowcaseListing\":false,\"isPremierBuilder\":false,\"state\":\"CA\"}",
+    "{\"zpid\":20093411,\"isSavedByCurrentSignedInUser\":false,\"miniCardPhotos\":[\"https://photos.zillowstatic.com/fp/bfe54903fd4d782924ad5a32add9436a-p_c.jpg\"],\"price\":874400,\"currency\":\"USD\",\"bedrooms\":3,\"bathrooms\":2,\"livingArea\":1429,\"livingAreaValue\":1429,\"livingAreaUnits\":\"Square Feet\",\"livingAreaUnitsShort\":\"sqft\",\"listingMetadata\":{\"comminglingCategoryIsRulesApplicable\":false},\"lotSize\":6818,\"lotAreaValue\":6818,\"lotAreaUnits\":\"Square Feet\",\"address\":{\"streetAddress\":\"10817 Odell Ave\",\"city\":\"Sunland\",\"state\":\"CA\",\"zipcode\":\"91040\"},\"formattedChip\":{\"location\":[\"10817 Odell Ave\"]},\"latitude\":34.265636,\"longitude\":-118.312515,\"homeStatus\":\"OTHER\",\"homeType\":\"SINGLE_FAMILY\",\"hdpUrl\":\"/homedetails/10817-Odell-Ave-Sunland-CA-91040/20093411_zpid/\",\"hdpTypeDimension\":\"Zestimate\",\"propertyTypeDimension\":\"Single Family\",\"listingTypeDimension\":\"Unknown Listed By\",\"listing_sub_type\":{\"is_newHome\":false,\"is_forAuction\":false,\"is_bankOwned\":false,\"is_foreclosure\":false,\"is_FSBO\":false,\"is_comingSoon\":false,\"is_FSBA\":false},\"isShowcaseListing\":false,\"isPremierBuilder\":false,\"state\":\"CA\"}",
+    "{\"zpid\":20093392,\"isSavedByCurrentSignedInUser\":false,\"miniCardPhotos\":[\"https://photos.zillowstatic.com/fp/3e25b2925c8af757832c181e30bc209b-p_c.jpg\"],\"price\":606500,\"currency\":\"USD\",\"bedrooms\":1,\"bathrooms\":1,\"livingArea\":378,\"livingAreaValue\":378,\"livingAreaUnits\":\"Square Feet\",\"livingAreaUnitsShort\":\"sqft\",\"listingMetadata\":{\"comminglingCategoryIsRulesApplicable\":false},\"lotSize\":3981,\"lotAreaValue\":3981,\"lotAreaUnits\":\"Square Feet\",\"address\":{\"streetAddress\":\"10822 Parr Ave\",\"city\":\"Sunland\",\"state\":\"CA\",\"zipcode\":\"91040\"},\"formattedChip\":{\"location\":[\"10822 Parr Ave\"]},\"latitude\":34.265778,\"longitude\":-118.3129,\"homeStatus\":\"OTHER\",\"homeType\":\"SINGLE_FAMILY\",\"hdpUrl\":\"/homedetails/10822-Parr-Ave-Sunland-CA-91040/20093392_zpid/\",\"hdpTypeDimension\":\"Zestimate\",\"propertyTypeDimension\":\"Single Family\",\"listingTypeDimension\":\"Unknown Listed By\",\"listing_sub_type\":{\"is_newHome\":false,\"is_forAuction\":false,\"is_bankOwned\":false,\"is_foreclosure\":false,\"is_FSBO\":false,\"is_comingSoon\":false,\"is_FSBA\":false},\"isShowcaseListing\":false,\"isPremierBuilder\":false,\"state\":\"CA\"}"
+  ],
+  "schools": [
+    {
+      "distance": 0.3,
+      "name": "Sunland Elementary School",
+      "rating": 5,
+      "grades": "K-5",
+      "link": "https://www.greatschools.org/california/sunland/2408-Sunland-Elementary-School/"
+    },
+    {
+      "distance": 0.5,
+      "name": "Mt. Gleason Middle School",
+      "rating": 7,
+      "grades": "6-8",
+      "link": "https://www.greatschools.org/california/sunland/2256-Mt.-Gleason-Middle-School/"
+    },
+    {
+      "distance": 0.9,
+      "name": "Verdugo Hills Senior High School",
+      "rating": 7,
+      "grades": "9-12",
+      "link": "https://www.greatschools.org/california/tujunga/2455-Verdugo-Hills-Senior-High-School/"
+    }
+  ],
+  "mortgageRates": {
+    "thirtyYearFixedRate": 6.49
+  },
+  "isInstantOfferEnabled": "No",
+  "nearbyCities": [
+    {
+      "regionUrl": {
+        "path": "/glendale-ca/"
+      },
+      "name": "Glendale"
+    },
+    {
+      "regionUrl": {
+        "path": "/lancaster-ca/"
+      },
+      "name": "Lancaster"
+    },
+    {
+      "regionUrl": {
+        "path": "/long-beach-ca/"
+      },
+      "name": "Long Beach"
+    },
+    {
+      "regionUrl": {
+        "path": "/los-angeles-ca/"
+      },
+      "name": "Los Angeles"
+    },
+    {
+      "regionUrl": {
+        "path": "/palmdale-ca/"
+      },
+      "name": "Palmdale"
+    },
+    {
+      "regionUrl": {
+        "path": "/pasadena-ca/"
+      },
+      "name": "Pasadena"
+    },
+    {
+      "regionUrl": {
+        "path": "/pomona-ca/"
+      },
+      "name": "Pomona"
+    },
+    {
+      "regionUrl": {
+        "path": "/santa-clarita-ca/"
+      },
+      "name": "Santa Clarita"
+    },
+    {
+      "regionUrl": {
+        "path": "/torrance-ca/"
+      },
+      "name": "Torrance"
+    },
+    {
+      "regionUrl": {
+        "path": "/whittier-ca/"
+      },
+      "name": "Whittier"
+    }
+  ],
+  "nearbyNeighborhoods": [
+    {
+      "regionUrl": {
+        "path": "/hollywood-los-angeles-ca/"
+      },
+      "name": "Hollywood"
+    },
+    {
+      "regionUrl": {
+        "path": "/mid-city-los-angeles-ca/"
+      },
+      "name": "Mid City"
+    },
+    {
+      "regionUrl": {
+        "path": "/north-hollywood-los-angeles-ca/"
+      },
+      "name": "North Hollywood"
+    },
+    {
+      "regionUrl": {
+        "path": "/northridge-los-angeles-ca/"
+      },
+      "name": "Northridge"
+    },
+    {
+      "regionUrl": {
+        "path": "/san-pedro-los-angeles-ca/"
+      },
+      "name": "San Pedro"
+    },
+    {
+      "regionUrl": {
+        "path": "/south-los-angeles-los-angeles-ca/"
+      },
+      "name": "South Los Angeles"
+    },
+    {
+      "regionUrl": {
+        "path": "/southeast-los-angeles-los-angeles-ca/"
+      },
+      "name": "Southeast Los Angeles"
+    },
+    {
+      "regionUrl": {
+        "path": "/sylmar-los-angeles-ca/"
+      },
+      "name": "Sylmar"
+    },
+    {
+      "regionUrl": {
+        "path": "/van-nuys-los-angeles-ca/"
+      },
+      "name": "Van Nuys"
+    },
+    {
+      "regionUrl": {
+        "path": "/woodland-hills-los-angeles-ca/"
+      },
+      "name": "Woodland Hills"
+    }
+  ],
+  "nearbyZipcodes": [
+    {
+      "regionUrl": {
+        "path": "/los-angeles-ca-90003/"
+      },
+      "name": "90003"
+    },
+    {
+      "regionUrl": {
+        "path": "/los-angeles-ca-90011/"
+      },
+      "name": "90011"
+    },
+    {
+      "regionUrl": {
+        "path": "/los-angeles-ca-90026/"
+      },
+      "name": "90026"
+    },
+    {
+      "regionUrl": {
+        "path": "/los-angeles-ca-90037/"
+      },
+      "name": "90037"
+    },
+    {
+      "regionUrl": {
+        "path": "/los-angeles-ca-90044/"
+      },
+      "name": "90044"
+    },
+    {
+      "regionUrl": {
+        "path": "/los-angeles-ca-90731/"
+      },
+      "name": "90731"
+    },
+    {
+      "regionUrl": {
+        "path": "/los-angeles-ca-91331/"
+      },
+      "name": "91331"
+    },
+    {
+      "regionUrl": {
+        "path": "/los-angeles-ca-91335/"
+      },
+      "name": "91335"
+    },
+    {
+      "regionUrl": {
+        "path": "/los-angeles-ca-91342/"
+      },
+      "name": "91342"
+    },
+    {
+      "regionUrl": {
+        "path": "/los-angeles-ca-91402/"
+      },
+      "name": "91402"
+    }
+  ],
+  "abbreviatedAddress": "10831 Odell Ave",
+  "daysOnZillow": 10,
+  "brokerageName": "Equity Union",
+  "propertyTypeDimension": "Single Family",
+  "hdpTypeDimension": "ForSale",
+  "timeZone": "America/Los_Angeles",
+  "selfTour": {
+    "hasSelfTour": false
+  },
+  "photos": [
+    {
+      "mixedSources": {
+        "jpeg": [
+          {
+            "url": "https://photos.zillowstatic.com/fp/b04f110b90823c97510b2e61ccd11c67-cc_ft_192.jpg",
+            "width": 192
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/b04f110b90823c97510b2e61ccd11c67-cc_ft_384.jpg",
+            "width": 384
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/b04f110b90823c97510b2e61ccd11c67-cc_ft_576.jpg",
+            "width": 576
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/b04f110b90823c97510b2e61ccd11c67-cc_ft_768.jpg",
+            "width": 768
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/b04f110b90823c97510b2e61ccd11c67-cc_ft_960.jpg",
+            "width": 960
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/b04f110b90823c97510b2e61ccd11c67-cc_ft_1152.jpg",
+            "width": 1152
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/b04f110b90823c97510b2e61ccd11c67-cc_ft_1344.jpg",
+            "width": 1344
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/b04f110b90823c97510b2e61ccd11c67-cc_ft_1536.jpg",
+            "width": 1536
+          }
+        ]
+      }
+    },
+    {
+      "mixedSources": {
+        "jpeg": [
+          {
+            "url": "https://photos.zillowstatic.com/fp/8a6d0e377095e4d9355c1c27ef118d36-cc_ft_192.jpg",
+            "width": 192
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/8a6d0e377095e4d9355c1c27ef118d36-cc_ft_384.jpg",
+            "width": 384
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/8a6d0e377095e4d9355c1c27ef118d36-cc_ft_576.jpg",
+            "width": 576
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/8a6d0e377095e4d9355c1c27ef118d36-cc_ft_768.jpg",
+            "width": 768
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/8a6d0e377095e4d9355c1c27ef118d36-cc_ft_960.jpg",
+            "width": 960
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/8a6d0e377095e4d9355c1c27ef118d36-cc_ft_1152.jpg",
+            "width": 1152
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/8a6d0e377095e4d9355c1c27ef118d36-cc_ft_1344.jpg",
+            "width": 1344
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/8a6d0e377095e4d9355c1c27ef118d36-cc_ft_1536.jpg",
+            "width": 1536
+          }
+        ]
+      }
+    },
+    {
+      "mixedSources": {
+        "jpeg": [
+          {
+            "url": "https://photos.zillowstatic.com/fp/a3f0b2ba93608be04e1da8fd926210d9-cc_ft_192.jpg",
+            "width": 192
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/a3f0b2ba93608be04e1da8fd926210d9-cc_ft_384.jpg",
+            "width": 384
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/a3f0b2ba93608be04e1da8fd926210d9-cc_ft_576.jpg",
+            "width": 576
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/a3f0b2ba93608be04e1da8fd926210d9-cc_ft_768.jpg",
+            "width": 768
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/a3f0b2ba93608be04e1da8fd926210d9-cc_ft_960.jpg",
+            "width": 960
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/a3f0b2ba93608be04e1da8fd926210d9-cc_ft_1152.jpg",
+            "width": 1152
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/a3f0b2ba93608be04e1da8fd926210d9-cc_ft_1344.jpg",
+            "width": 1344
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/a3f0b2ba93608be04e1da8fd926210d9-cc_ft_1536.jpg",
+            "width": 1536
+          }
+        ]
+      }
+    },
+    {
+      "mixedSources": {
+        "jpeg": [
+          {
+            "url": "https://photos.zillowstatic.com/fp/5c722f0a11cb471bff8a23563e261006-cc_ft_192.jpg",
+            "width": 192
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/5c722f0a11cb471bff8a23563e261006-cc_ft_384.jpg",
+            "width": 384
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/5c722f0a11cb471bff8a23563e261006-cc_ft_576.jpg",
+            "width": 576
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/5c722f0a11cb471bff8a23563e261006-cc_ft_768.jpg",
+            "width": 768
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/5c722f0a11cb471bff8a23563e261006-cc_ft_960.jpg",
+            "width": 960
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/5c722f0a11cb471bff8a23563e261006-cc_ft_1152.jpg",
+            "width": 1152
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/5c722f0a11cb471bff8a23563e261006-cc_ft_1344.jpg",
+            "width": 1344
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/5c722f0a11cb471bff8a23563e261006-cc_ft_1536.jpg",
+            "width": 1536
+          }
+        ]
+      }
+    },
+    {
+      "mixedSources": {
+        "jpeg": [
+          {
+            "url": "https://photos.zillowstatic.com/fp/470458adffad58b1bf400714768fb754-cc_ft_192.jpg",
+            "width": 192
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/470458adffad58b1bf400714768fb754-cc_ft_384.jpg",
+            "width": 384
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/470458adffad58b1bf400714768fb754-cc_ft_576.jpg",
+            "width": 576
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/470458adffad58b1bf400714768fb754-cc_ft_768.jpg",
+            "width": 768
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/470458adffad58b1bf400714768fb754-cc_ft_960.jpg",
+            "width": 960
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/470458adffad58b1bf400714768fb754-cc_ft_1152.jpg",
+            "width": 1152
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/470458adffad58b1bf400714768fb754-cc_ft_1344.jpg",
+            "width": 1344
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/470458adffad58b1bf400714768fb754-cc_ft_1536.jpg",
+            "width": 1536
+          }
+        ]
+      }
+    },
+    {
+      "mixedSources": {
+        "jpeg": [
+          {
+            "url": "https://photos.zillowstatic.com/fp/cfc3ba380144e42a888bf46ac29fc278-cc_ft_192.jpg",
+            "width": 192
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/cfc3ba380144e42a888bf46ac29fc278-cc_ft_384.jpg",
+            "width": 384
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/cfc3ba380144e42a888bf46ac29fc278-cc_ft_576.jpg",
+            "width": 576
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/cfc3ba380144e42a888bf46ac29fc278-cc_ft_768.jpg",
+            "width": 768
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/cfc3ba380144e42a888bf46ac29fc278-cc_ft_960.jpg",
+            "width": 960
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/cfc3ba380144e42a888bf46ac29fc278-cc_ft_1152.jpg",
+            "width": 1152
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/cfc3ba380144e42a888bf46ac29fc278-cc_ft_1344.jpg",
+            "width": 1344
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/cfc3ba380144e42a888bf46ac29fc278-cc_ft_1536.jpg",
+            "width": 1536
+          }
+        ]
+      }
+    },
+    {
+      "mixedSources": {
+        "jpeg": [
+          {
+            "url": "https://photos.zillowstatic.com/fp/d68eaeb3708045d98a143941b7f3cf87-cc_ft_192.jpg",
+            "width": 192
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/d68eaeb3708045d98a143941b7f3cf87-cc_ft_384.jpg",
+            "width": 384
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/d68eaeb3708045d98a143941b7f3cf87-cc_ft_576.jpg",
+            "width": 576
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/d68eaeb3708045d98a143941b7f3cf87-cc_ft_768.jpg",
+            "width": 768
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/d68eaeb3708045d98a143941b7f3cf87-cc_ft_960.jpg",
+            "width": 960
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/d68eaeb3708045d98a143941b7f3cf87-cc_ft_1152.jpg",
+            "width": 1152
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/d68eaeb3708045d98a143941b7f3cf87-cc_ft_1344.jpg",
+            "width": 1344
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/d68eaeb3708045d98a143941b7f3cf87-cc_ft_1536.jpg",
+            "width": 1536
+          }
+        ]
+      }
+    },
+    {
+      "mixedSources": {
+        "jpeg": [
+          {
+            "url": "https://photos.zillowstatic.com/fp/7a23079922dd08396a9db8aed9b632ce-cc_ft_192.jpg",
+            "width": 192
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/7a23079922dd08396a9db8aed9b632ce-cc_ft_384.jpg",
+            "width": 384
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/7a23079922dd08396a9db8aed9b632ce-cc_ft_576.jpg",
+            "width": 576
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/7a23079922dd08396a9db8aed9b632ce-cc_ft_768.jpg",
+            "width": 768
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/7a23079922dd08396a9db8aed9b632ce-cc_ft_960.jpg",
+            "width": 960
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/7a23079922dd08396a9db8aed9b632ce-cc_ft_1152.jpg",
+            "width": 1152
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/7a23079922dd08396a9db8aed9b632ce-cc_ft_1344.jpg",
+            "width": 1344
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/7a23079922dd08396a9db8aed9b632ce-cc_ft_1536.jpg",
+            "width": 1536
+          }
+        ]
+      }
+    },
+    {
+      "mixedSources": {
+        "jpeg": [
+          {
+            "url": "https://photos.zillowstatic.com/fp/8ab73fa944a45dbef169eb35b7156395-cc_ft_192.jpg",
+            "width": 192
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/8ab73fa944a45dbef169eb35b7156395-cc_ft_384.jpg",
+            "width": 384
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/8ab73fa944a45dbef169eb35b7156395-cc_ft_576.jpg",
+            "width": 576
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/8ab73fa944a45dbef169eb35b7156395-cc_ft_768.jpg",
+            "width": 768
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/8ab73fa944a45dbef169eb35b7156395-cc_ft_960.jpg",
+            "width": 960
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/8ab73fa944a45dbef169eb35b7156395-cc_ft_1152.jpg",
+            "width": 1152
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/8ab73fa944a45dbef169eb35b7156395-cc_ft_1344.jpg",
+            "width": 1344
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/8ab73fa944a45dbef169eb35b7156395-cc_ft_1536.jpg",
+            "width": 1536
+          }
+        ]
+      }
+    },
+    {
+      "mixedSources": {
+        "jpeg": [
+          {
+            "url": "https://photos.zillowstatic.com/fp/3b78deccd25eb3c9fef9182e41ca764c-cc_ft_192.jpg",
+            "width": 192
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/3b78deccd25eb3c9fef9182e41ca764c-cc_ft_384.jpg",
+            "width": 384
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/3b78deccd25eb3c9fef9182e41ca764c-cc_ft_576.jpg",
+            "width": 576
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/3b78deccd25eb3c9fef9182e41ca764c-cc_ft_768.jpg",
+            "width": 768
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/3b78deccd25eb3c9fef9182e41ca764c-cc_ft_960.jpg",
+            "width": 960
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/3b78deccd25eb3c9fef9182e41ca764c-cc_ft_1152.jpg",
+            "width": 1152
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/3b78deccd25eb3c9fef9182e41ca764c-cc_ft_1344.jpg",
+            "width": 1344
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/3b78deccd25eb3c9fef9182e41ca764c-cc_ft_1536.jpg",
+            "width": 1536
+          }
+        ]
+      }
+    },
+    {
+      "mixedSources": {
+        "jpeg": [
+          {
+            "url": "https://photos.zillowstatic.com/fp/62ffbdec0b72ca576b97d7346cabfa1a-cc_ft_192.jpg",
+            "width": 192
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/62ffbdec0b72ca576b97d7346cabfa1a-cc_ft_384.jpg",
+            "width": 384
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/62ffbdec0b72ca576b97d7346cabfa1a-cc_ft_576.jpg",
+            "width": 576
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/62ffbdec0b72ca576b97d7346cabfa1a-cc_ft_768.jpg",
+            "width": 768
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/62ffbdec0b72ca576b97d7346cabfa1a-cc_ft_960.jpg",
+            "width": 960
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/62ffbdec0b72ca576b97d7346cabfa1a-cc_ft_1152.jpg",
+            "width": 1152
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/62ffbdec0b72ca576b97d7346cabfa1a-cc_ft_1344.jpg",
+            "width": 1344
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/62ffbdec0b72ca576b97d7346cabfa1a-cc_ft_1536.jpg",
+            "width": 1536
+          }
+        ]
+      }
+    },
+    {
+      "mixedSources": {
+        "jpeg": [
+          {
+            "url": "https://photos.zillowstatic.com/fp/bf40adf97e051b5b021ad24a77607f8c-cc_ft_192.jpg",
+            "width": 192
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/bf40adf97e051b5b021ad24a77607f8c-cc_ft_384.jpg",
+            "width": 384
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/bf40adf97e051b5b021ad24a77607f8c-cc_ft_576.jpg",
+            "width": 576
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/bf40adf97e051b5b021ad24a77607f8c-cc_ft_768.jpg",
+            "width": 768
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/bf40adf97e051b5b021ad24a77607f8c-cc_ft_960.jpg",
+            "width": 960
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/bf40adf97e051b5b021ad24a77607f8c-cc_ft_1152.jpg",
+            "width": 1152
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/bf40adf97e051b5b021ad24a77607f8c-cc_ft_1344.jpg",
+            "width": 1344
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/bf40adf97e051b5b021ad24a77607f8c-cc_ft_1536.jpg",
+            "width": 1536
+          }
+        ]
+      }
+    },
+    {
+      "mixedSources": {
+        "jpeg": [
+          {
+            "url": "https://photos.zillowstatic.com/fp/1eb2535f6ffb91b917f1d2c32a2bde71-cc_ft_192.jpg",
+            "width": 192
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/1eb2535f6ffb91b917f1d2c32a2bde71-cc_ft_384.jpg",
+            "width": 384
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/1eb2535f6ffb91b917f1d2c32a2bde71-cc_ft_576.jpg",
+            "width": 576
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/1eb2535f6ffb91b917f1d2c32a2bde71-cc_ft_768.jpg",
+            "width": 768
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/1eb2535f6ffb91b917f1d2c32a2bde71-cc_ft_960.jpg",
+            "width": 960
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/1eb2535f6ffb91b917f1d2c32a2bde71-cc_ft_1152.jpg",
+            "width": 1152
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/1eb2535f6ffb91b917f1d2c32a2bde71-cc_ft_1344.jpg",
+            "width": 1344
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/1eb2535f6ffb91b917f1d2c32a2bde71-cc_ft_1536.jpg",
+            "width": 1536
+          }
+        ]
+      }
+    },
+    {
+      "mixedSources": {
+        "jpeg": [
+          {
+            "url": "https://photos.zillowstatic.com/fp/8585099ed0f813d100f9493dbe814e1f-cc_ft_192.jpg",
+            "width": 192
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/8585099ed0f813d100f9493dbe814e1f-cc_ft_384.jpg",
+            "width": 384
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/8585099ed0f813d100f9493dbe814e1f-cc_ft_576.jpg",
+            "width": 576
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/8585099ed0f813d100f9493dbe814e1f-cc_ft_768.jpg",
+            "width": 768
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/8585099ed0f813d100f9493dbe814e1f-cc_ft_960.jpg",
+            "width": 960
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/8585099ed0f813d100f9493dbe814e1f-cc_ft_1152.jpg",
+            "width": 1152
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/8585099ed0f813d100f9493dbe814e1f-cc_ft_1344.jpg",
+            "width": 1344
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/8585099ed0f813d100f9493dbe814e1f-cc_ft_1536.jpg",
+            "width": 1536
+          }
+        ]
+      }
+    },
+    {
+      "mixedSources": {
+        "jpeg": [
+          {
+            "url": "https://photos.zillowstatic.com/fp/d4042b588e95314a9ebe76d1c1a32f9c-cc_ft_192.jpg",
+            "width": 192
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/d4042b588e95314a9ebe76d1c1a32f9c-cc_ft_384.jpg",
+            "width": 384
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/d4042b588e95314a9ebe76d1c1a32f9c-cc_ft_576.jpg",
+            "width": 576
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/d4042b588e95314a9ebe76d1c1a32f9c-cc_ft_768.jpg",
+            "width": 768
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/d4042b588e95314a9ebe76d1c1a32f9c-cc_ft_960.jpg",
+            "width": 960
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/d4042b588e95314a9ebe76d1c1a32f9c-cc_ft_1152.jpg",
+            "width": 1152
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/d4042b588e95314a9ebe76d1c1a32f9c-cc_ft_1344.jpg",
+            "width": 1344
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/d4042b588e95314a9ebe76d1c1a32f9c-cc_ft_1536.jpg",
+            "width": 1536
+          }
+        ]
+      }
+    },
+    {
+      "mixedSources": {
+        "jpeg": [
+          {
+            "url": "https://photos.zillowstatic.com/fp/8fb0b1457bb4a77a24074c1ed13dd726-cc_ft_192.jpg",
+            "width": 192
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/8fb0b1457bb4a77a24074c1ed13dd726-cc_ft_384.jpg",
+            "width": 384
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/8fb0b1457bb4a77a24074c1ed13dd726-cc_ft_576.jpg",
+            "width": 576
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/8fb0b1457bb4a77a24074c1ed13dd726-cc_ft_768.jpg",
+            "width": 768
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/8fb0b1457bb4a77a24074c1ed13dd726-cc_ft_960.jpg",
+            "width": 960
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/8fb0b1457bb4a77a24074c1ed13dd726-cc_ft_1152.jpg",
+            "width": 1152
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/8fb0b1457bb4a77a24074c1ed13dd726-cc_ft_1344.jpg",
+            "width": 1344
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/8fb0b1457bb4a77a24074c1ed13dd726-cc_ft_1536.jpg",
+            "width": 1536
+          }
+        ]
+      }
+    },
+    {
+      "mixedSources": {
+        "jpeg": [
+          {
+            "url": "https://photos.zillowstatic.com/fp/63e54e9b062133e394b854aace1ae676-cc_ft_192.jpg",
+            "width": 192
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/63e54e9b062133e394b854aace1ae676-cc_ft_384.jpg",
+            "width": 384
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/63e54e9b062133e394b854aace1ae676-cc_ft_576.jpg",
+            "width": 576
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/63e54e9b062133e394b854aace1ae676-cc_ft_768.jpg",
+            "width": 768
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/63e54e9b062133e394b854aace1ae676-cc_ft_960.jpg",
+            "width": 960
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/63e54e9b062133e394b854aace1ae676-cc_ft_1152.jpg",
+            "width": 1152
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/63e54e9b062133e394b854aace1ae676-cc_ft_1344.jpg",
+            "width": 1344
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/63e54e9b062133e394b854aace1ae676-cc_ft_1536.jpg",
+            "width": 1536
+          }
+        ]
+      }
+    }
+  ],
+  "zestimate_history": [
+    {
+      "as_of_date": null
+    },
+    {
+      "as_of_date": null
+    }
+  ],
+  "resoFacts:sewer": "Public Sewer",
+  "resoFacts:waterSource": "Public",
+  "utilities": [
+    "Electricity Connected"
+  ],
+  "url": "https://www.zillow.com/homedetails/10831-Odell-Ave-Sunland-CA-91040/20093390_zpid/",
+  "countyFIPS": "06037",
+  "countyID": "3101",
+  "dateSold": "2023-11-09T00:00:00.000Z",
+  "listingTypeDimension": "For Sale by Agent",
+  "homeValuation": [
+    "{\"comparables\":{\"comps\":[{\"property\":{\"zestimate\":677600,\"lastSoldPrice\":675000,\"price\":675000,\"daysOnZillow\":77,\"dateSold\":1773964800000,\"currency\":\"USD\",\"bedrooms\":2,\"bathrooms\":1,\"livingAreaValue\":830,\"livingAreaUnits\":\"Square Feet\",\"livingAreaUnitsShort\":\"sqft\",\"lotAreaValue\":3994.452,\"lotAreaUnits\":\"Square Feet\",\"address\":{\"streetAddress\":\"10704 Oro Vista Ave\",\"city\":\"Sunland\",\"state\":\"CA\",\"zipcode\":\"91040\"},\"latitude\":34.263546,\"longitude\":-118.31561,\"zpid\":20093266,\"homeStatus\":\"RECENTLY_SOLD\",\"homeType\":\"SINGLE_FAMILY\",\"hdpUrl\":\"/homedetails/10704-Oro-Vista-Ave-Sunland-CA-91040/20093266_zpid/\",\"listing_sub_type\":{\"is_newHome\":false,\"is_forAuction\":false,\"is_bankOwned\":false,\"is_foreclosure\":false,\"is_FSBO\":false,\"is_comingSoon\":false},\"isUndisclosedAddress\":false,\"attributionInfo\":{\"mlsId\":\"25584375\",\"mlsName\":\"CLAW\",\"providerLogo\":null,\"agentName\":\"Richard Rede DRE # 01095198\",\"agentPhoneNumber\":null,\"brokerName\":\"RR Realty & Investments\",\"brokerPhoneNumber\":null},\"compsCarouselPropertyPhotos\":[{\"mixedSources\":{\"jpeg\":[{\"url\":\"https://photos.zillowstatic.com/fp/a3d1bc9e3ed13279563a0eea5a878a1d-cc_ft_192.jpg\"},{\"url\":\"https://photos.zillowstatic.com/fp/a3d1bc9e3ed13279563a0eea5a878a1d-cc_ft_384.jpg\"},{\"url\":\"https://photos.zillowstatic.com/fp/a3d1bc9e3ed13279563a0eea5a878a1d-cc_ft_576.jpg\"},{\"url\":\"https://photos.zillowstatic.com/fp/a3d1bc9e3ed13279563a0eea5a878a1d-cc_ft_768.jpg\"},{\"url\":\"https://photos.zillowstatic.com/fp/a3d1bc9e3ed13279563a0eea5a878a1d-cc_ft_960.jpg\"},{\"url\":\"https://photos.zillowstatic.com/fp/a3d1bc9e3ed13279563a0eea5a878a1d-cc_ft_1152.jpg\"},{\"url\":\"https://photos.zillowstatic.com/fp/a3d1bc9e3ed13279563a0eea5a878a1d-cc_ft_1344.jpg\"},{\"url\":\"https://photos.zillowstatic.com/fp/a3d1bc9e3ed13279563a0eea5a878a1d-cc_ft_1536.jpg\"}]}}]}},{\"property\":{\"zestimate\":663000,\"lastSoldPrice\":660000,\"price\":660000,\"daysOnZillow\":85,\"dateSold\":1773273600000,\"currency\":\"USD\",\"bedrooms\":2,\"bathrooms\":1,\"livingAreaValue\":780,\"livingAreaUnits\":\"Square Feet\",\"livingAreaUnitsShort\":\"sqft\",\"lotAreaValue\":4409,\"lotAreaUnits\":\"Square Feet\",\"address\":{\"streetAddress\":\"10335 Scoville Ave\",\"city\":\"Sunland\",\"state\":\"CA\",\"zipcode\":\"91040\"},\"latitude\":34.257084,\"longitude\":-118.31425,\"zpid\":20097012,\"homeStatus\":\"RECENTLY_SOLD\",\"homeType\":\"SINGLE_FAMILY\",\"hdpUrl\":\"/homedetails/10335-Scoville-Ave-Sunland-CA-91040/20097012_zpid/\",\"listing_sub_type\":{\"is_newHome\":false,\"is_forAuction\":false,\"is_bankOwned\":false,\"is_foreclosure\":false,\"is_FSBO\":false,\"is_comingSoon\":false},\"isUndisclosedAddress\":false,\"attributionInfo\":{\"mlsId\":\"BB25272523\",\"mlsName\":\"CRMLS\",\"providerLogo\":null,\"agentName\":\"Alisa Cunningham\",\"agentPhoneNumber\":null,\"brokerName\":\"Douglas Elliman of California, Inc.\",\"brokerPhoneNumber\":null},\"compsCarouselPropertyPhotos\":[{\"mixedSources\":{\"jpeg\":[{\"url\":\"https://photos.zillowstatic.com/fp/759be96abaa71f54974a55e0f6859ff9-cc_ft_192.jpg\"},{\"url\":\"https://photos.zillowstatic.com/fp/759be96abaa71f54974a55e0f6859ff9-cc_ft_384.jpg\"},{\"url\":\"https://photos.zillowstatic.com/fp/759be96abaa71f54974a55e0f6859ff9-cc_ft_576.jpg\"},{\"url\":\"https://photos.zillowstatic.com/fp/759be96abaa71f54974a55e0f6859ff9-cc_ft_768.jpg\"},{\"url\":\"https://photos.zillowstatic.com/fp/759be96abaa71f54974a55e0f6859ff9-cc_ft_960.jpg\"},{\"url\":\"https://photos.zillowstatic.com/fp/759be96abaa71f54974a55e0f6859ff9-cc_ft_1152.jpg\"},{\"url\":\"https://photos.zillowstatic.com/fp/759be96abaa71f54974a55e0f6859ff9-cc_ft_1344.jpg\"},{\"url\":\"https://photos.zillowstatic.com/fp/759be96abaa71f54974a55e0f6859ff9-cc_ft_1536.jpg\"}]}}]}},{\"property\":{\"zestimate\":807600,\"lastSoldPrice\":800000,\"price\":800000,\"daysOnZillow\":143,\"dateSold\":1768262400000,\"currency\":\"USD\",\"bedrooms\":3,\"bathrooms\":2,\"livingAreaValue\":910,\"livingAreaUnits\":\"Square Feet\",\"livingAreaUnitsShort\":\"sqft\",\"lotAreaValue\":5304,\"lotAreaUnits\":\"Square Feet\",\"address\":{\"streetAddress\":\"10851 Scoville Ave\",\"city\":\"Sunland\",\"state\":\"CA\",\"zipcode\":\"91040\"},\"latitude\":34.26655,\"longitude\":-118.31425,\"zpid\":20093341,\"homeStatus\":\"RECENTLY_SOLD\",\"homeType\":\"SINGLE_FAMILY\",\"hdpUrl\":\"/homedetails/10851-Scoville-Ave-Sunland-CA-91040/20093341_zpid/\",\"listing_sub_type\":{\"is_newHome\":false,\"is_forAuction\":false,\"is_bankOwned\":false,\"is_foreclosure\":false,\"is_FSBO\":false,\"is_comingSoon\":false},\"isUndisclosedAddress\":false,\"attributionInfo\":{\"mlsId\":\"P1-25202\",\"mlsName\":\"CRMLS\",\"providerLogo\":null,\"agentName\":\"Kerri Lewin\",\"agentPhoneNumber\":null,\"brokerName\":\"COMPASS\",\"brokerPhoneNumber\":null},\"compsCarouselPropertyPhotos\":[{\"mixedSources\":{\"jpeg\":[{\"url\":\"https://photos.zillowstatic.com/fp/de626c97ca9a1c51b0fdf0d4e402e2ba-cc_ft_192.jpg\"},{\"url\":\"https://photos.zillowstatic.com/fp/de626c97ca9a1c51b0fdf0d4e402e2ba-cc_ft_384.jpg\"},{\"url\":\"https://photos.zillowstatic.com/fp/de626c97ca9a1c51b0fdf0d4e402e2ba-cc_ft_576.jpg\"},{\"url\":\"https://photos.zillowstatic.com/fp/de626c97ca9a1c51b0fdf0d4e402e2ba-cc_ft_768.jpg\"},{\"url\":\"https://photos.zillowstatic.com/fp/de626c97ca9a1c51b0fdf0d4e402e2ba-cc_ft_960.jpg\"},{\"url\":\"https://photos.zillowstatic.com/fp/de626c97ca9a1c51b0fdf0d4e402e2ba-cc_ft_1152.jpg\"},{\"url\":\"https://photos.zillowstatic.com/fp/de626c97ca9a1c51b0fdf0d4e402e2ba-cc_ft_1344.jpg\"},{\"url\":\"https://photos.zillowstatic.com/fp/de626c97ca9a1c51b0fdf0d4e402e2ba-cc_ft_1536.jpg\"}]}}]}},{\"property\":{\"zestimate\":788900,\"lastSoldPrice\":790000,\"price\":790000,\"daysOnZillow\":323,\"dateSold\":1752710400000,\"currency\":\"USD\",\"bedrooms\":2,\"bathrooms\":1,\"livingAreaValue\":906,\"livingAreaUnits\":\"Square Feet\",\"livingAreaUnitsShort\":\"sqft\",\"lotAreaValue\":4976,\"lotAreaUnits\":\"Square Feet\",\"address\":{\"streetAddress\":\"11015 Scoville Ave\",\"city\":\"Sunland\",\"state\":\"CA\",\"zipcode\":\"91040\"},\"latitude\":34.2692,\"longitude\":-118.31426,\"zpid\":20091534,\"homeStatus\":\"RECENTLY_SOLD\",\"homeType\":\"SINGLE_FAMILY\",\"hdpUrl\":\"/homedetails/11015-Scoville-Ave-Sunland-CA-91040/20091534_zpid/\",\"listing_sub_type\":{\"is_newHome\":false,\"is_forAuction\":false,\"is_bankOwned\":false,\"is_foreclosure\":false,\"is_FSBO\":false,\"is_comingSoon\":false},\"isUndisclosedAddress\":false,\"attributionInfo\":{\"mlsId\":\"P1-21630\",\"mlsName\":\"CRMLS\",\"providerLogo\":null,\"agentName\":\"Carlos Escarcega\",\"agentPhoneNumber\":null,\"brokerName\":\"Evernest Real Estate Advisors\",\"brokerPhoneNumber\":null},\"compsCarouselPropertyPhotos\":[{\"mixedSources\":{\"jpeg\":[{\"url\":\"https://photos.zillowstatic.com/fp/1fbe3959ff89dfea7a9169fefdce62e1-cc_ft_192.jpg\"},{\"url\":\"https://photos.zillowstatic.com/fp/1fbe3959ff89dfea7a9169fefdce62e1-cc_ft_384.jpg\"},{\"url\":\"https://photos.zillowstatic.com/fp/1fbe3959ff89dfea7a9169fefdce62e1-cc_ft_576.jpg\"},{\"url\":\"https://photos.zillowstatic.com/fp/1fbe3959ff89dfea7a9169fefdce62e1-cc_ft_768.jpg\"},{\"url\":\"https://photos.zillowstatic.com/fp/1fbe3959ff89dfea7a9169fefdce62e1-cc_ft_960.jpg\"},{\"url\":\"https://photos.zillowstatic.com/fp/1fbe3959ff89dfea7a9169fefdce62e1-cc_ft_1152.jpg\"},{\"url\":\"https://photos.zillowstatic.com/fp/1fbe3959ff89dfea7a9169fefdce62e1-cc_ft_1344.jpg\"},{\"url\":\"https://photos.zillowstatic.com/fp/1fbe3959ff89dfea7a9169fefdce62e1-cc_ft_1536.jpg\"}]}}]}},{\"property\":{\"zestimate\":660200,\"lastSoldPrice\":660000,\"price\":660000,\"daysOnZillow\":66,\"dateSold\":1774915200000,\"currency\":\"USD\",\"bedrooms\":2,\"bathrooms\":2,\"livingAreaValue\":800,\"livingAreaUnits\":\"Square Feet\",\"livingAreaUnitsShort\":\"sqft\",\"lotAreaValue\":5063,\"lotAreaUnits\":\"Square Feet\",\"address\":{\"streetAddress\":\"10648 Franlie Dr\",\"city\":\"Sunland\",\"state\":\"CA\",\"zipcode\":\"91040\"},\"latitude\":34.26209,\"longitude\":-118.32811,\"zpid\":20090874,\"homeStatus\":\"RECENTLY_SOLD\",\"homeType\":\"SINGLE_FAMILY\",\"hdpUrl\":\"/homedetails/10648-Franlie-Dr-Sunland-CA-91040/20090874_zpid/\",\"listing_sub_type\":{\"is_newHome\":false,\"is_forAuction\":false,\"is_bankOwned\":false,\"is_foreclosure\":false,\"is_FSBO\":false,\"is_comingSoon\":false},\"isUndisclosedAddress\":false,\"attributionInfo\":{\"mlsId\":\"CV26013449\",\"mlsName\":\"CRMLS\",\"providerLogo\":null,\"agentName\":\"Luis Sanchez\",\"agentPhoneNumber\":null,\"brokerName\":\"LUIS SANCHEZ, BROKER\",\"brokerPhoneNumber\":null},\"compsCarouselPropertyPhotos\":[{\"mixedSources\":{\"jpeg\":[{\"url\":\"https://maps.googleapis.com/maps/api/streetview?location=10648+Franlie+Dr%2C+Sunland%2C+CA+91040&size=192x144&key=AIzaSyARFMLB1na-BBWf7_R3-5YOQQaHqEJf6RQ&source=outdoor&&signature=ywUfAlz6AUqZlYASZ9gKq7JH9zU=\"},{\"url\":\"https://maps.googleapis.com/maps/api/streetview?location=10648+Franlie+Dr%2C+Sunland%2C+CA+91040&size=384x288&key=AIzaSyARFMLB1na-BBWf7_R3-5YOQQaHqEJf6RQ&source=outdoor&&signature=uvFSZj6oOSvYjaQiMHOLewGhWhU=\"},{\"url\":\"https://maps.googleapis.com/maps/api/streetview?location=10648+Franlie+Dr%2C+Sunland%2C+CA+91040&size=576x432&key=AIzaSyARFMLB1na-BBWf7_R3-5YOQQaHqEJf6RQ&source=outdoor&&signature=amWfK12oAcvdyJ4OblynEepf3ao=\"},{\"url\":\"https://maps.googleapis.com/maps/api/streetview?location=10648+Franlie+Dr%2C+Sunland%2C+CA+91040&size=768x576&key=AIzaSyARFMLB1na-BBWf7_R3-5YOQQaHqEJf6RQ&source=outdoor&&signature=UCEdOD29FAc6immLMocb2i-iqIQ=\"},{\"url\":\"https://maps.googleapis.com/maps/api/streetview?location=10648+Franlie+Dr%2C+Sunland%2C+CA+91040&size=960x720&key=AIzaSyARFMLB1na-BBWf7_R3-5YOQQaHqEJf6RQ&source=outdoor&&signature=VF_Uy4wehU1dyvNfsGZDf-OZ4u8=\"},{\"url\":\"https://maps.googleapis.com/maps/api/streetview?location=10648+Franlie+Dr%2C+Sunland%2C+CA+91040&size=1152x864&key=AIzaSyARFMLB1na-BBWf7_R3-5YOQQaHqEJf6RQ&source=outdoor&&signature=Q9Ho7zU6zPio1yBrSmZpLXWjwsc=\"},{\"url\":\"https://maps.googleapis.com/maps/api/streetview?location=10648+Franlie+Dr%2C+Sunland%2C+CA+91040&size=1344x1008&key=AIzaSyARFMLB1na-BBWf7_R3-5YOQQaHqEJf6RQ&source=outdoor&&signature=Pj1cH38SS1YSMmQiQwHwto5gPbo=\"},{\"url\":\"https://maps.googleapis.com/maps/api/streetview?location=10648+Franlie+Dr%2C+Sunland%2C+CA+91040&size=1536x1152&key=AIzaSyARFMLB1na-BBWf7_R3-5YOQQaHqEJf6RQ&source=outdoor&&signature=akQMD59GfqNzTJxZ9AqD180G2CI=\"}]}}]}}]}}"
+  ],
+  "isOffMarket": false,
+  "resofacts_sewer": "Public Sewer",
+  "resofacts_water_source": "Public",
+  "citySearchUrl": {
+    "path": "/los-angeles-ca/",
+    "text": "Homes in Los Angeles"
+  },
+  "county": "Los Angeles County",
+  "is_showcased": true,
+  "interior": {
+    "bedrooms_and_bathrooms": {
+      "bedrooms": 3,
+      "bathrooms": 1,
+      "full_bathrooms": 1,
+      "half_bathroom": "undefined"
+    },
+    "flooring": "Carpet, Vinyl",
+    "other_interior_features": "Total interior livable area :844 sqft"
+  },
+  "overview": {
+    "days_on_zillow": 10,
+    "number_of_views": 7303,
+    "number_of_saves": 301
+  },
+  "is_listed_by_management_company": false,
+  "listing_provided_by": {
+    "name": "Jose Schnaider, Equity Union",
+    "email": null,
+    "company": "Equity Union",
+    "phone_number": "818-723-4109"
+  },
+  "hoa_details": {
+    "services_included": null,
+    "amenities_included": null
+  },
+  "financial": null,
+  "interior_full": [
+    {
+      "title": "Bedroom",
+      "values": [
+        "Features: All Bedrooms Down"
+      ]
+    },
+    {
+      "title": "Bathroom",
+      "values": [
+        "Features: Tub Shower"
+      ]
+    },
+    {
+      "title": "Bedrooms & bathrooms",
+      "values": [
+        "Bedrooms: 3",
+        "Bathrooms: 1",
+        "Full bathrooms: 1",
+        "Main level bathrooms: 1",
+        "Main level bedrooms: 1"
+      ]
+    },
+    {
+      "title": "Cooling",
+      "values": [
+        "Cooling features: Central Air"
+      ]
+    },
+    {
+      "title": "Appliances",
+      "values": [
+        "Appliances included: Electric Range,Gas Range,Refrigerator",
+        "Laundry features: Inside"
+      ]
+    },
+    {
+      "title": "Features",
+      "values": [
+        "Separate/Formal Dining Room,All Bedrooms Down",
+        "Flooring: Carpet,Vinyl",
+        "Fireplace features: None",
+        "Common walls with other units/homes: No Common Walls"
+      ]
+    },
+    {
+      "title": "Interior area",
+      "values": [
+        "Total interior livable area: 844 sqft"
+      ]
+    }
+  ],
+  "property": [
+    {
+      "title": "Parking",
+      "values": [
+        "Total spaces: 1",
+        "Parking features: Garage - Attached",
+        "Has garage: Yes",
+        "Attached garage spaces: 1",
+        "Covered spaces: 1"
+      ]
+    },
+    {
+      "title": "Features",
+      "values": [
+        "Levels: One",
+        "Stories: 1",
+        "Entry location: 1",
+        "Pool features: None",
+        "Spa features: None",
+        "Has view: Yes",
+        "View description: Neighborhood"
+      ]
+    },
+    {
+      "title": "Lot",
+      "values": [
+        "Lot size: 3,978 sqft",
+        "Features: Back Yard,Front Yard"
+      ]
+    },
+    {
+      "title": "Details",
+      "values": [
+        "Parcel number: 2555014015",
+        "Special condition: Short Sale"
+      ]
+    }
+  ],
+  "construction": [
+    {
+      "title": "Type & style",
+      "values": [
+        "Home type: SingleFamily",
+        "Property subType: Single Family Residence"
+      ]
+    },
+    {
+      "title": "Condition",
+      "values": [
+        "Year built: 1948"
+      ]
+    }
+  ],
+  "tag": null,
+  "contingent_listing_type": null,
+  "unit_number": null,
+  "unit_amenities": null,
+  "open_house_details": [
+    {
+      "open_house_day": "Wednesday",
+      "open_house_date": "2026-06-09T11:00:00.000Z",
+      "open_house_start_time": 1781002800000,
+      "open_house_end_time": 1781013600000,
+      "add_to_calendar_link": null
+    },
+    {
+      "open_house_day": "Sunday",
+      "open_house_date": "2026-06-13T14:00:00.000Z",
+      "open_house_start_time": 1781359200000,
+      "open_house_end_time": 1781370000000,
+      "add_to_calendar_link": null
+    }
+  ],
+  "community_details": [
+    {
+      "title": "Features",
+      "values": [
+        "Valley"
+      ]
+    }
+  ],
+  "mls_id": "SR26115112",
+  "base_rent": null,
+  "sqft": null,
+  "availability_date": null,
+  "special_offer": null,
+  "originating_mls": "California Regional MLS",
+  "tags": null,
+  "getting_around_scores": {
+    "walk_score": "51/100 | Somewhat Walkable",
+    "transit_score": null,
+    "bike_score": "37/100 | Somewhat Bikeable"
+  },
+  "days_on_zillow": 10,
+  "getting_around": {
+    "walk": {
+      "score": 51,
+      "description": "Somewhat Walkable"
+    },
+    "transit": null,
+    "bike": {
+      "score": 37,
+      "description": "Somewhat Bikeable"
+    }
+  },
+  "other": null,
+  "financial_listing_details": null,
+  "publish_url": null,
+  "climate_risks": null,
+  "num_of_contacts": null,
+  "num_of_applications": null,
+  "has_3d_tour": false,
+  "payment_breakdown": [
+    {
+      "name": "Principal & interest",
+      "value": "3026$"
+    },
+    {
+      "name": "Mortgage insurance",
+      "value": "0$"
+    },
+    {
+      "name": "Property taxes",
+      "value": "589$"
+    },
+    {
+      "name": "Home insurance",
+      "value": "200$"
+    },
+    {
+      "name": "HOA fees",
+      "value": "N/A"
+    },
+    {
+      "name": "Utilities",
+      "value": "Not included"
+    }
+  ],
+  "sold_to_list_ratio": 1.1352253756260433,
+  "sold_to_zestimate_ratio": 1.1286307053941909,
+  "is_flipped_within_12_months": true,
+  "timestamp": "2026-06-06T18:31:31.295Z",
+  "input": {
+    "url": "https://www.zillow.com/homedetails/10831-Odell-Ave-Sunland-CA-91040/20093390_zpid/"
+  }
+}

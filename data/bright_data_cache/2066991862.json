@@ -1,0 +1,1316 @@
+{
+  "zpid": 2066991862,
+  "city": "Sausalito",
+  "state": "CA",
+  "homeStatus": "FOR_SALE",
+  "address": {
+    "city": "Sausalito",
+    "streetAddress": "77 Crescent Ave",
+    "zipcode": "94965",
+    "state": "CA"
+  },
+  "bedrooms": 4,
+  "bathrooms": 4,
+  "price": 1495000,
+  "streetAddress": "77 Crescent Ave",
+  "zipcode": "94965",
+  "isVerifiedClaimedByCurrentSignedInUser": "No",
+  "listingDataSource": "Phoenix",
+  "longitude": -122.486725,
+  "latitude": 37.849087,
+  "livingArea": 2650,
+  "homeType": "CONDO",
+  "lotSize": 4051,
+  "lotAreaValue": 4051.08,
+  "lotAreaUnits": "Square Feet",
+  "livingAreaValue": 2650,
+  "isUndisclosedAddress": "false",
+  "currency": "USD",
+  "taxAssessedValue": 535557,
+  "taxAssessedYear": 2025,
+  "country": "USA",
+  "propertyTaxRate": 1.13,
+  "photoCount": 14,
+  "isPremierBuilder": "false",
+  "ssid": 127,
+  "hdpUrl": "https://www.zillow.com/homedetails/77-Crescent-Ave-Sausalito-CA-94965/2066991862_zpid/",
+  "tourViewCount": 0,
+  "hasApprovedThirdPartyVirtualTourUrl": false,
+  "description": "Save significantly on costs, skip the red tape, and fast-forward to the fun part of building your dream Bay-view home! Minutes from the Golden Gate Bridge, 77 Crescent is a fully-entitled, actively under-construction 4BD/3.5BA elevator-served residence designed by sustainability expert Millard Arterberry. Nearly $1M in heavy site work, excavation, shoring, drainage, sewer, and partial foundation is already complete, and all coastal & building permits are in hand. Acquire the land, approvals, and improvements now, then finish off the construction with exactly the finishes you choose. This dramatic residence features a street-level 2-car garage + 1 off-street space; three bedrooms on the entry floor; dramatic living/kitchen/dining level opening through a bifold glass wall to an ~770sf deck with sweeping Bay vistas; top-floor primary retreat with spa bath, ~375sf private deck, and stairs to a living roof ready for sunset yoga or spa. Wake to shorebirds, bike the Marin Headlands before breakfast, reach SF in under 15 minutes. This is an incredible opportunity to realize your vision and build your dream home without most of the hassle!",
+  "parcelId": "06522266",
+  "taxHistory": [
+    {
+      "time": 2025,
+      "taxPaid": 7554.36,
+      "value": 535557,
+      "valueIncreaseRate": 0.033897813
+    },
+    {
+      "time": 2024,
+      "taxPaid": 6782.86,
+      "value": 517998,
+      "valueIncreaseRate": 0
+    }
+  ],
+  "priceHistory": [
+    {
+      "date": "2026-03-21",
+      "time": 1774051200000,
+      "priceChangeRate": -0.1457142857142857,
+      "event": "Price change",
+      "source": "SFAR",
+      "showCountyLink": false,
+      "postingIsRental": false,
+      "attributeSource": {
+        "infoString2": "SFAR",
+        "infoString3": "https://photos.zillowstatic.com/fp/dfe8af10e49656833b8f889de6d4a93b-zillow_web_logo_inf_11.jpg"
+      },
+      "price": 1495000,
+      "pricePerSquareFoot": 564,
+      "source_listing_id": "325056467",
+      "source_name": "SFAR"
+    },
+    {
+      "date": "2025-06-18",
+      "time": 1750204800000,
+      "priceChangeRate": 1.002288329519451,
+      "event": "Listed for sale",
+      "source": "SFAR",
+      "showCountyLink": false,
+      "postingIsRental": false,
+      "attributeSource": {
+        "infoString2": "SFAR",
+        "infoString3": "https://photos.zillowstatic.com/fp/dfe8af10e49656833b8f889de6d4a93b-zillow_web_logo_inf_11.jpg"
+      },
+      "price": 1750000,
+      "pricePerSquareFoot": 660,
+      "source_listing_id": "325056467",
+      "source_name": "SFAR"
+    },
+    {
+      "date": "2025-04-16",
+      "time": 1744761600000,
+      "priceChangeRate": 0,
+      "event": "Listing removed",
+      "source": "MetroList Services of CA",
+      "showCountyLink": false,
+      "postingIsRental": false,
+      "attributeSource": {
+        "infoString2": "MetroList Services of CA"
+      },
+      "price": 874000,
+      "pricePerSquareFoot": 330,
+      "source_listing_id": "324054935",
+      "source_name": "MetroList Services of CA"
+    },
+    {
+      "date": "2024-07-12",
+      "time": 1720742400000,
+      "priceChangeRate": 0,
+      "event": "Listed for sale",
+      "source": "MetroList Services of CA",
+      "showCountyLink": false,
+      "postingIsRental": false,
+      "attributeSource": {
+        "infoString2": "MetroList Services of CA"
+      },
+      "price": 874000,
+      "pricePerSquareFoot": 330,
+      "source_listing_id": "324054935",
+      "source_name": "MetroList Services of CA"
+    },
+    {
+      "date": "2024-06-29",
+      "time": 1719619200000,
+      "priceChangeRate": 0,
+      "event": "Listing removed",
+      "source": "MetroList Services of CA",
+      "showCountyLink": false,
+      "postingIsRental": false,
+      "attributeSource": {
+        "infoString2": "MetroList Services of CA"
+      },
+      "price": 874000,
+      "pricePerSquareFoot": 330,
+      "source_listing_id": "324050560",
+      "source_name": "MetroList Services of CA"
+    },
+    {
+      "date": "2024-06-29",
+      "time": 1719619200000,
+      "priceChangeRate": -0.7758974358974359,
+      "event": "Listed for sale",
+      "source": "MetroList Services of CA",
+      "showCountyLink": false,
+      "postingIsRental": false,
+      "attributeSource": {
+        "infoString2": "MetroList Services of CA"
+      },
+      "price": 874000,
+      "pricePerSquareFoot": 330,
+      "source_listing_id": "324050560",
+      "source_name": "MetroList Services of CA"
+    },
+    {
+      "date": "2024-04-16",
+      "time": 1713225600000,
+      "priceChangeRate": 0,
+      "event": "Listing removed",
+      "source": "BAREIS",
+      "showCountyLink": false,
+      "postingIsRental": false,
+      "attributeSource": {
+        "infoString2": "BAREIS",
+        "infoString3": "https://photos.zillowstatic.com/fp/865e93bf342a827018e48d8d656d8569-zillow_web_logo_inf_11.jpg"
+      },
+      "price": 3900000,
+      "pricePerSquareFoot": 1472,
+      "source_listing_id": "323006598",
+      "source_name": "BAREIS"
+    },
+    {
+      "date": "2024-02-15",
+      "time": 1707955200000,
+      "priceChangeRate": 0.012987012987012988,
+      "event": "Listed for sale",
+      "source": "BAREIS",
+      "showCountyLink": false,
+      "postingIsRental": false,
+      "attributeSource": {
+        "infoString2": "BAREIS",
+        "infoString3": "https://photos.zillowstatic.com/fp/865e93bf342a827018e48d8d656d8569-zillow_web_logo_inf_11.jpg"
+      },
+      "price": 3900000,
+      "pricePerSquareFoot": 1472,
+      "source_listing_id": "323006598",
+      "source_name": "BAREIS"
+    },
+    {
+      "date": "2024-02-04",
+      "time": 1707004800000,
+      "priceChangeRate": 0,
+      "event": "Listing removed",
+      "source": "BAREIS",
+      "showCountyLink": false,
+      "postingIsRental": false,
+      "attributeSource": {
+        "infoString2": "BAREIS",
+        "infoString3": "https://photos.zillowstatic.com/fp/865e93bf342a827018e48d8d656d8569-zillow_web_logo_inf_11.jpg"
+      },
+      "price": 3850000,
+      "pricePerSquareFoot": 1453,
+      "source_listing_id": "323006598",
+      "source_name": "BAREIS"
+    },
+    {
+      "date": "2023-07-12",
+      "time": 1689120000000,
+      "priceChangeRate": 0,
+      "event": "Listed for sale",
+      "source": "BAREIS",
+      "showCountyLink": false,
+      "postingIsRental": false,
+      "attributeSource": {
+        "infoString2": "BAREIS",
+        "infoString3": "https://photos.zillowstatic.com/fp/865e93bf342a827018e48d8d656d8569-zillow_web_logo_inf_11.jpg"
+      },
+      "price": 3850000,
+      "pricePerSquareFoot": 1453,
+      "source_listing_id": "323006598",
+      "source_name": "BAREIS"
+    },
+    {
+      "date": "2023-06-30",
+      "time": 1688083200000,
+      "priceChangeRate": 0,
+      "event": "Listing removed",
+      "source": "BAREIS",
+      "showCountyLink": false,
+      "postingIsRental": false,
+      "attributeSource": {
+        "infoString2": "BAREIS",
+        "infoString3": "https://photos.zillowstatic.com/fp/865e93bf342a827018e48d8d656d8569-zillow_web_logo_inf_11.jpg"
+      },
+      "source_listing_id": "323006598",
+      "source_name": "BAREIS"
+    },
+    {
+      "date": "2023-02-05",
+      "time": 1675555200000,
+      "priceChangeRate": 1.2,
+      "event": "Listed for sale",
+      "source": "BAREIS",
+      "showCountyLink": false,
+      "postingIsRental": false,
+      "attributeSource": {
+        "infoString2": "BAREIS",
+        "infoString3": "https://photos.zillowstatic.com/fp/865e93bf342a827018e48d8d656d8569-zillow_web_logo_inf_11.jpg"
+      },
+      "price": 3850000,
+      "pricePerSquareFoot": 1453,
+      "source_listing_id": "323006598",
+      "source_name": "BAREIS"
+    },
+    {
+      "date": "2023-02-04",
+      "time": 1675468800000,
+      "priceChangeRate": 0,
+      "event": "Listing removed",
+      "source": "BAREIS",
+      "showCountyLink": false,
+      "postingIsRental": false,
+      "attributeSource": {
+        "infoString2": "BAREIS",
+        "infoString3": "https://photos.zillowstatic.com/fp/865e93bf342a827018e48d8d656d8569-zillow_web_logo_inf_11.jpg"
+      },
+      "price": 1750000,
+      "pricePerSquareFoot": 660,
+      "source_listing_id": "322098820",
+      "source_name": "BAREIS"
+    },
+    {
+      "date": "2022-11-10",
+      "time": 1668038400000,
+      "priceChangeRate": 0,
+      "event": "Listed for sale",
+      "source": "BAREIS",
+      "showCountyLink": false,
+      "postingIsRental": false,
+      "attributeSource": {
+        "infoString2": "BAREIS",
+        "infoString3": "https://photos.zillowstatic.com/fp/865e93bf342a827018e48d8d656d8569-zillow_web_logo_inf_11.jpg"
+      },
+      "price": 1750000,
+      "pricePerSquareFoot": 660,
+      "source_listing_id": "322098820",
+      "source_name": "BAREIS"
+    },
+    {
+      "date": "2022-07-17",
+      "time": 1658016000000,
+      "priceChangeRate": 0,
+      "event": "Listing removed",
+      "source": "Owner",
+      "showCountyLink": false,
+      "postingIsRental": false,
+      "attributeSource": {
+        "infoString2": "Owner"
+      },
+      "source_listing_id": null,
+      "source_name": "Owner"
+    },
+    {
+      "date": "2022-04-19",
+      "time": 1650326400000,
+      "priceChangeRate": 0,
+      "event": "Listed for sale",
+      "source": "Owner",
+      "showCountyLink": false,
+      "postingIsRental": false,
+      "attributeSource": {
+        "infoString2": "Owner"
+      },
+      "price": 1750000,
+      "pricePerSquareFoot": 660,
+      "source_listing_id": null,
+      "source_name": "Owner"
+    },
+    {
+      "date": "2022-04-01",
+      "time": 1648771200000,
+      "priceChangeRate": 0,
+      "event": "Listing removed",
+      "source": "Owner",
+      "showCountyLink": false,
+      "postingIsRental": false,
+      "attributeSource": {
+        "infoString2": "Owner"
+      },
+      "source_listing_id": null,
+      "source_name": "Owner"
+    },
+    {
+      "date": "2022-01-01",
+      "time": 1640995200000,
+      "priceChangeRate": 0,
+      "event": "Listed for sale",
+      "source": "Owner",
+      "showCountyLink": false,
+      "postingIsRental": false,
+      "attributeSource": {
+        "infoString2": "Owner"
+      },
+      "price": 1750000,
+      "pricePerSquareFoot": 660,
+      "source_listing_id": null,
+      "source_name": "Owner"
+    }
+  ],
+  "nearbyHomes": [
+    "{\"zpid\":80747362,\"isSavedByCurrentSignedInUser\":false,\"miniCardPhotos\":[\"https://maps.googleapis.com/maps/api/streetview?location=440+Sausalito+Blvd%2C+Sausalito%2C+CA+94965&size=316x234&key=AIzaSyARFMLB1na-BBWf7_R3-5YOQQaHqEJf6RQ&source=outdoor&&signature=WQfJI46aHjcOJK2vlOOKfsApkmQ=\"],\"price\":1479700,\"currency\":\"USD\",\"bedrooms\":4,\"bathrooms\":2,\"livingArea\":1850,\"livingAreaValue\":1850,\"livingAreaUnits\":\"Square Feet\",\"livingAreaUnitsShort\":\"sqft\",\"listingMetadata\":{\"comminglingCategoryIsRulesApplicable\":false},\"lotSize\":4791,\"lotAreaValue\":4791,\"lotAreaUnits\":\"Square Feet\",\"address\":{\"streetAddress\":\"440 Sausalito Blvd\",\"city\":\"Sausalito\",\"state\":\"CA\",\"zipcode\":\"94965\"},\"formattedChip\":{\"location\":[\"440 Sausalito Blvd\"]},\"latitude\":37.848904,\"longitude\":-122.486725,\"homeStatus\":\"OTHER\",\"homeType\":\"MULTI_FAMILY\",\"hdpUrl\":\"/homedetails/440-Sausalito-Blvd-Sausalito-CA-94965/80747362_zpid/\",\"hdpTypeDimension\":\"Zestimate\",\"propertyTypeDimension\":\"Multi Family\",\"listingTypeDimension\":\"Unknown Listed By\",\"listing_sub_type\":{\"is_newHome\":false,\"is_forAuction\":false,\"is_bankOwned\":false,\"is_foreclosure\":false,\"is_FSBO\":false,\"is_comingSoon\":false,\"is_FSBA\":false},\"isShowcaseListing\":false,\"isPremierBuilder\":false,\"state\":\"CA\"}",
+    "{\"zpid\":2058988104,\"isSavedByCurrentSignedInUser\":false,\"miniCardPhotos\":[\"https://photos.zillowstatic.com/fp/9a303137c09ef4030abd397bdef39c24-p_c.jpg\"],\"price\":0,\"currency\":\"USD\",\"bedrooms\":2,\"bathrooms\":1,\"livingArea\":925,\"livingAreaValue\":925,\"livingAreaUnits\":\"Square Feet\",\"livingAreaUnitsShort\":\"sqft\",\"listingMetadata\":{\"comminglingCategoryIsRulesApplicable\":false},\"lotAreaUnits\":\"sqft\",\"address\":{\"streetAddress\":\"440 Sausalito Blvd #PENTHOUSE\",\"city\":\"Sausalito\",\"state\":\"CA\",\"zipcode\":\"94965\"},\"formattedChip\":{\"location\":[\"440 Sausalito Blvd #PENTHOUSE\"]},\"latitude\":37.848904,\"longitude\":-122.48673,\"homeStatus\":\"OTHER\",\"homeType\":\"APARTMENT\",\"hdpUrl\":\"/homedetails/440-Sausalito-Blvd-PENTHOUSE-Sausalito-CA-94965/2058988104_zpid/\",\"hdpTypeDimension\":\"NoZestimate\",\"propertyTypeDimension\":\"Apartment\",\"listingTypeDimension\":\"Unknown Listed By\",\"listing_sub_type\":{\"is_newHome\":false,\"is_forAuction\":false,\"is_bankOwned\":false,\"is_foreclosure\":false,\"is_FSBO\":false,\"is_comingSoon\":false,\"is_FSBA\":false},\"isShowcaseListing\":false,\"isPremierBuilder\":false,\"state\":\"CA\"}",
+    "{\"zpid\":80738299,\"isSavedByCurrentSignedInUser\":false,\"miniCardPhotos\":[\"https://maps.googleapis.com/maps/api/streetview?location=446+Sausalito+Blvd%2C+Sausalito%2C+CA+94965&size=316x234&key=AIzaSyARFMLB1na-BBWf7_R3-5YOQQaHqEJf6RQ&source=outdoor&&signature=yXdn8U_Lh4Ca4Wnqten25cT9mg4=\"],\"price\":1468642,\"currency\":\"USD\",\"bedrooms\":5,\"bathrooms\":6,\"livingArea\":3200,\"livingAreaValue\":3200,\"livingAreaUnits\":\"Square Feet\",\"livingAreaUnitsShort\":\"sqft\",\"listingMetadata\":{\"comminglingCategoryIsRulesApplicable\":false},\"lotSize\":4500,\"lotAreaValue\":4500,\"lotAreaUnits\":\"Square Feet\",\"address\":{\"streetAddress\":\"446 Sausalito Blvd\",\"city\":\"Sausalito\",\"state\":\"CA\",\"zipcode\":\"94965\"},\"formattedChip\":{\"location\":[\"446 Sausalito Blvd\"]},\"latitude\":37.849007,\"longitude\":-122.48694,\"homeStatus\":\"OTHER\",\"homeType\":\"CONDO\",\"hdpUrl\":\"/homedetails/446-Sausalito-Blvd-Sausalito-CA-94965/80738299_zpid/\",\"hdpTypeDimension\":\"NoZestimate\",\"propertyTypeDimension\":\"Condo\",\"listingTypeDimension\":\"Unknown Listed By\",\"listing_sub_type\":{\"is_newHome\":false,\"is_forAuction\":false,\"is_bankOwned\":false,\"is_foreclosure\":false,\"is_FSBO\":false,\"is_comingSoon\":false,\"is_FSBA\":false},\"isShowcaseListing\":false,\"isPremierBuilder\":false,\"state\":\"CA\"}",
+    "{\"zpid\":19270562,\"isSavedByCurrentSignedInUser\":false,\"miniCardPhotos\":[\"https://photos.zillowstatic.com/fp/6a0c9f94fa1f2230b54c2a500d324cd0-p_c.jpg\"],\"price\":1579000,\"currency\":\"USD\",\"bedrooms\":2,\"bathrooms\":2,\"livingArea\":1024,\"livingAreaValue\":1024,\"livingAreaUnits\":\"Square Feet\",\"livingAreaUnitsShort\":\"sqft\",\"listingMetadata\":{\"comminglingCategoryIsRulesApplicable\":false},\"lotSize\":5475,\"lotAreaValue\":5475.492,\"lotAreaUnits\":\"Square Feet\",\"address\":{\"streetAddress\":\"75 Crescent Ave\",\"city\":\"Sausalito\",\"state\":\"CA\",\"zipcode\":\"94965\"},\"formattedChip\":{\"location\":[\"75 Crescent Ave\"]},\"latitude\":37.848984,\"longitude\":-122.48649,\"homeStatus\":\"SOLD\",\"homeType\":\"SINGLE_FAMILY\",\"hdpUrl\":\"/homedetails/75-Crescent-Ave-Sausalito-CA-94965/19270562_zpid/\",\"hdpTypeDimension\":\"RecentlySold\",\"propertyTypeDimension\":\"Single Family\",\"listingTypeDimension\":\"Unknown Listed By\",\"listing_sub_type\":{\"is_newHome\":false,\"is_forAuction\":false,\"is_bankOwned\":false,\"is_foreclosure\":false,\"is_FSBO\":false,\"is_comingSoon\":false,\"is_FSBA\":false},\"attributionInfo\":\"{\\\"mlsId\\\":\\\"324023415\\\"}\",\"isShowcaseListing\":false,\"isPremierBuilder\":false,\"state\":\"CA\"}",
+    "{\"zpid\":82590481,\"isSavedByCurrentSignedInUser\":false,\"miniCardPhotos\":[\"https://photos.zillowstatic.com/fp/cbd70487321b94cfd0cdd2bd9a5ed925-p_c.jpg\"],\"price\":2850000,\"currency\":\"USD\",\"bedrooms\":3,\"bathrooms\":3,\"listingMetadata\":{\"comminglingCategoryIsRulesApplicable\":false},\"lotAreaUnits\":\"sqft\",\"address\":{\"streetAddress\":\"89 Crescent Ave\",\"city\":\"Sausalito\",\"state\":\"CA\",\"zipcode\":\"94965\"},\"formattedChip\":{\"location\":[\"89 Crescent Ave\"]},\"latitude\":37.849277,\"longitude\":-122.48687,\"homeStatus\":\"SOLD\",\"homeType\":\"SINGLE_FAMILY\",\"hdpUrl\":\"/homedetails/89-Crescent-Ave-Sausalito-CA-94965/82590481_zpid/\",\"hdpTypeDimension\":\"RecentlySold\",\"propertyTypeDimension\":\"Single Family\",\"listingTypeDimension\":\"Unknown Listed By\",\"listing_sub_type\":{\"is_newHome\":false,\"is_forAuction\":false,\"is_bankOwned\":false,\"is_foreclosure\":false,\"is_FSBO\":false,\"is_comingSoon\":false,\"is_FSBA\":false},\"providerListingID\":\"2kjmf0wqsgx9n\",\"isShowcaseListing\":false,\"isPremierBuilder\":false,\"state\":\"CA\"}",
+    "{\"zpid\":82587420,\"isSavedByCurrentSignedInUser\":false,\"miniCardPhotos\":[\"https://photos.zillowstatic.com/fp/970eb5b5251862c4a39dae87868ad835-p_c.jpg\"],\"price\":3160000,\"currency\":\"USD\",\"bedrooms\":3,\"bathrooms\":3,\"livingArea\":2539,\"livingAreaValue\":2539,\"livingAreaUnits\":\"Square Feet\",\"livingAreaUnitsShort\":\"sqft\",\"listingMetadata\":{\"comminglingCategoryIsRulesApplicable\":false},\"lotSize\":2221,\"lotAreaValue\":2221,\"lotAreaUnits\":\"Square Feet\",\"address\":{\"streetAddress\":\"85 Crescent Ave\",\"city\":\"Sausalito\",\"state\":\"CA\",\"zipcode\":\"94965\"},\"formattedChip\":{\"location\":[\"85 Crescent Ave\"]},\"latitude\":37.84923,\"longitude\":-122.48694,\"homeStatus\":\"OTHER\",\"homeType\":\"CONDO\",\"hdpUrl\":\"/homedetails/85-Crescent-Ave-Sausalito-CA-94965/82587420_zpid/\",\"hdpTypeDimension\":\"Zestimate\",\"propertyTypeDimension\":\"Condo\",\"listingTypeDimension\":\"Unknown Listed By\",\"listing_sub_type\":{\"is_newHome\":false,\"is_forAuction\":false,\"is_bankOwned\":false,\"is_foreclosure\":false,\"is_FSBO\":false,\"is_comingSoon\":false,\"is_FSBA\":false},\"isShowcaseListing\":false,\"isPremierBuilder\":false,\"state\":\"CA\"}",
+    "{\"zpid\":402561711,\"isSavedByCurrentSignedInUser\":false,\"miniCardPhotos\":[\"https://photos.zillowstatic.com/fp/f8b968e3ac5c0e23cef3ca906c6505c5-p_c.jpg\"],\"price\":1395000,\"currency\":\"USD\",\"bedrooms\":2,\"bathrooms\":2,\"livingArea\":1170,\"livingAreaValue\":1170,\"livingAreaUnits\":\"Square Feet\",\"livingAreaUnitsShort\":\"sqft\",\"listingMetadata\":{\"comminglingCategoryIsRulesApplicable\":false},\"lotSize\":1211,\"lotAreaValue\":1211,\"lotAreaUnits\":\"Square Feet\",\"address\":{\"streetAddress\":\"448 Sausalito Blvd\",\"city\":\"Sausalito\",\"state\":\"CA\",\"zipcode\":\"94965\"},\"formattedChip\":{\"location\":[\"448 Sausalito Blvd\"]},\"latitude\":37.84904,\"longitude\":-122.487,\"homeStatus\":\"PENDING\",\"homeType\":\"CONDO\",\"hdpUrl\":\"/homedetails/448-Sausalito-Blvd-Sausalito-CA-94965/402561711_zpid/\",\"hdpTypeDimension\":\"Pending\",\"propertyTypeDimension\":\"Condo\",\"listingTypeDimension\":\"For Sale by Agent\",\"listing_sub_type\":{\"is_newHome\":false,\"is_forAuction\":false,\"is_bankOwned\":false,\"is_foreclosure\":false,\"is_FSBO\":false,\"is_comingSoon\":false,\"is_FSBA\":true},\"attributionInfo\":\"{\\\"mlsId\\\":\\\"326015660\\\"}\",\"isShowcaseListing\":false,\"isPremierBuilder\":false,\"state\":\"CA\"}",
+    "{\"zpid\":240254171,\"isSavedByCurrentSignedInUser\":false,\"miniCardPhotos\":[\"https://maps.googleapis.com/maps/api/streetview?location=446+Sausalito+Blvd%2C+Sausalito%2C+CA+94965&size=316x234&key=AIzaSyARFMLB1na-BBWf7_R3-5YOQQaHqEJf6RQ&source=outdoor&&signature=yXdn8U_Lh4Ca4Wnqten25cT9mg4=\"],\"price\":1860000,\"currency\":\"USD\",\"bedrooms\":3,\"bathrooms\":2.5,\"livingArea\":2950,\"livingAreaValue\":2950,\"livingAreaUnits\":\"Square Feet\",\"livingAreaUnitsShort\":\"sqft\",\"listingMetadata\":{\"comminglingCategoryIsRulesApplicable\":false},\"lotSize\":1437,\"lotAreaValue\":1437,\"lotAreaUnits\":\"Square Feet\",\"address\":{\"streetAddress\":\"446 Sausalito Blvd\",\"city\":\"Sausalito\",\"state\":\"CA\",\"zipcode\":\"94965\"},\"formattedChip\":{\"location\":[\"446 Sausalito Blvd\"]},\"latitude\":37.84897,\"longitude\":-122.48699,\"homeStatus\":\"OTHER\",\"homeType\":\"MULTI_FAMILY\",\"hdpUrl\":\"/homedetails/446-Sausalito-Blvd-Sausalito-CA-94965/240254171_zpid/\",\"hdpTypeDimension\":\"Zestimate\",\"propertyTypeDimension\":\"Multi Family\",\"listingTypeDimension\":\"Unknown Listed By\",\"listing_sub_type\":{\"is_newHome\":false,\"is_forAuction\":false,\"is_bankOwned\":false,\"is_foreclosure\":false,\"is_FSBO\":false,\"is_comingSoon\":false,\"is_FSBA\":false},\"isShowcaseListing\":false,\"isPremierBuilder\":false,\"state\":\"CA\"}"
+  ],
+  "schools": [
+    {
+      "distance": 2.2,
+      "name": "Dr. Martin Luther King Jr. Academy",
+      "rating": 7,
+      "grades": "K-8",
+      "link": "https://www.greatschools.org/california/sausalito/3471-Bayside-Martin-Luther-King-Jr.-Academy/"
+    },
+    {
+      "distance": 3.8,
+      "name": "Tamalpais High School",
+      "rating": 10,
+      "grades": "9-12",
+      "link": "https://www.greatschools.org/california/mill-valley/3492-Tamalpais-High-School/"
+    }
+  ],
+  "mortgageRates": {
+    "thirtyYearFixedRate": 6
+  },
+  "isInstantOfferEnabled": "No",
+  "nearbyCities": [
+    {
+      "regionUrl": {
+        "path": "/corte-madera-ca/"
+      },
+      "name": "Corte Madera"
+    },
+    {
+      "regionUrl": {
+        "path": "/fairfax-ca/"
+      },
+      "name": "Fairfax"
+    },
+    {
+      "regionUrl": {
+        "path": "/kentfield-ca/"
+      },
+      "name": "Kentfield"
+    },
+    {
+      "regionUrl": {
+        "path": "/mill-valley-ca/"
+      },
+      "name": "Mill Valley"
+    },
+    {
+      "regionUrl": {
+        "path": "/novato-ca/"
+      },
+      "name": "Novato"
+    },
+    {
+      "regionUrl": {
+        "path": "/petaluma-ca/"
+      },
+      "name": "Petaluma"
+    },
+    {
+      "regionUrl": {
+        "path": "/san-anselmo-ca/"
+      },
+      "name": "San Anselmo"
+    },
+    {
+      "regionUrl": {
+        "path": "/san-rafael-ca/"
+      },
+      "name": "San Rafael"
+    },
+    {
+      "regionUrl": {
+        "path": "/sausalito-ca/"
+      },
+      "name": "Sausalito"
+    },
+    {
+      "regionUrl": {
+        "path": "/tiburon-ca/"
+      },
+      "name": "Tiburon"
+    }
+  ],
+  "nearbyZipcodes": [
+    {
+      "regionUrl": {
+        "path": "/mill-valley-ca-94941/"
+      },
+      "name": "94941"
+    },
+    {
+      "regionUrl": {
+        "path": "/mill-valley-ca-94965/"
+      },
+      "name": "94965"
+    },
+    {
+      "regionUrl": {
+        "path": "/sausalito-ca-94966/"
+      },
+      "name": "94966"
+    }
+  ],
+  "abbreviatedAddress": "77 Crescent Ave",
+  "daysOnZillow": 329,
+  "propertyTypeDimension": "Condo",
+  "hdpTypeDimension": "ForSale",
+  "timeZone": "America/Los_Angeles",
+  "tourEligibility": {
+    "isPropertyTourEligible": true
+  },
+  "selfTour": {
+    "hasSelfTour": false
+  },
+  "photos": [
+    {
+      "mixedSources": {
+        "jpeg": [
+          {
+            "url": "https://photos.zillowstatic.com/fp/60407e583caba6ac26a0af94fa50d144-cc_ft_192.jpg",
+            "width": 192
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/60407e583caba6ac26a0af94fa50d144-cc_ft_384.jpg",
+            "width": 384
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/60407e583caba6ac26a0af94fa50d144-cc_ft_576.jpg",
+            "width": 576
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/60407e583caba6ac26a0af94fa50d144-cc_ft_768.jpg",
+            "width": 768
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/60407e583caba6ac26a0af94fa50d144-cc_ft_960.jpg",
+            "width": 960
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/60407e583caba6ac26a0af94fa50d144-cc_ft_1152.jpg",
+            "width": 1152
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/60407e583caba6ac26a0af94fa50d144-cc_ft_1344.jpg",
+            "width": 1344
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/60407e583caba6ac26a0af94fa50d144-cc_ft_1536.jpg",
+            "width": 1536
+          }
+        ]
+      }
+    },
+    {
+      "mixedSources": {
+        "jpeg": [
+          {
+            "url": "https://photos.zillowstatic.com/fp/68f3db64bf32776c9369692e25c1c588-cc_ft_192.jpg",
+            "width": 192
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/68f3db64bf32776c9369692e25c1c588-cc_ft_384.jpg",
+            "width": 384
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/68f3db64bf32776c9369692e25c1c588-cc_ft_576.jpg",
+            "width": 576
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/68f3db64bf32776c9369692e25c1c588-cc_ft_768.jpg",
+            "width": 768
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/68f3db64bf32776c9369692e25c1c588-cc_ft_960.jpg",
+            "width": 960
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/68f3db64bf32776c9369692e25c1c588-cc_ft_1152.jpg",
+            "width": 1152
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/68f3db64bf32776c9369692e25c1c588-cc_ft_1344.jpg",
+            "width": 1344
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/68f3db64bf32776c9369692e25c1c588-cc_ft_1536.jpg",
+            "width": 1536
+          }
+        ]
+      }
+    },
+    {
+      "mixedSources": {
+        "jpeg": [
+          {
+            "url": "https://photos.zillowstatic.com/fp/d5c1c82d4a0e94232fb587875b739c90-cc_ft_192.jpg",
+            "width": 192
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/d5c1c82d4a0e94232fb587875b739c90-cc_ft_384.jpg",
+            "width": 384
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/d5c1c82d4a0e94232fb587875b739c90-cc_ft_576.jpg",
+            "width": 576
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/d5c1c82d4a0e94232fb587875b739c90-cc_ft_768.jpg",
+            "width": 768
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/d5c1c82d4a0e94232fb587875b739c90-cc_ft_960.jpg",
+            "width": 960
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/d5c1c82d4a0e94232fb587875b739c90-cc_ft_1152.jpg",
+            "width": 1152
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/d5c1c82d4a0e94232fb587875b739c90-cc_ft_1344.jpg",
+            "width": 1344
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/d5c1c82d4a0e94232fb587875b739c90-cc_ft_1536.jpg",
+            "width": 1536
+          }
+        ]
+      }
+    },
+    {
+      "mixedSources": {
+        "jpeg": [
+          {
+            "url": "https://photos.zillowstatic.com/fp/b70f1829080a00fe866ed4541f86fb84-cc_ft_192.jpg",
+            "width": 192
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/b70f1829080a00fe866ed4541f86fb84-cc_ft_384.jpg",
+            "width": 384
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/b70f1829080a00fe866ed4541f86fb84-cc_ft_576.jpg",
+            "width": 576
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/b70f1829080a00fe866ed4541f86fb84-cc_ft_768.jpg",
+            "width": 768
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/b70f1829080a00fe866ed4541f86fb84-cc_ft_960.jpg",
+            "width": 960
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/b70f1829080a00fe866ed4541f86fb84-cc_ft_1152.jpg",
+            "width": 1152
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/b70f1829080a00fe866ed4541f86fb84-cc_ft_1344.jpg",
+            "width": 1344
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/b70f1829080a00fe866ed4541f86fb84-cc_ft_1536.jpg",
+            "width": 1536
+          }
+        ]
+      }
+    },
+    {
+      "mixedSources": {
+        "jpeg": [
+          {
+            "url": "https://photos.zillowstatic.com/fp/32e1de9086237781a3db9a73aca381d6-cc_ft_192.jpg",
+            "width": 192
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/32e1de9086237781a3db9a73aca381d6-cc_ft_384.jpg",
+            "width": 384
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/32e1de9086237781a3db9a73aca381d6-cc_ft_576.jpg",
+            "width": 576
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/32e1de9086237781a3db9a73aca381d6-cc_ft_768.jpg",
+            "width": 768
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/32e1de9086237781a3db9a73aca381d6-cc_ft_960.jpg",
+            "width": 960
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/32e1de9086237781a3db9a73aca381d6-cc_ft_1152.jpg",
+            "width": 1152
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/32e1de9086237781a3db9a73aca381d6-cc_ft_1344.jpg",
+            "width": 1344
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/32e1de9086237781a3db9a73aca381d6-cc_ft_1536.jpg",
+            "width": 1536
+          }
+        ]
+      }
+    },
+    {
+      "mixedSources": {
+        "jpeg": [
+          {
+            "url": "https://photos.zillowstatic.com/fp/63211ac82019f36071279ebe606652f1-cc_ft_192.jpg",
+            "width": 192
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/63211ac82019f36071279ebe606652f1-cc_ft_384.jpg",
+            "width": 384
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/63211ac82019f36071279ebe606652f1-cc_ft_576.jpg",
+            "width": 576
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/63211ac82019f36071279ebe606652f1-cc_ft_768.jpg",
+            "width": 768
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/63211ac82019f36071279ebe606652f1-cc_ft_960.jpg",
+            "width": 960
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/63211ac82019f36071279ebe606652f1-cc_ft_1152.jpg",
+            "width": 1152
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/63211ac82019f36071279ebe606652f1-cc_ft_1344.jpg",
+            "width": 1344
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/63211ac82019f36071279ebe606652f1-cc_ft_1536.jpg",
+            "width": 1536
+          }
+        ]
+      }
+    },
+    {
+      "mixedSources": {
+        "jpeg": [
+          {
+            "url": "https://photos.zillowstatic.com/fp/184a81f3d59b9f505b25c3d1d7e17b92-cc_ft_192.jpg",
+            "width": 192
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/184a81f3d59b9f505b25c3d1d7e17b92-cc_ft_384.jpg",
+            "width": 384
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/184a81f3d59b9f505b25c3d1d7e17b92-cc_ft_576.jpg",
+            "width": 576
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/184a81f3d59b9f505b25c3d1d7e17b92-cc_ft_768.jpg",
+            "width": 768
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/184a81f3d59b9f505b25c3d1d7e17b92-cc_ft_960.jpg",
+            "width": 960
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/184a81f3d59b9f505b25c3d1d7e17b92-cc_ft_1152.jpg",
+            "width": 1152
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/184a81f3d59b9f505b25c3d1d7e17b92-cc_ft_1344.jpg",
+            "width": 1344
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/184a81f3d59b9f505b25c3d1d7e17b92-cc_ft_1536.jpg",
+            "width": 1536
+          }
+        ]
+      }
+    },
+    {
+      "mixedSources": {
+        "jpeg": [
+          {
+            "url": "https://photos.zillowstatic.com/fp/a6230f3adff8b0c64140b3b2ef1742d1-cc_ft_192.jpg",
+            "width": 192
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/a6230f3adff8b0c64140b3b2ef1742d1-cc_ft_384.jpg",
+            "width": 384
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/a6230f3adff8b0c64140b3b2ef1742d1-cc_ft_576.jpg",
+            "width": 576
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/a6230f3adff8b0c64140b3b2ef1742d1-cc_ft_768.jpg",
+            "width": 768
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/a6230f3adff8b0c64140b3b2ef1742d1-cc_ft_960.jpg",
+            "width": 960
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/a6230f3adff8b0c64140b3b2ef1742d1-cc_ft_1152.jpg",
+            "width": 1152
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/a6230f3adff8b0c64140b3b2ef1742d1-cc_ft_1344.jpg",
+            "width": 1344
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/a6230f3adff8b0c64140b3b2ef1742d1-cc_ft_1536.jpg",
+            "width": 1536
+          }
+        ]
+      }
+    },
+    {
+      "mixedSources": {
+        "jpeg": [
+          {
+            "url": "https://photos.zillowstatic.com/fp/794e37f300ee1932d28f726ae8ec01fd-cc_ft_192.jpg",
+            "width": 192
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/794e37f300ee1932d28f726ae8ec01fd-cc_ft_384.jpg",
+            "width": 384
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/794e37f300ee1932d28f726ae8ec01fd-cc_ft_576.jpg",
+            "width": 576
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/794e37f300ee1932d28f726ae8ec01fd-cc_ft_768.jpg",
+            "width": 768
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/794e37f300ee1932d28f726ae8ec01fd-cc_ft_960.jpg",
+            "width": 960
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/794e37f300ee1932d28f726ae8ec01fd-cc_ft_1152.jpg",
+            "width": 1152
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/794e37f300ee1932d28f726ae8ec01fd-cc_ft_1344.jpg",
+            "width": 1344
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/794e37f300ee1932d28f726ae8ec01fd-cc_ft_1536.jpg",
+            "width": 1536
+          }
+        ]
+      }
+    },
+    {
+      "mixedSources": {
+        "jpeg": [
+          {
+            "url": "https://photos.zillowstatic.com/fp/5ec8a44f3b7560190e442ab788de185e-cc_ft_192.jpg",
+            "width": 192
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/5ec8a44f3b7560190e442ab788de185e-cc_ft_384.jpg",
+            "width": 384
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/5ec8a44f3b7560190e442ab788de185e-cc_ft_576.jpg",
+            "width": 576
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/5ec8a44f3b7560190e442ab788de185e-cc_ft_768.jpg",
+            "width": 768
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/5ec8a44f3b7560190e442ab788de185e-cc_ft_960.jpg",
+            "width": 960
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/5ec8a44f3b7560190e442ab788de185e-cc_ft_1152.jpg",
+            "width": 1152
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/5ec8a44f3b7560190e442ab788de185e-cc_ft_1344.jpg",
+            "width": 1344
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/5ec8a44f3b7560190e442ab788de185e-cc_ft_1536.jpg",
+            "width": 1536
+          }
+        ]
+      }
+    },
+    {
+      "mixedSources": {
+        "jpeg": [
+          {
+            "url": "https://photos.zillowstatic.com/fp/756a358af1845ef9d94018c47e552622-cc_ft_192.jpg",
+            "width": 192
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/756a358af1845ef9d94018c47e552622-cc_ft_384.jpg",
+            "width": 384
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/756a358af1845ef9d94018c47e552622-cc_ft_576.jpg",
+            "width": 576
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/756a358af1845ef9d94018c47e552622-cc_ft_768.jpg",
+            "width": 768
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/756a358af1845ef9d94018c47e552622-cc_ft_960.jpg",
+            "width": 960
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/756a358af1845ef9d94018c47e552622-cc_ft_1152.jpg",
+            "width": 1152
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/756a358af1845ef9d94018c47e552622-cc_ft_1344.jpg",
+            "width": 1344
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/756a358af1845ef9d94018c47e552622-cc_ft_1536.jpg",
+            "width": 1536
+          }
+        ]
+      }
+    },
+    {
+      "mixedSources": {
+        "jpeg": [
+          {
+            "url": "https://photos.zillowstatic.com/fp/33953bb4368221d0e9b1e7a24c309dc8-cc_ft_192.jpg",
+            "width": 192
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/33953bb4368221d0e9b1e7a24c309dc8-cc_ft_384.jpg",
+            "width": 384
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/33953bb4368221d0e9b1e7a24c309dc8-cc_ft_576.jpg",
+            "width": 576
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/33953bb4368221d0e9b1e7a24c309dc8-cc_ft_768.jpg",
+            "width": 768
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/33953bb4368221d0e9b1e7a24c309dc8-cc_ft_960.jpg",
+            "width": 960
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/33953bb4368221d0e9b1e7a24c309dc8-cc_ft_1152.jpg",
+            "width": 1152
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/33953bb4368221d0e9b1e7a24c309dc8-cc_ft_1344.jpg",
+            "width": 1344
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/33953bb4368221d0e9b1e7a24c309dc8-cc_ft_1536.jpg",
+            "width": 1536
+          }
+        ]
+      }
+    },
+    {
+      "mixedSources": {
+        "jpeg": [
+          {
+            "url": "https://photos.zillowstatic.com/fp/aaf5a24719e9c22c4a45b3afe1437e4b-cc_ft_192.jpg",
+            "width": 192
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/aaf5a24719e9c22c4a45b3afe1437e4b-cc_ft_384.jpg",
+            "width": 384
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/aaf5a24719e9c22c4a45b3afe1437e4b-cc_ft_576.jpg",
+            "width": 576
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/aaf5a24719e9c22c4a45b3afe1437e4b-cc_ft_768.jpg",
+            "width": 768
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/aaf5a24719e9c22c4a45b3afe1437e4b-cc_ft_960.jpg",
+            "width": 960
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/aaf5a24719e9c22c4a45b3afe1437e4b-cc_ft_1152.jpg",
+            "width": 1152
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/aaf5a24719e9c22c4a45b3afe1437e4b-cc_ft_1344.jpg",
+            "width": 1344
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/aaf5a24719e9c22c4a45b3afe1437e4b-cc_ft_1536.jpg",
+            "width": 1536
+          }
+        ]
+      }
+    },
+    {
+      "mixedSources": {
+        "jpeg": [
+          {
+            "url": "https://photos.zillowstatic.com/fp/8886a03e5f25e6b8b51f910036b374dd-cc_ft_192.jpg",
+            "width": 192
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/8886a03e5f25e6b8b51f910036b374dd-cc_ft_384.jpg",
+            "width": 384
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/8886a03e5f25e6b8b51f910036b374dd-cc_ft_576.jpg",
+            "width": 576
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/8886a03e5f25e6b8b51f910036b374dd-cc_ft_768.jpg",
+            "width": 768
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/8886a03e5f25e6b8b51f910036b374dd-cc_ft_960.jpg",
+            "width": 960
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/8886a03e5f25e6b8b51f910036b374dd-cc_ft_1152.jpg",
+            "width": 1152
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/8886a03e5f25e6b8b51f910036b374dd-cc_ft_1344.jpg",
+            "width": 1344
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/8886a03e5f25e6b8b51f910036b374dd-cc_ft_1536.jpg",
+            "width": 1536
+          }
+        ]
+      }
+    }
+  ],
+  "resoFacts:sewer": "Public Sewer",
+  "resoFacts:waterSource": "Public",
+  "utilities": [
+    "See Remarks"
+  ],
+  "url": "https://www.zillow.com/homedetails/77-Crescent-Ave-Sausalito-CA-94965/2066991862_zpid/",
+  "countyFIPS": "06041",
+  "countyID": "625",
+  "listingTypeDimension": "New Construction",
+  "homeValuation": [
+    "{\"comparables\":{\"comps\":[{\"property\":{\"zestimate\":2389900,\"lastSoldPrice\":2300000,\"price\":2300000,\"daysOnZillow\":226,\"dateSold\":1759104000000,\"currency\":\"USD\",\"bedrooms\":3,\"bathrooms\":4,\"livingAreaValue\":2490,\"livingAreaUnits\":\"Square Feet\",\"livingAreaUnitsShort\":\"sqft\",\"lotAreaValue\":3628.548,\"lotAreaUnits\":\"Square Feet\",\"address\":{\"streetAddress\":\"101 Lincoln Drive\",\"city\":\"Sausalito\",\"state\":\"CA\",\"zipcode\":\"94965\"},\"latitude\":37.86299,\"longitude\":-122.50433,\"zpid\":19269518,\"homeStatus\":\"RECENTLY_SOLD\",\"homeType\":\"CONDO\",\"hdpUrl\":\"/homedetails/101-Lincoln-Dr-Sausalito-CA-94965/19269518_zpid/\",\"listing_sub_type\":{\"is_newHome\":false,\"is_forAuction\":false,\"is_bankOwned\":false,\"is_foreclosure\":false,\"is_FSBO\":false,\"is_comingSoon\":false},\"isUndisclosedAddress\":false,\"attributionInfo\":{\"mlsId\":\"325051477\",\"mlsName\":\"BAREIS\",\"providerLogo\":null,\"agentName\":\"Mark Rushford\",\"agentPhoneNumber\":null,\"brokerName\":\"Coldwell Banker Realty\",\"brokerPhoneNumber\":null},\"compsCarouselPropertyPhotos\":[{\"mixedSources\":{\"jpeg\":[{\"url\":\"https://photos.zillowstatic.com/fp/a2b0bd7ee6e30067b74da49bb1dae93f-cc_ft_192.jpg\"},{\"url\":\"https://photos.zillowstatic.com/fp/a2b0bd7ee6e30067b74da49bb1dae93f-cc_ft_384.jpg\"},{\"url\":\"https://photos.zillowstatic.com/fp/a2b0bd7ee6e30067b74da49bb1dae93f-cc_ft_576.jpg\"},{\"url\":\"https://photos.zillowstatic.com/fp/a2b0bd7ee6e30067b74da49bb1dae93f-cc_ft_768.jpg\"},{\"url\":\"https://photos.zillowstatic.com/fp/a2b0bd7ee6e30067b74da49bb1dae93f-cc_ft_960.jpg\"},{\"url\":\"https://photos.zillowstatic.com/fp/a2b0bd7ee6e30067b74da49bb1dae93f-cc_ft_1152.jpg\"},{\"url\":\"https://photos.zillowstatic.com/fp/a2b0bd7ee6e30067b74da49bb1dae93f-cc_ft_1344.jpg\"},{\"url\":\"https://photos.zillowstatic.com/fp/a2b0bd7ee6e30067b74da49bb1dae93f-cc_ft_1536.jpg\"}]}}]}},{\"property\":{\"zestimate\":2357600,\"lastSoldPrice\":2300000,\"price\":2300000,\"daysOnZillow\":107,\"dateSold\":1769385600000,\"currency\":\"USD\",\"bedrooms\":3,\"bathrooms\":3,\"livingAreaValue\":2502,\"livingAreaUnits\":\"Square Feet\",\"livingAreaUnitsShort\":\"sqft\",\"lotAreaValue\":4098.996,\"lotAreaUnits\":\"Square Feet\",\"address\":{\"streetAddress\":\"6 Red Hill Circle\",\"city\":\"Tiburon\",\"state\":\"CA\",\"zipcode\":\"94920\"},\"latitude\":37.882015,\"longitude\":-122.46129,\"zpid\":19267395,\"homeStatus\":\"RECENTLY_SOLD\",\"homeType\":\"CONDO\",\"hdpUrl\":\"/homedetails/6-Red-Hill-Cir-Tiburon-CA-94920/19267395_zpid/\",\"listing_sub_type\":{\"is_newHome\":false,\"is_forAuction\":false,\"is_bankOwned\":false,\"is_foreclosure\":false,\"is_FSBO\":false,\"is_comingSoon\":false},\"isUndisclosedAddress\":false,\"attributionInfo\":{\"mlsId\":\"325078235\",\"mlsName\":\"BAREIS\",\"providerLogo\":null,\"agentName\":\"Amy Deming-Simkins\",\"agentPhoneNumber\":null,\"brokerName\":\"Coldwell Banker Realty\",\"brokerPhoneNumber\":null},\"compsCarouselPropertyPhotos\":[{\"mixedSources\":{\"jpeg\":[{\"url\":\"https://photos.zillowstatic.com/fp/c4f71ca5c11e4922fc43b0be8f3476ec-cc_ft_192.jpg\"},{\"url\":\"https://photos.zillowstatic.com/fp/c4f71ca5c11e4922fc43b0be8f3476ec-cc_ft_384.jpg\"},{\"url\":\"https://photos.zillowstatic.com/fp/c4f71ca5c11e4922fc43b0be8f3476ec-cc_ft_576.jpg\"},{\"url\":\"https://photos.zillowstatic.com/fp/c4f71ca5c11e4922fc43b0be8f3476ec-cc_ft_768.jpg\"},{\"url\":\"https://photos.zillowstatic.com/fp/c4f71ca5c11e4922fc43b0be8f3476ec-cc_ft_960.jpg\"},{\"url\":\"https://photos.zillowstatic.com/fp/c4f71ca5c11e4922fc43b0be8f3476ec-cc_ft_1152.jpg\"},{\"url\":\"https://photos.zillowstatic.com/fp/c4f71ca5c11e4922fc43b0be8f3476ec-cc_ft_1344.jpg\"},{\"url\":\"https://photos.zillowstatic.com/fp/c4f71ca5c11e4922fc43b0be8f3476ec-cc_ft_1536.jpg\"}]}}]}}]}}"
+  ],
+  "isOffMarket": false,
+  "resofacts_sewer": "Public Sewer",
+  "resofacts_water_source": "Public",
+  "citySearchUrl": {
+    "path": "/sausalito-ca/",
+    "text": "Homes in Sausalito"
+  },
+  "county": "Marin County",
+  "is_showcased": false,
+  "interior": {
+    "bedrooms_and_bathrooms": {
+      "bedrooms": 4,
+      "bathrooms": 4,
+      "full_bathrooms": 3,
+      "half_bathroom": "1"
+    },
+    "heating": "See Remarks, Radiant Floor",
+    "other_interior_features": "Total structure area :2,650, Total interior livable area :2,650 sqft"
+  },
+  "overview": {
+    "days_on_zillow": 329,
+    "number_of_views": 4783,
+    "number_of_saves": 245
+  },
+  "is_listed_by_management_company": false,
+  "listing_provided_by": {
+    "name": "Arrian C. Binnings",
+    "email": null,
+    "company": "Christie's Int'l Real Estate",
+    "phone_number": "415-830-2384"
+  },
+  "hoa_details": {
+    "has_hoa": true,
+    "hoa_fee_value": null,
+    "hoa_fee_currency": null,
+    "hoa_fee_period": null,
+    "services_included": [
+      "See Remarks"
+    ],
+    "amenities_included": [
+      "See Remarks"
+    ],
+    "hoa_name": "TBD"
+  },
+  "financial": null,
+  "interior_full": [
+    {
+      "title": "MasterBedroom",
+      "values": [
+        "Features: Outside Access",
+        "Area: 0"
+      ]
+    },
+    {
+      "title": "Bedroom1",
+      "values": [
+        "Area: 0"
+      ]
+    },
+    {
+      "title": "Bedroom2",
+      "values": [
+        "Area: 0"
+      ]
+    },
+    {
+      "title": "Bedroom3",
+      "values": [
+        "Area: 0"
+      ]
+    },
+    {
+      "title": "Bedroom4",
+      "values": [
+        "Area: 0"
+      ]
+    },
+    {
+      "title": "DiningRoom",
+      "values": [
+        "Level: Main",
+        "Area: 0"
+      ]
+    },
+    {
+      "title": "FamilyRoom",
+      "values": [
+        "Area: 0"
+      ]
+    },
+    {
+      "title": "Kitchen",
+      "values": [
+        "Level: Main",
+        "Area: 0"
+      ]
+    },
+    {
+      "title": "LivingRoom",
+      "values": [
+        "Features: View, Deck Attached",
+        "Level: Main",
+        "Area: 0"
+      ]
+    },
+    {
+      "title": "Bedrooms & bathrooms",
+      "values": [
+        "Bedrooms: 4",
+        "Bathrooms: 4",
+        "Full bathrooms: 3",
+        "1/2 bathrooms: 1"
+      ]
+    },
+    {
+      "title": "Heating",
+      "values": [
+        "Heating features: See Remarks,Radiant Floor"
+      ]
+    },
+    {
+      "title": "Cooling",
+      "values": [
+        "Cooling features: See Remarks"
+      ]
+    },
+    {
+      "title": "Appliances",
+      "values": [
+        "Laundry features: See Remarks"
+      ]
+    },
+    {
+      "title": "Basement",
+      "values": [
+        "Basement: None"
+      ]
+    },
+    {
+      "title": "Features",
+      "values": [
+        "Number of fireplaces: 1",
+        "Fireplace features: Living Room",
+        "Fireplace: Yes"
+      ]
+    },
+    {
+      "title": "Interior area",
+      "values": [
+        "Total structure area: 2,650",
+        "Total interior livable area: 2,650 sqft"
+      ]
+    },
+    {
+      "title": "Virtual tour",
+      "values": [
+        "View virtual tour: https://buildoncrescent.com"
+      ]
+    }
+  ],
+  "property": [
+    {
+      "title": "Parking",
+      "values": [
+        "Total spaces: 3",
+        "Parking features: Garage Faces Front,Garage Door Opener,Enclosed",
+        "Has garage: Yes",
+        "Attached garage spaces: 2",
+        "Covered spaces: 2",
+        "Has uncovered spaces: Yes",
+        "Uncovered spaces: 1"
+      ]
+    },
+    {
+      "title": "Features",
+      "values": [
+        "Levels: Three Or More",
+        "Stories: 4",
+        "Entry location: Other",
+        "Patio & porch: Wrap Around,Uncovered Deck",
+        "Has view: Yes",
+        "View description: Water,Ridge,Mountain(s),Hills,Garden,Bay",
+        "Has water view: Yes",
+        "Water view: Water,Bay",
+        "Topography of land: Upslope"
+      ]
+    },
+    {
+      "title": "Lot",
+      "values": [
+        "Lot size: 4,051 sqft",
+        "Features: Landscape Front"
+      ]
+    },
+    {
+      "title": "Details",
+      "values": [
+        "Parcel number: 06522266",
+        "Zoning description: Unknown",
+        "Special condition: Standard"
+      ]
+    }
+  ],
+  "construction": [
+    {
+      "title": "Type & style",
+      "values": [
+        "Home type: Condo",
+        "Architectural style: Modern/High Tech",
+        "Property subType: Condominium"
+      ]
+    },
+    {
+      "title": "Materials",
+      "values": [
+        "Foundation: Concrete"
+      ]
+    },
+    {
+      "title": "Condition",
+      "values": [
+        "Property condition: Under Construction",
+        "New construction: Yes"
+      ]
+    }
+  ],
+  "tag": null,
+  "contingent_listing_type": null,
+  "unit_number": null,
+  "unit_amenities": null,
+  "open_house_details": null,
+  "community_details": null,
+  "mls_id": "325056467",
+  "base_rent": null,
+  "sqft": null,
+  "availability_date": null,
+  "special_offer": null,
+  "originating_mls": "San Francisco Association of REALTORS",
+  "tags": [
+    "New construction"
+  ],
+  "getting_around_scores": {
+    "walk_score": "45/100 | Car-Dependent",
+    "transit_score": null,
+    "bike_score": "27/100 | Somewhat Bikeable"
+  },
+  "days_on_zillow": 329,
+  "getting_around": {
+    "walk": {
+      "score": 45,
+      "description": "Car-Dependent"
+    },
+    "transit": null,
+    "bike": {
+      "score": 27,
+      "description": "Somewhat Bikeable"
+    }
+  },
+  "other": null,
+  "financial_listing_details": null,
+  "publish_url": null,
+  "climate_risks": null,
+  "num_of_contacts": null,
+  "num_of_applications": null,
+  "has_3d_tour": false,
+  "payment_breakdown": [
+    {
+      "name": "Principal & interest",
+      "value": "7171$"
+    },
+    {
+      "name": "Mortgage insurance",
+      "value": "0$"
+    },
+    {
+      "name": "Property taxes",
+      "value": "1408$"
+    },
+    {
+      "name": "Home insurance",
+      "value": "498$"
+    },
+    {
+      "name": "HOA fees",
+      "value": "N/A"
+    },
+    {
+      "name": "Utilities",
+      "value": "Not included"
+    }
+  ],
+  "sold_to_list_ratio": null,
+  "sold_to_zestimate_ratio": null,
+  "is_flipped_within_12_months": true,
+  "timestamp": "2026-05-14T02:45:51.678Z",
+  "input": {
+    "url": "https://www.zillow.com/homedetails/77-Crescent-Ave-Sausalito-CA-94965/2066991862_zpid/"
+  }
+}

@@ -1,0 +1,1884 @@
+{
+  "zpid": 19943283,
+  "city": "Woodland Hills",
+  "state": "CA",
+  "homeStatus": "FOR_SALE",
+  "address": {
+    "city": "Woodland Hills",
+    "streetAddress": "22051 Celes St",
+    "zipcode": "91364",
+    "state": "CA"
+  },
+  "bedrooms": 3,
+  "bathrooms": 2,
+  "price": 959000,
+  "yearBuilt": 1950,
+  "streetAddress": "22051 Celes St",
+  "zipcode": "91364",
+  "isVerifiedClaimedByCurrentSignedInUser": "No",
+  "listingDataSource": "Phoenix",
+  "longitude": -118.60764,
+  "latitude": 34.162086,
+  "livingArea": 1070,
+  "homeType": "SINGLE_FAMILY",
+  "lotSize": 6250,
+  "lotAreaValue": 6250.86,
+  "lotAreaUnits": "Square Feet",
+  "livingAreaValue": 1070,
+  "isUndisclosedAddress": "false",
+  "zestimate": 939100,
+  "rentZestimate": 4080,
+  "currency": "USD",
+  "dateSoldString": "1995-03-22",
+  "taxAssessedValue": 272921,
+  "taxAssessedYear": 2025,
+  "country": "USA",
+  "propertyTaxRate": 1.18,
+  "photoCount": 15,
+  "isPremierBuilder": "false",
+  "ssid": 17327,
+  "hdpUrl": "https://www.zillow.com/homedetails/22051-Celes-St-Woodland-Hills-CA-91364/19943283_zpid/",
+  "tourViewCount": 0,
+  "lastSoldPrice": 162500,
+  "hasApprovedThirdPartyVirtualTourUrl": false,
+  "zestimateLowPercent": "5",
+  "zestimateHighPercent": "5",
+  "description": "Offered for the first time in more than 30 years, 22051 Celes Street comes to market as a beautifully updated residence in one of Woodland Hills' most desirable South of the Boulevard neighborhoods. Blending timeless design with modern livability, the residence showcases quality craftsmanship and carefully selected finishes throughout. Mature landscaping, fruit-bearing trees, and a welcoming front porch create an immediate sense of warmth and character, while thoughtfully updated interiors offer a fresh yet enduring aesthetic. Natural light fills the interiors, enhancing a floor plan designed for both comfortable everyday living and effortless entertaining. Seamless connections between indoor and outdoor spaces capture the essence of Southern California living, creating an environment that feels equally inviting for quiet mornings and lively gatherings. Beyond the property, some of Woodland Hills' most desirable amenities are just moments away. Tree-lined streets and a distinctly residential setting provide a sense of tranquility, while the restaurants, cafs, boutiques, and conveniences of Ventura Boulevard remain within easy reach. Nearby destinations include Westfield Topanga, The Village, and Warner Center, while the trails and open spaces of the Santa Monica Mountains offer abundant opportunities for hiking, cycling, and outdoor recreation. Convenient access to canyon routes and major freeways further enhances the home's appeal, providing an ideal balance of privacy, accessibility, and lifestyle",
+  "parcelId": "2169011016",
+  "taxHistory": [
+    {
+      "time": 2025,
+      "taxPaid": 3540.47,
+      "value": 272921,
+      "valueIncreaseRate": 0.019994693
+    },
+    {
+      "time": 2024,
+      "taxPaid": 3459.55,
+      "value": 267571,
+      "valueIncreaseRate": 0.019994205
+    },
+    {
+      "time": 2023,
+      "taxPaid": 3395.84,
+      "value": 262326,
+      "valueIncreaseRate": 0.019997433
+    },
+    {
+      "time": 2022,
+      "taxPaid": 3260.59,
+      "value": 257183,
+      "valueIncreaseRate": 0.019996747
+    },
+    {
+      "time": 2021,
+      "taxPaid": 3218.19,
+      "value": 252141,
+      "valueIncreaseRate": 0.0103543475
+    },
+    {
+      "time": 2020,
+      "taxPaid": 3247.15,
+      "value": 249557,
+      "valueIncreaseRate": 0.019994687
+    },
+    {
+      "time": 2019,
+      "taxPaid": 3247.15,
+      "value": 244665,
+      "valueIncreaseRate": 0.019998498
+    },
+    {
+      "time": 2018,
+      "taxPaid": 3090.38,
+      "value": 239868,
+      "valueIncreaseRate": 0.019998724
+    },
+    {
+      "time": 2017,
+      "taxPaid": 3090.38,
+      "value": 235165,
+      "valueIncreaseRate": 0.01999523
+    },
+    {
+      "time": 2016,
+      "taxPaid": 3023.31,
+      "value": 230555,
+      "valueIncreaseRate": 0.015244856
+    },
+    {
+      "time": 2015,
+      "taxPaid": 2934.55,
+      "value": 227093,
+      "valueIncreaseRate": 0.019977992
+    },
+    {
+      "time": 2014,
+      "taxPaid": 2911.33,
+      "value": 222645,
+      "valueIncreaseRate": 0.024620907
+    },
+    {
+      "time": 2012,
+      "value": 217295,
+      "valueIncreaseRate": 0.019996714
+    },
+    {
+      "time": 2011,
+      "value": 213035,
+      "valueIncreaseRate": 0.007524451
+    },
+    {
+      "time": 2010,
+      "value": 211444,
+      "valueIncreaseRate": -0.0023732348
+    },
+    {
+      "time": 2009,
+      "value": 211947,
+      "valueIncreaseRate": 0.019995958
+    },
+    {
+      "time": 2008,
+      "value": 207792,
+      "valueIncreaseRate": 0.019993225
+    },
+    {
+      "time": 2007,
+      "value": 203719,
+      "valueIncreaseRate": 0.019997496
+    },
+    {
+      "time": 2006,
+      "value": 199725,
+      "valueIncreaseRate": 0
+    },
+    {
+      "time": 2005,
+      "value": 199725,
+      "valueIncreaseRate": 0.040391516
+    },
+    {
+      "time": 2004,
+      "value": 191971,
+      "valueIncreaseRate": 0.01866238
+    },
+    {
+      "time": 2003,
+      "value": 188454,
+      "valueIncreaseRate": 0.019993505
+    },
+    {
+      "time": 2002,
+      "value": 184760,
+      "valueIncreaseRate": 0.04039147
+    },
+    {
+      "time": 2000,
+      "value": 177587,
+      "valueIncreaseRate": 0
+    }
+  ],
+  "priceHistory": [
+    {
+      "date": "2026-06-04",
+      "time": 1780531200000,
+      "priceChangeRate": 4.901538461538461,
+      "event": "Listed for sale",
+      "source": "CLAW",
+      "showCountyLink": false,
+      "postingIsRental": false,
+      "attributeSource": {
+        "infoString2": "CLAW",
+        "infoString3": "https://photos.zillowstatic.com/fp/d1d7f14ba9e5de22bbf848071a4b8b8e-zillow_web_logo_inf_11.jpg"
+      },
+      "price": 959000,
+      "pricePerSquareFoot": 896,
+      "source_listing_id": "26843325",
+      "source_name": "CLAW"
+    },
+    {
+      "date": "2012-07-28",
+      "time": 1343433600000,
+      "priceChangeRate": 0,
+      "event": "Listing removed",
+      "source": "Westbridge Realty",
+      "showCountyLink": false,
+      "postingIsRental": true,
+      "attributeSource": {
+        "infoString2": "Westbridge Realty"
+      },
+      "price": 2575,
+      "pricePerSquareFoot": 2,
+      "source_listing_id": null,
+      "source_name": "Westbridge Realty"
+    },
+    {
+      "date": "2012-06-29",
+      "time": 1340928000000,
+      "priceChangeRate": 0,
+      "event": "Listed for rent",
+      "source": "Westbridge Realty",
+      "showCountyLink": false,
+      "postingIsRental": true,
+      "attributeSource": {
+        "infoString2": "Westbridge Realty"
+      },
+      "price": 2575,
+      "pricePerSquareFoot": 2,
+      "source_listing_id": null,
+      "source_name": "Westbridge Realty"
+    },
+    {
+      "date": "1995-03-22",
+      "time": 795830400000,
+      "priceChangeRate": 0,
+      "event": "Sold",
+      "source": "Public Record",
+      "showCountyLink": false,
+      "postingIsRental": false,
+      "attributeSource": {
+        "infoString2": "Public Record"
+      },
+      "price": 162500,
+      "pricePerSquareFoot": 152,
+      "source_listing_id": null,
+      "source_name": "Public Record"
+    }
+  ],
+  "nearbyHomes": [
+    "{\"zpid\":19943282,\"isSavedByCurrentSignedInUser\":false,\"miniCardPhotos\":[\"https://maps.googleapis.com/maps/api/streetview?location=22045+Celes+St%2C+Woodland+Hills%2C+CA+91364&size=316x234&key=AIzaSyARFMLB1na-BBWf7_R3-5YOQQaHqEJf6RQ&source=outdoor&&signature=eYD13AqZlusXxLuEyU5ccGWe7yY=\"],\"price\":1134800,\"currency\":\"USD\",\"bedrooms\":4,\"bathrooms\":3,\"livingArea\":2096,\"livingAreaValue\":2096,\"livingAreaUnits\":\"Square Feet\",\"livingAreaUnitsShort\":\"sqft\",\"listingMetadata\":{\"comminglingCategoryIsRulesApplicable\":false},\"lotSize\":6251,\"lotAreaValue\":6251,\"lotAreaUnits\":\"Square Feet\",\"address\":{\"streetAddress\":\"22045 Celes St\",\"city\":\"Woodland Hills\",\"state\":\"CA\",\"zipcode\":\"91364\"},\"formattedChip\":{\"location\":[\"22045 Celes St\"]},\"latitude\":34.162086,\"longitude\":-118.607475,\"homeStatus\":\"OTHER\",\"homeType\":\"SINGLE_FAMILY\",\"hdpUrl\":\"/homedetails/22045-Celes-St-Woodland-Hills-CA-91364/19943282_zpid/\",\"hdpTypeDimension\":\"Zestimate\",\"propertyTypeDimension\":\"Single Family\",\"listingTypeDimension\":\"Unknown Listed By\",\"listing_sub_type\":{\"is_newHome\":false,\"is_forAuction\":false,\"is_bankOwned\":false,\"is_foreclosure\":false,\"is_FSBO\":false,\"is_comingSoon\":false,\"is_FSBA\":false},\"isShowcaseListing\":false,\"isPremierBuilder\":false,\"state\":\"CA\"}",
+    "{\"zpid\":19943284,\"isSavedByCurrentSignedInUser\":false,\"miniCardPhotos\":[\"https://photos.zillowstatic.com/fp/c7eaa1e6a676cb36628f578904667f6a-p_c.jpg\"],\"price\":1274700,\"currency\":\"USD\",\"bedrooms\":3,\"bathrooms\":3,\"livingArea\":2524,\"livingAreaValue\":2524,\"livingAreaUnits\":\"Square Feet\",\"livingAreaUnitsShort\":\"sqft\",\"listingMetadata\":{\"comminglingCategoryIsRulesApplicable\":false},\"lotSize\":6250,\"lotAreaValue\":6250,\"lotAreaUnits\":\"Square Feet\",\"address\":{\"streetAddress\":\"22055 Celes St\",\"city\":\"Woodland Hills\",\"state\":\"CA\",\"zipcode\":\"91364\"},\"formattedChip\":{\"location\":[\"22055 Celes St\"]},\"latitude\":34.16209,\"longitude\":-118.60782,\"homeStatus\":\"OTHER\",\"homeType\":\"SINGLE_FAMILY\",\"hdpUrl\":\"/homedetails/22055-Celes-St-Woodland-Hills-CA-91364/19943284_zpid/\",\"hdpTypeDimension\":\"Zestimate\",\"propertyTypeDimension\":\"Single Family\",\"listingTypeDimension\":\"Unknown Listed By\",\"listing_sub_type\":{\"is_newHome\":false,\"is_forAuction\":false,\"is_bankOwned\":false,\"is_foreclosure\":false,\"is_FSBO\":false,\"is_comingSoon\":false,\"is_FSBA\":false},\"isShowcaseListing\":false,\"isPremierBuilder\":false,\"state\":\"CA\"}",
+    "{\"zpid\":19943281,\"isSavedByCurrentSignedInUser\":false,\"miniCardPhotos\":[\"https://maps.googleapis.com/maps/api/streetview?location=22041+Celes+St%2C+Woodland+Hills%2C+CA+91364&size=316x234&key=AIzaSyARFMLB1na-BBWf7_R3-5YOQQaHqEJf6RQ&source=outdoor&&signature=T7U93bdWHtD3gRul07Iyf7Khqx0=\"],\"price\":945500,\"currency\":\"USD\",\"bedrooms\":2,\"bathrooms\":2,\"livingArea\":1287,\"livingAreaValue\":1287,\"livingAreaUnits\":\"Square Feet\",\"livingAreaUnitsShort\":\"sqft\",\"listingMetadata\":{\"comminglingCategoryIsRulesApplicable\":false},\"lotSize\":6251,\"lotAreaValue\":6251,\"lotAreaUnits\":\"Square Feet\",\"address\":{\"streetAddress\":\"22041 Celes St\",\"city\":\"Woodland Hills\",\"state\":\"CA\",\"zipcode\":\"91364\"},\"formattedChip\":{\"location\":[\"22041 Celes St\"]},\"latitude\":34.162086,\"longitude\":-118.607315,\"homeStatus\":\"OTHER\",\"homeType\":\"SINGLE_FAMILY\",\"hdpUrl\":\"/homedetails/22041-Celes-St-Woodland-Hills-CA-91364/19943281_zpid/\",\"hdpTypeDimension\":\"Zestimate\",\"propertyTypeDimension\":\"Single Family\",\"listingTypeDimension\":\"Unknown Listed By\",\"listing_sub_type\":{\"is_newHome\":false,\"is_forAuction\":false,\"is_bankOwned\":false,\"is_foreclosure\":false,\"is_FSBO\":false,\"is_comingSoon\":false,\"is_FSBA\":false},\"isShowcaseListing\":false,\"isPremierBuilder\":false,\"state\":\"CA\"}",
+    "{\"zpid\":61359432,\"isSavedByCurrentSignedInUser\":false,\"miniCardPhotos\":[\"https://maps.googleapis.com/maps/api/streetview?location=22050+Martinez+St%2C+Woodland+Hills%2C+CA+91364&size=316x234&key=AIzaSyARFMLB1na-BBWf7_R3-5YOQQaHqEJf6RQ&source=outdoor&&signature=mWCB2WkCk-dLc7TdEuKPmfKmn4o=\"],\"price\":1481600,\"currency\":\"USD\",\"bedrooms\":4,\"bathrooms\":3,\"livingArea\":2681,\"livingAreaValue\":2681,\"livingAreaUnits\":\"Square Feet\",\"livingAreaUnitsShort\":\"sqft\",\"listingMetadata\":{\"comminglingCategoryIsRulesApplicable\":false},\"lotSize\":6098,\"lotAreaValue\":6098,\"lotAreaUnits\":\"Square Feet\",\"address\":{\"streetAddress\":\"22050 Martinez St\",\"city\":\"Woodland Hills\",\"state\":\"CA\",\"zipcode\":\"91364\"},\"formattedChip\":{\"location\":[\"22050 Martinez St\"]},\"latitude\":34.16243,\"longitude\":-118.60764,\"homeStatus\":\"OTHER\",\"homeType\":\"SINGLE_FAMILY\",\"hdpUrl\":\"/homedetails/22050-Martinez-St-Woodland-Hills-CA-91364/61359432_zpid/\",\"hdpTypeDimension\":\"Zestimate\",\"propertyTypeDimension\":\"Single Family\",\"listingTypeDimension\":\"Unknown Listed By\",\"listing_sub_type\":{\"is_newHome\":false,\"is_forAuction\":false,\"is_bankOwned\":false,\"is_foreclosure\":false,\"is_FSBO\":false,\"is_comingSoon\":false,\"is_FSBA\":false},\"isShowcaseListing\":false,\"isPremierBuilder\":false,\"state\":\"CA\"}",
+    "{\"zpid\":19943285,\"isSavedByCurrentSignedInUser\":false,\"miniCardPhotos\":[\"https://maps.googleapis.com/maps/api/streetview?location=5102+San+Feliciano+Dr%2C+Woodland+Hills%2C+CA+91364&size=200x200&key=AIzaSyARFMLB1na-BBWf7_R3-5YOQQaHqEJf6RQ&source=outdoor&signature=XLYRhX-p_cJ8nvPTePZ40CjzgNc=\"],\"price\":1190800,\"currency\":\"USD\",\"bedrooms\":3,\"bathrooms\":2,\"livingArea\":1888,\"livingAreaValue\":1888,\"livingAreaUnits\":\"Square Feet\",\"livingAreaUnitsShort\":\"sqft\",\"listingMetadata\":{\"comminglingCategoryIsRulesApplicable\":false},\"lotSize\":10104,\"lotAreaValue\":10104,\"lotAreaUnits\":\"Square Feet\",\"address\":{\"streetAddress\":\"5102 San Feliciano Dr\",\"city\":\"Woodland Hills\",\"state\":\"CA\",\"zipcode\":\"91364\"},\"formattedChip\":{\"location\":[\"5102 San Feliciano Dr\"]},\"latitude\":34.162132,\"longitude\":-118.60806,\"homeStatus\":\"OTHER\",\"homeType\":\"SINGLE_FAMILY\",\"hdpUrl\":\"/homedetails/5102-San-Feliciano-Dr-Woodland-Hills-CA-91364/19943285_zpid/\",\"hdpTypeDimension\":\"Zestimate\",\"propertyTypeDimension\":\"Single Family\",\"listingTypeDimension\":\"Unknown Listed By\",\"listing_sub_type\":{\"is_newHome\":false,\"is_forAuction\":false,\"is_bankOwned\":false,\"is_foreclosure\":false,\"is_FSBO\":false,\"is_comingSoon\":false,\"is_FSBA\":false},\"isShowcaseListing\":false,\"isPremierBuilder\":false,\"state\":\"CA\"}",
+    "{\"zpid\":19943288,\"isSavedByCurrentSignedInUser\":false,\"miniCardPhotos\":[\"https://photos.zillowstatic.com/fp/876bec8a1bdf006ab3baf1d9321980dd-p_c.jpg\"],\"price\":1237500,\"currency\":\"USD\",\"bedrooms\":4,\"bathrooms\":2.5,\"livingArea\":2041,\"livingAreaValue\":2041,\"livingAreaUnits\":\"Square Feet\",\"livingAreaUnitsShort\":\"sqft\",\"listingMetadata\":{\"comminglingCategoryIsRulesApplicable\":false},\"lotSize\":6250,\"lotAreaValue\":6250,\"lotAreaUnits\":\"Square Feet\",\"address\":{\"streetAddress\":\"22046 Martinez St\",\"city\":\"Woodland Hills\",\"state\":\"CA\",\"zipcode\":\"91364\"},\"formattedChip\":{\"location\":[\"22046 Martinez St\"]},\"latitude\":34.16243,\"longitude\":-118.607475,\"homeStatus\":\"OTHER\",\"homeType\":\"SINGLE_FAMILY\",\"hdpUrl\":\"/homedetails/22046-Martinez-St-Woodland-Hills-CA-91364/19943288_zpid/\",\"hdpTypeDimension\":\"Zestimate\",\"propertyTypeDimension\":\"Single Family\",\"listingTypeDimension\":\"Unknown Listed By\",\"listing_sub_type\":{\"is_newHome\":false,\"is_forAuction\":false,\"is_bankOwned\":false,\"is_foreclosure\":false,\"is_FSBO\":false,\"is_comingSoon\":false,\"is_FSBA\":false},\"isShowcaseListing\":false,\"isPremierBuilder\":false,\"state\":\"CA\"}",
+    "{\"zpid\":19943287,\"isSavedByCurrentSignedInUser\":false,\"miniCardPhotos\":[\"https://maps.googleapis.com/maps/api/streetview?location=22054+Martinez+St%2C+Woodland+Hills%2C+CA+91364&size=316x234&key=AIzaSyARFMLB1na-BBWf7_R3-5YOQQaHqEJf6RQ&source=outdoor&&signature=Yl6VyDrBdK5dbWK8VOyCKtpkY7s=\"],\"price\":1487000,\"currency\":\"USD\",\"bedrooms\":4,\"bathrooms\":4,\"livingArea\":3077,\"livingAreaValue\":3077,\"livingAreaUnits\":\"Square Feet\",\"livingAreaUnitsShort\":\"sqft\",\"listingMetadata\":{\"comminglingCategoryIsRulesApplicable\":false},\"lotSize\":6250,\"lotAreaValue\":6250,\"lotAreaUnits\":\"Square Feet\",\"address\":{\"streetAddress\":\"22054 Martinez St\",\"city\":\"Woodland Hills\",\"state\":\"CA\",\"zipcode\":\"91364\"},\"formattedChip\":{\"location\":[\"22054 Martinez St\"]},\"latitude\":34.16243,\"longitude\":-118.60781,\"homeStatus\":\"OTHER\",\"homeType\":\"SINGLE_FAMILY\",\"hdpUrl\":\"/homedetails/22054-Martinez-St-Woodland-Hills-CA-91364/19943287_zpid/\",\"hdpTypeDimension\":\"Zestimate\",\"propertyTypeDimension\":\"Single Family\",\"listingTypeDimension\":\"Unknown Listed By\",\"listing_sub_type\":{\"is_newHome\":false,\"is_forAuction\":false,\"is_bankOwned\":false,\"is_foreclosure\":false,\"is_FSBO\":false,\"is_comingSoon\":false,\"is_FSBA\":false},\"isShowcaseListing\":false,\"isPremierBuilder\":false,\"state\":\"CA\"}",
+    "{\"zpid\":19943280,\"isSavedByCurrentSignedInUser\":false,\"miniCardPhotos\":[\"https://maps.googleapis.com/maps/api/streetview?location=22035+Celes+St%2C+Woodland+Hills%2C+CA+91364&size=316x234&key=AIzaSyARFMLB1na-BBWf7_R3-5YOQQaHqEJf6RQ&source=outdoor&&signature=R7uspginagoFc8uDMYvpCdSRCPM=\"],\"price\":1018900,\"currency\":\"USD\",\"bedrooms\":3,\"bathrooms\":2,\"livingArea\":1281,\"livingAreaValue\":1281,\"livingAreaUnits\":\"Square Feet\",\"livingAreaUnitsShort\":\"sqft\",\"listingMetadata\":{\"comminglingCategoryIsRulesApplicable\":false},\"lotSize\":6251,\"lotAreaValue\":6251,\"lotAreaUnits\":\"Square Feet\",\"address\":{\"streetAddress\":\"22035 Celes St\",\"city\":\"Woodland Hills\",\"state\":\"CA\",\"zipcode\":\"91364\"},\"formattedChip\":{\"location\":[\"22035 Celes St\"]},\"latitude\":34.16209,\"longitude\":-118.60716,\"homeStatus\":\"OTHER\",\"homeType\":\"SINGLE_FAMILY\",\"hdpUrl\":\"/homedetails/22035-Celes-St-Woodland-Hills-CA-91364/19943280_zpid/\",\"hdpTypeDimension\":\"Zestimate\",\"propertyTypeDimension\":\"Single Family\",\"listingTypeDimension\":\"Unknown Listed By\",\"listing_sub_type\":{\"is_newHome\":false,\"is_forAuction\":false,\"is_bankOwned\":false,\"is_foreclosure\":false,\"is_FSBO\":false,\"is_comingSoon\":false,\"is_FSBA\":false},\"isShowcaseListing\":false,\"isPremierBuilder\":false,\"state\":\"CA\"}"
+  ],
+  "schools": [
+    {
+      "distance": 0.3,
+      "name": "Woodland Hills Elementary Charter For Enriched Studies",
+      "rating": 8,
+      "grades": "K-5",
+      "link": "https://www.greatschools.org/california/woodland-hills/2501-Woodland-Hills-Elementary-Charter-For-Enriched-Studies/"
+    },
+    {
+      "distance": 1.4,
+      "name": "Woodland Hills Charter Academy",
+      "rating": 4,
+      "grades": "6-8",
+      "link": "https://www.greatschools.org/california/woodland-hills/2314-Woodland-Hills-Charter-Academy/"
+    },
+    {
+      "distance": 2.1,
+      "name": "Taft Charter High",
+      "rating": 9,
+      "grades": "9-12",
+      "link": "https://www.greatschools.org/california/woodland-hills/2416-William-Howard-Taft-Senior-High-School/"
+    }
+  ],
+  "mortgageRates": {
+    "thirtyYearFixedRate": 6.38
+  },
+  "isInstantOfferEnabled": "No",
+  "nearbyCities": [
+    {
+      "regionUrl": {
+        "path": "/glendale-ca/"
+      },
+      "name": "Glendale"
+    },
+    {
+      "regionUrl": {
+        "path": "/lancaster-ca/"
+      },
+      "name": "Lancaster"
+    },
+    {
+      "regionUrl": {
+        "path": "/long-beach-ca/"
+      },
+      "name": "Long Beach"
+    },
+    {
+      "regionUrl": {
+        "path": "/los-angeles-ca/"
+      },
+      "name": "Los Angeles"
+    },
+    {
+      "regionUrl": {
+        "path": "/palmdale-ca/"
+      },
+      "name": "Palmdale"
+    },
+    {
+      "regionUrl": {
+        "path": "/pasadena-ca/"
+      },
+      "name": "Pasadena"
+    },
+    {
+      "regionUrl": {
+        "path": "/pomona-ca/"
+      },
+      "name": "Pomona"
+    },
+    {
+      "regionUrl": {
+        "path": "/santa-clarita-ca/"
+      },
+      "name": "Santa Clarita"
+    },
+    {
+      "regionUrl": {
+        "path": "/torrance-ca/"
+      },
+      "name": "Torrance"
+    },
+    {
+      "regionUrl": {
+        "path": "/whittier-ca/"
+      },
+      "name": "Whittier"
+    }
+  ],
+  "nearbyNeighborhoods": [
+    {
+      "regionUrl": {
+        "path": "/hollywood-los-angeles-ca/"
+      },
+      "name": "Hollywood"
+    },
+    {
+      "regionUrl": {
+        "path": "/mid-city-los-angeles-ca/"
+      },
+      "name": "Mid City"
+    },
+    {
+      "regionUrl": {
+        "path": "/north-hollywood-los-angeles-ca/"
+      },
+      "name": "North Hollywood"
+    },
+    {
+      "regionUrl": {
+        "path": "/northridge-los-angeles-ca/"
+      },
+      "name": "Northridge"
+    },
+    {
+      "regionUrl": {
+        "path": "/san-pedro-los-angeles-ca/"
+      },
+      "name": "San Pedro"
+    },
+    {
+      "regionUrl": {
+        "path": "/south-los-angeles-los-angeles-ca/"
+      },
+      "name": "South Los Angeles"
+    },
+    {
+      "regionUrl": {
+        "path": "/southeast-los-angeles-los-angeles-ca/"
+      },
+      "name": "Southeast Los Angeles"
+    },
+    {
+      "regionUrl": {
+        "path": "/sylmar-los-angeles-ca/"
+      },
+      "name": "Sylmar"
+    },
+    {
+      "regionUrl": {
+        "path": "/van-nuys-los-angeles-ca/"
+      },
+      "name": "Van Nuys"
+    },
+    {
+      "regionUrl": {
+        "path": "/woodland-hills-los-angeles-ca/"
+      },
+      "name": "Woodland Hills"
+    }
+  ],
+  "nearbyZipcodes": [
+    {
+      "regionUrl": {
+        "path": "/los-angeles-ca-90003/"
+      },
+      "name": "90003"
+    },
+    {
+      "regionUrl": {
+        "path": "/los-angeles-ca-90011/"
+      },
+      "name": "90011"
+    },
+    {
+      "regionUrl": {
+        "path": "/los-angeles-ca-90026/"
+      },
+      "name": "90026"
+    },
+    {
+      "regionUrl": {
+        "path": "/los-angeles-ca-90037/"
+      },
+      "name": "90037"
+    },
+    {
+      "regionUrl": {
+        "path": "/los-angeles-ca-90044/"
+      },
+      "name": "90044"
+    },
+    {
+      "regionUrl": {
+        "path": "/los-angeles-ca-90731/"
+      },
+      "name": "90731"
+    },
+    {
+      "regionUrl": {
+        "path": "/los-angeles-ca-91331/"
+      },
+      "name": "91331"
+    },
+    {
+      "regionUrl": {
+        "path": "/los-angeles-ca-91335/"
+      },
+      "name": "91335"
+    },
+    {
+      "regionUrl": {
+        "path": "/los-angeles-ca-91342/"
+      },
+      "name": "91342"
+    },
+    {
+      "regionUrl": {
+        "path": "/los-angeles-ca-91402/"
+      },
+      "name": "91402"
+    }
+  ],
+  "abbreviatedAddress": "22051 Celes St",
+  "daysOnZillow": 1,
+  "propertyTypeDimension": "Single Family",
+  "hdpTypeDimension": "ForSale",
+  "timeZone": "America/Los_Angeles",
+  "tourEligibility": {
+    "isPropertyTourEligible": true
+  },
+  "selfTour": {
+    "hasSelfTour": false
+  },
+  "photos": [
+    {
+      "mixedSources": {
+        "jpeg": [
+          {
+            "url": "https://photos.zillowstatic.com/fp/88fcf0474d6cd33f18b33d33b6c391df-cc_ft_192.jpg",
+            "width": 192
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/88fcf0474d6cd33f18b33d33b6c391df-cc_ft_384.jpg",
+            "width": 384
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/88fcf0474d6cd33f18b33d33b6c391df-cc_ft_576.jpg",
+            "width": 576
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/88fcf0474d6cd33f18b33d33b6c391df-cc_ft_768.jpg",
+            "width": 768
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/88fcf0474d6cd33f18b33d33b6c391df-cc_ft_960.jpg",
+            "width": 960
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/88fcf0474d6cd33f18b33d33b6c391df-cc_ft_1152.jpg",
+            "width": 1152
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/88fcf0474d6cd33f18b33d33b6c391df-cc_ft_1344.jpg",
+            "width": 1344
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/88fcf0474d6cd33f18b33d33b6c391df-cc_ft_1536.jpg",
+            "width": 1536
+          }
+        ]
+      }
+    },
+    {
+      "mixedSources": {
+        "jpeg": [
+          {
+            "url": "https://photos.zillowstatic.com/fp/9b3cd8bffb24c49bf1e044a442f38865-cc_ft_192.jpg",
+            "width": 192
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/9b3cd8bffb24c49bf1e044a442f38865-cc_ft_384.jpg",
+            "width": 384
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/9b3cd8bffb24c49bf1e044a442f38865-cc_ft_576.jpg",
+            "width": 576
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/9b3cd8bffb24c49bf1e044a442f38865-cc_ft_768.jpg",
+            "width": 768
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/9b3cd8bffb24c49bf1e044a442f38865-cc_ft_960.jpg",
+            "width": 960
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/9b3cd8bffb24c49bf1e044a442f38865-cc_ft_1152.jpg",
+            "width": 1152
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/9b3cd8bffb24c49bf1e044a442f38865-cc_ft_1344.jpg",
+            "width": 1344
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/9b3cd8bffb24c49bf1e044a442f38865-cc_ft_1536.jpg",
+            "width": 1536
+          }
+        ]
+      }
+    },
+    {
+      "mixedSources": {
+        "jpeg": [
+          {
+            "url": "https://photos.zillowstatic.com/fp/d976eef742fe6e901625a8779b2d621b-cc_ft_192.jpg",
+            "width": 192
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/d976eef742fe6e901625a8779b2d621b-cc_ft_384.jpg",
+            "width": 384
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/d976eef742fe6e901625a8779b2d621b-cc_ft_576.jpg",
+            "width": 576
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/d976eef742fe6e901625a8779b2d621b-cc_ft_768.jpg",
+            "width": 768
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/d976eef742fe6e901625a8779b2d621b-cc_ft_960.jpg",
+            "width": 960
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/d976eef742fe6e901625a8779b2d621b-cc_ft_1152.jpg",
+            "width": 1152
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/d976eef742fe6e901625a8779b2d621b-cc_ft_1344.jpg",
+            "width": 1344
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/d976eef742fe6e901625a8779b2d621b-cc_ft_1536.jpg",
+            "width": 1536
+          }
+        ]
+      }
+    },
+    {
+      "mixedSources": {
+        "jpeg": [
+          {
+            "url": "https://photos.zillowstatic.com/fp/94afebf6aa2f19eca198af043fdd627f-cc_ft_192.jpg",
+            "width": 192
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/94afebf6aa2f19eca198af043fdd627f-cc_ft_384.jpg",
+            "width": 384
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/94afebf6aa2f19eca198af043fdd627f-cc_ft_576.jpg",
+            "width": 576
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/94afebf6aa2f19eca198af043fdd627f-cc_ft_768.jpg",
+            "width": 768
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/94afebf6aa2f19eca198af043fdd627f-cc_ft_960.jpg",
+            "width": 960
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/94afebf6aa2f19eca198af043fdd627f-cc_ft_1152.jpg",
+            "width": 1152
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/94afebf6aa2f19eca198af043fdd627f-cc_ft_1344.jpg",
+            "width": 1344
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/94afebf6aa2f19eca198af043fdd627f-cc_ft_1536.jpg",
+            "width": 1536
+          }
+        ]
+      }
+    },
+    {
+      "mixedSources": {
+        "jpeg": [
+          {
+            "url": "https://photos.zillowstatic.com/fp/af9f3c099b0456589f48c1eebd256dd9-cc_ft_192.jpg",
+            "width": 192
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/af9f3c099b0456589f48c1eebd256dd9-cc_ft_384.jpg",
+            "width": 384
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/af9f3c099b0456589f48c1eebd256dd9-cc_ft_576.jpg",
+            "width": 576
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/af9f3c099b0456589f48c1eebd256dd9-cc_ft_768.jpg",
+            "width": 768
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/af9f3c099b0456589f48c1eebd256dd9-cc_ft_960.jpg",
+            "width": 960
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/af9f3c099b0456589f48c1eebd256dd9-cc_ft_1152.jpg",
+            "width": 1152
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/af9f3c099b0456589f48c1eebd256dd9-cc_ft_1344.jpg",
+            "width": 1344
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/af9f3c099b0456589f48c1eebd256dd9-cc_ft_1536.jpg",
+            "width": 1536
+          }
+        ]
+      }
+    },
+    {
+      "mixedSources": {
+        "jpeg": [
+          {
+            "url": "https://photos.zillowstatic.com/fp/11fc1974eeb311eb33afcc0a1ef75309-cc_ft_192.jpg",
+            "width": 192
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/11fc1974eeb311eb33afcc0a1ef75309-cc_ft_384.jpg",
+            "width": 384
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/11fc1974eeb311eb33afcc0a1ef75309-cc_ft_576.jpg",
+            "width": 576
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/11fc1974eeb311eb33afcc0a1ef75309-cc_ft_768.jpg",
+            "width": 768
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/11fc1974eeb311eb33afcc0a1ef75309-cc_ft_960.jpg",
+            "width": 960
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/11fc1974eeb311eb33afcc0a1ef75309-cc_ft_1152.jpg",
+            "width": 1152
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/11fc1974eeb311eb33afcc0a1ef75309-cc_ft_1344.jpg",
+            "width": 1344
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/11fc1974eeb311eb33afcc0a1ef75309-cc_ft_1536.jpg",
+            "width": 1536
+          }
+        ]
+      }
+    },
+    {
+      "mixedSources": {
+        "jpeg": [
+          {
+            "url": "https://photos.zillowstatic.com/fp/87cd90abffc19ddb340360184eff46eb-cc_ft_192.jpg",
+            "width": 192
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/87cd90abffc19ddb340360184eff46eb-cc_ft_384.jpg",
+            "width": 384
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/87cd90abffc19ddb340360184eff46eb-cc_ft_576.jpg",
+            "width": 576
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/87cd90abffc19ddb340360184eff46eb-cc_ft_768.jpg",
+            "width": 768
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/87cd90abffc19ddb340360184eff46eb-cc_ft_960.jpg",
+            "width": 960
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/87cd90abffc19ddb340360184eff46eb-cc_ft_1152.jpg",
+            "width": 1152
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/87cd90abffc19ddb340360184eff46eb-cc_ft_1344.jpg",
+            "width": 1344
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/87cd90abffc19ddb340360184eff46eb-cc_ft_1536.jpg",
+            "width": 1536
+          }
+        ]
+      }
+    },
+    {
+      "mixedSources": {
+        "jpeg": [
+          {
+            "url": "https://photos.zillowstatic.com/fp/252c6341f81b1fda1588227eb4dd97b3-cc_ft_192.jpg",
+            "width": 192
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/252c6341f81b1fda1588227eb4dd97b3-cc_ft_384.jpg",
+            "width": 384
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/252c6341f81b1fda1588227eb4dd97b3-cc_ft_576.jpg",
+            "width": 576
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/252c6341f81b1fda1588227eb4dd97b3-cc_ft_768.jpg",
+            "width": 768
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/252c6341f81b1fda1588227eb4dd97b3-cc_ft_960.jpg",
+            "width": 960
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/252c6341f81b1fda1588227eb4dd97b3-cc_ft_1152.jpg",
+            "width": 1152
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/252c6341f81b1fda1588227eb4dd97b3-cc_ft_1344.jpg",
+            "width": 1344
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/252c6341f81b1fda1588227eb4dd97b3-cc_ft_1536.jpg",
+            "width": 1536
+          }
+        ]
+      }
+    },
+    {
+      "mixedSources": {
+        "jpeg": [
+          {
+            "url": "https://photos.zillowstatic.com/fp/8194cce0a7a86bbcc2ed38fdbd112970-cc_ft_192.jpg",
+            "width": 192
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/8194cce0a7a86bbcc2ed38fdbd112970-cc_ft_384.jpg",
+            "width": 384
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/8194cce0a7a86bbcc2ed38fdbd112970-cc_ft_576.jpg",
+            "width": 576
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/8194cce0a7a86bbcc2ed38fdbd112970-cc_ft_768.jpg",
+            "width": 768
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/8194cce0a7a86bbcc2ed38fdbd112970-cc_ft_960.jpg",
+            "width": 960
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/8194cce0a7a86bbcc2ed38fdbd112970-cc_ft_1152.jpg",
+            "width": 1152
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/8194cce0a7a86bbcc2ed38fdbd112970-cc_ft_1344.jpg",
+            "width": 1344
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/8194cce0a7a86bbcc2ed38fdbd112970-cc_ft_1536.jpg",
+            "width": 1536
+          }
+        ]
+      }
+    },
+    {
+      "mixedSources": {
+        "jpeg": [
+          {
+            "url": "https://photos.zillowstatic.com/fp/31a41de51fcf0c3ee972e8753f8cabdf-cc_ft_192.jpg",
+            "width": 192
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/31a41de51fcf0c3ee972e8753f8cabdf-cc_ft_384.jpg",
+            "width": 384
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/31a41de51fcf0c3ee972e8753f8cabdf-cc_ft_576.jpg",
+            "width": 576
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/31a41de51fcf0c3ee972e8753f8cabdf-cc_ft_768.jpg",
+            "width": 768
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/31a41de51fcf0c3ee972e8753f8cabdf-cc_ft_960.jpg",
+            "width": 960
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/31a41de51fcf0c3ee972e8753f8cabdf-cc_ft_1152.jpg",
+            "width": 1152
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/31a41de51fcf0c3ee972e8753f8cabdf-cc_ft_1344.jpg",
+            "width": 1344
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/31a41de51fcf0c3ee972e8753f8cabdf-cc_ft_1536.jpg",
+            "width": 1536
+          }
+        ]
+      }
+    },
+    {
+      "mixedSources": {
+        "jpeg": [
+          {
+            "url": "https://photos.zillowstatic.com/fp/ad6dcea752c4e2377aa4fa3233bb0236-cc_ft_192.jpg",
+            "width": 192
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/ad6dcea752c4e2377aa4fa3233bb0236-cc_ft_384.jpg",
+            "width": 384
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/ad6dcea752c4e2377aa4fa3233bb0236-cc_ft_576.jpg",
+            "width": 576
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/ad6dcea752c4e2377aa4fa3233bb0236-cc_ft_768.jpg",
+            "width": 768
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/ad6dcea752c4e2377aa4fa3233bb0236-cc_ft_960.jpg",
+            "width": 960
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/ad6dcea752c4e2377aa4fa3233bb0236-cc_ft_1152.jpg",
+            "width": 1152
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/ad6dcea752c4e2377aa4fa3233bb0236-cc_ft_1344.jpg",
+            "width": 1344
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/ad6dcea752c4e2377aa4fa3233bb0236-cc_ft_1536.jpg",
+            "width": 1536
+          }
+        ]
+      }
+    },
+    {
+      "mixedSources": {
+        "jpeg": [
+          {
+            "url": "https://photos.zillowstatic.com/fp/e568f05b4f509a9dadea7fd507176727-cc_ft_192.jpg",
+            "width": 192
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/e568f05b4f509a9dadea7fd507176727-cc_ft_384.jpg",
+            "width": 384
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/e568f05b4f509a9dadea7fd507176727-cc_ft_576.jpg",
+            "width": 576
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/e568f05b4f509a9dadea7fd507176727-cc_ft_768.jpg",
+            "width": 768
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/e568f05b4f509a9dadea7fd507176727-cc_ft_960.jpg",
+            "width": 960
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/e568f05b4f509a9dadea7fd507176727-cc_ft_1152.jpg",
+            "width": 1152
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/e568f05b4f509a9dadea7fd507176727-cc_ft_1344.jpg",
+            "width": 1344
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/e568f05b4f509a9dadea7fd507176727-cc_ft_1536.jpg",
+            "width": 1536
+          }
+        ]
+      }
+    },
+    {
+      "mixedSources": {
+        "jpeg": [
+          {
+            "url": "https://photos.zillowstatic.com/fp/c4f9bd36b48379271f7369c346f09e1c-cc_ft_192.jpg",
+            "width": 192
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/c4f9bd36b48379271f7369c346f09e1c-cc_ft_384.jpg",
+            "width": 384
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/c4f9bd36b48379271f7369c346f09e1c-cc_ft_576.jpg",
+            "width": 576
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/c4f9bd36b48379271f7369c346f09e1c-cc_ft_768.jpg",
+            "width": 768
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/c4f9bd36b48379271f7369c346f09e1c-cc_ft_960.jpg",
+            "width": 960
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/c4f9bd36b48379271f7369c346f09e1c-cc_ft_1152.jpg",
+            "width": 1152
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/c4f9bd36b48379271f7369c346f09e1c-cc_ft_1344.jpg",
+            "width": 1344
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/c4f9bd36b48379271f7369c346f09e1c-cc_ft_1536.jpg",
+            "width": 1536
+          }
+        ]
+      }
+    },
+    {
+      "mixedSources": {
+        "jpeg": [
+          {
+            "url": "https://photos.zillowstatic.com/fp/8bfb98bf6eab18ca8b421df7975a33c8-cc_ft_192.jpg",
+            "width": 192
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/8bfb98bf6eab18ca8b421df7975a33c8-cc_ft_384.jpg",
+            "width": 384
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/8bfb98bf6eab18ca8b421df7975a33c8-cc_ft_576.jpg",
+            "width": 576
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/8bfb98bf6eab18ca8b421df7975a33c8-cc_ft_768.jpg",
+            "width": 768
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/8bfb98bf6eab18ca8b421df7975a33c8-cc_ft_960.jpg",
+            "width": 960
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/8bfb98bf6eab18ca8b421df7975a33c8-cc_ft_1152.jpg",
+            "width": 1152
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/8bfb98bf6eab18ca8b421df7975a33c8-cc_ft_1344.jpg",
+            "width": 1344
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/8bfb98bf6eab18ca8b421df7975a33c8-cc_ft_1536.jpg",
+            "width": 1536
+          }
+        ]
+      }
+    },
+    {
+      "mixedSources": {
+        "jpeg": [
+          {
+            "url": "https://photos.zillowstatic.com/fp/ed21c064c8c76480b815eaef59ebe88e-cc_ft_192.jpg",
+            "width": 192
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/ed21c064c8c76480b815eaef59ebe88e-cc_ft_384.jpg",
+            "width": 384
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/ed21c064c8c76480b815eaef59ebe88e-cc_ft_576.jpg",
+            "width": 576
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/ed21c064c8c76480b815eaef59ebe88e-cc_ft_768.jpg",
+            "width": 768
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/ed21c064c8c76480b815eaef59ebe88e-cc_ft_960.jpg",
+            "width": 960
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/ed21c064c8c76480b815eaef59ebe88e-cc_ft_1152.jpg",
+            "width": 1152
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/ed21c064c8c76480b815eaef59ebe88e-cc_ft_1344.jpg",
+            "width": 1344
+          },
+          {
+            "url": "https://photos.zillowstatic.com/fp/ed21c064c8c76480b815eaef59ebe88e-cc_ft_1536.jpg",
+            "width": 1536
+          }
+        ]
+      }
+    }
+  ],
+  "zestimate_history": [
+    {
+      "date": 1467270000000,
+      "amount": 587.189,
+      "as_of_date": "2016-06-30T07:00:00.000Z"
+    },
+    {
+      "date": 1469948400000,
+      "amount": 582.117,
+      "as_of_date": "2016-07-31T07:00:00.000Z"
+    },
+    {
+      "date": 1472626800000,
+      "amount": 592.211,
+      "as_of_date": "2016-08-31T07:00:00.000Z"
+    },
+    {
+      "date": 1475218800000,
+      "amount": 599.463,
+      "as_of_date": "2016-09-30T07:00:00.000Z"
+    },
+    {
+      "date": 1477897200000,
+      "amount": 591.403,
+      "as_of_date": "2016-10-31T07:00:00.000Z"
+    },
+    {
+      "date": 1480492800000,
+      "amount": 588.799,
+      "as_of_date": "2016-11-30T08:00:00.000Z"
+    },
+    {
+      "date": 1483171200000,
+      "amount": 589.819,
+      "as_of_date": "2016-12-31T08:00:00.000Z"
+    },
+    {
+      "date": 1485849600000,
+      "amount": 591.516,
+      "as_of_date": "2017-01-31T08:00:00.000Z"
+    },
+    {
+      "date": 1488268800000,
+      "amount": 593.193,
+      "as_of_date": "2017-02-28T08:00:00.000Z"
+    },
+    {
+      "date": 1490943600000,
+      "amount": 594.669,
+      "as_of_date": "2017-03-31T07:00:00.000Z"
+    },
+    {
+      "date": 1493535600000,
+      "amount": 598.767,
+      "as_of_date": "2017-04-30T07:00:00.000Z"
+    },
+    {
+      "date": 1496214000000,
+      "amount": 598.853,
+      "as_of_date": "2017-05-31T07:00:00.000Z"
+    },
+    {
+      "date": 1498806000000,
+      "amount": 598.54,
+      "as_of_date": "2017-06-30T07:00:00.000Z"
+    },
+    {
+      "date": 1501484400000,
+      "amount": 580.98,
+      "as_of_date": "2017-07-31T07:00:00.000Z"
+    },
+    {
+      "date": 1504162800000,
+      "amount": 592.784,
+      "as_of_date": "2017-08-31T07:00:00.000Z"
+    },
+    {
+      "date": 1506754800000,
+      "amount": 598.764,
+      "as_of_date": "2017-09-30T07:00:00.000Z"
+    },
+    {
+      "date": 1509433200000,
+      "amount": 595.844,
+      "as_of_date": "2017-10-31T07:00:00.000Z"
+    },
+    {
+      "date": 1512028800000,
+      "amount": 602.31,
+      "as_of_date": "2017-11-30T08:00:00.000Z"
+    },
+    {
+      "date": 1514707200000,
+      "amount": 610.051,
+      "as_of_date": "2017-12-31T08:00:00.000Z"
+    },
+    {
+      "date": 1517385600000,
+      "amount": 631.101,
+      "as_of_date": "2018-01-31T08:00:00.000Z"
+    },
+    {
+      "date": 1519804800000,
+      "amount": 637.025,
+      "as_of_date": "2018-02-28T08:00:00.000Z"
+    },
+    {
+      "date": 1522479600000,
+      "amount": 631.895,
+      "as_of_date": "2018-03-31T07:00:00.000Z"
+    },
+    {
+      "date": 1525071600000,
+      "amount": 629.209,
+      "as_of_date": "2018-04-30T07:00:00.000Z"
+    },
+    {
+      "date": 1527750000000,
+      "amount": 652.066,
+      "as_of_date": "2018-05-31T07:00:00.000Z"
+    },
+    {
+      "date": 1530342000000,
+      "amount": 665.579,
+      "as_of_date": "2018-06-30T07:00:00.000Z"
+    },
+    {
+      "date": 1533020400000,
+      "amount": 667.87,
+      "as_of_date": "2018-07-31T07:00:00.000Z"
+    },
+    {
+      "date": 1535698800000,
+      "amount": 648.928,
+      "as_of_date": "2018-08-31T07:00:00.000Z"
+    },
+    {
+      "date": 1538290800000,
+      "amount": 649.719,
+      "as_of_date": "2018-09-30T07:00:00.000Z"
+    },
+    {
+      "date": 1540969200000,
+      "amount": 655.624,
+      "as_of_date": "2018-10-31T07:00:00.000Z"
+    },
+    {
+      "date": 1543564800000,
+      "amount": 654.122,
+      "as_of_date": "2018-11-30T08:00:00.000Z"
+    },
+    {
+      "date": 1546243200000,
+      "amount": 646.019,
+      "as_of_date": "2018-12-31T08:00:00.000Z"
+    },
+    {
+      "date": 1548921600000,
+      "amount": 652.035,
+      "as_of_date": "2019-01-31T08:00:00.000Z"
+    },
+    {
+      "date": 1551340800000,
+      "amount": 650.314,
+      "as_of_date": "2019-02-28T08:00:00.000Z"
+    },
+    {
+      "date": 1554015600000,
+      "amount": 668.494,
+      "as_of_date": "2019-03-31T07:00:00.000Z"
+    },
+    {
+      "date": 1556607600000,
+      "amount": 645.315,
+      "as_of_date": "2019-04-30T07:00:00.000Z"
+    },
+    {
+      "date": 1559286000000,
+      "amount": 649.005,
+      "as_of_date": "2019-05-31T07:00:00.000Z"
+    },
+    {
+      "date": 1561878000000,
+      "amount": 634.858,
+      "as_of_date": "2019-06-30T07:00:00.000Z"
+    },
+    {
+      "date": 1564556400000,
+      "amount": 640.331,
+      "as_of_date": "2019-07-31T07:00:00.000Z"
+    },
+    {
+      "date": 1567234800000,
+      "amount": 636.054,
+      "as_of_date": "2019-08-31T07:00:00.000Z"
+    },
+    {
+      "date": 1569826800000,
+      "amount": 639.424,
+      "as_of_date": "2019-09-30T07:00:00.000Z"
+    },
+    {
+      "date": 1572505200000,
+      "amount": 642.376,
+      "as_of_date": "2019-10-31T07:00:00.000Z"
+    },
+    {
+      "date": 1575100800000,
+      "amount": 652.769,
+      "as_of_date": "2019-11-30T08:00:00.000Z"
+    },
+    {
+      "date": 1577779200000,
+      "amount": 654.497,
+      "as_of_date": "2019-12-31T08:00:00.000Z"
+    },
+    {
+      "date": 1580457600000,
+      "amount": 666.137,
+      "as_of_date": "2020-01-31T08:00:00.000Z"
+    },
+    {
+      "date": 1582963200000,
+      "amount": 693.348,
+      "as_of_date": "2020-02-29T08:00:00.000Z"
+    },
+    {
+      "date": 1585638000000,
+      "amount": 710.038,
+      "as_of_date": "2020-03-31T07:00:00.000Z"
+    },
+    {
+      "date": 1588230000000,
+      "amount": 714.17,
+      "as_of_date": "2020-04-30T07:00:00.000Z"
+    },
+    {
+      "date": 1590908400000,
+      "amount": 747.953,
+      "as_of_date": "2020-05-31T07:00:00.000Z"
+    },
+    {
+      "date": 1593500400000,
+      "amount": 743.698,
+      "as_of_date": "2020-06-30T07:00:00.000Z"
+    },
+    {
+      "date": 1596178800000,
+      "amount": 749.228,
+      "as_of_date": "2020-07-31T07:00:00.000Z"
+    },
+    {
+      "date": 1598857200000,
+      "amount": 753.049,
+      "as_of_date": "2020-08-31T07:00:00.000Z"
+    },
+    {
+      "date": 1601449200000,
+      "amount": 755.847,
+      "as_of_date": "2020-09-30T07:00:00.000Z"
+    },
+    {
+      "date": 1604127600000,
+      "amount": 789.618,
+      "as_of_date": "2020-10-31T07:00:00.000Z"
+    },
+    {
+      "date": 1606723200000,
+      "amount": 783.767,
+      "as_of_date": "2020-11-30T08:00:00.000Z"
+    },
+    {
+      "date": 1609401600000,
+      "amount": 779.88,
+      "as_of_date": "2020-12-31T08:00:00.000Z"
+    },
+    {
+      "date": 1612080000000,
+      "amount": 787.551,
+      "as_of_date": "2021-01-31T08:00:00.000Z"
+    },
+    {
+      "date": 1614499200000,
+      "amount": 790.791,
+      "as_of_date": "2021-02-28T08:00:00.000Z"
+    },
+    {
+      "date": 1617174000000,
+      "amount": 804.894,
+      "as_of_date": "2021-03-31T07:00:00.000Z"
+    },
+    {
+      "date": 1619766000000,
+      "amount": 850.588,
+      "as_of_date": "2021-04-30T07:00:00.000Z"
+    },
+    {
+      "date": 1622444400000,
+      "amount": 830.403,
+      "as_of_date": "2021-05-31T07:00:00.000Z"
+    },
+    {
+      "date": 1625036400000,
+      "amount": 789.8,
+      "as_of_date": "2021-06-30T07:00:00.000Z"
+    },
+    {
+      "date": 1627714800000,
+      "amount": 802.7,
+      "as_of_date": "2021-07-31T07:00:00.000Z"
+    },
+    {
+      "date": 1630393200000,
+      "amount": 798.4,
+      "as_of_date": "2021-08-31T07:00:00.000Z"
+    },
+    {
+      "date": 1632985200000,
+      "amount": 796.1,
+      "as_of_date": "2021-09-30T07:00:00.000Z"
+    },
+    {
+      "date": 1635663600000,
+      "amount": 796.4,
+      "as_of_date": "2021-10-31T07:00:00.000Z"
+    },
+    {
+      "date": 1638259200000,
+      "amount": 810.8,
+      "as_of_date": "2021-11-30T08:00:00.000Z"
+    },
+    {
+      "date": 1640937600000,
+      "amount": 815.4,
+      "as_of_date": "2021-12-31T08:00:00.000Z"
+    },
+    {
+      "date": 1643616000000,
+      "amount": 828.5,
+      "as_of_date": "2022-01-31T08:00:00.000Z"
+    },
+    {
+      "date": 1646035200000,
+      "amount": 843.4,
+      "as_of_date": "2022-02-28T08:00:00.000Z"
+    },
+    {
+      "date": 1648710000000,
+      "amount": 863,
+      "as_of_date": "2022-03-31T07:00:00.000Z"
+    },
+    {
+      "date": 1651302000000,
+      "amount": 870.7,
+      "as_of_date": "2022-04-30T07:00:00.000Z"
+    },
+    {
+      "date": 1653980400000,
+      "amount": 870.7,
+      "as_of_date": "2022-05-31T07:00:00.000Z"
+    },
+    {
+      "date": 1656572400000,
+      "amount": 847.7,
+      "as_of_date": "2022-06-30T07:00:00.000Z"
+    },
+    {
+      "date": 1659250800000,
+      "amount": 835.2,
+      "as_of_date": "2022-07-31T07:00:00.000Z"
+    },
+    {
+      "date": 1661929200000,
+      "amount": 812.8,
+      "as_of_date": "2022-08-31T07:00:00.000Z"
+    },
+    {
+      "date": 1664521200000,
+      "amount": 804.8,
+      "as_of_date": "2022-09-30T07:00:00.000Z"
+    },
+    {
+      "date": 1667199600000,
+      "amount": 797.8,
+      "as_of_date": "2022-10-31T07:00:00.000Z"
+    },
+    {
+      "date": 1669795200000,
+      "amount": 790.9,
+      "as_of_date": "2022-11-30T08:00:00.000Z"
+    },
+    {
+      "date": 1672473600000,
+      "amount": 766.7,
+      "as_of_date": "2022-12-31T08:00:00.000Z"
+    },
+    {
+      "date": 1675152000000,
+      "amount": 768,
+      "as_of_date": "2023-01-31T08:00:00.000Z"
+    },
+    {
+      "date": 1677571200000,
+      "amount": 768.7,
+      "as_of_date": "2023-02-28T08:00:00.000Z"
+    },
+    {
+      "date": 1680246000000,
+      "amount": 791.9,
+      "as_of_date": "2023-03-31T07:00:00.000Z"
+    },
+    {
+      "date": 1682838000000,
+      "amount": 808.7,
+      "as_of_date": "2023-04-30T07:00:00.000Z"
+    },
+    {
+      "date": 1685516400000,
+      "amount": 818.1,
+      "as_of_date": "2023-05-31T07:00:00.000Z"
+    },
+    {
+      "date": 1688108400000,
+      "amount": 862.2,
+      "as_of_date": "2023-06-30T07:00:00.000Z"
+    },
+    {
+      "date": 1690786800000,
+      "amount": 855.1,
+      "as_of_date": "2023-07-31T07:00:00.000Z"
+    },
+    {
+      "date": 1693465200000,
+      "amount": 844.5,
+      "as_of_date": "2023-08-31T07:00:00.000Z"
+    },
+    {
+      "date": 1696057200000,
+      "amount": 843.8,
+      "as_of_date": "2023-09-30T07:00:00.000Z"
+    },
+    {
+      "date": 1698735600000,
+      "amount": 830.7,
+      "as_of_date": "2023-10-31T07:00:00.000Z"
+    },
+    {
+      "date": 1701331200000,
+      "amount": 845.2,
+      "as_of_date": "2023-11-30T08:00:00.000Z"
+    },
+    {
+      "date": 1704009600000,
+      "amount": 816,
+      "as_of_date": "2023-12-31T08:00:00.000Z"
+    },
+    {
+      "date": 1706688000000,
+      "amount": 833.9,
+      "as_of_date": "2024-01-31T08:00:00.000Z"
+    },
+    {
+      "date": 1709193600000,
+      "amount": 842.2,
+      "as_of_date": "2024-02-29T08:00:00.000Z"
+    },
+    {
+      "date": 1711868400000,
+      "amount": 877.9,
+      "as_of_date": "2024-03-31T07:00:00.000Z"
+    },
+    {
+      "date": 1714460400000,
+      "amount": 884.5,
+      "as_of_date": "2024-04-30T07:00:00.000Z"
+    },
+    {
+      "date": 1717138800000,
+      "amount": 916.2,
+      "as_of_date": "2024-05-31T07:00:00.000Z"
+    },
+    {
+      "date": 1719730800000,
+      "amount": 879.3,
+      "as_of_date": "2024-06-30T07:00:00.000Z"
+    },
+    {
+      "date": 1722409200000,
+      "amount": 891.6,
+      "as_of_date": "2024-07-31T07:00:00.000Z"
+    },
+    {
+      "date": 1725087600000,
+      "amount": 874.7,
+      "as_of_date": "2024-08-31T07:00:00.000Z"
+    },
+    {
+      "date": 1727679600000,
+      "amount": 856.4,
+      "as_of_date": "2024-09-30T07:00:00.000Z"
+    },
+    {
+      "date": 1730358000000,
+      "amount": 860.9,
+      "as_of_date": "2024-10-31T07:00:00.000Z"
+    },
+    {
+      "date": 1732953600000,
+      "amount": 836.5,
+      "as_of_date": "2024-11-30T08:00:00.000Z"
+    },
+    {
+      "date": 1735632000000,
+      "amount": 836.9,
+      "as_of_date": "2024-12-31T08:00:00.000Z"
+    },
+    {
+      "date": 1738310400000,
+      "amount": 813.8,
+      "as_of_date": "2025-01-31T08:00:00.000Z"
+    },
+    {
+      "date": 1740729600000,
+      "amount": 844.1,
+      "as_of_date": "2025-02-28T08:00:00.000Z"
+    },
+    {
+      "date": 1743404400000,
+      "amount": 845.9,
+      "as_of_date": "2025-03-31T07:00:00.000Z"
+    },
+    {
+      "date": 1745996400000,
+      "amount": 838.4,
+      "as_of_date": "2025-04-30T07:00:00.000Z"
+    },
+    {
+      "date": 1748674800000,
+      "amount": 832.4,
+      "as_of_date": "2025-05-31T07:00:00.000Z"
+    },
+    {
+      "date": 1751266800000,
+      "amount": 836.2,
+      "as_of_date": "2025-06-30T07:00:00.000Z"
+    },
+    {
+      "date": 1753945200000,
+      "amount": 830.1,
+      "as_of_date": "2025-07-31T07:00:00.000Z"
+    },
+    {
+      "date": 1756623600000,
+      "amount": 811.7,
+      "as_of_date": "2025-08-31T07:00:00.000Z"
+    },
+    {
+      "date": 1759215600000,
+      "amount": 826.8,
+      "as_of_date": "2025-09-30T07:00:00.000Z"
+    },
+    {
+      "date": 1761894000000,
+      "amount": 821.4,
+      "as_of_date": "2025-10-31T07:00:00.000Z"
+    },
+    {
+      "date": 1764489600000,
+      "amount": 805.1,
+      "as_of_date": "2025-11-30T08:00:00.000Z"
+    },
+    {
+      "date": 1767168000000,
+      "amount": 801.2,
+      "as_of_date": "2025-12-31T08:00:00.000Z"
+    },
+    {
+      "date": 1769846400000,
+      "amount": 801.9,
+      "as_of_date": "2026-01-31T08:00:00.000Z"
+    },
+    {
+      "date": 1772265600000,
+      "amount": 809.8,
+      "as_of_date": "2026-02-28T08:00:00.000Z"
+    },
+    {
+      "date": 1774940400000,
+      "amount": 827.8,
+      "as_of_date": "2026-03-31T07:00:00.000Z"
+    },
+    {
+      "date": 1777532400000,
+      "amount": 826.2,
+      "as_of_date": "2026-04-30T07:00:00.000Z"
+    },
+    {
+      "date": 1780210800000,
+      "amount": 814.3,
+      "as_of_date": "2026-05-31T07:00:00.000Z"
+    },
+    {
+      "date": 1780642800000,
+      "amount": 939.1,
+      "as_of_date": "2026-06-05T07:00:00.000Z"
+    }
+  ],
+  "utilities": [],
+  "url": "https://www.zillow.com/homedetails/22051-Celes-St-Woodland-Hills-CA-91364/19943283_zpid/",
+  "countyFIPS": "06037",
+  "countyID": "3101",
+  "dateSold": "1995-03-22T00:00:00.000Z",
+  "listingTypeDimension": "For Sale by Agent",
+  "homeValuation": [
+    "{\"comparables\":{\"comps\":[{\"property\":{\"zestimate\":854100,\"lastSoldPrice\":850000,\"price\":850000,\"daysOnZillow\":87,\"dateSold\":1773100800000,\"currency\":\"USD\",\"bedrooms\":3,\"bathrooms\":1,\"livingAreaValue\":1290,\"livingAreaUnits\":\"Square Feet\",\"livingAreaUnitsShort\":\"sqft\",\"lotAreaValue\":6459,\"lotAreaUnits\":\"Square Feet\",\"address\":{\"streetAddress\":\"22110 De La Osa St\",\"city\":\"Woodland Hills\",\"state\":\"CA\",\"zipcode\":\"91364\"},\"latitude\":34.159126,\"longitude\":-118.6083,\"zpid\":19943839,\"homeStatus\":\"RECENTLY_SOLD\",\"homeType\":\"SINGLE_FAMILY\",\"hdpUrl\":\"/homedetails/22110-De-La-Osa-St-Woodland-Hills-CA-91364/19943839_zpid/\",\"listing_sub_type\":{\"is_newHome\":false,\"is_forAuction\":false,\"is_bankOwned\":false,\"is_foreclosure\":false,\"is_FSBO\":false,\"is_comingSoon\":false},\"isUndisclosedAddress\":false,\"attributionInfo\":{\"mlsId\":null,\"mlsName\":null,\"providerLogo\":null,\"agentName\":null,\"agentPhoneNumber\":null,\"brokerName\":null,\"brokerPhoneNumber\":null},\"compsCarouselPropertyPhotos\":[{\"mixedSources\":{\"jpeg\":[{\"url\":\"https://photos.zillowstatic.com/fp/f3d0dcde7e4b7187d6e40a8c4bd35fef-cc_ft_192.jpg\"},{\"url\":\"https://photos.zillowstatic.com/fp/f3d0dcde7e4b7187d6e40a8c4bd35fef-cc_ft_384.jpg\"},{\"url\":\"https://photos.zillowstatic.com/fp/f3d0dcde7e4b7187d6e40a8c4bd35fef-cc_ft_576.jpg\"},{\"url\":\"https://photos.zillowstatic.com/fp/f3d0dcde7e4b7187d6e40a8c4bd35fef-cc_ft_768.jpg\"},{\"url\":\"https://photos.zillowstatic.com/fp/f3d0dcde7e4b7187d6e40a8c4bd35fef-cc_ft_960.jpg\"},{\"url\":\"https://photos.zillowstatic.com/fp/f3d0dcde7e4b7187d6e40a8c4bd35fef-cc_ft_1152.jpg\"},{\"url\":\"https://photos.zillowstatic.com/fp/f3d0dcde7e4b7187d6e40a8c4bd35fef-cc_ft_1344.jpg\"},{\"url\":\"https://photos.zillowstatic.com/fp/f3d0dcde7e4b7187d6e40a8c4bd35fef-cc_ft_1536.jpg\"}]}}]}},{\"property\":{\"zestimate\":950500,\"lastSoldPrice\":950000,\"price\":950000,\"daysOnZillow\":72,\"dateSold\":1774396800000,\"currency\":\"USD\",\"bedrooms\":2,\"bathrooms\":1,\"livingAreaValue\":1072,\"livingAreaUnits\":\"Square Feet\",\"livingAreaUnitsShort\":\"sqft\",\"lotAreaValue\":9400,\"lotAreaUnits\":\"Square Feet\",\"address\":{\"streetAddress\":\"22050 Ybarra Rd\",\"city\":\"Woodland Hills\",\"state\":\"CA\",\"zipcode\":\"91364\"},\"latitude\":34.154095,\"longitude\":-118.607544,\"zpid\":19944043,\"homeStatus\":\"RECENTLY_SOLD\",\"homeType\":\"SINGLE_FAMILY\",\"hdpUrl\":\"/homedetails/22050-Ybarra-Rd-Woodland-Hills-CA-91364/19944043_zpid/\",\"listing_sub_type\":{\"is_newHome\":false,\"is_forAuction\":false,\"is_bankOwned\":false,\"is_foreclosure\":false,\"is_FSBO\":false,\"is_comingSoon\":false},\"isUndisclosedAddress\":false,\"attributionInfo\":{\"mlsId\":\"SR25280005\",\"mlsName\":\"CRMLS\",\"providerLogo\":null,\"agentName\":\"Shane Marechal\",\"agentPhoneNumber\":null,\"brokerName\":\"Beverly and Company\",\"brokerPhoneNumber\":null},\"compsCarouselPropertyPhotos\":[{\"mixedSources\":{\"jpeg\":[{\"url\":\"https://photos.zillowstatic.com/fp/8741bf46a65ee0bc789bbb7925ef835a-cc_ft_192.jpg\"},{\"url\":\"https://photos.zillowstatic.com/fp/8741bf46a65ee0bc789bbb7925ef835a-cc_ft_384.jpg\"},{\"url\":\"https://photos.zillowstatic.com/fp/8741bf46a65ee0bc789bbb7925ef835a-cc_ft_576.jpg\"},{\"url\":\"https://photos.zillowstatic.com/fp/8741bf46a65ee0bc789bbb7925ef835a-cc_ft_768.jpg\"},{\"url\":\"https://photos.zillowstatic.com/fp/8741bf46a65ee0bc789bbb7925ef835a-cc_ft_960.jpg\"},{\"url\":\"https://photos.zillowstatic.com/fp/8741bf46a65ee0bc789bbb7925ef835a-cc_ft_1152.jpg\"},{\"url\":\"https://photos.zillowstatic.com/fp/8741bf46a65ee0bc789bbb7925ef835a-cc_ft_1344.jpg\"},{\"url\":\"https://photos.zillowstatic.com/fp/8741bf46a65ee0bc789bbb7925ef835a-cc_ft_1536.jpg\"}]}}]}},{\"property\":{\"zestimate\":889800,\"lastSoldPrice\":890000,\"price\":890000,\"daysOnZillow\":42,\"dateSold\":1776988800000,\"currency\":\"USD\",\"bedrooms\":2,\"bathrooms\":1,\"livingAreaValue\":1208,\"livingAreaUnits\":\"Square Feet\",\"livingAreaUnitsShort\":\"sqft\",\"lotAreaValue\":6356,\"lotAreaUnits\":\"Square Feet\",\"address\":{\"streetAddress\":\"5161 Canoga Ave\",\"city\":\"Woodland Hills\",\"state\":\"CA\",\"zipcode\":\"91364\"},\"latitude\":34.163235,\"longitude\":-118.59752,\"zpid\":19942456,\"homeStatus\":\"RECENTLY_SOLD\",\"homeType\":\"SINGLE_FAMILY\",\"hdpUrl\":\"/homedetails/5161-Canoga-Ave-Woodland-Hills-CA-91364/19942456_zpid/\",\"listing_sub_type\":{\"is_newHome\":false,\"is_forAuction\":false,\"is_bankOwned\":false,\"is_foreclosure\":false,\"is_FSBO\":false,\"is_comingSoon\":false},\"isUndisclosedAddress\":false,\"attributionInfo\":{\"mlsId\":\"SR26042793\",\"mlsName\":\"CRMLS\",\"providerLogo\":null,\"agentName\":\"Sean Mc Glynn\",\"agentPhoneNumber\":null,\"brokerName\":\"The One Luxury Properties\",\"brokerPhoneNumber\":null},\"compsCarouselPropertyPhotos\":[{\"mixedSources\":{\"jpeg\":[{\"url\":\"https://photos.zillowstatic.com/fp/9469891803daec56141bc7a0ba0e0fd9-cc_ft_192.jpg\"},{\"url\":\"https://photos.zillowstatic.com/fp/9469891803daec56141bc7a0ba0e0fd9-cc_ft_384.jpg\"},{\"url\":\"https://photos.zillowstatic.com/fp/9469891803daec56141bc7a0ba0e0fd9-cc_ft_576.jpg\"},{\"url\":\"https://photos.zillowstatic.com/fp/9469891803daec56141bc7a0ba0e0fd9-cc_ft_768.jpg\"},{\"url\":\"https://photos.zillowstatic.com/fp/9469891803daec56141bc7a0ba0e0fd9-cc_ft_960.jpg\"},{\"url\":\"https://photos.zillowstatic.com/fp/9469891803daec56141bc7a0ba0e0fd9-cc_ft_1152.jpg\"},{\"url\":\"https://photos.zillowstatic.com/fp/9469891803daec56141bc7a0ba0e0fd9-cc_ft_1344.jpg\"},{\"url\":\"https://photos.zillowstatic.com/fp/9469891803daec56141bc7a0ba0e0fd9-cc_ft_1536.jpg\"}]}}]}},{\"property\":{\"zestimate\":1045000,\"lastSoldPrice\":1045000,\"price\":1045000,\"daysOnZillow\":17,\"dateSold\":1779148800000,\"currency\":\"USD\",\"bedrooms\":3,\"bathrooms\":2,\"livingAreaValue\":1142,\"livingAreaUnits\":\"Square Feet\",\"livingAreaUnitsShort\":\"sqft\",\"lotAreaValue\":6098.4,\"lotAreaUnits\":\"Square Feet\",\"address\":{\"streetAddress\":\"4717 Santa Lucia Dr\",\"city\":\"Woodland Hills\",\"state\":\"CA\",\"zipcode\":\"91364\"},\"latitude\":34.15303,\"longitude\":-118.60467,\"zpid\":19944624,\"homeStatus\":\"RECENTLY_SOLD\",\"homeType\":\"SINGLE_FAMILY\",\"hdpUrl\":\"/homedetails/4717-Santa-Lucia-Dr-Woodland-Hills-CA-91364/19944624_zpid/\",\"listing_sub_type\":{\"is_newHome\":false,\"is_forAuction\":false,\"is_bankOwned\":false,\"is_foreclosure\":false,\"is_FSBO\":false,\"is_comingSoon\":false},\"isUndisclosedAddress\":false,\"attributionInfo\":{\"mlsId\":\"226001497\",\"mlsName\":\"CSMAOR\",\"providerLogo\":null,\"agentName\":\"Susan B Berman\",\"agentPhoneNumber\":null,\"brokerName\":\"Equity Union Real Estate\",\"brokerPhoneNumber\":null},\"compsCarouselPropertyPhotos\":[{\"mixedSources\":{\"jpeg\":[{\"url\":\"https://photos.zillowstatic.com/fp/edd3217488fb8f4b949973f3da0f4bdd-cc_ft_192.jpg\"},{\"url\":\"https://photos.zillowstatic.com/fp/edd3217488fb8f4b949973f3da0f4bdd-cc_ft_384.jpg\"},{\"url\":\"https://photos.zillowstatic.com/fp/edd3217488fb8f4b949973f3da0f4bdd-cc_ft_576.jpg\"},{\"url\":\"https://photos.zillowstatic.com/fp/edd3217488fb8f4b949973f3da0f4bdd-cc_ft_768.jpg\"},{\"url\":\"https://photos.zillowstatic.com/fp/edd3217488fb8f4b949973f3da0f4bdd-cc_ft_960.jpg\"},{\"url\":\"https://photos.zillowstatic.com/fp/edd3217488fb8f4b949973f3da0f4bdd-cc_ft_1152.jpg\"},{\"url\":\"https://photos.zillowstatic.com/fp/edd3217488fb8f4b949973f3da0f4bdd-cc_ft_1344.jpg\"},{\"url\":\"https://photos.zillowstatic.com/fp/edd3217488fb8f4b949973f3da0f4bdd-cc_ft_1536.jpg\"}]}}]}},{\"property\":{\"zestimate\":925500,\"lastSoldPrice\":925000,\"price\":925000,\"daysOnZillow\":36,\"dateSold\":1777507200000,\"currency\":\"USD\",\"bedrooms\":2,\"bathrooms\":1,\"livingAreaValue\":952,\"livingAreaUnits\":\"Square Feet\",\"livingAreaUnitsShort\":\"sqft\",\"lotAreaValue\":6251,\"lotAreaUnits\":\"Square Feet\",\"address\":{\"streetAddress\":\"5239 Comercio Ave\",\"city\":\"Woodland Hills\",\"state\":\"CA\",\"zipcode\":\"91364\"},\"latitude\":34.16518,\"longitude\":-118.596054,\"zpid\":19941773,\"homeStatus\":\"RECENTLY_SOLD\",\"homeType\":\"SINGLE_FAMILY\",\"hdpUrl\":\"/homedetails/5239-Comercio-Ave-Woodland-Hills-CA-91364/19941773_zpid/\",\"listing_sub_type\":{\"is_newHome\":false,\"is_forAuction\":false,\"is_bankOwned\":false,\"is_foreclosure\":false,\"is_FSBO\":false,\"is_comingSoon\":false},\"isUndisclosedAddress\":false,\"attributionInfo\":{\"mlsId\":\"SR26062483\",\"mlsName\":\"CRMLS\",\"providerLogo\":null,\"agentName\":\"Aaron Shrier\",\"agentPhoneNumber\":null,\"brokerName\":\"Equity Union\",\"brokerPhoneNumber\":null},\"compsCarouselPropertyPhotos\":[{\"mixedSources\":{\"jpeg\":[{\"url\":\"https://photos.zillowstatic.com/fp/04a4e4576c41063bc0e4b3fa15c0b7f1-cc_ft_192.jpg\"},{\"url\":\"https://photos.zillowstatic.com/fp/04a4e4576c41063bc0e4b3fa15c0b7f1-cc_ft_384.jpg\"},{\"url\":\"https://photos.zillowstatic.com/fp/04a4e4576c41063bc0e4b3fa15c0b7f1-cc_ft_576.jpg\"},{\"url\":\"https://photos.zillowstatic.com/fp/04a4e4576c41063bc0e4b3fa15c0b7f1-cc_ft_768.jpg\"},{\"url\":\"https://photos.zillowstatic.com/fp/04a4e4576c41063bc0e4b3fa15c0b7f1-cc_ft_960.jpg\"},{\"url\":\"https://photos.zillowstatic.com/fp/04a4e4576c41063bc0e4b3fa15c0b7f1-cc_ft_1152.jpg\"},{\"url\":\"https://photos.zillowstatic.com/fp/04a4e4576c41063bc0e4b3fa15c0b7f1-cc_ft_1344.jpg\"},{\"url\":\"https://photos.zillowstatic.com/fp/04a4e4576c41063bc0e4b3fa15c0b7f1-cc_ft_1536.jpg\"}]}}]}}]}}"
+  ],
+  "isOffMarket": false,
+  "citySearchUrl": {
+    "path": "/los-angeles-ca/",
+    "text": "Homes in Los Angeles"
+  },
+  "county": "Los Angeles County",
+  "is_showcased": false,
+  "interior": {
+    "bedrooms_and_bathrooms": {
+      "bedrooms": 3,
+      "bathrooms": 2,
+      "full_bathrooms": 1,
+      "half_bathroom": "0"
+    },
+    "flooring": "Wood, Tile",
+    "heating": "Central",
+    "other_interior_features": "Total structure area :1,070, Total interior livable area :1,070 sqft"
+  },
+  "overview": {
+    "days_on_zillow": 1,
+    "number_of_views": 530,
+    "number_of_saves": 45
+  },
+  "is_listed_by_management_company": false,
+  "listing_provided_by": {
+    "name": "William Baker",
+    "email": null,
+    "company": "The Agency",
+    "phone_number": "310-867-0847"
+  },
+  "hoa_details": {
+    "has_hoa": false,
+    "hoa_fee_value": null,
+    "hoa_fee_currency": null,
+    "hoa_fee_period": null,
+    "services_included": null,
+    "amenities_included": null,
+    "hoa_name": null
+  },
+  "financial": null,
+  "interior_full": [
+    {
+      "title": "Bedrooms & bathrooms",
+      "values": [
+        "Bedrooms: 3",
+        "Bathrooms: 2",
+        "Full bathrooms: 1",
+        "1/4 bathrooms: 1"
+      ]
+    },
+    {
+      "title": "Heating",
+      "values": [
+        "Heating features: Central"
+      ]
+    },
+    {
+      "title": "Cooling",
+      "values": [
+        "Cooling features: Central Air"
+      ]
+    },
+    {
+      "title": "Appliances",
+      "values": [
+        "Appliances included: Dishwasher,Disposal,Range/Oven,Refrigerator",
+        "Laundry features: Outside,Laundry Room"
+      ]
+    },
+    {
+      "title": "Features",
+      "values": [
+        "Ceiling Fan(s),Built-Ins",
+        "Flooring: Wood,Tile",
+        "Number of fireplaces: 1",
+        "Fireplace features: Decorative",
+        "Fireplace: Yes"
+      ]
+    },
+    {
+      "title": "Interior area",
+      "values": [
+        "Total structure area: 1,070",
+        "Total interior livable area: 1,070 sqft"
+      ]
+    }
+  ],
+  "property": [
+    {
+      "title": "Parking",
+      "values": [
+        "Total spaces: 1",
+        "Parking features: Garage - 1 Car",
+        "Has garage: Yes",
+        "Attached garage spaces: 1",
+        "Covered spaces: 1"
+      ]
+    },
+    {
+      "title": "Features",
+      "values": [
+        "Levels: One",
+        "Pool features: None",
+        "Patio & porch: Concrete Slab",
+        "Spa features: None",
+        "Has view: Yes",
+        "View description: None"
+      ]
+    },
+    {
+      "title": "Lot",
+      "values": [
+        "Lot size: 6,250 sqft",
+        "Lot size dimensions: 50 x 125"
+      ]
+    },
+    {
+      "title": "Details",
+      "values": [
+        "Parcel number: 2169011016",
+        "Zoning: LAR1",
+        "Special condition: Standard"
+      ]
+    }
+  ],
+  "construction": [
+    {
+      "title": "Type & style",
+      "values": [
+        "Home type: SingleFamily",
+        "Architectural style: Traditional",
+        "Property subType: Residential,Single Family Residence"
+      ]
+    },
+    {
+      "title": "Condition",
+      "values": [
+        "Year built: 1950"
+      ]
+    }
+  ],
+  "tag": null,
+  "contingent_listing_type": null,
+  "unit_number": null,
+  "unit_amenities": null,
+  "open_house_details": null,
+  "community_details": null,
+  "mls_id": "26843325",
+  "base_rent": null,
+  "sqft": null,
+  "availability_date": null,
+  "special_offer": null,
+  "originating_mls": null,
+  "tags": [
+    "For sale"
+  ],
+  "getting_around_scores": {
+    "walk_score": "68/100 | Somewhat Walkable",
+    "transit_score": null,
+    "bike_score": "49/100 | Somewhat Bikeable"
+  },
+  "days_on_zillow": 1,
+  "getting_around": {
+    "walk": {
+      "score": 68,
+      "description": "Somewhat Walkable"
+    },
+    "transit": null,
+    "bike": {
+      "score": 49,
+      "description": "Somewhat Bikeable"
+    }
+  },
+  "other": null,
+  "financial_listing_details": null,
+  "publish_url": null,
+  "climate_risks": null,
+  "num_of_contacts": null,
+  "num_of_applications": null,
+  "has_3d_tour": false,
+  "payment_breakdown": [
+    {
+      "name": "Principal & interest",
+      "value": "4789$"
+    },
+    {
+      "name": "Mortgage insurance",
+      "value": "0$"
+    },
+    {
+      "name": "Property taxes",
+      "value": "943$"
+    },
+    {
+      "name": "Home insurance",
+      "value": "320$"
+    },
+    {
+      "name": "HOA fees",
+      "value": "N/A"
+    },
+    {
+      "name": "Utilities",
+      "value": "Not included"
+    }
+  ],
+  "sold_to_list_ratio": 0.16944734098018768,
+  "sold_to_zestimate_ratio": 0.1730380151208604,
+  "is_flipped_within_12_months": true,
+  "timestamp": "2026-06-06T19:03:57.445Z",
+  "input": {
+    "url": "https://www.zillow.com/homedetails/22051-Celes-St-Woodland-Hills-CA-91364/19943283_zpid/"
+  }
+}

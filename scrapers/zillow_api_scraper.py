@@ -146,6 +146,7 @@ class ZillowAPIScraper:
                         insurance_annual=1200
                     )
                     property_obj.link = item.get('detailUrl', f"https://www.zillow.com/homedetails/{item.get('id')}_zpid/")
+                    property_obj.img_src = item.get('imgSrc')  # cover photo for hybrid-image flow
                     properties.append(property_obj)
                     
             except Exception as e:
