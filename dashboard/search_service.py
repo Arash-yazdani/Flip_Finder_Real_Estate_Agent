@@ -61,28 +61,50 @@ def _base_card(prop) -> dict:
 
 
 def _flip_report_to_dict(a, prop, enriched) -> dict:
-    """Serialize a FlipReport + cover photo into a UI-friendly dict."""
+    """Serialize a FlipReport + cover photo into a UI-friendly dict.
+
+    Photos are returned as a list of objects {url: str, width: int?} to allow
+    frontend srcset selection based on viewport/DPR.
+    """
     photos_list = []
     if enriched:
         raw_photos = enriched.get("photos") or []
         for item in raw_photos:
             if isinstance(item, dict):
+                # Bright Data mixedSources structure: item.get('mixedSources', {}).get('jpeg') -> list of dicts
                 jpegs = item.get("mixedSources", {}).get("jpeg") or []
                 if jpegs:
-                    # Prefer 960px width for a good balance of quality vs size
-                    best = max(jpegs, key=lambda x: x.get("width", 0))
-                    target = next((j for j in jpegs if j.get("width") == 960), best)
-                    url = target.get("url")
-                    if url:
-                        photos_list.append(url)
+                    for j in jpegs:
+                        url = j.get("url")
+                        width = j.get("width") or j.get("w")
+                        if url:
+                            photos_list.append({"url": url, "width": width})
                 elif item.get("url"):
-                    photos_list.append(item["url"])
+                    photos_list.append({"url": item.get("url"), "width": item.get("width")})
             elif isinstance(item, str):
-                photos_list.append(item)
+                photos_list.append({"url": item})
 
-    photo = photos_list[0] if photos_list else getattr(prop, "img_src", None)
-    if photo and not photos_list:
-        photos_list = [photo]
+    # Fallback to property img_src
+    if not photos_list:
+        img = getattr(prop, "img_src", None)
+        if img:
+            photos_list = [{"url": img}]
+
+    # Choose a sensible default photo url (prefer width==960 if available)
+    photo = None
+    if photos_list:
+        exact = next((p for p in photos_list if p.get("width") == 960), None)
+        if exact:
+            photo = exact.get("url")
+        else:
+            # pick the smallest width >= 960, otherwise largest available, otherwise first
+            with_width = [p for p in photos_list if p.get("width")]
+            if with_width:
+                with_width.sort(key=lambda x: x.get("width") or 0)
+                candidate = next((p for p in with_width if p.get("width") >= 960), with_width[-1])
+                photo = candidate.get("url")
+            else:
+                photo = photos_list[0].get("url")
 
     return {
         "zpid": _zpid_of(prop),
