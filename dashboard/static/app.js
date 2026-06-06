@@ -144,11 +144,11 @@ function _handleCarouselClick(e) {
 
 // --- rendering ---
 function cardSkeleton(card, idx) {
-  const bgStyle = card.photo ? `background-image:url('${card.photo}')` : '';
   const isPlaceholder = card.photo ? '' : ' placeholder';
+  const dataPhotoAttr = card.photo ? `data-photo="${card.photo}"` : '';
   return `
     <article class="card" data-zpid="${card.zpid}" id="card-${card.zpid}">
-      <div class="card-photo${isPlaceholder}" style="${bgStyle}">
+      <div class="card-photo${isPlaceholder}" ${dataPhotoAttr}>
         <span class="card-rank">#${idx + 1}</span>
         <button class="card-favorite" data-fav title="Favorite">${favorites.properties.has(card.zpid) ? '★' : '☆'}</button>
         <button class="carousel-btn carousel-prev" data-dir="-1" hidden title="Previous photo">&#8249;</button>
@@ -239,10 +239,15 @@ function upgradeCard(report) {
   if (report.photos && report.photos.length) {
     photoDiv._photos = report.photos;
     photoDiv._idx = 0;
+    photoDiv.dataset.photos = JSON.stringify(report.photos);
+    photoDiv.dataset.photo = report.photos[0] || report.photo || '';
     setCarouselFrame(photoDiv);
-  } else if (report.photo) {
-    photoDiv.style.backgroundImage = `url('${report.photo}')`;
     photoDiv.classList.remove("placeholder");
+  } else if (report.photo) {
+    photoDiv.dataset.photo = report.photo;
+    photoDiv.classList.remove("placeholder");
+    // If already visible, set immediately
+    if (photoDiv._visible) photoDiv.style.backgroundImage = `url('${report.photo}')`;
   }
   const row = target.querySelector(".verdict-row");
   const score = _primaryScore(report, currentIntent);
@@ -677,7 +682,7 @@ setInterval(fetchActiveRuns, 5000);
   refreshFavorites();
 })();
 
-// --- mobile helpers: sidebar toggle + FAB ---
+// --- mobile helpers: sidebar toggle + FAB + lazy-load photos ---
 (function(){
   const menuBtn = document.getElementById('menu-toggle');
   const sidebar = document.querySelector('.sidebar');
@@ -699,5 +704,46 @@ setInterval(fetchActiveRuns, 5000);
       if (cityInput) { cityInput.focus(); }
     });
   }
+
+  // Lazy-load card photos using IntersectionObserver
+  const io = new IntersectionObserver((entries) => {
+    for (const ent of entries) {
+      const el = ent.target;
+      if (ent.isIntersecting) {
+        // mark visible
+        el._visible = true;
+        const photosJson = el.dataset.photos;
+        let url = el.dataset.photo || null;
+        try {
+          if (photosJson) {
+            const arr = JSON.parse(photosJson);
+            // pick best for DPR if available (simple heuristic)
+            if (window.devicePixelRatio && arr.length > 1) {
+              url = arr[Math.min(arr.length-1, Math.floor(window.devicePixelRatio))] || arr[0];
+            } else {
+              url = arr[0] || url;
+            }
+          }
+        } catch(_){}
+        if (url) {
+          el.style.backgroundImage = `url('${url}')`;
+          el.classList.remove('placeholder');
+        }
+        io.unobserve(el);
+      }
+    }
+  }, {rootMargin: '300px 0px', threshold: 0.01});
+
+  // Observe existing photo divs and future ones
+  function observePhotos() {
+    document.querySelectorAll('.card-photo').forEach(p => {
+      if (!p._observed) { io.observe(p); p._observed = true; }
+    });
+  }
+  // run on init and after discovery renders
+  observePhotos();
+  // Re-run periodically to catch newly added cards
+  const obsTimer = setInterval(observePhotos, 1500);
+
 })();
 

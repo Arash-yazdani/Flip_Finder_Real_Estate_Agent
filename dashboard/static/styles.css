@@ -534,3 +534,20 @@ a:hover { color: var(--amber-hi); }
   }
 }
 
+/* Accordion animation for details */
+details > ul, details > div {
+  max-height: 0; opacity: 0; overflow: hidden; transition: max-height 260ms ease, opacity 220ms ease;
+}
+details[open] > ul, details[open] > div { max-height: 800px; opacity: 1; }
+
+details summary { cursor: pointer; list-style: none; }
+details summary::marker { display: none; }
+details summary::after { content: '\25BC'; float: right; transform-origin: center; transition: transform 200ms ease; }
+details[open] summary::after { transform: rotate(180deg); }
+
+/* Increase tap targets */
+button, .card-title a, .nav-btn, .tab, .link-btn { padding: 10px 12px; border-radius: 10px; }
+.card { min-height: 120px; }
+.card-body .card-title a { display: block; padding: 8px 0; }
+.card-favorite { padding: 8px 10px; }
+
