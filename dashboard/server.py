@@ -418,6 +418,17 @@ async def admin_page():
     return FileResponse(STATIC_DIR / "admin.html")
 
 
+# Fallbacks so crawlers/browsers that request /favicon.ico or /favicon.svg get the served static SVG
+@app.get("/favicon.ico")
+async def favicon_ico():
+    return FileResponse(STATIC_DIR / "favicon.svg")
+
+
+@app.get("/favicon.svg")
+async def favicon_svg():
+    return FileResponse(STATIC_DIR / "favicon.svg")
+
+
 app.mount("/static", StaticFiles(directory=str(STATIC_DIR)), name="static")
 
 
