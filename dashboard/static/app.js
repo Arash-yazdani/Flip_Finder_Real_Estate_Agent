@@ -628,14 +628,24 @@ function renderActiveRuns(runs) {
     const id = run.id;
     const started = timeAgo(run.started_at);
     const status = run.status || 'pending';
-    return `<li data-run-id="${id}">
+    return `<li data-run-id="${id}" tabindex="0" role="button">
       <div class="run-city">${run.city}</div>
       <div class="run-meta">${status} · ${started}</div>
       <div class="run-progress" id="run-progress-${id}"></div>
     </li>`;
   }).join('');
 
-  // attach SSE to running ones
+  // Click handlers: open run details in right pane
+  ul.querySelectorAll('li[data-run-id]').forEach(li => {
+    li.addEventListener('click', (e) => {
+      const id = parseInt(li.dataset.runId, 10);
+      $$('#active-runs li').forEach(x => x.classList.toggle('selected', x === li));
+      viewRun(id);
+    });
+    li.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); li.click(); } });
+  });
+
+  // attach SSE to running ones for compact progress in list
   active.forEach(run => {
     if ((run.status === 'pending' || run.status === 'running') && !_activeSources[run.id]) {
       const es = new EventSource(`/api/runs/${run.id}/events`, {withCredentials: true});
@@ -670,6 +680,34 @@ function renderActiveRuns(runs) {
       });
     }
   });
+}
+
+// View a run's live output in the right panel
+let _viewSource = null;
+function viewRun(runId) {
+  // close previous view source
+  if (_viewSource) { try { _viewSource.close(); } catch(_){} _viewSource = null; }
+  // clear results grid
+  $("#results-grid").innerHTML = '';
+  setStatus('Loading run output...');
+  const es = new EventSource(`/api/runs/${runId}/events`, {withCredentials: true});
+  _viewSource = es;
+  es.addEventListener('status', (e) => { try { const d = JSON.parse(e.data); setStatus(d.message); } catch(_){} });
+  es.addEventListener('discovery', (e) => {
+    try {
+      const d = JSON.parse(e.data);
+      renderResults(d.city, d.properties);
+      setStatus(`Found ${d.count} properties — enriching…`);
+    } catch(_){}
+  });
+  es.addEventListener('enrich_tick', (e) => { try { const d = JSON.parse(e.data); setStatus(`Enriching — ${d.elapsed}s elapsed (${d.requested} requested)`); } catch(_){} });
+  es.addEventListener('property', (e) => { try { const r = JSON.parse(e.data); upgradeCard(r); } catch(_){} });
+  es.addEventListener('trim', (e) => { try { const d = JSON.parse(e.data); trimGrid(d.keep); } catch(_){} });
+  es.addEventListener('complete', (e) => {
+    try { const d = JSON.parse(e.data); setStatus(`Run complete — ${d.total} items`); } catch(_){}
+    setTimeout(() => { try { es.close(); } catch(_){} _viewSource = null; refreshHistory(); fetchActiveRuns(); }, 1000);
+  });
+  es.addEventListener('error', (e) => { try { const d = JSON.parse(e.data); setStatus(`Error: ${d.message}`); } catch(_){} try { es.close(); } catch(_){} _viewSource = null; fetchActiveRuns(); });
 }
 
 // poll active runs periodically
