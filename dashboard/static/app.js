@@ -723,30 +723,59 @@ setInterval(fetchActiveRuns, 5000);
 // --- mobile helpers: sidebar toggle + FAB + lazy-load photos ---
 (function(){
   const menuBtn = document.getElementById('menu-toggle');
+  const topbar = document.querySelector('.topbar');
   const sidebar = document.querySelector('.sidebar');
+  const fab = document.getElementById('fab-run');
+  const collapseBtn = document.getElementById('sidebar-collapse');
+
+  function positionSidebarTopAndHandle() {
+    const topH = topbar ? Math.round(topbar.getBoundingClientRect().height) : 0;
+    if (sidebar) {
+      sidebar.style.top = topH + 'px';
+      sidebar.style.height = `calc(100vh - ${topH}px)`;
+    }
+    if (collapseBtn && sidebar) {
+      const sRect = sidebar.getBoundingClientRect();
+      const hW = collapseBtn.offsetWidth || 36;
+      if (sidebar.classList.contains('open')) {
+        const left = Math.max(8, Math.round(sRect.right - (hW / 2)));
+        collapseBtn.style.left = left + 'px';
+        collapseBtn.textContent = '‹';
+      } else {
+        collapseBtn.style.left = '0px';
+        collapseBtn.textContent = '›';
+      }
+      collapseBtn.style.opacity = '1';
+    }
+  }
+
+  // Start sidebar open on mobile viewports
+  if (sidebar && window.innerWidth <= 768) sidebar.classList.add('open');
+  // initial positioning after layout
+  setTimeout(positionSidebarTopAndHandle, 60);
+  window.addEventListener('resize', positionSidebarTopAndHandle);
+
   if (menuBtn && sidebar) {
-    menuBtn.addEventListener('click', (e) => { e.stopPropagation(); sidebar.classList.toggle('open'); });
+    menuBtn.addEventListener('click', (e) => { e.stopPropagation(); sidebar.classList.toggle('open'); positionSidebarTopAndHandle(); });
     document.addEventListener('click', (e) => {
       if (!sidebar.classList.contains('open')) return;
       if (e.target.closest('.sidebar') || e.target.closest('#menu-toggle')) return;
-      sidebar.classList.remove('open');
+      sidebar.classList.remove('open'); positionSidebarTopAndHandle();
     });
   }
 
-  const fab = document.getElementById('fab-run');
   if (fab) {
     fab.addEventListener('click', (e) => {
       e.preventDefault();
-      if (sidebar) { sidebar.classList.add('open'); }
+      if (sidebar) { sidebar.classList.add('open'); positionSidebarTopAndHandle(); }
       const cityInput = document.getElementById('city');
       if (cityInput) { cityInput.focus(); }
     });
   }
 
   // Sidebar collapse button on the right edge of the left panel
-  const collapseBtn = document.getElementById('sidebar-collapse');
   if (collapseBtn && sidebar) {
-    collapseBtn.addEventListener('click', (e) => { e.preventDefault(); sidebar.classList.remove('open'); });
+    collapseBtn.addEventListener('click', (e) => { e.preventDefault(); e.stopPropagation(); sidebar.classList.toggle('open'); positionSidebarTopAndHandle(); });
   }
 
   // Lazy-load card photos using IntersectionObserver
@@ -778,7 +807,7 @@ setInterval(fetchActiveRuns, 5000);
               url = arr[0] || url;
             }
           }
-        } catch(_){}
+        } catch(_){ }
         if (url) {
           el.style.backgroundImage = `url('${url}')`;
           el.classList.remove('placeholder');
@@ -800,4 +829,5 @@ setInterval(fetchActiveRuns, 5000);
   const obsTimer = setInterval(observePhotos, 1500);
 
 })();
+
 
