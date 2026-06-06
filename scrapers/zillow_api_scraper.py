@@ -71,7 +71,7 @@ class ZillowAPIScraper:
             print(f"Searching Zillow API for '{clean_name}' (Page {page})...", file=sys.stderr)
             
             try:
-                response = requests.get(url, headers=headers, params=querystring, timeout=30)
+                response = requests.get(url, headers=headers, params=querystring, timeout=90)
                 
                 # Always save the raw response for debugging
                 debug_path = Path(__file__).parent.parent / "debug_last_api_response.json"

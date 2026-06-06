@@ -139,7 +139,7 @@ def _discover(location: str):
     """
     result = subprocess.run(
         [sys.executable, "scrapers/zillow_api_scraper.py", location],
-        capture_output=True, text=True, timeout=60,
+        capture_output=True, text=True, timeout=180,
         cwd=str(PROJECT_ROOT),
     )
     out = result.stdout
@@ -203,7 +203,23 @@ async def stream_search(city: str, count: int = 10, intent: str = "flip",
     yield {"event": "status", "data": {"message": f"Searching {city} ({intent})…"}}
 
     loop = asyncio.get_running_loop()
-    props, quota = await loop.run_in_executor(_EXECUTOR, _discover, city)
+    client_disconnected = False
+    try:
+        props, quota = await loop.run_in_executor(_EXECUTOR, _discover, city)
+    except asyncio.CancelledError:
+        # Client disconnected while waiting for discovery; continue discovery in background
+        client_disconnected = True
+        logger.info("Client disconnected during discovery; continuing in background.")
+        discovery_fut = loop.run_in_executor(_EXECUTOR, _discover, city)
+        # Poll discovery_fut while protecting against further cancellations
+        while not discovery_fut.done():
+            try:
+                await asyncio.sleep(1)
+            except asyncio.CancelledError:
+                client_disconnected = True
+                logger.info("Still disconnected; discovery will complete in background.")
+                continue
+        props, quota = discovery_fut.result()
 
     if quota and not props:
         yield {"event": "quota", "data": {
@@ -251,12 +267,22 @@ async def stream_search(city: str, count: int = 10, intent: str = "flip",
             enricher = BrightDataZillowEnricher()
             fut = loop.run_in_executor(_EXECUTOR, enricher.enrich, urls)
             t0 = time.time()
+            client_disconnected = False
+            # Poll the future; if the client disconnects (CancelledError), keep processing in background
             while not fut.done():
-                await asyncio.sleep(5)
+                try:
+                    await asyncio.sleep(5)
+                except asyncio.CancelledError:
+                    client_disconnected = True
+                    logger.info("Client disconnected during enrichment; continuing in background.")
+                    # do not break; continue polling until future completes
+                    continue
                 elapsed = int(time.time() - t0)
                 if elapsed and elapsed % 30 == 0:
-                    yield {"event": "enrich_tick", "data": {"elapsed": elapsed, "requested": len(urls)}}
-            enriched_map = await fut
+                    if not client_disconnected:
+                        yield {"event": "enrich_tick", "data": {"elapsed": elapsed, "requested": len(urls)}}
+            # Retrieve result from the executor
+            enriched_map = fut.result() if fut.done() else await fut
             enrich_stats = getattr(enricher, "last_stats", enrich_stats) or enrich_stats
         except Exception as e:
             q = _detect_bd_quota_error(e)
