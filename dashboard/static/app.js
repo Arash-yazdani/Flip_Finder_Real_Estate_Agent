@@ -83,7 +83,15 @@ function fmtNum(n) { return n == null ? "—" : Math.round(n).toLocaleString(); 
 function fmtPct(n) { return n == null ? "—" : `${n}%`; }
 function timeAgo(iso) {
   if (!iso) return "";
-  const t = new Date(iso); const dt = (Date.now() - t.getTime()) / 1000;
+  let s = iso;
+  // Normalize common SQLite format 'YYYY-MM-DD HH:MM:SS' to ISO UTC
+  if (/^\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}$/.test(s)) {
+    s = s.replace(' ', 'T') + 'Z';
+  }
+  const t = new Date(s);
+  const dt = (Date.now() - t.getTime()) / 1000;
+  if (isNaN(dt)) return "";
+  if (dt < 0) return `0s ago`;
   if (dt < 60) return `${Math.floor(dt)}s ago`;
   if (dt < 3600) return `${Math.floor(dt/60)}m ago`;
   if (dt < 86400) return `${Math.floor(dt/3600)}h ago`;
@@ -608,8 +616,10 @@ async function fetchActiveRuns() {
 function renderActiveRuns(runs) {
   const ul = $('#active-runs');
   if (!ul) return;
-  if (!runs.length) { ul.innerHTML = '<li class="muted">No active runs</li>'; return; }
-  ul.innerHTML = runs.map(run => {
+  // Only show truly active runs (pending/running). Keep UI small.
+  const active = runs.filter(r => (r.status || 'pending') === 'pending' || (r.status || '') === 'running');
+  if (!active.length) { ul.innerHTML = '<li class="muted">No active runs</li>'; return; }
+  ul.innerHTML = active.map(run => {
     const id = run.id;
     const started = timeAgo(run.started_at);
     const status = run.status || 'pending';
@@ -621,7 +631,7 @@ function renderActiveRuns(runs) {
   }).join('');
 
   // attach SSE to running ones
-  runs.forEach(run => {
+  active.forEach(run => {
     if ((run.status === 'pending' || run.status === 'running') && !_activeSources[run.id]) {
       const es = new EventSource(`/api/runs/${run.id}/events`, {withCredentials: true});
       _activeSources[run.id] = es;
