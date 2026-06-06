@@ -676,3 +676,28 @@ setInterval(fetchActiveRuns, 5000);
   refreshHistory();
   refreshFavorites();
 })();
+
+// --- mobile helpers: sidebar toggle + FAB ---
+(function(){
+  const menuBtn = document.getElementById('menu-toggle');
+  const sidebar = document.querySelector('.sidebar');
+  if (menuBtn && sidebar) {
+    menuBtn.addEventListener('click', (e) => { e.stopPropagation(); sidebar.classList.toggle('open'); });
+    document.addEventListener('click', (e) => {
+      if (!sidebar.classList.contains('open')) return;
+      if (e.target.closest('.sidebar') || e.target.closest('#menu-toggle')) return;
+      sidebar.classList.remove('open');
+    });
+  }
+
+  const fab = document.getElementById('fab-run');
+  if (fab) {
+    fab.addEventListener('click', (e) => {
+      e.preventDefault();
+      if (sidebar) { sidebar.classList.add('open'); }
+      const cityInput = document.getElementById('city');
+      if (cityInput) { cityInput.focus(); }
+    });
+  }
+})();
+
