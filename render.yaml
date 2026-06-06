@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: flip-finder-dashboard
+    env: python
+    plan: free
+    repo: https://github.com/arashyazd-bot/Flip_Finder_Real_Estate_Agent
+    autoDeploy: true
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn dashboard.server:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: DASHBOARD_PORT
+        value: "8000"
+        sync: false
