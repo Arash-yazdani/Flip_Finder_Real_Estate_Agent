@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256" role="img" aria-label="House under construction">
+  <rect width="100%" height="100%" fill="#1f2937"/>
+  <g transform="translate(40,36)">
+    <rect x="40" y="64" width="96" height="64" rx="6" fill="#f3f4f6"/>
+    <polygon points="16,64 96,8 176,64" fill="#ef4444"/>
+    <rect x="24" y="84" width="24" height="44" fill="#111827"/>
+    <!-- construction crane arm -->
+    <rect x="-8" y="-8" width="8" height="120" fill="#f59e0b"/>
+    <rect x="-8" y="-8" width="80" height="8" fill="#f59e0b"/>
+    <circle cx="60" cy="0" r="6" fill="#f59e0b"/>
+  </g>
+</svg>

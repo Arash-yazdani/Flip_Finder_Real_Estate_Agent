@@ -593,6 +593,73 @@ $("#logout-btn").addEventListener("click", async () => {
 
 $("#quota-banner-close").addEventListener("click", hideQuota);
 
+// --- active runs panel ---
+let _activeSources = {};
+
+async function fetchActiveRuns() {
+  try {
+    const r = await fetch('/api/runs', {credentials: 'include'});
+    if (!r.ok) return;
+    const data = await r.json();
+    renderActiveRuns(data.runs || []);
+  } catch (e) { /* ignore */ }
+}
+
+function renderActiveRuns(runs) {
+  const ul = $('#active-runs');
+  if (!ul) return;
+  if (!runs.length) { ul.innerHTML = '<li class="muted">No active runs</li>'; return; }
+  ul.innerHTML = runs.map(run => {
+    const id = run.id;
+    const started = timeAgo(run.started_at);
+    const status = run.status || 'pending';
+    return `<li data-run-id="${id}">
+      <div class="run-city">${run.city}</div>
+      <div class="run-meta">${status} · ${started}</div>
+      <div class="run-progress" id="run-progress-${id}"></div>
+    </li>`;
+  }).join('');
+
+  // attach SSE to running ones
+  runs.forEach(run => {
+    if ((run.status === 'pending' || run.status === 'running') && !_activeSources[run.id]) {
+      const es = new EventSource(`/api/runs/${run.id}/events`, {withCredentials: true});
+      _activeSources[run.id] = es;
+      es.addEventListener('enrich_tick', (e) => {
+        try {
+          const d = JSON.parse(e.data);
+          const el = $(`#run-progress-${run.id}`);
+          if (el) el.textContent = `Enriching — ${d.elapsed}s elapsed (${d.requested} requested)`;
+        } catch(_){}
+      });
+      es.addEventListener('property', (e) => {
+        try {
+          const d = JSON.parse(e.data);
+          const el = $(`#run-progress-${run.id}`);
+          if (el) {
+            el.textContent = `Got property ${d.zpid} — ${d.verdict || ''}`;
+          }
+        } catch(_){}
+      });
+      es.addEventListener('status', (e) => {
+        try { const d = JSON.parse(e.data); const el = $(`#run-progress-${run.id}`); if (el) el.textContent = d.message; } catch(_){}
+      });
+      es.addEventListener('complete', (e) => {
+        try { const d = JSON.parse(e.data); const el = $(`#run-progress-${run.id}`); if (el) el.textContent = `Complete — ${d.total} items`; } catch(_){}
+        // close source and refresh archive
+        setTimeout(() => { es.close(); delete _activeSources[run.id]; fetchActiveRuns(); refreshHistory(); }, 1500);
+      });
+      es.addEventListener('error', (e) => {
+        try { const d = JSON.parse(e.data); const el = $(`#run-progress-${run.id}`); if (el) el.textContent = `Error: ${d.message}`; } catch(_){}
+        es.close(); delete _activeSources[run.id]; fetchActiveRuns();
+      });
+    }
+  });
+}
+
+// poll active runs periodically
+setInterval(fetchActiveRuns, 5000);
+
 // --- init ---
 (async () => {
   if (!(await ensureAuth())) return;

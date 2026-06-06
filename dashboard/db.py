@@ -82,6 +82,16 @@ CREATE TABLE IF NOT EXISTS runs (
 
 CREATE INDEX IF NOT EXISTS runs_user_started ON runs(user_email, started_at);
 CREATE INDEX IF NOT EXISTS runs_started ON runs(started_at);
+
+CREATE TABLE IF NOT EXISTS run_events (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    run_id INTEGER NOT NULL,
+    event_type TEXT NOT NULL,
+    data TEXT,
+    created_at TEXT NOT NULL DEFAULT (datetime('now'))
+);
+
+CREATE INDEX IF NOT EXISTS run_events_run ON run_events(run_id, id);
 """
 
 
@@ -310,6 +320,40 @@ def aggregate_stats() -> dict:
         "cache_hits": int(cache_row["hits"]),
         "fresh_fetches": int(cache_row["fresh"]),
     }
+
+
+def add_run_event(run_id: int, event_type: str, data: Optional[str] = None) -> None:
+    """Append an event for a run (small JSON or string)."""
+    with _LOCK, _conn() as c:
+        c.execute(
+            "INSERT INTO run_events(run_id, event_type, data) VALUES(?,?,?)",
+            (run_id, event_type, data),
+        )
+
+
+def get_run_events(run_id: int, since_id: int = 0) -> List[dict]:
+    with _conn() as c:
+        rows = c.execute(
+            "SELECT * FROM run_events WHERE run_id=? AND id>? ORDER BY id ASC",
+            (run_id, since_id),
+        ).fetchall()
+    return [dict(r) for r in rows]
+
+
+def get_run_by_id(run_id: int) -> Optional[dict]:
+    with _conn() as c:
+        row = c.execute("SELECT * FROM runs WHERE id=?", (run_id,)).fetchone()
+    return dict(row) if row else None
+
+
+def get_runs_for_user(email: str, limit: int = 50) -> List[dict]:
+    email = (email or "").strip().lower()
+    with _conn() as c:
+        rows = c.execute(
+            "SELECT * FROM runs WHERE user_email=? ORDER BY started_at DESC LIMIT ?",
+            (email, limit),
+        ).fetchall()
+    return [dict(r) for r in rows]
 
 
 # ---- bootstrap ----

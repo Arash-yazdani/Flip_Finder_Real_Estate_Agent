@@ -4,6 +4,15 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Real Estate Analyzer</title>
+  <link rel="icon" href="/static/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/static/favicon.svg">
+  <meta property="og:title" content="Real Estate Analyzer">
+  <meta property="og:description" content="Find and analyze flip and rental opportunities.">
+  <meta property="og:image" content="/static/social_preview.png">
+  <meta property="og:image:type" content="image/png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="/static/social_preview.png">
+  <link rel="image_src" href="/static/social_preview.png">
   <link rel="stylesheet" href="/static/styles.css">
 </head>
 <body>
@@ -57,6 +66,9 @@
         </label>
         <button type="submit" id="search-btn">Run Analysis</button>
       </form>
+
+      <h3 id="active-heading">Active Runs</h3>
+      <ul id="active-runs" class="active-runs"></ul>
 
       <h3 id="archive-heading">Archive — Recent Searches</h3>
       <ul id="history-list" class="history-list"></ul>

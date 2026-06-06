@@ -201,6 +201,12 @@ async def stream_search(city: str, count: int = 10, intent: str = "flip",
             logger.warning("log_run_start failed: %s", e)
 
     yield {"event": "status", "data": {"message": f"Searching {city} ({intent})…"}}
+    if run_id:
+        try:
+            from dashboard import db as _db
+            _db.add_run_event(run_id, "status", json.dumps({"message": f"Searching {city} ({intent})…"}))
+        except Exception:
+            logger.exception("add_run_event failed")
 
     loop = asyncio.get_running_loop()
     client_disconnected = False
@@ -256,6 +262,14 @@ async def stream_search(city: str, count: int = 10, intent: str = "flip",
         "display_count": count,
         "properties": [_base_card(p) for p in candidates],
     }}
+    if run_id:
+        try:
+            from dashboard import db as _db
+            _db.add_run_event(run_id, "discovery", json.dumps({
+                "city": city, "count": len(candidates), "display_count": count
+            }))
+        except Exception:
+            logger.exception("add_run_event failed")
 
     enriched_map: Dict[str, dict] = {}
     enrich_error: Optional[str] = None
@@ -263,6 +277,12 @@ async def stream_search(city: str, count: int = 10, intent: str = "flip",
 
     if urls:
         yield {"event": "status", "data": {"message": f"Enriching {len(urls)} via Bright Data…"}}
+        if run_id:
+            try:
+                from dashboard import db as _db
+                _db.add_run_event(run_id, "status", json.dumps({"message": f"Enriching {len(urls)} via Bright Data…"}))
+            except Exception:
+                logger.exception("add_run_event failed")
         try:
             enricher = BrightDataZillowEnricher()
             fut = loop.run_in_executor(_EXECUTOR, enricher.enrich, urls)
@@ -281,6 +301,12 @@ async def stream_search(city: str, count: int = 10, intent: str = "flip",
                 if elapsed and elapsed % 30 == 0:
                     if not client_disconnected:
                         yield {"event": "enrich_tick", "data": {"elapsed": elapsed, "requested": len(urls)}}
+                        if run_id:
+                            try:
+                                from dashboard import db as _db
+                                _db.add_run_event(run_id, "enrich_tick", json.dumps({"elapsed": elapsed, "requested": len(urls)}))
+                            except Exception:
+                                logger.exception("add_run_event failed")
             # Retrieve result from the executor
             enriched_map = fut.result() if fut.done() else await fut
             enrich_stats = getattr(enricher, "last_stats", enrich_stats) or enrich_stats
@@ -340,10 +366,22 @@ async def stream_search(city: str, count: int = 10, intent: str = "flip",
         d = _flip_report_to_dict(s["report"], s["prop"], s["enriched"])
         serialized.append(d)
         yield {"event": "property", "data": d}
+        if run_id:
+            try:
+                from dashboard import db as _db
+                _db.add_run_event(run_id, "property", json.dumps({"zpid": d.get("zpid"), "verdict": d.get("verdict")}))
+            except Exception:
+                logger.exception("add_run_event failed")
 
     # Tell the frontend which candidates didn't make the cut (so it can remove their skeletons)
     final_zpids = [s["report"].property_id.replace("ZILLOW-", "") for s in top_scored]
     yield {"event": "trim", "data": {"keep": final_zpids}}
+    if run_id:
+        try:
+            from dashboard import db as _db
+            _db.add_run_event(run_id, "trim", json.dumps({"keep": final_zpids}))
+        except Exception:
+            logger.exception("add_run_event failed")
 
     # Final summary
     payload = {
@@ -365,6 +403,12 @@ async def stream_search(city: str, count: int = 10, intent: str = "flip",
     else:
         slug = None
         yield {"event": "status", "data": {"message": "Result not saved to archive (unreliable)."}}
+        if run_id:
+            try:
+                from dashboard import db as _db
+                _db.add_run_event(run_id, "status", json.dumps({"message": "Result not saved to archive (unreliable)."}))
+            except Exception:
+                logger.exception("add_run_event failed")
 
     # Calculate cost (RapidAPI cost is per-discovery call; Bright Data is per fresh enrichment)
     cost_bd = enrich_stats["fresh"] * bd_cost_per_record
@@ -401,3 +445,15 @@ async def stream_search(city: str, count: int = 10, intent: str = "flip",
             "cost_usd": round(total_cost, 4),
         },
     }}
+    if run_id:
+        try:
+            from dashboard import db as _db
+            _db.add_run_event(run_id, "complete", json.dumps({
+                "slug": slug, "total": len(serialized), "summary": {
+                    "enriched": len(enriched_map), "requested": len(urls),
+                    "from_cache": enrich_stats["from_cache"], "fresh": enrich_stats["fresh"],
+                    "cost_usd": round(total_cost, 4),
+                }
+            }))
+        except Exception:
+            logger.exception("add_run_event failed")

@@ -332,6 +332,60 @@ async def admin_user_delete(email: str, current: str = Depends(require_admin)):
     return {"ok": ok}
 
 
+@app.get("/api/runs")
+async def user_runs(limit: int = Query(50, ge=1, le=500), email: str = Depends(current_user_email)):
+    # Return runs belonging to the current user (most recent first)
+    return {"runs": db.get_runs_for_user(email, limit=limit)}
+
+
+@app.get("/api/runs/{run_id}/events")
+async def run_events(run_id: int, email: str = Depends(current_user_email)):
+    # SSE endpoint streaming run events for a specific run. Only owner or admin may subscribe.
+    run = db.get_run_by_id(run_id)
+    if not run:
+        raise HTTPException(status_code=404, detail="run not found")
+    if run["user_email"] != email:
+        user = db.get_user(email)
+        if not user or not user.is_admin:
+            raise HTTPException(status_code=403, detail="not authorized")
+
+    async def gen():
+        last_id = 0
+        try:
+            # Send existing events first
+            rows = db.get_run_events(run_id, since_id=0)
+            for r in rows:
+                last_id = r["id"]
+                yield _sse(r["event_type"], json.loads(r["data"]) if r["data"] else {})
+            # Then poll for new events until run is finished
+            while True:
+                await asyncio.sleep(1.5)
+                rows = db.get_run_events(run_id, since_id=last_id)
+                for r in rows:
+                    last_id = r["id"]
+                    yield _sse(r["event_type"], json.loads(r["data"]) if r["data"] else {})
+                # refresh run row
+                run_row = db.get_run_by_id(run_id)
+                if run_row and run_row.get("status") != "pending":
+                    # stream any remaining events then exit
+                    rows = db.get_run_events(run_id, since_id=last_id)
+                    for r in rows:
+                        yield _sse(r["event_type"], json.loads(r["data"]) if r["data"] else {})
+                    # emit final 'complete' if finished
+                    if run_row.get("status") == "ok":
+                        yield _sse("complete", {"slug": run_row.get("city"), "total": run_row.get("count_requested")})
+                    else:
+                        yield _sse("error", {"message": run_row.get("error") or "finished"})
+                    break
+        except asyncio.CancelledError:
+            return
+        except Exception:
+            logger.exception("run events stream crashed")
+            yield _sse("error", {"message": "server error"})
+
+    return StreamingResponse(gen(), media_type="text/event-stream", headers={"Cache-Control": "no-cache", "X-Accel-Buffering": "no"})
+
+
 @app.get("/api/admin/runs")
 async def admin_runs(limit: int = Query(100, ge=1, le=500),
                      _: str = Depends(require_admin)):
