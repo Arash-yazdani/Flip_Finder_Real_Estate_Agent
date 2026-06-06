@@ -743,6 +743,12 @@ setInterval(fetchActiveRuns, 5000);
     });
   }
 
+  // Sidebar collapse button on the right edge of the left panel
+  const collapseBtn = document.getElementById('sidebar-collapse');
+  if (collapseBtn && sidebar) {
+    collapseBtn.addEventListener('click', (e) => { e.preventDefault(); sidebar.classList.remove('open'); });
+  }
+
   // Lazy-load card photos using IntersectionObserver
   const io = new IntersectionObserver((entries) => {
     for (const ent of entries) {

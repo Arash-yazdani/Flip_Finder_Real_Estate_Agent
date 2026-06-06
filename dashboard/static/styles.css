@@ -102,6 +102,28 @@ a:hover { color: var(--amber-hi); }
 }
 .link-btn:hover { color: var(--bad); }
 
+/* Menu toggle (hamburger) sizing */
+#menu-toggle.menu-toggle {
+  font-size: 1.35rem; padding: 8px 10px; border-radius: 8px;
+  background: transparent; border: 1px solid transparent; color: var(--text-2);
+}
+#menu-toggle.menu-toggle:hover { color: var(--text); border-color: var(--border-hi); background: var(--surface-3); }
+
+/* Sidebar collapse handle (shown when sidebar is open on mobile) */
+.sidebar-collapse { display: none; }
+@media (max-width: 768px) {
+  .sidebar-collapse {
+    display: flex; position: fixed; top: 50%; transform: translateY(-50%);
+    left: calc(86% - 20px); /* sit at the right edge of the sidebar */
+    width: 36px; height: 64px; align-items: center; justify-content: center;
+    background: var(--surface-2); border-left: 1px solid var(--border);
+    color: var(--text-2); z-index: 75; border-radius: 8px 0 0 8px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.6); font-size: 1.2rem;
+  }
+  .sidebar.open ~ .sidebar-collapse { left: calc(86% - 20px); opacity: 1; }
+}
+
+
 /* ── Quota chip ──────────────────────────────────────────── */
 .quota-chip {
   display: inline-flex; align-items: center; gap: 6px;
