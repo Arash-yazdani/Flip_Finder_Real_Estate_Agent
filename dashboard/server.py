@@ -77,13 +77,28 @@ if admin_email:
 app = FastAPI(title="Real Estate Investment Dashboard")
 serializer = URLSafeTimedSerializer(SECRET_KEY, salt="session")
 
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=["*"],
-    allow_methods=["*"],
-    allow_headers=["*"],
-    allow_credentials=True,
-)
+# The frontend is served same-origin by this same app, so cross-origin credentialed
+# requests are never needed. Wildcard origins + credentials is an anti-pattern (lets
+# any site make authenticated calls), and the spec forbids combining them anyway.
+# Allow an explicit comma-separated FRONTEND_ORIGINS for any legit cross-origin use.
+_cors_origins = [o.strip() for o in os.environ.get("FRONTEND_ORIGINS", "").split(",") if o.strip()]
+if _cors_origins:
+    app.add_middleware(
+        CORSMiddleware,
+        allow_origins=_cors_origins,
+        allow_methods=["*"],
+        allow_headers=["*"],
+        allow_credentials=True,
+    )
+else:
+    # No cross-origin clients configured — allow read-only wildcard WITHOUT credentials.
+    app.add_middleware(
+        CORSMiddleware,
+        allow_origins=["*"],
+        allow_methods=["*"],
+        allow_headers=["*"],
+        allow_credentials=False,
+    )
 
 
 # ---- auth helpers ----
@@ -136,10 +151,13 @@ async def login(request: Request, response: Response):
     if not user:
         raise HTTPException(status_code=401, detail="invalid email or password")
     token = _issue_session(user.email)
+    # secure=True only when served over HTTPS (set COOKIE_SECURE=1 in production).
+    # Left off by default so local HTTP development still works.
+    _cookie_secure = os.environ.get("COOKIE_SECURE", "").lower() in ("1", "true", "yes")
     response.set_cookie(
         SESSION_COOKIE, token,
         max_age=SESSION_MAX_AGE,
-        httponly=True, samesite="lax",
+        httponly=True, samesite="lax", secure=_cookie_secure,
     )
     return {"ok": True, "email": user.email, "is_admin": user.is_admin}
 
