@@ -264,7 +264,11 @@ async def stream_search(city: str, count: int = 10, intent: str = "flip",
     if quota and not props:
         yield {"event": "quota", "data": {
             "api": "rapidapi",
-            "message": "API capacity reached — please contact your administrator to add credits."
+            "message": (
+                "RapidAPI rate limit reached — the Zillow data API has no calls remaining. "
+                "Check your plan at rapidapi.com/hub (real-estate101) and wait for the quota "
+                "to reset, or upgrade your plan."
+            ),
         }}
         return
 
