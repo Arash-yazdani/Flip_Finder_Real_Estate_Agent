@@ -98,6 +98,8 @@ function timeAgo(iso) {
   return `${Math.floor(dt/86400)}d ago`;
 }
 function setStatus(msg) { $("#status-line").textContent = msg || ""; }
+function showSpinner() { const s = $("#enrich-spinner"); if (s) s.hidden = false; }
+function hideSpinner() { const s = $("#enrich-spinner"); if (s) s.hidden = true; }
 function showQuota(text) {
   const el = $("#quota-banner-text");
   // linkify brightdata.com/cp so the admin can click straight through
@@ -370,10 +372,12 @@ async function startSearch(city, count, intent) {
     const d = JSON.parse(e.data);
     renderResults(d.city, d.properties);
     setStatus(`Found ${d.count} properties — enriching…`);
+    showSpinner();
   });
   es.addEventListener("enrich_tick", (e) => {
     const d = JSON.parse(e.data);
     setStatus(`Still enriching… ${d.elapsed}s elapsed (${d.requested} URLs)`);
+    showSpinner();
   });
   es.addEventListener("property", (e) => {
     const r = JSON.parse(e.data);
@@ -394,6 +398,7 @@ async function startSearch(city, count, intent) {
     } catch {
       setStatus("⚠️ Connection error");
     }
+    hideSpinner();
     es.close();
     $("#search-btn").disabled = false;
   });
@@ -405,6 +410,7 @@ async function startSearch(city, count, intent) {
       ? ` (${s.from_cache} cached, ${s.fresh} fresh, $${(s.cost_usd || 0).toFixed(4)})`
       : "";
     setStatus(`✅ Done — ${d.total} ranked. Enriched ${s.enriched}/${s.requested}${cacheNote}.`);
+    hideSpinner();
     es.close();
     $("#search-btn").disabled = false;
     refreshHistory();
@@ -709,16 +715,18 @@ function viewRun(runId) {
       const d = JSON.parse(e.data);
       renderResults(d.city, d.properties);
       setStatus(`Found ${d.count} properties — enriching…`);
+      showSpinner();
     } catch(_){}
   });
-  es.addEventListener('enrich_tick', (e) => { try { const d = JSON.parse(e.data); setStatus(`Enriching — ${d.elapsed}s elapsed (${d.requested} requested)`); } catch(_){} });
+  es.addEventListener('enrich_tick', (e) => { try { const d = JSON.parse(e.data); setStatus(`Enriching — ${d.elapsed}s elapsed (${d.requested} requested)`); showSpinner(); } catch(_){} });
   es.addEventListener('property', (e) => { try { const r = JSON.parse(e.data); upgradeCard(r); } catch(_){} });
   es.addEventListener('trim', (e) => { try { const d = JSON.parse(e.data); trimGrid(d.keep); } catch(_){} });
   es.addEventListener('complete', (e) => {
     try { const d = JSON.parse(e.data); setStatus(`Run complete — ${d.total} items`); } catch(_){}
+    hideSpinner();
     setTimeout(() => { try { es.close(); } catch(_){} _viewSource = null; refreshHistory(); fetchActiveRuns(); }, 1000);
   });
-  es.addEventListener('error', (e) => { try { const d = JSON.parse(e.data); setStatus(`Error: ${d.message}`); } catch(_){} try { es.close(); } catch(_){} _viewSource = null; fetchActiveRuns(); });
+  es.addEventListener('error', (e) => { try { const d = JSON.parse(e.data); setStatus(`Error: ${d.message}`); } catch(_){} hideSpinner(); try { es.close(); } catch(_){} _viewSource = null; fetchActiveRuns(); });
 }
 
 // poll active runs periodically
