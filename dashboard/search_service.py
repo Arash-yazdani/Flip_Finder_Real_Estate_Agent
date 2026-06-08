@@ -285,8 +285,8 @@ async def stream_search(city: str, count: int = 10, intent: str = "flip",
         yield {"event": "quota", "data": {
             "api": "rapidapi",
             "message": (
-                "RapidAPI rate limit reached — the Zillow data API has no calls remaining. "
-                "Check your plan at rapidapi.com/hub (real-estate101) and wait for the quota "
+                "RapidAPI rate limit reached — the Zillow Live Data Scraper API (Skolit) has "
+                "no calls remaining. Check your plan at rapidapi.com/hub and wait for the quota "
                 "to reset, or upgrade your plan."
             ),
         }}
@@ -299,27 +299,50 @@ async def stream_search(city: str, count: int = 10, intent: str = "flip",
     # Filter sqft=0
     props = [p for p in props if p.sqft and p.sqft > 0]
 
-    # Rank candidates by discount-to-zestimate (best deals first).
-    # Properties without a zestimate sort by price (cheapest first).
+    # ── Discovery-phase market scan (no extra API calls) ──────────────────────
+    # Skolit's /bylocation does NOT return a zestimate, so we can't rank by
+    # discount-to-zestimate at this stage. Instead we compute the discovery pool's
+    # median price-per-sqft and rank listings by how far BELOW median they sit.
+    # Cheaper-per-sqft = likely value-add / fixer / motivated seller = better flip
+    # candidate. This surfaces the best deals in the WHOLE city rather than just
+    # whatever Zillow returns first.
+    pool = [p for p in props if getattr(p, "link", "")]
+
+    psf_values = sorted(p.price / p.sqft for p in pool if p.sqft and p.price)
+    median_psf = psf_values[len(psf_values) // 2] if psf_values else 0.0
+
     def _discovery_rank(p):
-        zest = getattr(p, "zestimate", 0) or 0
-        if zest >= 10_000:
-            return p.price / zest   # lower ratio = bigger discount = better deal
-        return 0.95  # no zestimate → treat as roughly at-value
+        # Higher score = better deal. Properties priced well below the local
+        # median $/sqft rank first. Bad/garbage psf is pushed to the bottom.
+        if not (p.sqft and p.price and median_psf > 0):
+            return -1.0
+        psf = p.price / p.sqft
+        # Sanity floors: drop obviously-broken psf (data errors), don't let them win.
+        if psf < 50 or psf > median_psf * 5:
+            return -1.0
+        return (median_psf - psf) / median_psf  # fraction below median
 
-    props_with_link = sorted(
-        [p for p in props if getattr(p, "link", "")],
-        key=_discovery_rank,
-    )
+    props_with_link = sorted(pool, key=_discovery_rank, reverse=True)
 
+    # Enrichment depth: scan a meaningful slice of the market, not just ~10.
+    # Default ≈ max(count*3, 30) so the displayed top `count` are the best of a
+    # real sample. Capped by the discovery pool size and a hard ceiling of 50.
     if enrich_limit is not None:
         enrich_n = enrich_limit
     else:
-        enrich_n = max(count, 10)
+        enrich_n = max(count * 3, 30)
     enrich_n = min(enrich_n, 50, len(props_with_link))
 
     candidates = props_with_link[:enrich_n]
     urls = [p.link for p in candidates]
+
+    # Telemetry (not persisted) so we can tune ranking quality.
+    if pool:
+        ranked_psf = [round(c.price / c.sqft) for c in candidates[:5] if c.sqft]
+        logger.info(
+            "Discovery scan %s: pool=%d median_psf=%.0f enrich_n=%d top5_psf=%s",
+            city, len(pool), median_psf, enrich_n, ranked_psf,
+        )
 
     # Discovery emits the candidate pool so the frontend can render skeletons,
     # but the final displayed set will be the top `count` by score (re-sorted client-side).
