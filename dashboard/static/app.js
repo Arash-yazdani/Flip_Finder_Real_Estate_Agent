@@ -123,7 +123,8 @@ function setCarouselFrame(photoDiv) {
   const photos = photoDiv._photos || [];
   if (!photos.length) return;
   const idx = photoDiv._idx || 0;
-  const url = photoUrl(photos[idx]);
+  // Fall back to dataset.photo (the server-validated best URL) when photos[idx] has no URL
+  const url = photoUrl(photos[idx]) || photoDiv.dataset.photo || '';
   if (url) photoDiv.style.backgroundImage = `url('${url}')`;
   photoDiv.classList.remove("placeholder");
 
@@ -253,14 +254,19 @@ function upgradeCard(report) {
     photoDiv._photos = report.photos;
     photoDiv._idx = 0;
     photoDiv.dataset.photos = JSON.stringify(report.photos);
-    photoDiv.dataset.photo = report.photos[0] || report.photo || '';
-    setCarouselFrame(photoDiv);
+    // report.photo is the server-validated best URL (string); photos[0] may be an object
+    photoDiv.dataset.photo = report.photo || photoUrl(report.photos[0]) || '';
+    // Pre-set background from the validated best URL so the card never goes black
+    // even if photos[0] has a bad/missing URL
+    if (report.photo) {
+      photoDiv.style.backgroundImage = `url('${report.photo}')`;
+    }
+    setCarouselFrame(photoDiv);  // overrides with photos[0] if that URL is valid
     photoDiv.classList.remove("placeholder");
   } else if (report.photo) {
     photoDiv.dataset.photo = report.photo;
+    photoDiv.style.backgroundImage = `url('${report.photo}')`;
     photoDiv.classList.remove("placeholder");
-    // If already visible, set immediately
-    if (photoDiv._visible) photoDiv.style.backgroundImage = `url('${report.photo}')`;
   }
   const row = target.querySelector(".verdict-row");
   const score = _primaryScore(report, currentIntent);
