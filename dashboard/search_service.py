@@ -161,12 +161,12 @@ def _discover(location: str):
 
     Returns (props, quota_signal). quota_signal is non-None if RapidAPI is at/near limit.
 
-    RAPIDAPI_MAX_PAGES env var controls how many pages to fetch (default 1).
-    Free BASIC plan = 50 calls/month → keep at 1.
-    Upgrade to a paid plan before raising this.
+    RAPIDAPI_MAX_PAGES env var controls how many pages to fetch (default 4).
+    Skolit Pro plan = 10,000 calls/month — 4 pages × ~12 cities/day is safe.
+    Drop to 1 if you switch to a lower-tier plan.
     """
     import os as _os
-    max_pages = _os.environ.get("RAPIDAPI_MAX_PAGES", "1")
+    max_pages = _os.environ.get("RAPIDAPI_MAX_PAGES", "4")
     result = subprocess.run(
         [sys.executable, "scrapers/zillow_api_scraper.py", location, max_pages],
         capture_output=True, text=True, timeout=180,
