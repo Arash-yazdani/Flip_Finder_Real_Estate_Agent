@@ -170,9 +170,20 @@ class ZillowAPIScraper:
 
                 if r.status_code != 200:
                     print(f"API Error ({r.status_code}): {r.text[:300]}", file=sys.stderr)
+                    if r.status_code == 429:
+                        print("QUOTA_EXCEEDED", file=sys.stderr)
                     break
 
                 data = r.json()
+
+                # Skolit returns HTTP 200 even for quota/error states — check inner success flag
+                if not data.get("success", True):
+                    err_msg = data.get("error", "") or data.get("message", "")
+                    print(f"API error (success=false): {err_msg}", file=sys.stderr)
+                    # Treat quota/throttle errors as quota exceeded
+                    if any(w in err_msg.lower() for w in ("quota", "limit", "rate", "unavailable", "throttl")):
+                        print("QUOTA_EXCEEDED", file=sys.stderr)
+                    break
 
                 # ── Pagination metadata ──────────────────────────────────
                 pagination = data.get("pagination") or {}

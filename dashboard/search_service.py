@@ -176,7 +176,8 @@ def _discover(location: str):
     stderr = result.stderr
     quota_signal = None
     # Cheap quota detect from stderr (we don't have headers exposed to subprocess output)
-    if "429" in stderr or "rate limit" in stderr.lower() or "quota" in stderr.lower():
+    if ("429" in stderr or "QUOTA_EXCEEDED" in stderr or
+            "rate limit" in stderr.lower() or "quota" in stderr.lower()):
         quota_signal = "RapidAPI rate limit hit"
     if "JSON_START:" not in out:
         return [], quota_signal or f"discovery failed: {stderr[-300:]}"

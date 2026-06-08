@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "flipfinder",
+      "runtimeExecutable": "bash",
+      "runtimeArgs": ["-c", "source venv/bin/activate && DASHBOARD_PORT=8010 python -m uvicorn dashboard.server:app --host 127.0.0.1 --port 8010 --log-level warning"],
+      "port": 8010
+    }
+  ]
+}
