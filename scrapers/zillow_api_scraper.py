@@ -200,14 +200,18 @@ class ZillowAPIScraper:
         return properties
 
 if __name__ == "__main__":
-    # Get location from arguments
+    # argv[1] = location, argv[2] = max_pages (optional, default 1)
     query = sys.argv[1] if len(sys.argv) > 1 else "Sacramento, CA"
-    
+    try:
+        max_pages_arg = int(sys.argv[2]) if len(sys.argv) > 2 else 1
+    except ValueError:
+        max_pages_arg = 1
+
     # Use the provided API Key
     API_KEY = "69379c2654mshe28db71c0b234a7p148f59jsn6b8c7c501542"
-    
+
     scraper = ZillowAPIScraper(API_KEY)
-    props = scraper.fetch_properties(query)
+    props = scraper.fetch_properties(query, max_pages=max_pages_arg)
     
     # Dump to JSON to stdout for telegram_bot.py to read
     # We use a marker to find the JSON start and end

@@ -160,9 +160,15 @@ def _discover(location: str):
     """Run the RapidAPI scraper as a subprocess and return Property list.
 
     Returns (props, quota_signal). quota_signal is non-None if RapidAPI is at/near limit.
+
+    RAPIDAPI_MAX_PAGES env var controls how many pages to fetch (default 1).
+    Free BASIC plan = 50 calls/month → keep at 1.
+    Upgrade to a paid plan before raising this.
     """
+    import os as _os
+    max_pages = _os.environ.get("RAPIDAPI_MAX_PAGES", "1")
     result = subprocess.run(
-        [sys.executable, "scrapers/zillow_api_scraper.py", location],
+        [sys.executable, "scrapers/zillow_api_scraper.py", location, max_pages],
         capture_output=True, text=True, timeout=180,
         cwd=str(PROJECT_ROOT),
     )
