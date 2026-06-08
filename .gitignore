@@ -39,3 +39,9 @@ Thumbs.db
 analysis_results.json
 *.log
 debug_last_api_response.json
+
+# Secrets & local state — NEVER commit (public repo)
+.dashboard_secret
+data/dashboard/admin.db
+data/dashboard/admin.db-shm
+data/dashboard/admin.db-wal

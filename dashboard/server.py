@@ -68,6 +68,12 @@ SESSION_MAX_AGE = 60 * 60 * 24 * 30  # 30 days
 logger = logging.getLogger("dashboard")
 logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(name)s: %(message)s")
 
+if not os.environ.get("DASHBOARD_SECRET_KEY"):
+    logger.warning(
+        "DASHBOARD_SECRET_KEY not set — using a random ephemeral key. All sessions will "
+        "be invalidated on every restart/redeploy. Set DASHBOARD_SECRET_KEY in the environment."
+    )
+
 # Bootstrap DB + initial admin
 db.init_db()
 admin_email = db.bootstrap_admin_if_empty()

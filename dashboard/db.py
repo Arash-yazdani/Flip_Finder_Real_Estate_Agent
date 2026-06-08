@@ -365,14 +365,30 @@ def bootstrap_admin_if_empty() -> Optional[str]:
     if n > 0:
         return None
     admin_email = os.environ.get("ADMIN_EMAIL", "arashyazd@gmail.com").strip().lower()
-    admin_pw = os.environ.get("ADMIN_PASSWORD") or os.environ.get("DASHBOARD_PASSWORD") or "letmein"
+    env_pw = os.environ.get("ADMIN_PASSWORD") or os.environ.get("DASHBOARD_PASSWORD")
+    # SECURITY: never fall back to a well-known default ('letmein'). If no password is
+    # provided via env, generate a strong random one and log it ONCE so the operator
+    # can capture it, then set ADMIN_PASSWORD in the environment going forward.
+    generated = False
+    if env_pw:
+        admin_pw = env_pw
+    else:
+        admin_pw = secrets.token_urlsafe(16)
+        generated = True
     try:
         create_user(admin_email, admin_pw, daily_cap=10_000, is_admin=True)
-        logger.warning(
-            "Bootstrapped admin user '%s' with %s password — change it from the admin panel.",
-            admin_email,
-            "DASHBOARD_PASSWORD" if os.environ.get("DASHBOARD_PASSWORD") else "default ('letmein')",
-        )
+        if generated:
+            logger.error(
+                "Bootstrapped admin '%s' with a RANDOM password (ADMIN_PASSWORD not set): %s\n"
+                "  -> Save it now and set ADMIN_PASSWORD in your environment. "
+                "Change it from the admin panel.",
+                admin_email, admin_pw,
+            )
+        else:
+            logger.info(
+                "Bootstrapped admin '%s' from ADMIN_PASSWORD/DASHBOARD_PASSWORD env.",
+                admin_email,
+            )
         return admin_email
     except Exception as e:
         logger.error("Admin bootstrap failed: %s", e)

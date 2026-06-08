@@ -116,24 +116,4 @@ if cache_files:
     newest = max(cache_files, key=lambda p: p.stat().st_mtime)
     print(f"  Newest cache:    {newest.name} ({int(time.time() - newest.stat().st_mtime)}s ago)")
 
-import subprocess
-bot_ps = subprocess.run(["pgrep", "-f", "telegram_bot.py"], capture_output=True, text=True)
-if bot_ps.stdout.strip():
-    print(f"  Telegram bot:    ✅ running (PID {bot_ps.stdout.strip()})")
-else:
-    print(f"  Telegram bot:    ❌ not running")
-
-log_path = Path("nohup_bot.log")
-if log_path.exists():
-    log_text = log_path.read_text()
-    lines = log_text.splitlines()
-    bright_lines = [l for l in lines if "Bright Data" in l]
-    error_lines = [l for l in lines if "ERROR" in l]
-    print(f"  Log lines:       {len(lines)}")
-    print(f"  Bright Data events in log: {len(bright_lines)}")
-    print(f"  ERROR lines:     {len(error_lines)}")
-    if error_lines:
-        print("  Most recent errors:")
-        for l in error_lines[-3:]:
-            print(f"    {l[:160]}")
 PY
