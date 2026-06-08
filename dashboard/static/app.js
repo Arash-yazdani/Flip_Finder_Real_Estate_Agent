@@ -852,22 +852,9 @@ setInterval(fetchActiveRuns, 5000);
         try {
           if (photosJson) {
             const arr = JSON.parse(photosJson);
-            if (arr.length && typeof arr[0] === 'object' && arr[0].url) {
-              // array of objects {url, width}
-              const dpr = window.devicePixelRatio || 1;
-              const targetPx = Math.min(window.innerWidth * dpr, 2048);
-              // pick smallest width >= targetPx, otherwise largest available
-              const withWidth = arr.filter(p => p.width).sort((a,b) => a.width - b.width);
-              let candidate = null;
-              if (withWidth.length) {
-                candidate = withWidth.find(p => p.width >= targetPx) || withWidth[withWidth.length-1];
-              }
-              if (!candidate) candidate = arr[0];
-              url = candidate.url || (arr[0] && arr[0].url);
-            } else {
-              // legacy array of urls
-              url = arr[0] || url;
-            }
+            // Each entry is now a DISTINCT photo ({url,width,srcset?} or a url string).
+            // The cover photo is simply the first distinct photo.
+            if (arr.length) url = photoUrl(arr[0]) || url;
           }
         } catch(_){ }
         // If upgradeCard already determined BD URLs fail for this element, use Skolit fallback

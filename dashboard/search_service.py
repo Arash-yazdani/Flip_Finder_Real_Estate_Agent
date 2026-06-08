@@ -62,54 +62,64 @@ def _base_card(prop) -> dict:
     }
 
 
+def _best_photo_variant(jpegs: list, target: int = 1024) -> Optional[dict]:
+    """From the responsive width-variants of ONE Bright Data photo, pick a single
+    representative URL (smallest width >= target, else the largest available).
+
+    Bright Data shape: photos[N]['mixedSources']['jpeg'] = [{url, width}, ...] where
+    every entry is the SAME image at a different width. Returns one
+    {url, width, srcset:[{url,width}...]} per distinct photo so the carousel shows
+    DISTINCT images, not the same photo at 8 resolutions.
+    """
+    variants = [
+        {"url": j.get("url"), "width": j.get("width") or j.get("w")}
+        for j in jpegs if isinstance(j, dict) and j.get("url")
+    ]
+    if not variants:
+        return None
+    with_w = [v for v in variants if v["width"]]
+    if with_w:
+        with_w.sort(key=lambda v: v["width"])
+        chosen = next((v for v in with_w if v["width"] >= target), with_w[-1])
+    else:
+        chosen = variants[0]
+    return {"url": chosen["url"], "width": chosen["width"], "srcset": variants}
+
+
 def _flip_report_to_dict(a, prop, enriched) -> dict:
     """Serialize a FlipReport + cover photo into a UI-friendly dict.
 
-    Photos are returned as a list of objects {url: str, width: int?} to allow
-    frontend srcset selection based on viewport/DPR.
+    Photos are returned as a list of objects [{url, width, srcset?}] — ONE entry per
+    distinct property photo (not per responsive width-variant).
     """
     photos_list = []
     if enriched:
         raw_photos = enriched.get("photos") or []
         for item in raw_photos:
+            # Each item is ONE distinct property photo. Append a SINGLE representative
+            # url per photo so the carousel cycles through different images.
             if isinstance(item, dict):
-                # Bright Data mixedSources structure: item.get('mixedSources', {}).get('jpeg') -> list of dicts
                 jpegs = item.get("mixedSources", {}).get("jpeg") or []
                 if jpegs:
-                    for j in jpegs:
-                        url = j.get("url")
-                        width = j.get("width") or j.get("w")
-                        if url:
-                            photos_list.append({"url": url, "width": width})
+                    best = _best_photo_variant(jpegs)
+                    if best:
+                        photos_list.append(best)
                 elif item.get("url"):
                     photos_list.append({"url": item.get("url"), "width": item.get("width")})
             elif isinstance(item, str):
                 photos_list.append({"url": item})
 
-    # Cap at 10 photos — Bright Data can return hundreds; frontend only needs a carousel
+    # Cap at 10 DISTINCT photos — Bright Data can return hundreds; carousel needs a few
     photos_list = photos_list[:10]
 
-    # Fallback to property img_src
+    # Fallback to the Skolit discovery thumbnail when Bright Data has no photos
     if not photos_list:
         img = getattr(prop, "img_src", None)
         if img:
             photos_list = [{"url": img}]
 
-    # Choose a sensible default photo url (prefer width==960 if available)
-    photo = None
-    if photos_list:
-        exact = next((p for p in photos_list if p.get("width") == 960), None)
-        if exact:
-            photo = exact.get("url")
-        else:
-            # pick the smallest width >= 960, otherwise largest available, otherwise first
-            with_width = [p for p in photos_list if p.get("width")]
-            if with_width:
-                with_width.sort(key=lambda x: x.get("width") or 0)
-                candidate = next((p for p in with_width if p.get("width") >= 960), with_width[-1])
-                photo = candidate.get("url")
-            else:
-                photo = photos_list[0].get("url")
+    # Default cover photo = first distinct photo (already the ~1024px variant)
+    photo = photos_list[0].get("url") if photos_list else None
 
     return {
         "zpid": _zpid_of(prop),
