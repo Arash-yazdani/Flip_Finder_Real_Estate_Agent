@@ -112,11 +112,17 @@ function hideQuota() { $("#quota-banner").hidden = true; }
 // --- carousel ---
 // Each card's photo div stores _photos (array) and _idx (current index) directly on the element.
 
+function photoUrl(p) {
+  // photos array may hold {url, width} objects or plain url strings
+  return (p && typeof p === 'object') ? (p.url || '') : (p || '');
+}
+
 function setCarouselFrame(photoDiv) {
   const photos = photoDiv._photos || [];
   if (!photos.length) return;
   const idx = photoDiv._idx || 0;
-  photoDiv.style.backgroundImage = `url('${photos[idx]}')`;
+  const url = photoUrl(photos[idx]);
+  if (url) photoDiv.style.backgroundImage = `url('${url}')`;
   photoDiv.classList.remove("placeholder");
 
   const prev = photoDiv.querySelector(".carousel-prev");

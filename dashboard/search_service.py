@@ -86,6 +86,9 @@ def _flip_report_to_dict(a, prop, enriched) -> dict:
             elif isinstance(item, str):
                 photos_list.append({"url": item})
 
+    # Cap at 10 photos — Bright Data can return hundreds; frontend only needs a carousel
+    photos_list = photos_list[:10]
+
     # Fallback to property img_src
     if not photos_list:
         img = getattr(prop, "img_src", None)
