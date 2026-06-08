@@ -99,7 +99,12 @@ function timeAgo(iso) {
 }
 function setStatus(msg) { $("#status-line").textContent = msg || ""; }
 function showQuota(text) {
-  $("#quota-banner-text").textContent = text;
+  const el = $("#quota-banner-text");
+  // linkify brightdata.com/cp so the admin can click straight through
+  el.innerHTML = text.replace(
+    /(brightdata\.com\/cp)/g,
+    '<a href="https://$1" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;">$1</a>'
+  );
   $("#quota-banner").hidden = false;
 }
 function hideQuota() { $("#quota-banner").hidden = true; }

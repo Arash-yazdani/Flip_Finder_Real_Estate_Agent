@@ -191,8 +191,14 @@ def _discover(location: str):
 
 def _detect_bd_quota_error(exc: Exception) -> Optional[str]:
     msg = str(exc)
-    if "402" in msg or "Payment Required" in msg or "quota" in msg.lower() or "credit" in msg.lower():
+    low = msg.lower()
+    if "402" in msg or "Payment Required" in msg or "quota" in low or "credit" in low:
         return msg
+    if "not active" in low or "customer is not active" in low or ("400" in msg and "inactive" in low):
+        return (
+            "Bright Data account is inactive — your subscription may have lapsed. "
+            "Log in to brightdata.com/cp to reactivate, then retry."
+        )
     return None
 
 
