@@ -327,7 +327,10 @@ function upgradeCard(report) {
     <span class="verdict ${report.rental_verdict || 'NO_RENT_DATA'}" title="Rental verdict">Rent: ${(report.rental_verdict || 'NO_RENT_DATA').replace(/_/g, ' ')} (${report.rental_score || 0})</span>
   `;
   target.querySelector("[data-breakdown]").innerHTML = breakdownHtml(report);
-  reorderByScore();
+  // NOTE: do NOT reorder here. Properties arrive already score-ranked from the
+  // server; reordering on every event caused 10-30 redundant DOM re-sorts per run.
+  // Final ordering is applied once by trimGrid() (live search) or by the caller
+  // (loadFromHistory) after the fill loop.
 }
 
 function reorderByScore() {
@@ -491,6 +494,7 @@ async function loadFromHistory(slug) {
   }));
   renderResults(data.city, cards);
   data.results.forEach(r => upgradeCard(r));
+  reorderByScore();  // upgradeCard no longer reorders per-card; sort once after the fill
   setStatus(`📂 Cached: ${data.city} (queried ${timeAgo(data.queried_at)})`);
   refreshFavorites();
 }

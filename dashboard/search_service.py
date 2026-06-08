@@ -194,7 +194,12 @@ def _discover(location: str):
         quota_signal = "RapidAPI rate limit hit"
     if "JSON_START:" not in out:
         return [], quota_signal or f"discovery failed: {stderr[-300:]}"
-    raw = json.loads(out.split("JSON_START:")[1].split(":JSON_END")[0])
+    try:
+        raw = json.loads(out.split("JSON_START:")[1].split(":JSON_END")[0])
+    except (json.JSONDecodeError, IndexError) as e:
+        # Subprocess crashed mid-output or emitted malformed JSON — fail gracefully
+        # instead of crashing the SSE stream with an unhandled exception.
+        return [], quota_signal or f"discovery JSON parse failed: {str(e)[:200]}"
     props = []
     for p in raw:
         prop = Property(
@@ -377,6 +382,7 @@ async def stream_search(city: str, count: int = 10, intent: str = "flip",
             enricher = BrightDataZillowEnricher()
             fut = loop.run_in_executor(_EXECUTOR, enricher.enrich, urls)
             t0 = time.time()
+            last_tick = t0
             client_disconnected = False
             # Poll the future; if the client disconnects (CancelledError), keep processing in background
             while not fut.done():
@@ -387,16 +393,19 @@ async def stream_search(city: str, count: int = 10, intent: str = "flip",
                     logger.info("Client disconnected during enrichment; continuing in background.")
                     # do not break; continue polling until future completes
                     continue
-                elapsed = int(time.time() - t0)
-                if elapsed and elapsed % 30 == 0:
-                    if not client_disconnected:
-                        yield {"event": "enrich_tick", "data": {"elapsed": elapsed, "requested": len(urls)}}
-                        if run_id:
-                            try:
-                                from dashboard import db as _db
-                                _db.add_run_event(run_id, "enrich_tick", json.dumps({"elapsed": elapsed, "requested": len(urls)}))
-                            except Exception:
-                                logger.exception("add_run_event failed")
+                now = time.time()
+                # Fire a tick every ~30s using elapsed-since-last-tick (robust to drift;
+                # the old `elapsed % 30 == 0` check could skip ticks).
+                if now - last_tick >= 30 and not client_disconnected:
+                    last_tick = now
+                    elapsed = int(now - t0)
+                    yield {"event": "enrich_tick", "data": {"elapsed": elapsed, "requested": len(urls)}}
+                    if run_id:
+                        try:
+                            from dashboard import db as _db
+                            _db.add_run_event(run_id, "enrich_tick", json.dumps({"elapsed": elapsed, "requested": len(urls)}))
+                        except Exception:
+                            logger.exception("add_run_event failed")
             # Retrieve result from the executor
             enriched_map = fut.result() if fut.done() else await fut
             enrich_stats = getattr(enricher, "last_stats", enrich_stats) or enrich_stats

@@ -23,8 +23,32 @@ TRIGGER_URL = "https://api.brightdata.com/datasets/v3/trigger"
 SNAPSHOT_URL = "https://api.brightdata.com/datasets/v3/snapshot/{snapshot_id}"
 ZILLOW_DETAIL_DATASET_ID = "gd_lfqkr8wm13ixtbd8f5"
 
-POLL_INTERVAL_SEC = 10
-POLL_TIMEOUT_SEC = 1200
+POLL_INTERVAL_SEC = int(os.environ.get("BRIGHT_DATA_POLL_INTERVAL_SEC", "10"))
+POLL_TIMEOUT_SEC = int(os.environ.get("BRIGHT_DATA_POLL_TIMEOUT_SEC", "1200"))
+# Cached records older than this are treated as stale (prices/comps move). 0 = no TTL.
+CACHE_TTL_DAYS = float(os.environ.get("BRIGHT_DATA_CACHE_TTL_DAYS", "14"))
+
+
+def _cache_fresh(rec: dict) -> bool:
+    """True if a cached record is within the TTL window (or TTL disabled)."""
+    if CACHE_TTL_DAYS <= 0:
+        return True
+    ts = rec.get("_cached_at")
+    if not ts:
+        return False  # legacy cache without a timestamp — refetch to be safe
+    return (time.time() - ts) < CACHE_TTL_DAYS * 86400.0
+
+
+def _filter_error_records(records: list):
+    """Split Bright Data records into (clean, num_errors). include_errors=true can
+    return {url, error, error_code,...} stubs that would otherwise pollute scoring."""
+    clean, errors = [], 0
+    for r in records:
+        if isinstance(r, dict) and (r.get("error") or r.get("error_code") or r.get("error_type")):
+            errors += 1
+            continue
+        clean.append(r)
+    return clean, errors
 
 
 def _load_token() -> str:
@@ -88,24 +112,40 @@ class BrightDataZillowEnricher:
             zpid = _zpid_from_url(u)
             if zpid and use_cache and _cache_path(zpid).exists():
                 try:
-                    results[zpid] = json.loads(_cache_path(zpid).read_text())
-                    cache_hits += 1
-                    continue
+                    rec = json.loads(_cache_path(zpid).read_text())
+                    if _cache_fresh(rec):
+                        results[zpid] = rec
+                        cache_hits += 1
+                        continue
+                    # else: stale — fall through and refetch
                 except Exception:
                     pass
             to_fetch.append(u)
 
         fresh_count = 0
+        errors_dropped = 0
+        self.last_error = None
         if to_fetch:
+            # _trigger may raise on quota/inactive (402/400) — let that propagate so
+            # the caller can surface a quota banner. Only the polling phase is made
+            # resilient, so a snapshot timeout still returns the cache hits we have.
             snapshot_id = self._trigger(to_fetch)
             print(f"  Bright Data snapshot triggered: {snapshot_id}", file=sys.stderr)
-            records = self._wait_for_snapshot(snapshot_id)
-            print(f"  Got {len(records)} enriched records", file=sys.stderr)
+            try:
+                records = self._wait_for_snapshot(snapshot_id)
+            except TimeoutError as e:
+                print(f"  snapshot timed out: {e}", file=sys.stderr)
+                self.last_error = str(e)
+                records = []
+            records, errors_dropped = _filter_error_records(records)
+            print(f"  Got {len(records)} enriched records ({errors_dropped} error stubs dropped)",
+                  file=sys.stderr)
 
             for rec in records:
                 zpid = str(rec.get("zpid") or _zpid_from_url(rec.get("url", "")) or "")
                 if not zpid:
                     continue
+                rec["_cached_at"] = time.time()
                 results[zpid] = rec
                 fresh_count += 1
                 try:
@@ -117,6 +157,7 @@ class BrightDataZillowEnricher:
             "attempted": len(urls),
             "from_cache": cache_hits,
             "fresh": fresh_count,
+            "errors_dropped": errors_dropped,
         }
         return results
 
