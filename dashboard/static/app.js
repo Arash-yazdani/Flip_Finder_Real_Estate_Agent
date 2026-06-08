@@ -119,15 +119,10 @@ function photoUrl(p) {
   return (p && typeof p === 'object') ? (p.url || '') : (p || '');
 }
 
-function setCarouselFrame(photoDiv) {
+// Update carousel counter + arrows without touching the background image
+function _carouselControls(photoDiv) {
   const photos = photoDiv._photos || [];
-  if (!photos.length) return;
   const idx = photoDiv._idx || 0;
-  // Fall back to dataset.photo (the server-validated best URL) when photos[idx] has no URL
-  const url = photoUrl(photos[idx]) || photoDiv.dataset.photo || '';
-  if (url) photoDiv.style.backgroundImage = `url('${url}')`;
-  photoDiv.classList.remove("placeholder");
-
   const prev = photoDiv.querySelector(".carousel-prev");
   const next = photoDiv.querySelector(".carousel-next");
   const counter = photoDiv.querySelector(".carousel-counter");
@@ -140,6 +135,33 @@ function setCarouselFrame(photoDiv) {
     if (next) next.hidden = true;
     if (counter) counter.hidden = true;
   }
+}
+
+// Set background + controls; used for arrow-click navigation
+function setCarouselFrame(photoDiv) {
+  const photos = photoDiv._photos || [];
+  if (!photos.length) return;
+  const idx = photoDiv._idx || 0;
+  const url = photoUrl(photos[idx]) || photoDiv.dataset.photo || '';
+  if (url) photoDiv.style.backgroundImage = `url('${url}')`;
+  photoDiv.classList.remove("placeholder");
+  _carouselControls(photoDiv);
+}
+
+// Probe a URL with an Image element; set as background only if it actually loads.
+// Falls back to fallbackUrl if the primary fails. Safe against cross-origin CDN blocks.
+function _probePhoto(photoDiv, primaryUrl, fallbackUrl) {
+  if (!primaryUrl) {
+    if (fallbackUrl) photoDiv.style.backgroundImage = `url('${fallbackUrl}')`;
+    return;
+  }
+  const img = new Image();
+  img.onload = () => { photoDiv.style.backgroundImage = `url('${primaryUrl}')`; };
+  img.onerror = () => {
+    photoDiv._bdFailed = true;  // flag so IntersectionObserver also avoids BD urls
+    if (fallbackUrl) photoDiv.style.backgroundImage = `url('${fallbackUrl}')`;
+  };
+  img.src = primaryUrl;
 }
 
 // Global delegated handler for carousel arrows (attached once at bottom of file)
@@ -220,15 +242,17 @@ function breakdownHtml(r) {
 function renderResults(city, baseCards) {
   currentCity = city;
   $("#results-grid").innerHTML = baseCards.map((c, i) => cardSkeleton(c, i)).join("");
-  // Initialize carousels for cards that already have a photos array (history loads)
+  // Stamp each card's discovery-phase photo URL onto the element immediately so
+  // upgradeCard (and the IntersectionObserver) can always fall back to it.
   baseCards.forEach(c => {
+    const photoDiv = $(`#card-${c.zpid} .card-photo`);
+    if (!photoDiv) return;
+    if (c.photo) photoDiv.dataset.photoOriginal = c.photo;
+    // Initialize carousels for cards that already have a photos array (history loads)
     if (c.photos && c.photos.length > 1) {
-      const photoDiv = $(`#card-${c.zpid} .card-photo`);
-      if (photoDiv) {
-        photoDiv._photos = c.photos;
-        photoDiv._idx = 0;
-        setCarouselFrame(photoDiv);
-      }
+      photoDiv._photos = c.photos;
+      photoDiv._idx = 0;
+      setCarouselFrame(photoDiv);
     }
   });
 }
@@ -250,23 +274,26 @@ function upgradeCard(report) {
   }
   const target = $(`#card-${report.zpid}`);
   const photoDiv = target.querySelector(".card-photo");
+  // Preserve the discovery-phase Skolit thumbnail URL as the ultimate fallback.
+  // dataset.photoOriginal is written once and never overwritten.
+  if (!photoDiv.dataset.photoOriginal) {
+    photoDiv.dataset.photoOriginal = photoDiv.dataset.photo || '';
+  }
+  const skolit_url = photoDiv.dataset.photoOriginal;
+
   if (report.photos && report.photos.length) {
     photoDiv._photos = report.photos;
     photoDiv._idx = 0;
     photoDiv.dataset.photos = JSON.stringify(report.photos);
-    // report.photo is the server-validated best URL (string); photos[0] may be an object
     photoDiv.dataset.photo = report.photo || photoUrl(report.photos[0]) || '';
-    // Pre-set background from the validated best URL so the card never goes black
-    // even if photos[0] has a bad/missing URL
-    if (report.photo) {
-      photoDiv.style.backgroundImage = `url('${report.photo}')`;
-    }
-    setCarouselFrame(photoDiv);  // overrides with photos[0] if that URL is valid
     photoDiv.classList.remove("placeholder");
+    _carouselControls(photoDiv);  // show counter/arrows immediately (bg set async below)
+    // Probe the Bright Data URL; if it won't load, keep the Skolit thumbnail
+    _probePhoto(photoDiv, report.photo || photoUrl(report.photos[0]) || '', skolit_url);
   } else if (report.photo) {
     photoDiv.dataset.photo = report.photo;
-    photoDiv.style.backgroundImage = `url('${report.photo}')`;
     photoDiv.classList.remove("placeholder");
+    _probePhoto(photoDiv, report.photo, skolit_url);
   }
   const row = target.querySelector(".verdict-row");
   const score = _primaryScore(report, currentIntent);
@@ -843,8 +870,17 @@ setInterval(fetchActiveRuns, 5000);
             }
           }
         } catch(_){ }
+        // If upgradeCard already determined BD URLs fail for this element, use Skolit fallback
+        if (el._bdFailed) url = el.dataset.photoOriginal || el.dataset.photo || url;
         if (url) {
-          el.style.backgroundImage = `url('${url}')`;
+          const fallback = el.dataset.photoOriginal || '';
+          const isBdUrl = url !== fallback;
+          if (isBdUrl) {
+            // Probe before committing — avoids overwriting a working Skolit bg with a broken BD url
+            _probePhoto(el, url, fallback || null);
+          } else {
+            el.style.backgroundImage = `url('${url}')`;
+          }
           el.classList.remove('placeholder');
         }
         io.unobserve(el);
