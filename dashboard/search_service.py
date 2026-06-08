@@ -448,6 +448,32 @@ async def stream_search(city: str, count: int = 10, intent: str = "flip",
         return r.flip_score
     scored.sort(key=_sort_key, reverse=True)
 
+    # ── Honest market summary over the WHOLE scanned pool ─────────────────────
+    # So we can tell the user "scanned N, found X real opportunities" rather than
+    # always implying the top results are good deals.
+    strong   = sum(1 for s in scored if s["report"].verdict == "STRONG_FLIP")
+    marginal = sum(1 for s in scored if s["report"].verdict == "MARGINAL_FLIP")
+    rental   = sum(1 for s in scored if s["report"].verdict == "RENTAL_PLAY")
+    if intent == "rent":
+        opportunities = sum(1 for s in scored
+                            if s["report"].rental_verdict in ("GOOD_RENTAL", "DECENT_RENTAL"))
+    else:
+        opportunities = strong + marginal + (rental if intent != "flip" else 0)
+    if strong:
+        market_quality = "strong"
+    elif opportunities:
+        market_quality = "some"
+    else:
+        market_quality = "none"
+    market_summary = {
+        "scanned": len(scored),
+        "strong": strong,
+        "marginal": marginal,
+        "rental": rental,
+        "opportunities": opportunities,
+        "quality": market_quality,
+    }
+
     # Trim to top `count` after global ranking
     top_scored = scored[:count]
 
@@ -527,6 +553,7 @@ async def stream_search(city: str, count: int = 10, intent: str = "flip",
         "slug": slug,
         "total": len(serialized),
         "queried_at": payload["queried_at"],
+        "market": market_summary,
         "summary": {
             "enriched": len(enriched_map),
             "requested": len(urls),

@@ -258,6 +258,16 @@ a:hover { color: var(--amber-hi); }
 }
 @keyframes spin { to { transform: rotate(360deg); } }
 
+.market-note {
+  margin: 0 0 1rem; padding: 0.6rem 0.9rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.82rem; font-family: var(--mono);
+  border: 1px solid var(--border);
+}
+.market-note.market-strong { background: #14271a; color: #8ec98e; border-color: #2a4a2a; }
+.market-note.market-some   { background: #2a2414; color: #d8be6e; border-color: #4a431a; }
+.market-note.market-none   { background: #2a1717; color: #d89a9a; border-color: #4a2a2a; }
+
 .save-city {
   background: var(--surface-2);
   border: 1px solid var(--border);

@@ -126,6 +126,21 @@ def _rehab_psf(year_built: Optional[int]) -> int:
     return REHAB_PSF_BY_AGE[-1][1]
 
 
+# --- ARV post-rehab uplift over comp/as-is value, by renovation signal ---
+# A fully renovated home commands a premium over the median (un-renovated) comp.
+# Turnkey ≈ already at market (no flip upside); fixer ≈ meaningful transformation.
+ARV_UPLIFT_BY_SIGNAL = {
+    "fixer":    1.13,
+    "neutral":  1.07,
+    "turnkey":  1.02,
+    "teardown": 1.05,  # teardown short-circuits to its own verdict; uplift unused
+}
+
+
+def _arv_uplift(rehab_signal: str) -> float:
+    return ARV_UPLIFT_BY_SIGNAL.get(rehab_signal, 1.07)
+
+
 def _classify_description(desc: str) -> str:
     if not desc:
         return "neutral"
@@ -203,34 +218,62 @@ class FlipperEvaluator:
         # --- Comp analysis ---
         cs: CompSet = analyze_comps(enriched, subject_home_type=home_type)
 
-        # --- ARV ---
-        # Prefer Bright Data's zestimate; fall back to the one RapidAPI already gave us
+        # --- Renovation signal (classified before ARV: the ARV uplift depends on it) ---
+        rehab_signal = _classify_description(description)
+        arv_uplift = _arv_uplift(rehab_signal)
+
+        # --- ARV (After-Repair Value) ---
+        # IMPORTANT: Zillow's zestimate is the CURRENT, as-is market value — NOT the
+        # post-renovation value. Using it directly as ARV (the old behavior) made
+        # ARV ≈ list price → no spread → NO_DEAL for almost everything.
+        # We now treat the zestimate as the *as-is* value (discount signal + rental),
+        # and build ARV from renovated comps, or from the as-is value × a rehab uplift
+        # when comps are unavailable.
         zest = enriched.get("zestimate") or getattr(base_prop, "zestimate", 0) or 0
+        as_is_value = int(zest) if zest else price
+
         arv: int = 0
         arv_source = "fallback"
         arv_confidence = "none"
-        if zest and zest >= price * 0.85:
-            arv = int(zest)
-            arv_source = "zestimate"
-            arv_confidence = "high"
-        else:
-            comp_arv = estimate_arv(cs, sqft) if sqft else None
-            if comp_arv:
-                arv = comp_arv
-                arv_source = "comps"
-                arv_confidence = cs.confidence
-            elif sqft:
-                arv = int(self.fallback_psf * sqft * 1.05)
-                arv_source = "fallback"
-                arv_confidence = "low"
-                risks.append(f"ARV used fallback ${int(self.fallback_psf)}/sqft — no zestimate, no comps")
-            else:
-                arv = int(price * 1.10)
-                arv_confidence = "none"
-                risks.append("No sqft data — ARV is a flat 10% bump (unreliable)")
 
-        # --- Rehab ---
-        rehab_signal = _classify_description(description)
+        comp_arv = estimate_arv(cs, sqft, post_rehab_uplift=arv_uplift) if sqft else None
+        if comp_arv and cs.comps:
+            arv = comp_arv
+            arv_source = "comps"
+            arv_confidence = cs.confidence
+        elif zest:
+            # No usable comps — approximate ARV from the as-is zestimate + rehab uplift.
+            arv = int(zest * arv_uplift)
+            arv_source = "zestimate_uplift"
+            arv_confidence = "medium" if rehab_signal in ("fixer", "neutral") else "low"
+        elif sqft:
+            arv = int(self.fallback_psf * sqft * arv_uplift)
+            arv_source = "fallback"
+            arv_confidence = "low"
+            risks.append(f"ARV used fallback ${int(self.fallback_psf)}/sqft — no zestimate, no comps")
+        else:
+            arv = int(price * 1.10)
+            arv_confidence = "none"
+            risks.append("No sqft data — ARV is a flat 10% bump (unreliable)")
+
+        # Guard ranking trust: a couple of noisy/mismatched comps can inflate ARV to
+        # an implausible multiple of list. Cap the spread by comp confidence so thin
+        # comp sets can't manufacture fake "STRONG_FLIP" deals. The cap also adds a
+        # risk flag, denting the score so capped deals don't unfairly top the ranking.
+        if arv_source == "comps" and price:
+            cap_mult = {"high": 2.0, "medium": 1.6, "low": 1.4}.get(arv_confidence, 1.4)
+            if arv > price * cap_mult:
+                arv = int(price * cap_mult)
+                risks.append(
+                    f"ARV spread capped at {cap_mult}x list ({arv_confidence}-confidence comps)"
+                )
+
+        # Motivated-seller / discount signal: list price below the as-is value.
+        # This is an OPPORTUNITY (negotiation/equity upside), not a risk — it feeds a
+        # small score bonus below rather than the risk penalty.
+        listed_below_as_is = bool(zest and price <= as_is_value * 0.92)
+
+        # --- Rehab cost (rehab_signal already classified above) ---
         psf = _rehab_psf(year_built)
         rehab = int((sqft or 1500) * psf)
         if rehab_signal == "teardown":
@@ -329,7 +372,8 @@ class FlipperEvaluator:
         elif passes_70 and profit_margin_pct >= 15:
             verdict = "STRONG_FLIP"
             verdict_reason = f"Passes 70% rule with {profit_margin_pct}% margin (${profit:,})"
-        elif profit > 25_000 and profit_margin_pct >= 8:
+        elif profit > 20_000 and profit_margin_pct >= 7:
+            # Balanced calibration: a real (if slim) spread still surfaces as a flip.
             verdict = "MARGINAL_FLIP"
             verdict_reason = f"Slim margin {profit_margin_pct}% — flip works but needs tight execution"
         elif monthly_cash_flow >= 250 and cap_rate >= 5:
@@ -354,9 +398,11 @@ class FlipperEvaluator:
 
         # Adjust for risk count
         score = max(0, score - 3 * len(risks))
-        # Adjust for motivated-seller signals (DOM, price cuts)
+        # Adjust for motivated-seller signals (DOM, price cuts, listed below as-is value)
         if dom >= 90 and verdict in ("MARGINAL_FLIP", "NO_DEAL"):
             score += 5  # negotiation upside
+        if listed_below_as_is and verdict in ("STRONG_FLIP", "MARGINAL_FLIP", "NO_DEAL"):
+            score += 5  # priced below as-is value = equity/negotiation upside
         score = round(min(100, score), 1)
 
         # --- Comp summary lines for display ---

@@ -57,20 +57,26 @@ def analyze_comps(enriched: dict, subject_home_type: Optional[str] = None) -> Co
     cs = CompSet()
     nearby = _parse_nearby(enriched.get("nearbyHomes"))
 
+    # Property types that should never be used as comps for a residential flip
+    # (they distort $/sqft badly — verified: MULTI_FAMILY listings were polluting
+    # SINGLE_FAMILY subjects in real Bright Data records).
+    NON_COMP_TYPES = {"MULTI_FAMILY", "LOT", "LAND", "MANUFACTURED", "MOBILE", "APARTMENT"}
+
     for h in nearby:
         price = h.get("price") or h.get("unformattedPrice") or 0
         sqft = h.get("livingArea") or h.get("area") or 0
         if not (price and sqft and price > 50_000 and sqft > 200):
             continue
-        # If subject is a CONDO, prefer condo comps (skip mismatch)
-        if subject_home_type:
-            ht = (h.get("homeType") or "").upper()
-            if ht and subject_home_type.upper() != ht:
-                # Allow SINGLE_FAMILY/TOWNHOUSE cross-matching; skip strict CONDO mismatch
-                if subject_home_type.upper() == "CONDO" and ht != "CONDO":
-                    continue
-                if subject_home_type.upper() in ("SINGLE_FAMILY", "TOWNHOUSE") and ht == "CONDO":
-                    continue
+        ht = (h.get("homeType") or "").upper()
+        subj = (subject_home_type or "").upper()
+        # Drop fundamentally different property types outright.
+        if ht in NON_COMP_TYPES and subj not in NON_COMP_TYPES:
+            continue
+        # CONDO comps only for CONDO subjects, and vice-versa.
+        if subj == "CONDO" and ht and ht != "CONDO":
+            continue
+        if subj in ("SINGLE_FAMILY", "TOWNHOUSE") and ht == "CONDO":
+            continue
         addr = h.get("streetAddress") or h.get("address", {}).get("streetAddress") if isinstance(h.get("address"), dict) else h.get("streetAddress", "?")
         cs.comps.append(Comp(
             address=addr or "?",

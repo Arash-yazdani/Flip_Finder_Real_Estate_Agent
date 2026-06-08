@@ -100,6 +100,30 @@ function timeAgo(iso) {
 function setStatus(msg) { $("#status-line").textContent = msg || ""; }
 function showSpinner() { const s = $("#enrich-spinner"); if (s) s.hidden = false; }
 function hideSpinner() { const s = $("#enrich-spinner"); if (s) s.hidden = true; }
+
+// Honest market-quality note shown after a run completes.
+function renderMarketNote(m) {
+  const el = $("#market-note");
+  if (!el) return;
+  if (!m || m.scanned == null) { el.hidden = true; return; }
+  let cls = "market-none", msg = "";
+  if (m.quality === "strong") {
+    cls = "market-strong";
+    msg = `🟢 Scanned ${m.scanned} listings — found ${m.strong} strong` +
+          (m.marginal ? ` + ${m.marginal} marginal` : "") + ` flip opportunit${(m.strong + m.marginal) === 1 ? "y" : "ies"}.`;
+  } else if (m.quality === "some") {
+    cls = "market-some";
+    msg = `🟡 Scanned ${m.scanned} listings — no strong flips, but ${m.opportunities} ` +
+          `marginal/rental opportunit${m.opportunities === 1 ? "y" : "ies"}. Showing the best of the market.`;
+  } else {
+    cls = "market-none";
+    msg = `🔴 Scanned ${m.scanned} listings — none met the deal criteria in this market. ` +
+          `Showing the closest near-misses (ranked best-first), not recommended buys.`;
+  }
+  el.className = `market-note ${cls}`;
+  el.textContent = msg;
+  el.hidden = false;
+}
 function showQuota(text) {
   const el = $("#quota-banner-text");
   // linkify brightdata.com/cp so the admin can click straight through
@@ -379,6 +403,7 @@ document.addEventListener("click", async (e) => {
 // --- search ---
 async function startSearch(city, count, intent) {
   hideQuota();
+  renderMarketNote(null);  // clear any stale market note from a previous run
   currentIntent = intent;
 
   // Preflight: refresh quota chip and short-circuit cleanly if already capped.
@@ -443,6 +468,7 @@ async function startSearch(city, count, intent) {
       ? ` (${s.from_cache} cached, ${s.fresh} fresh, $${(s.cost_usd || 0).toFixed(4)})`
       : "";
     setStatus(`✅ Done — ${d.total} ranked. Enriched ${s.enriched}/${s.requested}${cacheNote}.`);
+    renderMarketNote(d.market);
     hideSpinner();
     es.close();
     $("#search-btn").disabled = false;
