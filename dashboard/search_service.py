@@ -56,6 +56,8 @@ def _base_card(prop) -> dict:
         "home_type": prop.property_type,
         "photo": getattr(prop, "img_src", None),  # may be None; frontend uses placeholder
         "link": getattr(prop, "link", ""),
+        "zestimate": getattr(prop, "zestimate", 0) or 0,
+        "days_on_zillow": getattr(prop, "days_on_zillow", 0) or 0,
         "enriched": False,
     }
 
@@ -184,7 +186,11 @@ def _discover(location: str):
             insurance_annual=p["insurance_annual"],
         )
         prop.link = p.get("link", "")
-        prop.img_src = p.get("img_src") or p.get("photo")  # may be None from current scraper
+        prop.img_src = p.get("img_src") or p.get("photo")
+        # Carry discovery-phase signals from RapidAPI (available before Bright Data)
+        prop.zestimate = p.get("zestimate") or 0
+        prop.days_on_zillow = p.get("days_on_zillow") or 0
+        prop.tax_assessed_value = p.get("tax_assessed_value") or 0
         props.append(prop)
     return props, quota_signal
 
@@ -268,19 +274,28 @@ async def stream_search(city: str, count: int = 10, intent: str = "flip",
 
     # Filter sqft=0
     props = [p for p in props if p.sqft and p.sqft > 0]
-    props.sort(key=lambda p: p.price)
 
-    # Widen candidate pool moderately for scoring quality, but with a lower
-    # floor than before to avoid 20-record minimum on small "top 5" requests.
+    # Rank candidates by discount-to-zestimate (best deals first).
+    # Properties without a zestimate sort by price (cheapest first).
+    def _discovery_rank(p):
+        zest = getattr(p, "zestimate", 0) or 0
+        if zest >= 10_000:
+            return p.price / zest   # lower ratio = bigger discount = better deal
+        return 0.95  # no zestimate → treat as roughly at-value
+
+    props_with_link = sorted(
+        [p for p in props if getattr(p, "link", "")],
+        key=_discovery_rank,
+    )
+
     if enrich_limit is not None:
         enrich_n = enrich_limit
     else:
         enrich_n = max(count, 10)
-    enrich_n = min(enrich_n, 30, len(props))
+    enrich_n = min(enrich_n, 50, len(props_with_link))
 
-    candidates = [p for p in props if getattr(p, "link", "")][:enrich_n]
+    candidates = props_with_link[:enrich_n]
     urls = [p.link for p in candidates]
-    to_enrich = candidates  # alias for legacy name below
 
     # Discovery emits the candidate pool so the frontend can render skeletons,
     # but the final displayed set will be the top `count` by score (re-sorted client-side).
@@ -343,7 +358,7 @@ async def stream_search(city: str, count: int = 10, intent: str = "flip",
             if q:
                 yield {"event": "quota", "data": {
                     "api": "bright_data",
-                    "message": "API capacity reached — please contact your administrator to add credits."
+                    "message": q,
                 }}
             else:
                 enrich_error = str(e)

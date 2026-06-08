@@ -188,7 +188,7 @@ class FlipperEvaluator:
         year_built = enriched.get("yearBuilt")
         if not year_built and base_prop.year_built and base_prop.year_built != 1990:
             year_built = base_prop.year_built
-        dom = int(enriched.get("daysOnZillow") or 0)
+        dom = int(enriched.get("daysOnZillow") or getattr(base_prop, "days_on_zillow", 0) or 0)
         list_psf = round(price / sqft, 2) if sqft else 0.0
         description = (enriched.get("description") or "").strip()
 
@@ -204,7 +204,8 @@ class FlipperEvaluator:
         cs: CompSet = analyze_comps(enriched, subject_home_type=home_type)
 
         # --- ARV ---
-        zest = enriched.get("zestimate") or 0
+        # Prefer Bright Data's zestimate; fall back to the one RapidAPI already gave us
+        zest = enriched.get("zestimate") or getattr(base_prop, "zestimate", 0) or 0
         arv: int = 0
         arv_source = "fallback"
         arv_confidence = "none"
