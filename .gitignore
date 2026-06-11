@@ -45,3 +45,7 @@ debug_last_api_response.json
 data/dashboard/admin.db
 data/dashboard/admin.db-shm
 data/dashboard/admin.db-wal
+
+# Scraped third-party data & runtime cache — local only, rebuilt at runtime
+data/bright_data_cache/
+data/dashboard/history/

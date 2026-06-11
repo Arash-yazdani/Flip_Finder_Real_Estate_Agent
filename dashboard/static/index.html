@@ -13,14 +13,16 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:image" content="/static/social_preview.png">
   <link rel="image_src" href="/static/social_preview.png">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+          integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
   <link rel="stylesheet" href="/static/styles.css">
 </head>
-<body>
+<body class="app-body">
   <header class="topbar">
-    <button id="menu-toggle" class="link-btn menu-toggle" aria-label="Open menu">☰</button>
     <div class="brand">Real Estate Analyzer</div>
     <nav class="nav">
-      <button id="nav-archive" class="nav-btn">Archive ▾</button>
       <button id="nav-favorites" class="nav-btn">Favorites ★</button>
     </nav>
     <div class="status">
@@ -30,17 +32,40 @@
       <button id="logout-btn" class="link-btn">Sign out</button>
     </div>
   </header>
-  <style>
-    .quota-chip {
-      display: inline-flex; align-items: center; gap: 6px;
-      padding: 3px 10px; border-radius: 10px;
-      background: #1a2a1a; color: #8ec98e; border: 1px solid #2a4a2a;
-      font-size: 12px; font-variant-numeric: tabular-nums;
-    }
-    .quota-chip.warn  { background: #3a2a1a; color: #d8a36e; border-color: #5a3a1a; }
-    .quota-chip.empty { background: #3a1a1a; color: #d86e6e; border-color: #5a1a1a; }
-    .quota-chip .quota-email { opacity: .7; font-size: 11px; }
-  </style>
+
+  <!-- Row 2 — horizontal search toolbar -->
+  <div class="search-toolbar">
+    <form id="search-form" class="st-form">
+      <input type="text" id="city" class="st-city" placeholder="Enter a city — e.g. Sausalito, CA" required>
+      <label class="st-field"><span>Results</span>
+        <input type="number" id="count" value="10" min="1" max="30">
+      </label>
+      <label class="st-field"><span>Intent</span>
+        <select id="intent">
+          <option value="flip">Flip</option>
+          <option value="rent">Rent</option>
+          <option value="both" selected>Both (Flip + Rent)</option>
+        </select>
+      </label>
+      <button type="submit" id="search-btn" class="st-run">Run Analysis</button>
+    </form>
+    <div class="st-menus">
+      <div class="dropdown">
+        <button id="archive-toggle" class="nav-btn" type="button" aria-haspopup="true" aria-expanded="false">Archive ▾</button>
+        <div id="archive-menu" class="dropdown-menu" hidden>
+          <div class="dropdown-head">Recent searches</div>
+          <ul id="history-list" class="history-list"></ul>
+        </div>
+      </div>
+      <div class="dropdown">
+        <button id="active-toggle" class="nav-btn" type="button" aria-haspopup="true" aria-expanded="false" hidden>Active Runs <span id="active-badge" class="badge">0</span></button>
+        <div id="active-menu" class="dropdown-menu" hidden>
+          <div class="dropdown-head">Active runs</div>
+          <ul id="active-runs" class="active-runs"></ul>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- Quota banner (hidden by default) -->
   <div id="quota-banner" class="quota-banner" hidden>
@@ -49,41 +74,163 @@
   </div>
 
   <main class="layout">
-    <aside class="sidebar">
-      <h2>New Search</h2>
-      <form id="search-form">
-        <label>City
-          <input type="text" id="city" placeholder="Sausalito, CA" required>
-        </label>
-        <label>Top N
-          <input type="number" id="count" value="10" min="1" max="30">
-        </label>
-        <label>Intent
-          <select id="intent">
-            <option value="flip">Flip</option>
-            <option value="rent">Rent</option>
-            <option value="both" selected>Both (Flip + Rent)</option>
+    <section class="results">
+      <div id="market-note" class="market-note" hidden></div>
+
+      <div id="filter-bar" class="filter-bar" hidden>
+        <label class="fb-field">Sort
+          <select id="sort-by">
+            <option value="best">Best match</option>
+            <option value="flip">Flip score</option>
+            <option value="rent">Rental score</option>
+            <option value="price-asc">Price ↑</option>
+            <option value="price-desc">Price ↓</option>
+            <option value="psf">$/sqft ↑</option>
+            <option value="profit">Profit %</option>
           </select>
         </label>
-        <button type="submit" id="search-btn">Run Analysis</button>
-      </form>
-
-      <h3 id="active-heading">Active Runs</h3>
-      <ul id="active-runs" class="active-runs"></ul>
-
-      <h3 id="archive-heading">Archive — Recent Searches</h3>
-      <ul id="history-list" class="history-list"></ul>
-    </aside>
-    <button id="sidebar-collapse" class="sidebar-collapse" aria-label="Collapse sidebar">‹</button>
-
-    <section class="results">
-      <div class="results-header">
-        <span id="enrich-spinner" class="enrich-spinner" hidden></span>
-        <div id="status-line" class="status-line"></div>
-        <button id="save-city-btn" class="save-city" hidden>☆ Save this city</button>
+        <label class="fb-field">Beds
+          <select id="filter-beds">
+            <option value="0">Any</option><option value="1">1+</option>
+            <option value="2">2+</option><option value="3">3+</option>
+            <option value="4">4+</option><option value="5">5+</option>
+          </select>
+        </label>
+        <label class="fb-field">Baths
+          <select id="filter-baths">
+            <option value="0">Any</option><option value="1">1+</option>
+            <option value="2">2+</option><option value="3">3+</option>
+          </select>
+        </label>
+        <label class="fb-field">Type
+          <select id="filter-type">
+            <option value="">Any</option><option value="house">House</option>
+            <option value="condo">Condo</option><option value="townhouse">Townhouse</option>
+            <option value="multi">Multi-family</option>
+          </select>
+        </label>
+        <label class="fb-field">Min $
+          <input type="number" id="filter-pmin" placeholder="0" min="0" step="50000">
+        </label>
+        <label class="fb-field">Max $
+          <input type="number" id="filter-pmax" placeholder="Any" min="0" step="50000">
+        </label>
+        <div class="fb-right">
+          <span id="enrich-spinner" class="enrich-spinner" hidden></span>
+          <span id="status-line" class="status-line"></span>
+          <div id="view-toggle" class="view-toggle" hidden role="group" aria-label="List or map view">
+            <button class="vt-btn active" data-view="list">List</button>
+            <button class="vt-btn" data-view="map" aria-label="Map view" title="Map view">
+              <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor"
+                   stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M9 4 3 6v14l6-2 6 2 6-2V4l-6 2-6-2z"/>
+                <path d="M9 4v14"/><path d="M15 6v14"/>
+              </svg>
+            </button>
+          </div>
+          <button id="save-city-btn" class="save-city" hidden>☆ Save this city</button>
+          <button id="filter-reset" class="fb-reset" type="button">Reset</button>
+        </div>
       </div>
-      <div id="market-note" class="market-note" hidden></div>
-      <div id="results-grid" class="results-grid"></div>
+
+      <!-- Scout loader: shown while a run is in progress; results stay hidden until complete -->
+      <div id="scout-loader" class="scout-loader" hidden>
+        <svg viewBox="0 0 640 212" role="img" aria-label="Cartoon car scouting houses with binoculars"
+             xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <g id="scout-house-row">
+              <polygon points="8,116 54,86 100,116" fill="#9DB7D6"/>
+              <rect x="16" y="116" width="76" height="60" fill="#D9E7F6"/>
+              <rect x="26" y="128" width="16" height="13" fill="#FFFFFF"/>
+              <rect x="66" y="128" width="16" height="13" fill="#FFFFFF"/>
+              <rect x="46" y="146" width="14" height="30" fill="#E8A020"/>
+              <rect x="124" y="146" width="8" height="30" fill="#A98467"/>
+              <circle cx="128" cy="132" r="17" fill="#9CC487"/>
+              <polygon points="152,101 202,68 252,101" fill="#D9A077"/>
+              <rect x="160" y="101" width="84" height="75" fill="#F6E4D5"/>
+              <rect x="174" y="116" width="18" height="15" fill="#FFFFFF"/>
+              <rect x="212" y="116" width="18" height="15" fill="#FFFFFF"/>
+              <rect x="196" y="146" width="16" height="30" fill="#8A5A3B"/>
+              <polygon points="274,124 312,98 350,124" fill="#A3C48C"/>
+              <rect x="280" y="124" width="64" height="52" fill="#E4F0DB"/>
+              <rect x="290" y="134" width="13" height="11" fill="#FFFFFF"/>
+              <rect x="304" y="150" width="13" height="26" fill="#E8A020"/>
+              <rect x="372" y="148" width="7" height="28" fill="#A98467"/>
+              <circle cx="375" cy="134" r="15" fill="#9CC487"/>
+              <polygon points="396,108 450,76 504,108" fill="#B5A3D9"/>
+              <rect x="404" y="108" width="92" height="68" fill="#ECE3F7"/>
+              <rect x="418" y="122" width="18" height="14" fill="#FFFFFF"/>
+              <rect x="452" y="122" width="18" height="14" fill="#FFFFFF"/>
+              <rect x="462" y="146" width="15" height="30" fill="#E8A020"/>
+              <ellipse cx="548" cy="170" rx="22" ry="10" fill="#9CC487"/>
+              <ellipse cx="582" cy="172" rx="16" ry="8" fill="#B5D6A4"/>
+            </g>
+          </defs>
+
+          <circle cx="592" cy="34" r="20" fill="#FFE3B3"/>
+          <g class="scout-cloud">
+            <ellipse cx="140" cy="38" rx="26" ry="10" fill="#EFF3F8"/>
+            <ellipse cx="165" cy="31" rx="18" ry="9" fill="#EFF3F8"/>
+          </g>
+          <g class="scout-cloud c2">
+            <ellipse cx="420" cy="52" rx="22" ry="9" fill="#F3F6FA"/>
+          </g>
+
+          <g class="scout-houses">
+            <use href="#scout-house-row" x="0"/>
+            <use href="#scout-house-row" x="640"/>
+          </g>
+
+          <rect x="0" y="176" width="640" height="30" fill="#E5E9EF"/>
+          <line class="scout-road-line" x1="0" y1="191" x2="640" y2="191" stroke="#FFFFFF" stroke-width="4"/>
+
+          <g class="scout-car">
+            <circle class="scout-puff"    cx="206" cy="158" r="5" fill="#C9CFD8"/>
+            <circle class="scout-puff p2" cx="202" cy="150" r="4" fill="#D5DAE2"/>
+            <circle class="scout-puff p3" cx="208" cy="165" r="4" fill="#C9CFD8"/>
+            <rect x="236" y="118" width="60" height="30" rx="9" fill="#F5B840"/>
+            <rect x="242" y="123" width="48" height="20" rx="6" fill="#DFF0FA"/>
+            <circle cx="272" cy="133" r="8" fill="#F2C9A0"/>
+            <rect x="281" y="129" width="9" height="7" rx="2" fill="#2A2F3A"/>
+            <circle cx="283" cy="132" r="3.6" fill="#2A2F3A"/>
+            <circle cx="291" cy="132" r="3.6" fill="#2A2F3A"/>
+            <g class="scout-glint" stroke="#E8A020" stroke-width="2" stroke-linecap="round">
+              <line x1="299" y1="126" x2="305" y2="122"/>
+              <line x1="300" y1="132" x2="307" y2="132"/>
+            </g>
+            <rect x="210" y="142" width="124" height="28" rx="10" fill="#E8A020"/>
+            <rect x="318" y="150" width="14" height="7" rx="3" fill="#FFF3DC"/>
+            <g>
+              <circle cx="240" cy="170" r="11" fill="#2A2F3A"/>
+              <g class="scout-wheel-spokes" stroke="#9AA3B2" stroke-width="2">
+                <line x1="240" y1="162" x2="240" y2="178"/>
+                <line x1="232" y1="170" x2="248" y2="170"/>
+              </g>
+              <circle cx="240" cy="170" r="3" fill="#9AA3B2"/>
+            </g>
+            <g>
+              <circle cx="304" cy="170" r="11" fill="#2A2F3A"/>
+              <g class="scout-wheel-spokes" stroke="#9AA3B2" stroke-width="2">
+                <line x1="304" y1="162" x2="304" y2="178"/>
+                <line x1="296" y1="170" x2="312" y2="170"/>
+              </g>
+              <circle cx="304" cy="170" r="3" fill="#9AA3B2"/>
+            </g>
+          </g>
+        </svg>
+        <div class="scout-caption">Scouting your location…</div>
+        <div class="scout-sub">Give me a couple of minutes for final results</div>
+        <div id="scout-progress" class="scout-progress" aria-live="polite"></div>
+      </div>
+
+      <div class="results-split">
+        <div class="results-list">
+          <div id="results-grid" class="results-grid"></div>
+        </div>
+        <div class="map-pane" id="map-pane">
+          <div id="map"></div>
+        </div>
+      </div>
     </section>
   </main>
 
@@ -100,7 +247,6 @@
     </div>
   </div>
 
-  <button id="fab-run" class="fab" title="Run Analysis" aria-label="Run Analysis">Run</button>
   <script src="/static/app.js"></script>
 </body>
 </html>

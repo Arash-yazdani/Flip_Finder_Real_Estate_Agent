@@ -56,6 +56,8 @@ def _base_card(prop) -> dict:
         "home_type": prop.property_type,
         "photo": getattr(prop, "img_src", None),  # may be None; frontend uses placeholder
         "link": getattr(prop, "link", ""),
+        "latitude": getattr(prop, "latitude", None),
+        "longitude": getattr(prop, "longitude", None),
         "zestimate": getattr(prop, "zestimate", 0) or 0,
         "days_on_zillow": getattr(prop, "days_on_zillow", 0) or 0,
         "enriched": False,
@@ -129,6 +131,8 @@ def _flip_report_to_dict(a, prop, enriched) -> dict:
         "link": getattr(prop, "link", ""),
         "photo": photo,
         "photos": photos_list,
+        "latitude": (enriched.get("latitude") if enriched else None) or getattr(prop, "latitude", None),
+        "longitude": (enriched.get("longitude") if enriched else None) or getattr(prop, "longitude", None),
         "enriched": bool(enriched),
         "verdict": a.verdict,
         "verdict_reason": a.verdict_reason,
@@ -212,6 +216,9 @@ def _discover(location: str):
         )
         prop.link = p.get("link", "")
         prop.img_src = p.get("img_src") or p.get("photo")
+        # Geo coords for map pins (available immediately from RapidAPI discovery)
+        prop.latitude = p.get("latitude")
+        prop.longitude = p.get("longitude")
         # Carry discovery-phase signals from RapidAPI (available before Bright Data)
         prop.zestimate = p.get("zestimate") or 0
         prop.days_on_zillow = p.get("days_on_zillow") or 0

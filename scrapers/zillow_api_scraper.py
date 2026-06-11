@@ -275,6 +275,12 @@ class ZillowAPIScraper:
                     )
                     prop.link = link
                     prop.img_src = photo
+                    # Geo coords for map pins (Skolit returns these per listing; try several names)
+                    _loc = item.get("location") if isinstance(item.get("location"), dict) else {}
+                    prop.latitude = (item.get("latitude") or item.get("lat") or
+                                     _loc.get("latitude") or _loc.get("lat"))
+                    prop.longitude = (item.get("longitude") or item.get("lng") or
+                                      item.get("lon") or _loc.get("longitude") or _loc.get("lng"))
                     # Discovery-phase signals (used by evaluator as fallback when BD fails)
                     prop.zestimate = (item.get("zestimate") or item.get("zestimateAmount") or 0)
                     prop.days_on_zillow = (item.get("daysOnZillow") or item.get("daysOnMarket") or

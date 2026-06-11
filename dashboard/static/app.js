@@ -81,6 +81,27 @@ function fmtMoney(n) {
 }
 function fmtNum(n) { return n == null ? "—" : Math.round(n).toLocaleString(); }
 function fmtPct(n) { return n == null ? "—" : `${n}%`; }
+// Abbreviated price for map pins / chips: $459K, $1.6M
+function fmtPriceShort(n) {
+  if (n == null) return "—";
+  const a = Math.abs(n), s = n < 0 ? "-" : "";
+  if (a >= 1e6) return `${s}$${(a / 1e6).toFixed(2).replace(/\.?0+$/, "")}M`;
+  if (a >= 1e3) return `${s}$${Math.round(a / 1e3)}K`;
+  return `${s}$${Math.round(a)}`;
+}
+// Punchy one-line deal headline for the compact card front (intent-aware).
+function headlineHtml(r, intent) {
+  if (intent === "rent") {
+    const cf = r.monthly_cash_flow;
+    if (cf == null) return "";
+    return `<span class="hl ${cf >= 0 ? "pos" : "neg"}">${fmtMoney(cf)}/mo</span> cash flow · ${fmtPct(r.cap_rate_pct)} cap`;
+  }
+  const p = r.projected_profit;
+  if (p == null) return "";
+  const cls = p >= 0 ? "pos" : "neg";
+  const rule = r.passes_70_rule ? "✓ 70% rule" : "✗ 70% rule";
+  return `<span class="hl ${cls}">${fmtMoney(p)}</span> profit · ${fmtPct(r.profit_margin_pct)} · ${rule}`;
+}
 function timeAgo(iso) {
   if (!iso) return "";
   let s = iso;
@@ -97,9 +118,59 @@ function timeAgo(iso) {
   if (dt < 86400) return `${Math.floor(dt/3600)}h ago`;
   return `${Math.floor(dt/86400)}d ago`;
 }
-function setStatus(msg) { $("#status-line").textContent = msg || ""; }
+function setStatus(msg) {
+  const el = $("#status-line");
+  if (el) { el.textContent = msg || ""; el.title = msg || ""; }
+  // While scouting, the filter bar (and its status line) is hidden — mirror
+  // progress into the loader's sub-line so the user still sees activity.
+  if (isScouting()) {
+    const prog = document.getElementById("scout-progress");
+    if (prog) prog.textContent = msg || "";
+  }
+}
 function showSpinner() { const s = $("#enrich-spinner"); if (s) s.hidden = false; }
 function hideSpinner() { const s = $("#enrich-spinner"); if (s) s.hidden = true; }
+
+// --- scout loader: full-screen "working" state; results stay hidden until complete ---
+function isScouting() {
+  const r = document.querySelector(".results");
+  return !!(r && r.classList.contains("is-scouting"));
+}
+function showScoutLoader() {
+  const results = document.querySelector(".results");
+  const loader = document.getElementById("scout-loader");
+  if (!results || !loader) return;
+  results.classList.add("is-scouting");
+  loader.hidden = false;
+  loader.classList.remove("error");
+  const cap = loader.querySelector(".scout-caption");
+  if (cap) cap.textContent = "Scouting your location…";
+  const sub = loader.querySelector(".scout-sub");
+  if (sub) sub.hidden = false;
+  const prog = document.getElementById("scout-progress");
+  if (prog) prog.textContent = "";
+}
+function hideScoutLoader() {
+  const results = document.querySelector(".results");
+  const loader = document.getElementById("scout-loader");
+  if (loader) loader.hidden = true;
+  if (results) results.classList.remove("is-scouting");
+  const fb = document.getElementById("filter-bar");
+  if (fb) fb.hidden = !document.querySelector("#results-grid .card");
+  // Map initialized & fitted while its container was display:none — re-measure
+  // and re-fit now that it's actually visible.
+  requestAnimationFrame(() => requestAnimationFrame(refitMapToMarkers));
+  setTimeout(refitMapToMarkers, 250);
+}
+function scoutError(msg) {
+  const loader = document.getElementById("scout-loader");
+  if (!loader || loader.hidden) return;
+  loader.classList.add("error");
+  const cap = loader.querySelector(".scout-caption");
+  if (cap) cap.textContent = msg || "Something went wrong with this run.";
+  const sub = loader.querySelector(".scout-sub");
+  if (sub) sub.hidden = true;
+}
 
 // Honest market-quality note shown after a run completes.
 function renderMarketNote(m) {
@@ -134,6 +205,233 @@ function showQuota(text) {
   $("#quota-banner").hidden = false;
 }
 function hideQuota() { $("#quota-banner").hidden = true; }
+
+// --- map (Leaflet + OpenStreetMap) ---
+// Markers are colored by DEAL VERDICT, not price: green = strong, amber = marginal,
+// red = no-deal/teardown, gray = still analyzing. One marker per zpid, synced to its card.
+let _map = null;
+let _markerLayer = null;
+const _markers = {};                 // zpid -> { marker, ll, label, bucket, report }
+const _reports = {};                 // zpid -> merged base-card + scored report (for sort/filter)
+const US_CENTER = [39.5, -98.35];
+
+function ensureMap() {
+  if (_map) return _map;
+  const el = document.getElementById("map");
+  if (!el || typeof L === "undefined") return null;
+  _map = L.map(el, { zoomControl: true, scrollWheelZoom: true })
+          .setView(US_CENTER, 4);
+  L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+    maxZoom: 19,
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+  }).addTo(_map);
+  _markerLayer = L.layerGroup().addTo(_map);
+  // Backstop: whenever the map container actually changes size (e.g. the pane
+  // transitions from hidden→visible when .has-map is added), re-read the size so
+  // tiles fill the full container. invalidateSize(false) preserves the user's view.
+  if (window.ResizeObserver) {
+    const ro = new ResizeObserver(() => { try { _map.invalidateSize(false); } catch (_) {} });
+    ro.observe(el);
+  }
+  return _map;
+}
+
+function _coords(c) {
+  if (!c) return null;
+  const lat = parseFloat(c.latitude), lng = parseFloat(c.longitude);
+  if (isNaN(lat) || isNaN(lng) || (lat === 0 && lng === 0)) return null;
+  return [lat, lng];
+}
+
+function verdictBucket(v) {
+  switch (v) {
+    case "STRONG_FLIP": case "GOOD_RENTAL": return "good";
+    case "MARGINAL_FLIP": case "DECENT_RENTAL": case "RENTAL_PLAY": return "mid";
+    case "TEAR_DOWN": case "NO_DEAL": case "POOR_RENTAL": return "bad";
+    default: return "pending";
+  }
+}
+const _bucketRank = { good: 3, mid: 2, bad: 1, pending: 0 };
+function pinBucket(report) {
+  if (currentIntent === "flip") return verdictBucket(report.verdict);
+  if (currentIntent === "rent") return verdictBucket(report.rental_verdict);
+  const a = verdictBucket(report.verdict), b = verdictBucket(report.rental_verdict);
+  return _bucketRank[a] >= _bucketRank[b] ? a : b;
+}
+
+function _pinIcon(label, bucket, active) {
+  return L.divIcon({
+    className: "",
+    html: `<div class="map-pin ${bucket}${active ? " active" : ""}">${label}</div>`,
+    iconSize: [1, 1],
+    iconAnchor: [0, 0],
+  });
+}
+
+function clearMarkers() {
+  if (_markerLayer) _markerLayer.clearLayers();
+  for (const k in _markers) delete _markers[k];
+  const results = document.querySelector(".results");
+  if (results) results.classList.remove("has-map", "show-map");
+  const vt = document.getElementById("view-toggle");
+  if (vt) vt.hidden = true;
+}
+
+// Plot gray "pending" pins from discovery-phase base cards. Skips coordless lists.
+function addBaseMarkers(cards) {
+  const withGeo = (cards || []).filter(c => _coords(c));
+  if (!withGeo.length) { clearMarkers(); return; }
+  const results = document.querySelector(".results");
+  if (results) results.classList.add("has-map");
+  const vt = document.getElementById("view-toggle");
+  if (vt) vt.hidden = false;
+  const map = ensureMap();
+  if (!map) return;
+  _markerLayer.clearLayers();
+  for (const k in _markers) delete _markers[k];
+  const latlngs = [];
+  withGeo.forEach(c => {
+    const ll = _coords(c);
+    const label = fmtPriceShort(c.price);
+    const marker = L.marker(ll, { icon: _pinIcon(label, "pending", false), riseOnHover: true });
+    marker.addTo(_markerLayer);
+    _wireMarker(marker, String(c.zpid));
+    _markers[c.zpid] = { marker, ll, label, bucket: "pending", report: null };
+    latlngs.push(ll);
+  });
+  // Adding .has-map changes the layout (split-view), so the map container only
+  // reaches its final size on the next paint. invalidateSize(false) — synchronous,
+  // NOT animated — so the new size is applied BEFORE fitBounds reads it. (Animated
+  // invalidateSize defers the resize, leaving fitBounds on a stale 1-tile size.)
+  const fit = () => {
+    try { map.invalidateSize(false); } catch (_) {}
+    if (latlngs.length) { try { map.fitBounds(latlngs, { padding: [40, 40], maxZoom: 15 }); } catch (_) {} }
+  };
+  requestAnimationFrame(() => requestAnimationFrame(fit));
+  setTimeout(fit, 250);  // belt-and-suspenders for slow layout/paint
+}
+
+// Re-measure + re-fit to all current markers. Used when the map pane transitions
+// from hidden (scout loader) to visible — bounds computed while hidden are stale.
+function refitMapToMarkers() {
+  if (!_map) return;
+  try { _map.invalidateSize(false); } catch (_) {}
+  const lls = Object.values(_markers).map(e => e && e.ll).filter(Boolean);
+  if (lls.length) {
+    try { _map.fitBounds(lls, { padding: [40, 40], maxZoom: 15 }); } catch (_) {}
+  }
+}
+
+// Recolor + relabel a property's marker once it's been scored (called from upgradeCard).
+function updateMarker(report) {
+  const entry = _markers[report.zpid];
+  const ll = _coords(report) || (entry && entry.ll);
+  if (!ll) return;
+  const bucket = pinBucket(report);
+  const label = fmtPriceShort(report.purchase_price || report.price);
+  if (entry) {
+    entry.marker.setIcon(_pinIcon(label, bucket, false));
+    entry.bucket = bucket; entry.label = label; entry.report = report;
+    entry.marker.bindPopup(_popupHtml(report));
+  } else {
+    const map = ensureMap();
+    if (!map) return;
+    const results = document.querySelector(".results");
+    if (results) results.classList.add("has-map");
+    const marker = L.marker(ll, { icon: _pinIcon(label, bucket, false), riseOnHover: true });
+    marker.addTo(_markerLayer);
+    _wireMarker(marker, String(report.zpid));
+    marker.bindPopup(_popupHtml(report));
+    _markers[report.zpid] = { marker, ll, label, bucket, report };
+  }
+}
+
+// Drop markers for properties trimmed out of the top-N, then refit.
+function removeMarkersNotIn(keepZpids) {
+  const keep = new Set((keepZpids || []).map(String));
+  Object.keys(_markers).forEach(zpid => {
+    if (!keep.has(String(zpid))) {
+      if (_markerLayer) _markerLayer.removeLayer(_markers[zpid].marker);
+      delete _markers[zpid];
+    }
+  });
+  const lls = Object.values(_markers).map(m => m.ll);
+  if (_map && lls.length) {
+    try { _map.fitBounds(lls, { padding: [40, 40], maxZoom: 15 }); } catch (_) {}
+  }
+}
+
+function _popupHtml(r) {
+  const thumb = r.photo
+    ? `<div class="pin-pop-thumb" style="background-image:url('${r.photo}')"></div>` : "";
+  const profit = (r.projected_profit != null)
+    ? `<div class="pin-pop-row">Profit <b class="${r.projected_profit >= 0 ? "pos" : "neg"}">${fmtMoney(r.projected_profit)}</b> · ${fmtPct(r.profit_margin_pct)}</div>` : "";
+  return `<div class="pin-pop">
+      ${thumb}
+      <div class="pin-pop-body">
+        <div class="pin-pop-addr">${r.address || ""}</div>
+        <div class="pin-pop-price">${fmtMoney(r.purchase_price || r.price)}</div>
+        <div class="pin-pop-verdicts">
+          <span class="verdict ${r.verdict || "PENDING"}">${(r.verdict || "PENDING").replace(/_/g, " ")}</span>
+        </div>
+        ${profit}
+        <button class="pin-pop-view" data-pop-view="${r.zpid}">View details →</button>
+      </div>
+    </div>`;
+}
+
+function _wireMarker(marker, zpid) {
+  marker.on("mouseover", () => _setCardHover(zpid, true));
+  marker.on("mouseout", () => _setCardHover(zpid, false));
+  marker.on("click", () => focusCardFromMarker(zpid));
+}
+
+function _setMarkerActive(zpid, on) {
+  const entry = _markers[zpid];
+  if (!entry || !entry.marker._icon) return;
+  const pin = entry.marker._icon.querySelector(".map-pin");
+  if (pin) pin.classList.toggle("active", on);
+}
+
+// Show/hide a marker in lockstep with its card when filters are applied.
+function setMarkerVisible(zpid, visible) {
+  const entry = _markers[zpid];
+  if (!entry || !_markerLayer) return;
+  const has = _markerLayer.hasLayer(entry.marker);
+  if (visible && !has) _markerLayer.addLayer(entry.marker);
+  else if (!visible && has) _markerLayer.removeLayer(entry.marker);
+}
+function _setCardHover(zpid, on) {
+  const card = document.getElementById(`card-${zpid}`);
+  if (card) card.classList.toggle("map-hover", on);
+}
+
+// Marker click → ensure the list is visible (mobile), then scroll to the card.
+function focusCardFromMarker(zpid) {
+  const results = document.querySelector(".results");
+  if (results && results.classList.contains("show-map") && typeof setMapView === "function") {
+    setMapView(false);  // flip back to list on mobile
+  }
+  setTimeout(() => scrollToCard(zpid), 60);
+}
+
+// Mobile List|Map toggle: swap which pane is visible; Leaflet needs invalidateSize
+// once its container becomes visible or tiles render gray.
+function setMapView(showMap) {
+  const results = document.querySelector(".results");
+  if (!results) return;
+  results.classList.toggle("show-map", !!showMap);
+  document.querySelectorAll("#view-toggle .vt-btn").forEach(b => {
+    b.classList.toggle("active", (b.dataset.view === "map") === !!showMap);
+  });
+  if (showMap && _map) {
+    setTimeout(() => { try { _map.invalidateSize(); } catch (_) {} }, 60);
+  }
+}
+document.addEventListener("click", (e) => {
+  const vt = e.target.closest("#view-toggle .vt-btn");
+  if (vt) setMapView(vt.dataset.view === "map");
+});
 
 // --- carousel ---
 // Each card's photo div stores _photos (array) and _idx (current index) directly on the element.
@@ -221,6 +519,7 @@ function cardSkeleton(card, idx) {
         <div class="verdict-row">
           <span class="verdict PENDING">analyzing…</span>
         </div>
+        <div class="card-headline" data-headline></div>
         <div class="breakdown" data-breakdown></div>
       </div>
     </article>`;
@@ -265,6 +564,11 @@ function breakdownHtml(r) {
 
 function renderResults(city, baseCards) {
   currentCity = city;
+  // Reset the sort/filter registry for the new result set, then seed base-card fields.
+  for (const k in _reports) delete _reports[k];
+  baseCards.forEach(c => { _reports[c.zpid] = Object.assign({}, c); });
+  const fb = $("#filter-bar");
+  if (fb) fb.hidden = baseCards.length === 0;
   $("#results-grid").innerHTML = baseCards.map((c, i) => cardSkeleton(c, i)).join("");
   // Stamp each card's discovery-phase photo URL onto the element immediately so
   // upgradeCard (and the IntersectionObserver) can always fall back to it.
@@ -279,6 +583,8 @@ function renderResults(city, baseCards) {
       setCarouselFrame(photoDiv);
     }
   });
+  // Plot discovery-phase map pins (gray/pending); recolored later by upgradeCard.
+  addBaseMarkers(baseCards);
 }
 
 let currentIntent = "both";  // updated on each search
@@ -326,7 +632,15 @@ function upgradeCard(report) {
     <span class="verdict ${report.verdict}" title="Flip verdict">Flip: ${report.verdict.replace(/_/g, ' ')} (${report.flip_score})</span>
     <span class="verdict ${report.rental_verdict || 'NO_RENT_DATA'}" title="Rental verdict">Rent: ${(report.rental_verdict || 'NO_RENT_DATA').replace(/_/g, ' ')} (${report.rental_score || 0})</span>
   `;
-  target.querySelector("[data-breakdown]").innerHTML = breakdownHtml(report);
+  const headlineEl = target.querySelector("[data-headline]");
+  if (headlineEl) headlineEl.innerHTML = headlineHtml(report, currentIntent);
+  // Compact-by-default: full math/comps live behind a single expander.
+  target.querySelector("[data-breakdown]").innerHTML =
+    `<details class="deal-math"><summary>Deal math &amp; comps</summary>${breakdownHtml(report)}</details>`;
+  // Merge scored fields into the sort/filter registry (keep base price/beds/etc).
+  _reports[report.zpid] = Object.assign({}, _reports[report.zpid], report);
+  // Keep the map marker (if any) in sync with this property's verdict + price.
+  if (typeof updateMarker === "function") updateMarker(report);
   // NOTE: do NOT reorder here. Properties arrive already score-ranked from the
   // server; reordering on every event caused 10-30 redundant DOM re-sorts per run.
   // Final ordering is applied once by trimGrid() (live search) or by the caller
@@ -349,6 +663,77 @@ function reorderByScore() {
   });
 }
 
+// --- client-side sort + filters (over the already-fetched result set) ---
+function _activeFilters() {
+  const val = (id) => { const el = document.getElementById(id); return el ? el.value : ""; };
+  return {
+    sort: val("sort-by") || "best",
+    beds: parseInt(val("filter-beds") || "0", 10),
+    baths: parseFloat(val("filter-baths") || "0"),
+    type: (val("filter-type") || "").toLowerCase(),
+    pmin: parseFloat(val("filter-pmin")) || 0,
+    pmax: parseFloat(val("filter-pmax")) || Infinity,
+  };
+}
+
+function _recPrice(rec) { return rec.price != null ? rec.price : (rec.purchase_price || 0); }
+
+function _passesFilter(rec, f) {
+  const price = _recPrice(rec);
+  if (price < f.pmin || price > f.pmax) return false;
+  if (f.beds && (rec.bedrooms || 0) < f.beds) return false;
+  if (f.baths && (rec.bathrooms || 0) < f.baths) return false;
+  if (f.type) {
+    const t = String(rec.home_type || "").toLowerCase();
+    const ok =
+      (f.type === "house" && (t.includes("house") || t.includes("single"))) ||
+      (f.type === "condo" && t.includes("condo")) ||
+      (f.type === "townhouse" && t.includes("town")) ||
+      (f.type === "multi" && (t.includes("multi") || t.includes("duplex") || t.includes("triplex")));
+    if (!ok) return false;
+  }
+  return true;
+}
+
+// Returns a comparable number; lower sorts first (so we negate "higher is better" keys).
+function _sortKey(rec, sort) {
+  switch (sort) {
+    case "flip":       return -(rec.flip_score || 0);
+    case "rent":       return -(rec.rental_score || 0);
+    case "price-asc":  return _recPrice(rec);
+    case "price-desc": return -_recPrice(rec);
+    case "psf":        return rec.list_psf || (_recPrice(rec) / (rec.sqft || 1)) || Infinity;
+    case "profit":     return -(rec.profit_margin_pct != null ? rec.profit_margin_pct : -Infinity);
+    case "best":
+    default:           return -_primaryScore(rec, currentIntent);  // matches server ranking
+  }
+}
+
+// Apply current filter/sort to the rendered cards AND their map markers in lockstep.
+function applySortFilter() {
+  const grid = $("#results-grid");
+  if (!grid) return;
+  const f = _activeFilters();
+  const visible = [];
+  Array.from(grid.children).forEach(card => {
+    const zpid = card.dataset.zpid;
+    const rec = _reports[zpid] || {};
+    const ok = _passesFilter(rec, f);
+    card.style.display = ok ? "" : "none";
+    setMarkerVisible(zpid, ok);
+    if (ok) visible.push(card);
+  });
+  visible.sort((a, b) => {
+    const ra = _reports[a.dataset.zpid] || {}, rb = _reports[b.dataset.zpid] || {};
+    return _sortKey(ra, f.sort) - _sortKey(rb, f.sort);
+  });
+  visible.forEach((c, i) => {
+    const rankEl = c.querySelector(".card-rank");
+    if (rankEl) rankEl.textContent = `#${i + 1}`;
+    grid.appendChild(c);
+  });
+}
+
 function trimGrid(keepZpids) {
   const keep = new Set(keepZpids);
   $$("#results-grid .card").forEach(card => {
@@ -358,7 +743,8 @@ function trimGrid(keepZpids) {
       setTimeout(() => card.remove(), 350);
     }
   });
-  setTimeout(reorderByScore, 400);
+  removeMarkersNotIn(keepZpids);
+  setTimeout(applySortFilter, 400);
 }
 
 // --- favorites ---
@@ -390,6 +776,14 @@ async function refreshFavorites() {
 document.addEventListener("click", _handleCarouselClick);
 
 document.addEventListener("click", async (e) => {
+  // Map popup "View details →" button
+  const popView = e.target.closest("[data-pop-view]");
+  if (popView) {
+    e.preventDefault();
+    focusCardFromMarker(popView.dataset.popView);
+    if (_map) _map.closePopup();
+    return;
+  }
   const fav = e.target.closest("[data-fav]");
   if (fav) {
     const card = fav.closest("[data-zpid]");
@@ -401,6 +795,18 @@ document.addEventListener("click", async (e) => {
   if (e.target.closest("[data-close]")) {
     e.target.closest(".modal").hidden = true;
   }
+});
+
+// Card hover → highlight its map pin (delegated; flicker-free via relatedTarget check).
+document.addEventListener("mouseover", (e) => {
+  const card = e.target.closest("#results-grid .card");
+  if (card) _setMarkerActive(card.dataset.zpid, true);
+});
+document.addEventListener("mouseout", (e) => {
+  const card = e.target.closest("#results-grid .card");
+  if (!card) return;
+  if (card.contains(e.relatedTarget)) return;  // still inside the card
+  _setMarkerActive(card.dataset.zpid, false);
 });
 
 // --- search ---
@@ -415,13 +821,16 @@ async function startSearch(city, count, intent) {
     if (me.authenticated) {
       renderUserChip(me);
       if (me.remaining === 0) {
-        setStatus(`⚠️ Daily run limit reached (${me.daily_cap}/${me.daily_cap}). Try again tomorrow or ask your admin to raise your cap.`);
+        const capMsg = `⚠️ Daily run limit reached (${me.daily_cap}/${me.daily_cap}). Try again tomorrow or ask your admin to raise your cap.`;
+        setStatus(capMsg);
+        showQuota(capMsg);  // status line may be hidden (filter bar); banner is always visible
         return;
       }
     }
   } catch (_) { /* non-fatal — let the server enforce */ }
 
   $("#search-btn").disabled = true;
+  showScoutLoader();  // hide results until the run completes — no partial output
   setStatus(`Searching ${city} (${intent})…`);
   const url = `/api/search/stream?city=${encodeURIComponent(city)}&count=${count}&intent=${encodeURIComponent(intent)}`;
   const es = new EventSource(url, {withCredentials: true});
@@ -453,12 +862,10 @@ async function startSearch(city, count, intent) {
     showQuota(d.message);
   });
   es.addEventListener("error", (e) => {
-    try {
-      const d = JSON.parse(e.data);
-      setStatus(`⚠️ ${d.message}`);
-    } catch {
-      setStatus("⚠️ Connection error");
-    }
+    let msg = "⚠️ Connection error";
+    try { msg = `⚠️ ${JSON.parse(e.data).message}`; } catch (_) {}
+    setStatus(msg);
+    scoutError(msg);  // surface the failure in the loader; keep results hidden
     hideSpinner();
     es.close();
     $("#search-btn").disabled = false;
@@ -466,6 +873,7 @@ async function startSearch(city, count, intent) {
   es.addEventListener("complete", (e) => {
     const d = JSON.parse(e.data);
     currentSlug = d.slug;
+    hideScoutLoader();  // reveal results + filter bar, re-fit the map
     const s = d.summary || {};
     const cacheNote = (s.from_cache != null && s.fresh != null)
       ? ` (${s.from_cache} cached, ${s.fresh} fresh, $${(s.cost_usd || 0).toFixed(4)})`
@@ -478,11 +886,14 @@ async function startSearch(city, count, intent) {
     refreshHistory();
     refreshFavorites();
     refreshQuotaChip();
+    setTimeout(applySortFilter, 450);  // honor any active sort/filter after trim settles
   });
 }
 
 async function loadFromHistory(slug) {
   hideQuota();
+  // History loads render instantly — clear any loader (e.g. error state from a failed run).
+  if (isScouting()) hideScoutLoader();
   setStatus("Loading cached results…");
   const data = await api.historyOne(slug);
   currentCity = data.city;
@@ -490,11 +901,12 @@ async function loadFromHistory(slug) {
   const cards = data.results.map(r => ({
     zpid: r.zpid, address: r.address, city: r.city, state: r.state, price: r.purchase_price,
     bedrooms: null, bathrooms: null, sqft: r.sqft, home_type: r.home_type,
+    latitude: r.latitude, longitude: r.longitude,  // so addBaseMarkers plots + fits the map
     photo: r.photo, photos: r.photos, link: r.link,
   }));
   renderResults(data.city, cards);
   data.results.forEach(r => upgradeCard(r));
-  reorderByScore();  // upgradeCard no longer reorders per-card; sort once after the fill
+  applySortFilter();  // upgradeCard no longer reorders per-card; sort/filter once after the fill
   setStatus(`📂 Cached: ${data.city} (queried ${timeAgo(data.queried_at)})`);
   refreshFavorites();
 }
@@ -508,19 +920,35 @@ async function refreshHistory() {
       <span class="ago">${timeAgo(it.queried_at)}</span>
     </li>`).join("") || `<li class="muted" style="padding:0.5rem">No searches yet.</li>`;
   ul.querySelectorAll("li[data-slug]").forEach(li => {
-    li.addEventListener("click", () => loadFromHistory(li.dataset.slug));
+    li.addEventListener("click", () => { loadFromHistory(li.dataset.slug); closeAllDropdowns(); });
   });
 }
 
-// --- archive: redirect to sidebar (one source of truth) ---
-$("#nav-archive").addEventListener("click", () => {
-  const heading = $("#archive-heading") || $("#history-list");
-  if (heading) {
-    heading.scrollIntoView({behavior: "smooth", block: "start"});
-    const list = $("#history-list");
-    list.classList.add("highlight-section");
-    setTimeout(() => list.classList.remove("highlight-section"), 1500);
-  }
+// --- toolbar dropdowns (Archive, Active Runs) ---
+function closeAllDropdowns() {
+  document.querySelectorAll(".dropdown-menu").forEach(m => { m.hidden = true; });
+  document.querySelectorAll(".dropdown [aria-haspopup]").forEach(btn =>
+    btn.setAttribute("aria-expanded", "false"));
+}
+function toggleDropdown(menuId, toggleBtn) {
+  const menu = document.getElementById(menuId);
+  if (!menu) return;
+  const willOpen = menu.hidden;
+  closeAllDropdowns();
+  menu.hidden = !willOpen;
+  if (toggleBtn) toggleBtn.setAttribute("aria-expanded", String(willOpen));
+}
+$("#archive-toggle")?.addEventListener("click", (e) => {
+  e.stopPropagation();
+  toggleDropdown("archive-menu", e.currentTarget);
+});
+$("#active-toggle")?.addEventListener("click", (e) => {
+  e.stopPropagation();
+  toggleDropdown("active-menu", e.currentTarget);
+});
+// Click anywhere outside an open dropdown closes it.
+document.addEventListener("click", (e) => {
+  if (!e.target.closest(".dropdown")) closeAllDropdowns();
 });
 
 // --- save city button ---
@@ -686,6 +1114,25 @@ $("#logout-btn").addEventListener("click", async () => {
 
 $("#quota-banner-close").addEventListener("click", hideQuota);
 
+// --- filter / sort bar wiring ---
+["sort-by", "filter-beds", "filter-baths", "filter-type"].forEach(id => {
+  const el = document.getElementById(id);
+  if (el) el.addEventListener("change", applySortFilter);
+});
+["filter-pmin", "filter-pmax"].forEach(id => {
+  const el = document.getElementById(id);
+  if (el) el.addEventListener("input", applySortFilter);
+});
+{
+  const reset = document.getElementById("filter-reset");
+  if (reset) reset.addEventListener("click", () => {
+    const set = (id, v) => { const el = document.getElementById(id); if (el) el.value = v; };
+    set("sort-by", "best"); set("filter-beds", "0"); set("filter-baths", "0");
+    set("filter-type", ""); set("filter-pmin", ""); set("filter-pmax", "");
+    applySortFilter();
+  });
+}
+
 // --- active runs panel ---
 let _activeSources = {};
 
@@ -703,7 +1150,17 @@ function renderActiveRuns(runs) {
   if (!ul) return;
   // Only show truly active runs (pending/running). Keep UI small.
   const active = runs.filter(r => (r.status || 'pending') === 'pending' || (r.status || '') === 'running');
-  if (!active.length) { ul.innerHTML = '<li class="muted">No active runs</li>'; return; }
+  // Toolbar Active Runs toggle: show a count badge; hide the button entirely when idle.
+  const toggle = document.getElementById('active-toggle');
+  const badge = document.getElementById('active-badge');
+  if (badge) badge.textContent = String(active.length);
+  if (toggle) toggle.hidden = active.length === 0;
+  if (!active.length) {
+    ul.innerHTML = '<li class="muted">No active runs</li>';
+    const menu = document.getElementById('active-menu');
+    if (menu) menu.hidden = true;  // collapse its own menu (leave other dropdowns alone)
+    return;
+  }
   ul.innerHTML = active.map(run => {
     const id = run.id;
     const started = timeAgo(run.started_at);
@@ -721,6 +1178,7 @@ function renderActiveRuns(runs) {
       const id = parseInt(li.dataset.runId, 10);
       $$('#active-runs li').forEach(x => x.classList.toggle('selected', x === li));
       viewRun(id);
+      closeAllDropdowns();
     });
     li.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); li.click(); } });
   });
@@ -767,8 +1225,9 @@ let _viewSource = null;
 function viewRun(runId) {
   // close previous view source
   if (_viewSource) { try { _viewSource.close(); } catch(_){} _viewSource = null; }
-  // clear results grid
+  // clear results grid; show the scout loader until this run completes
   $("#results-grid").innerHTML = '';
+  showScoutLoader();
   setStatus('Loading run output...');
   const es = new EventSource(`/api/runs/${runId}/events`, {withCredentials: true});
   _viewSource = es;
@@ -785,11 +1244,19 @@ function viewRun(runId) {
   es.addEventListener('property', (e) => { try { const r = JSON.parse(e.data); upgradeCard(r); } catch(_){} });
   es.addEventListener('trim', (e) => { try { const d = JSON.parse(e.data); trimGrid(d.keep); } catch(_){} });
   es.addEventListener('complete', (e) => {
+    hideScoutLoader();  // reveal results + re-fit the map
     try { const d = JSON.parse(e.data); setStatus(`Run complete — ${d.total} items`); } catch(_){}
     hideSpinner();
     setTimeout(() => { try { es.close(); } catch(_){} _viewSource = null; refreshHistory(); fetchActiveRuns(); }, 1000);
   });
-  es.addEventListener('error', (e) => { try { const d = JSON.parse(e.data); setStatus(`Error: ${d.message}`); } catch(_){} hideSpinner(); try { es.close(); } catch(_){} _viewSource = null; fetchActiveRuns(); });
+  es.addEventListener('error', (e) => {
+    let msg = '⚠️ Run failed';
+    try { msg = `⚠️ ${JSON.parse(e.data).message}`; } catch(_){}
+    setStatus(msg);
+    scoutError(msg);
+    hideSpinner();
+    try { es.close(); } catch(_){} _viewSource = null; fetchActiveRuns();
+  });
 }
 
 // poll active runs periodically
@@ -802,73 +1269,16 @@ setInterval(fetchActiveRuns, 5000);
   refreshFavorites();
 })();
 
-// --- mobile helpers: sidebar toggle + FAB + lazy-load photos ---
+// --- photo lazy-loading + map resize ---
 (function(){
-  const menuBtn = document.getElementById('menu-toggle');
-  const topbar = document.querySelector('.topbar');
-  const sidebar = document.querySelector('.sidebar');
-  const fab = document.getElementById('fab-run');
-  const collapseBtn = document.getElementById('sidebar-collapse');
-
-  function positionSidebarTopAndHandle() {
-    const topH = topbar ? Math.round(topbar.getBoundingClientRect().height) : 0;
-    if (sidebar) {
-      sidebar.style.top = topH + 'px';
-      sidebar.style.height = `calc(100vh - ${topH}px)`;
-    }
-    if (collapseBtn && sidebar) {
-      const sRect = sidebar.getBoundingClientRect();
-      const hW = collapseBtn.offsetWidth || 36;
-      if (sidebar.classList.contains('open')) {
-        const left = Math.max(8, Math.round(sRect.right - (hW / 2)));
-        collapseBtn.style.left = left + 'px';
-        collapseBtn.textContent = '‹';
-      } else {
-        collapseBtn.style.left = '0px';
-        collapseBtn.textContent = '›';
-      }
-      collapseBtn.style.opacity = '1';
-    }
-  }
-
-  // Re-run positionSidebarTopAndHandle every rAF for ~300ms so the handle
-  // smoothly tracks the sidebar during its 240ms CSS transition.
-  function trackHandleTransition() {
-    const deadline = Date.now() + 300;
-    (function frame() {
-      positionSidebarTopAndHandle();
-      if (Date.now() < deadline) requestAnimationFrame(frame);
-    })();
-  }
-
-  // Start sidebar open on mobile viewports
-  if (sidebar && window.innerWidth <= 768) sidebar.classList.add('open');
-  // initial positioning after layout
-  setTimeout(trackHandleTransition, 60);
-  window.addEventListener('resize', positionSidebarTopAndHandle);
-
-  if (menuBtn && sidebar) {
-    menuBtn.addEventListener('click', (e) => { e.stopPropagation(); sidebar.classList.toggle('open'); trackHandleTransition(); });
-    document.addEventListener('click', (e) => {
-      if (!sidebar.classList.contains('open')) return;
-      if (e.target.closest('.sidebar') || e.target.closest('#menu-toggle')) return;
-      sidebar.classList.remove('open'); trackHandleTransition();
-    });
-  }
-
-  if (fab) {
-    fab.addEventListener('click', (e) => {
-      e.preventDefault();
-      if (sidebar) { sidebar.classList.add('open'); trackHandleTransition(); }
-      const cityInput = document.getElementById('city');
-      if (cityInput) { cityInput.focus(); }
-    });
-  }
-
-  // Sidebar collapse button on the right edge of the left panel
-  if (collapseBtn && sidebar) {
-    collapseBtn.addEventListener('click', (e) => { e.preventDefault(); e.stopPropagation(); sidebar.classList.toggle('open'); trackHandleTransition(); });
-  }
+  // Re-tile the Leaflet map on viewport changes (full-width map now; no sidebar to collapse).
+  let _rsTimer = null;
+  window.addEventListener('resize', () => {
+    clearTimeout(_rsTimer);
+    _rsTimer = setTimeout(() => {
+      if (typeof _map !== 'undefined' && _map) { try { _map.invalidateSize(false); } catch (_) {} }
+    }, 200);
+  });
 
   // Lazy-load card photos using IntersectionObserver
   const io = new IntersectionObserver((entries) => {
