@@ -179,15 +179,21 @@ def _discover(location: str):
 
     Returns (props, quota_signal). quota_signal is non-None if RapidAPI is at/near limit.
 
-    RAPIDAPI_MAX_PAGES env var controls how many pages to fetch (default 4).
-    Skolit Pro plan = 10,000 calls/month — 4 pages × ~12 cities/day is safe.
-    Drop to 1 if you switch to a lower-tier plan.
+    RAPIDAPI_MAX_PAGES env var controls how many pages to fetch (default 20 = full
+    market — the API tops out at ~20 pages / ~800 listings, and the scraper stops
+    early via pagination.has_next, so smaller cities cost far fewer calls).
+
+    Quota math (Skolit Pro = 10,000 calls/month): requests = runs × pages. At the
+    current scale (2 users × 5/day = 300 runs/mo), even all-20-page markets cost
+    ≤6,000/mo — well within quota — while a full-market scan gives the most accurate
+    citywide $/sqft baseline + complete candidate pool. Lower this (e.g. 4, or 1) as
+    user count grows to trade breadth for headroom.
     """
     import os as _os
-    max_pages = _os.environ.get("RAPIDAPI_MAX_PAGES", "4")
+    max_pages = _os.environ.get("RAPIDAPI_MAX_PAGES", "20")
     result = subprocess.run(
         [sys.executable, "scrapers/zillow_api_scraper.py", location, max_pages],
-        capture_output=True, text=True, timeout=180,
+        capture_output=True, text=True, timeout=300,  # full-market (20pg) scans run ~2min
         cwd=str(PROJECT_ROOT),
     )
     out = result.stdout
@@ -295,22 +301,27 @@ async def stream_search(city: str, count: int = 10, intent: str = "flip",
 
     loop = asyncio.get_running_loop()
     client_disconnected = False
-    try:
-        props, quota = await loop.run_in_executor(_EXECUTOR, _discover, city)
-    except asyncio.CancelledError:
-        # Client disconnected while waiting for discovery; continue discovery in background
-        client_disconnected = True
-        logger.info("Client disconnected during discovery; continuing in background.")
-        discovery_fut = loop.run_in_executor(_EXECUTOR, _discover, city)
-        # Poll discovery_fut while protecting against further cancellations
-        while not discovery_fut.done():
-            try:
-                await asyncio.sleep(1)
-            except asyncio.CancelledError:
-                client_disconnected = True
-                logger.info("Still disconnected; discovery will complete in background.")
-                continue
-        props, quota = discovery_fut.result()
+    discovery_fut = loop.run_in_executor(_EXECUTOR, _discover, city)
+    # Poll discovery with periodic heartbeats. A full-market (20-page) scan can take
+    # ~2 min, so we keep the SSE stream alive (every ≤4s) and feed the scout loader a
+    # live counter — going silent for 2 min risks a proxy dropping the connection.
+    _elapsed = 0
+    while not discovery_fut.done():
+        try:
+            await asyncio.sleep(4)
+        except asyncio.CancelledError:
+            client_disconnected = True
+            logger.info("Client disconnected during discovery; continuing in background.")
+            while not discovery_fut.done():
+                try:
+                    await asyncio.sleep(1)
+                except asyncio.CancelledError:
+                    continue
+            break
+        _elapsed += 4
+        if not client_disconnected:
+            yield {"event": "status", "data": {"message": f"Scanning the market — {_elapsed}s…"}}
+    props, quota = discovery_fut.result()
 
     if quota and not props:
         yield {"event": "quota", "data": {
