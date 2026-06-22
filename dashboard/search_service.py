@@ -24,6 +24,7 @@ import time
 from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime, timezone
 from pathlib import Path
+from statistics import median
 from typing import AsyncIterator, Dict, Iterable, List, Optional
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
@@ -242,7 +243,12 @@ def _detect_bd_quota_error(exc: Exception) -> Optional[str]:
 
 async def stream_search(city: str, count: int = 10, intent: str = "flip",
                          enrich_limit: Optional[int] = None,
-                         user_email: Optional[str] = None) -> AsyncIterator[dict]:
+                         user_email: Optional[str] = None,
+                         min_price: Optional[float] = None,
+                         max_price: Optional[float] = None,
+                         min_beds: Optional[int] = None,
+                         min_baths: Optional[float] = None,
+                         home_type: Optional[str] = None) -> AsyncIterator[dict]:
     """Async generator producing SSE-ready dicts.
 
     intent: 'flip' | 'rent' | 'both' — same analysis, different ranking.
@@ -265,6 +271,19 @@ async def stream_search(city: str, count: int = 10, intent: str = "flip",
             run_id = _db.log_run_start(user_email, city, intent, count)
         except Exception as e:
             logger.warning("log_run_start failed: %s", e)
+
+    def _finish_run(status: str = "ok"):
+        # Close out the run row on any early return so it never sticks as 'pending'.
+        if run_id is None:
+            return
+        try:
+            from dashboard import db as _db
+            _db.log_run_finish(
+                run_id, enrich_attempted=0, enrich_from_cache=0, enrich_fresh=0,
+                cost_bright_data_usd=0.0, cost_rapidapi_usd=0.0, status=status, error=None,
+            )
+        except Exception as e:
+            logger.warning("log_run_finish failed: %s", e)
 
     yield {"event": "status", "data": {"message": f"Searching {city} ({intent})…"}}
     if run_id:
@@ -302,37 +321,120 @@ async def stream_search(city: str, count: int = 10, intent: str = "flip",
                 "to reset, or upgrade your plan."
             ),
         }}
+        _finish_run("quota")
         return
 
     if not props:
         yield {"event": "error", "data": {"message": "No properties returned for that location."}}
+        _finish_run("ok")
         return
 
     # Filter sqft=0
     props = [p for p in props if p.sqft and p.sqft > 0]
 
-    # ── Discovery-phase market scan (no extra API calls) ──────────────────────
-    # Skolit's /bylocation does NOT return a zestimate, so we can't rank by
-    # discount-to-zestimate at this stage. Instead we compute the discovery pool's
-    # median price-per-sqft and rank listings by how far BELOW median they sit.
-    # Cheaper-per-sqft = likely value-add / fixer / motivated seller = better flip
-    # candidate. This surfaces the best deals in the WHOLE city rather than just
-    # whatever Zillow returns first.
+    # ── Discovery-phase market scan + pre-enrichment filtering (no extra API calls) ──
+    # Skolit's /bylocation returns no zestimate, so we rank by how far each listing
+    # sits BELOW the $/sqft of *comparable* homes — same neighborhood (a ~1km lat/long
+    # cell) AND same property type — falling back to citywide-by-type, then citywide,
+    # when a neighborhood is too sparse to trust. Cheaper-vs-local-comps = likely fixer /
+    # value-add / motivated seller = better flip candidate, and ranking against LOCAL
+    # comps catches homes underpriced relative to their own (pricier) block — the blind
+    # spot of a single citywide median.
     pool = [p for p in props if getattr(p, "link", "")]
 
-    psf_values = sorted(p.price / p.sqft for p in pool if p.sqft and p.price)
-    median_psf = psf_values[len(psf_values) // 2] if psf_values else 0.0
+    def _psf(p):
+        return (p.price / p.sqft) if (p.sqft and p.price) else None
+
+    def _type_bucket(p):
+        t = str(getattr(p, "property_type", "") or "").lower()
+        if "condo" in t:
+            return "condo"
+        if "town" in t:
+            return "townhouse"
+        if any(w in t for w in ("multi", "duplex", "triplex", "apartment")):
+            return "multi"
+        return "house"
+
+    def _cell(p):
+        lat, lng = getattr(p, "latitude", None), getattr(p, "longitude", None)
+        if lat is None or lng is None:
+            return None
+        try:
+            return (round(float(lat), 2), round(float(lng), 2))  # ~1km neighborhood cell
+        except (TypeError, ValueError):
+            return None
+
+    # ── Pre-enrichment filtering: constrain the pool to the user's criteria BEFORE we
+    #    pick the 30–50 to enrich, so Bright Data never pays to analyze listings the user
+    #    would discard. Discovery-phase fields only (all present pre-enrichment). ──
+    def _passes_filter(p):
+        price = p.price or 0
+        # When a price filter is set, a listing with no usable price can't be
+        # confirmed to match — exclude it rather than silently letting it through.
+        if (min_price or max_price) and price <= 0:
+            return False
+        if min_price and price < min_price:
+            return False
+        if max_price and price > max_price:
+            return False
+        if min_beds and (p.bedrooms or 0) < min_beds:
+            return False
+        if min_baths and (p.bathrooms or 0) < min_baths:
+            return False
+        if home_type and _type_bucket(p) != home_type:
+            return False
+        return True
+
+    _filters_active = bool(home_type) or any(
+        v is not None for v in (min_price, max_price, min_beds, min_baths)
+    )
+    if _filters_active:
+        pool = [p for p in pool if _passes_filter(p)]
+        if not pool:
+            yield {"event": "error", "data": {
+                "message": "No listings matched your filters — widen the price/beds/baths/type and try again."
+            }}
+            _finish_run("ok")
+            return
+
+    # ── Local, type-segmented $/sqft baselines (local → type → citywide fallback) ──
+    MIN_GROUP = 5
+    cell_type: Dict = {}
+    by_type: Dict = {}
+    all_psf: List[float] = []
+    for p in pool:
+        v = _psf(p)
+        if v is None or v < 50:
+            continue
+        all_psf.append(v)
+        tb = _type_bucket(p)
+        by_type.setdefault(tb, []).append(v)
+        c = _cell(p)
+        if c is not None:
+            cell_type.setdefault((c, tb), []).append(v)
+
+    local_med = {k: median(vs) for k, vs in cell_type.items() if len(vs) >= MIN_GROUP}
+    type_med = {k: median(vs) for k, vs in by_type.items() if len(vs) >= MIN_GROUP}
+    median_psf = median(all_psf) if all_psf else 0.0  # citywide baseline (+ telemetry)
+
+    def _baseline(p):
+        tb = _type_bucket(p)
+        c = _cell(p)
+        if c is not None and (c, tb) in local_med:
+            return local_med[(c, tb)]
+        if tb in type_med:
+            return type_med[tb]
+        return median_psf
 
     def _discovery_rank(p):
-        # Higher score = better deal. Properties priced well below the local
-        # median $/sqft rank first. Bad/garbage psf is pushed to the bottom.
-        if not (p.sqft and p.price and median_psf > 0):
+        # Higher = better deal: priced furthest below its own local/type comps.
+        psf = _psf(p)
+        if psf is None or psf < 50:
             return -1.0
-        psf = p.price / p.sqft
-        # Sanity floors: drop obviously-broken psf (data errors), don't let them win.
-        if psf < 50 or psf > median_psf * 5:
+        base = _baseline(p)
+        if base <= 0 or psf > base * 5:  # sanity: ignore extreme outliers vs its baseline
             return -1.0
-        return (median_psf - psf) / median_psf  # fraction below median
+        return (base - psf) / base  # fraction below the home's local comp baseline
 
     props_with_link = sorted(pool, key=_discovery_rank, reverse=True)
 
@@ -352,8 +454,8 @@ async def stream_search(city: str, count: int = 10, intent: str = "flip",
     if pool:
         ranked_psf = [round(c.price / c.sqft) for c in candidates[:5] if c.sqft]
         logger.info(
-            "Discovery scan %s: pool=%d median_psf=%.0f enrich_n=%d top5_psf=%s",
-            city, len(pool), median_psf, enrich_n, ranked_psf,
+            "Discovery scan %s: pool=%d filtered=%s citywide_psf=%.0f local_groups=%d enrich_n=%d top5_psf=%s",
+            city, len(pool), _filters_active, median_psf, len(local_med), enrich_n, ranked_psf,
         )
 
     # Discovery emits the candidate pool so the frontend can render skeletons,

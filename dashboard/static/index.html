@@ -51,6 +51,42 @@
     </form>
     <div class="st-menus">
       <div class="dropdown">
+        <button id="filters-toggle" class="nav-btn" type="button" aria-haspopup="true" aria-expanded="false">Filters <span id="filters-badge" class="badge" hidden>0</span> ▾</button>
+        <div id="filters-menu" class="dropdown-menu filters-menu" hidden>
+          <div class="dropdown-head">Filter before searching <span class="muted">— only enriches matches (lower cost)</span></div>
+          <div class="pf-grid">
+            <label class="pf-field"><span>Min $</span>
+              <input type="number" id="pf-pmin" min="0" step="50000" placeholder="0">
+            </label>
+            <label class="pf-field"><span>Max $</span>
+              <input type="number" id="pf-pmax" min="0" step="50000" placeholder="Any">
+            </label>
+            <label class="pf-field"><span>Beds</span>
+              <select id="pf-beds">
+                <option value="0">Any</option><option value="1">1+</option><option value="2">2+</option>
+                <option value="3">3+</option><option value="4">4+</option><option value="5">5+</option>
+              </select>
+            </label>
+            <label class="pf-field"><span>Baths</span>
+              <select id="pf-baths">
+                <option value="0">Any</option><option value="1">1+</option>
+                <option value="2">2+</option><option value="3">3+</option>
+              </select>
+            </label>
+            <label class="pf-field pf-type"><span>Type</span>
+              <select id="pf-type">
+                <option value="">Any</option><option value="house">House</option><option value="condo">Condo</option>
+                <option value="townhouse">Townhouse</option><option value="multi">Multi-family</option>
+              </select>
+            </label>
+          </div>
+          <div class="pf-actions">
+            <button type="button" id="pf-clear" class="link-btn">Clear</button>
+            <span class="muted pf-hint">then hit Run Analysis</span>
+          </div>
+        </div>
+      </div>
+      <div class="dropdown">
         <button id="archive-toggle" class="nav-btn" type="button" aria-haspopup="true" aria-expanded="false">Archive ▾</button>
         <div id="archive-menu" class="dropdown-menu" hidden>
           <div class="dropdown-head">Recent searches</div>

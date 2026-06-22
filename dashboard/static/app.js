@@ -832,7 +832,8 @@ async function startSearch(city, count, intent) {
   $("#search-btn").disabled = true;
   showScoutLoader();  // hide results until the run completes — no partial output
   setStatus(`Searching ${city} (${intent})…`);
-  const url = `/api/search/stream?city=${encodeURIComponent(city)}&count=${count}&intent=${encodeURIComponent(intent)}`;
+  const url = `/api/search/stream?city=${encodeURIComponent(city)}&count=${count}&intent=${encodeURIComponent(intent)}`
+            + preFilterQuery();  // pre-search filters → only enrich matches (lower cost)
   const es = new EventSource(url, {withCredentials: true});
 
   es.addEventListener("status", (e) => {
@@ -945,6 +946,41 @@ $("#archive-toggle")?.addEventListener("click", (e) => {
 $("#active-toggle")?.addEventListener("click", (e) => {
   e.stopPropagation();
   toggleDropdown("active-menu", e.currentTarget);
+});
+
+// --- pre-search filters (constrain enrichment → cut cost) ---
+function preFilters() {
+  const v = (id) => { const el = document.getElementById(id); return el ? el.value : ""; };
+  const f = {};
+  const pmin = parseFloat(v("pf-pmin")); if (pmin > 0) f.min_price = pmin;
+  const pmax = parseFloat(v("pf-pmax")); if (pmax > 0) f.max_price = pmax;
+  const beds = parseInt(v("pf-beds") || "0", 10); if (beds > 0) f.min_beds = beds;
+  const baths = parseFloat(v("pf-baths") || "0"); if (baths > 0) f.min_baths = baths;
+  const type = v("pf-type"); if (type) f.home_type = type;
+  return f;
+}
+function preFilterQuery() {
+  return Object.entries(preFilters())
+    .map(([k, val]) => `&${k}=${encodeURIComponent(val)}`).join("");
+}
+function updateFiltersBadge() {
+  const n = Object.keys(preFilters()).length;
+  const badge = document.getElementById("filters-badge");
+  if (badge) { badge.textContent = String(n); badge.hidden = n === 0; }
+}
+$("#filters-toggle")?.addEventListener("click", (e) => {
+  e.stopPropagation();
+  toggleDropdown("filters-menu", e.currentTarget);
+});
+["pf-pmin", "pf-pmax", "pf-beds", "pf-baths", "pf-type"].forEach(id => {
+  const el = document.getElementById(id);
+  if (el) el.addEventListener("input", updateFiltersBadge);
+});
+$("#pf-clear")?.addEventListener("click", () => {
+  ["pf-pmin", "pf-pmax"].forEach(id => { const el = document.getElementById(id); if (el) el.value = ""; });
+  ["pf-beds", "pf-baths"].forEach(id => { const el = document.getElementById(id); if (el) el.value = "0"; });
+  const t = document.getElementById("pf-type"); if (t) t.value = "";
+  updateFiltersBadge();
 });
 // Click anywhere outside an open dropdown closes it.
 document.addEventListener("click", (e) => {
