@@ -36,34 +36,34 @@ async function ensureAuth() {
   return true;
 }
 
-// Render quota chip + admin link in the header.
+// Populate the account menu (avatar, runs-left, email) + admin link.
 // `me` shape: { authenticated, email, is_admin, daily_cap, runs_today, remaining }
 // remaining === null means unlimited (admin).
 function renderUserChip(me) {
-  const chip = document.getElementById("quota-chip");
   const adminLink = document.getElementById("admin-link");
-  if (!chip) return;
+  if (adminLink) adminLink.hidden = !me.is_admin;
 
-  if (me.is_admin) {
-    adminLink && (adminLink.hidden = false);
-  } else {
-    adminLink && (adminLink.hidden = true);
-  }
+  const toggle = document.getElementById("account-toggle");
+  const avatar = document.getElementById("account-avatar");
+  const runs = document.getElementById("account-runs");
+  const emailEl = document.getElementById("account-email");
 
+  if (emailEl) emailEl.textContent = me.email || "";
+  if (avatar) avatar.textContent = ((me.email || "?").trim()[0] || "?").toUpperCase();
+  if (toggle) toggle.classList.remove("warn", "empty");
+
+  if (!runs) return;
   if (me.remaining === null) {
-    // admin — show identity but no cap
-    chip.classList.remove("warn", "empty");
-    chip.innerHTML = `∞ <span class="quota-email">${me.email}</span>`;
+    runs.textContent = "∞";
+    runs.title = "Unlimited runs (admin)";
   } else {
-    const left = me.remaining;
-    chip.classList.remove("warn", "empty");
-    if (left === 0) chip.classList.add("empty");
-    else if (left <= 1) chip.classList.add("warn");
-    chip.innerHTML =
-      `${left}/${me.daily_cap} runs left today ` +
-      `<span class="quota-email">· ${me.email}</span>`;
+    runs.textContent = `${me.remaining}/${me.daily_cap}`;
+    runs.title = `${me.remaining} of ${me.daily_cap} runs left today`;
+    if (toggle) {
+      if (me.remaining === 0) toggle.classList.add("empty");
+      else if (me.remaining <= 1) toggle.classList.add("warn");
+    }
   }
-  chip.hidden = false;
 }
 
 async function refreshQuotaChip() {
@@ -140,6 +140,7 @@ function showScoutLoader() {
   const results = document.querySelector(".results");
   const loader = document.getElementById("scout-loader");
   if (!results || !loader) return;
+  document.body.classList.add("has-results");  // collapse the landing hero → working view
   results.classList.add("is-scouting");
   loader.hidden = false;
   loader.classList.remove("error");
@@ -563,6 +564,7 @@ function breakdownHtml(r) {
 }
 
 function renderResults(city, baseCards) {
+  document.body.classList.add("has-results");  // ensure working view (e.g. history loads)
   currentCity = city;
   // Reset the sort/filter registry for the new result set, then seed base-card fields.
   for (const k in _reports) delete _reports[k];
@@ -946,6 +948,10 @@ $("#archive-toggle")?.addEventListener("click", (e) => {
 $("#active-toggle")?.addEventListener("click", (e) => {
   e.stopPropagation();
   toggleDropdown("active-menu", e.currentTarget);
+});
+$("#account-toggle")?.addEventListener("click", (e) => {
+  e.stopPropagation();
+  toggleDropdown("account-menu", e.currentTarget);
 });
 
 // --- pre-search filters (constrain enrichment → cut cost) ---

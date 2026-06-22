@@ -22,21 +22,34 @@
 <body class="app-body">
   <header class="topbar">
     <div class="brand">Real Estate Analyzer</div>
-    <nav class="nav">
+    <div class="topbar-right">
       <button id="nav-favorites" class="nav-btn">Favorites ★</button>
-    </nav>
-    <div class="status">
-      <span id="quota-chip" class="quota-chip" hidden></span>
-      <a id="admin-link" class="nav-btn" href="/admin" hidden>Admin</a>
-      <span id="api-status" class="status-dot status-ok" title="APIs healthy"></span>
-      <button id="logout-btn" class="link-btn">Sign out</button>
+      <div class="dropdown">
+        <button id="account-toggle" class="account-btn" type="button" aria-haspopup="true" aria-expanded="false" aria-label="Account menu">
+          <span id="account-avatar" class="avatar" aria-hidden="true">·</span>
+          <span id="account-runs" class="account-runs"></span>
+          <span class="caret" aria-hidden="true">▾</span>
+        </button>
+        <div id="account-menu" class="dropdown-menu account-menu" hidden>
+          <div id="account-email" class="account-email"></div>
+          <div class="account-status"><span id="api-status" class="status-dot status-ok"></span><span>APIs healthy</span></div>
+          <a id="admin-link" class="account-item" href="/admin" hidden>Admin dashboard</a>
+          <button id="logout-btn" class="account-item" type="button">Sign out</button>
+        </div>
+      </div>
     </div>
   </header>
 
-  <!-- Row 2 — horizontal search toolbar -->
-  <div class="search-toolbar">
+  <!-- Search region: a centered hero on the landing/empty state, collapsing to a
+       slim top toolbar once a search runs (body gains .has-results). -->
+  <div class="search-region">
+    <div class="hero-head">
+      <h1 class="hero-title">Find your next flip.</h1>
+      <p class="hero-sub">Scan every for-sale listing in a U.S. city — graded for flip &amp; rental upside, mapped by deal quality.</p>
+    </div>
+    <div class="search-toolbar">
     <form id="search-form" class="st-form">
-      <input type="text" id="city" class="st-city" placeholder="Enter a city — e.g. Sausalito, CA" required>
+      <input type="text" id="city" class="st-city" placeholder="Search any U.S. city — e.g. Sacramento, CA" autocomplete="off" required>
       <label class="st-field"><span>Results</span>
         <input type="number" id="count" value="10" min="1" max="30">
       </label>
@@ -100,6 +113,7 @@
           <ul id="active-runs" class="active-runs"></ul>
         </div>
       </div>
+    </div>
     </div>
   </div>
 
