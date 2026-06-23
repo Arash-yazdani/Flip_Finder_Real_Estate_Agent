@@ -27,6 +27,11 @@ const $$ = (sel) => Array.from(document.querySelectorAll(sel));
 let favorites = {properties: new Set(), cities: new Set()};
 let currentCity = null;
 let currentSlug = null;
+// Last run's summary/market + load source — surfaced in the Print/PDF report header.
+let lastRunSummary = null;   // { enriched, requested, from_cache, fresh, cost_usd, ... }
+let lastRunMarket = null;    // { scanned, strong, marginal, quality, ... }
+let lastRunTotal = null;     // ranked count from the `complete` event
+let lastRunQueriedAt = null; // ISO timestamp when loaded from the Archive
 
 // --- auth gate ---
 async function ensureAuth() {
@@ -158,6 +163,7 @@ function hideScoutLoader() {
   if (results) results.classList.remove("is-scouting");
   const fb = document.getElementById("filter-bar");
   if (fb) fb.hidden = !document.querySelector("#results-grid .card");
+  syncPrintButton();
   // Map initialized & fitted while its container was display:none — re-measure
   // and re-fit now that it's actually visible.
   requestAnimationFrame(() => requestAnimationFrame(refitMapToMarkers));
@@ -526,13 +532,26 @@ function cardSkeleton(card, idx) {
     </article>`;
 }
 
-function breakdownHtml(r) {
+// The full math/comps body for a report, WITHOUT the outer <details> wrappers
+// for Risks/Comps. `expandLists` controls whether Risks/Comps render as always-open
+// lists (true → for the print report) or collapsed <details> (false → on the card).
+function breakdownRows(r, expandLists) {
   const compRange = (r.comp_psf_range && r.comp_psf_range[0] != null)
     ? `$${Math.round(r.comp_psf_range[0])}–$${Math.round(r.comp_psf_range[1])}/sqft`
     : "n/a";
   const passEmoji = r.passes_70_rule ? "✅" : "❌";
   const compsHtml = (r.comps_summary || []).map(c => `<li>${c}</li>`).join("") || "<li>(no comps)</li>";
   const risksHtml = (r.risk_flags || []).map(f => `<li>${f}</li>`).join("") || "<li>none flagged</li>";
+
+  const listsHtml = expandLists
+    ? `
+    <h4>Risks (${(r.risk_flags || []).length})</h4>
+    <ul>${risksHtml}</ul>
+    <h4>Comps used (${(r.comps_summary || []).length})</h4>
+    <ul>${compsHtml}</ul>`
+    : `
+    <details><summary>Risks (${(r.risk_flags || []).length})</summary><ul>${risksHtml}</ul></details>
+    <details><summary>Comps used (${(r.comps_summary || []).length})</summary><ul>${compsHtml}</ul></details>`;
 
   return `
     <h4>Flip: <strong>${r.verdict.replace(/_/g, ' ')}</strong> · Score ${r.flip_score}/100</h4>
@@ -557,10 +576,117 @@ function breakdownHtml(r) {
       <div class="row"><span>Cash flow</span><span class="v">${fmtMoney(r.monthly_cash_flow)}/mo</span></div>
       <div class="row"><span>BRRRR refi proceeds</span><span class="v">${fmtMoney(r.brrrr_refi_proceeds)}</span></div>
     ` : `<p class="muted">No rent comps available.</p>`}
-
-    <details><summary>Risks (${(r.risk_flags || []).length})</summary><ul>${risksHtml}</ul></details>
-    <details><summary>Comps used (${(r.comps_summary || []).length})</summary><ul>${compsHtml}</ul></details>
+    ${listsHtml}
   `;
+}
+
+function breakdownHtml(r) {
+  return breakdownRows(r, false);
+}
+
+// --- Print / Save-as-PDF report ---------------------------------------------
+// Builds a clean, fully-expanded, paginated report for EVERY property in the
+// current run (live search OR archive load) into the hidden #print-root, which
+// @media print reveals while hiding all on-screen chrome. We read the cards in
+// their on-screen DOM order so the report honors the active sort/filter + ranks,
+// and pull each report object from the _reports registry for the full math.
+function escapeHtml(s) {
+  return String(s == null ? "" : s)
+    .replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;");
+}
+
+// One property's fully-expanded section for the print report.
+function printPropertyHtml(r, rank) {
+  const addr = [r.address, r.city, r.state].filter(Boolean).join(", ");
+  const beds = r.bedrooms != null ? r.bedrooms : "?";
+  const baths = r.bathrooms != null ? r.bathrooms : "?";
+  const sqft = r.sqft != null ? fmtNum(r.sqft) : "?";
+  const type = r.home_type || "";
+  const price = fmtMoney(r.purchase_price != null ? r.purchase_price : r.price);
+  const flipV = (r.verdict || "PENDING").replace(/_/g, " ");
+  const rentV = (r.rental_verdict || "NO_RENT_DATA").replace(/_/g, " ");
+  const headline = headlineHtml(r, currentIntent);
+
+  return `
+    <section class="pr-prop">
+      <div class="pr-prop-head">
+        <span class="pr-rank">#${rank}</span>
+        <div class="pr-prop-id">
+          <div class="pr-addr">${escapeHtml(addr)}</div>
+          <div class="pr-meta">${price} · ${beds}bd / ${baths}ba · ${sqft} sqft${type ? " · " + escapeHtml(type) : ""}</div>
+        </div>
+      </div>
+      <div class="pr-verdicts">
+        <span class="verdict ${r.verdict || "PENDING"}">Flip: ${flipV} (${r.flip_score != null ? r.flip_score : 0})</span>
+        <span class="verdict ${r.rental_verdict || "NO_RENT_DATA"}">Rent: ${rentV} (${r.rental_score || 0})</span>
+      </div>
+      ${headline ? `<div class="pr-headline">${headline}</div>` : ""}
+      <div class="pr-breakdown breakdown">${breakdownRows(r, true)}</div>
+    </section>`;
+}
+
+// Compose the run-summary line for the report header from whatever we captured.
+function printSummaryLine() {
+  const parts = [];
+  const m = lastRunMarket;
+  if (m && m.scanned != null) {
+    const strong = m.strong || 0, marginal = m.marginal || 0;
+    parts.push(`Scanned ${m.scanned} listings — ${strong} strong + ${marginal} marginal`);
+  } else if (lastRunTotal != null) {
+    parts.push(`${lastRunTotal} propert${lastRunTotal === 1 ? "y" : "ies"} analyzed`);
+  }
+  const s = lastRunSummary;
+  if (s) {
+    if (s.enriched != null && s.requested != null) parts.push(`enriched ${s.enriched}/${s.requested}`);
+    if (s.cost_usd != null) parts.push(`cost $${(s.cost_usd || 0).toFixed(4)}`);
+  }
+  return parts.join(" · ");
+}
+
+// Populate #print-root and open the browser print dialog (→ "Save as PDF").
+function buildPrintReport() {
+  const root = document.getElementById("print-root");
+  if (!root) return;
+
+  // On-screen DOM order honors the active sort/filter + server ranking. Skip
+  // any cards the user has filtered out (display:none).
+  const cards = $$("#results-grid .card").filter(c => c.style.display !== "none");
+  const reports = cards
+    .map(c => _reports[c.dataset.zpid])
+    .filter(Boolean);
+
+  if (!reports.length) {
+    root.innerHTML = "";
+    return;
+  }
+
+  const genStamp = lastRunQueriedAt
+    ? `Queried ${escapeHtml(lastRunQueriedAt)} · report generated ${new Date().toLocaleString()}`
+    : `Generated ${new Date().toLocaleString()}`;
+  const summary = printSummaryLine();
+
+  const header = `
+    <header class="pr-header">
+      <div class="pr-brand">Real Estate Analyzer</div>
+      <h1 class="pr-city">${escapeHtml(currentCity || "Flip & Rental Report")}</h1>
+      <div class="pr-stamp">${genStamp}</div>
+      ${summary ? `<div class="pr-summary">${escapeHtml(summary)}</div>` : ""}
+      <div class="pr-count">${reports.length} propert${reports.length === 1 ? "y" : "ies"} in this report</div>
+    </header>`;
+
+  const body = reports.map((r, i) => printPropertyHtml(r, i + 1)).join("");
+  const footer = `<footer class="pr-footer">Real Estate Analyzer — ${escapeHtml(currentCity || "")} — generated ${new Date().toLocaleDateString()}</footer>`;
+
+  root.innerHTML = header + body + footer;
+  window.print();
+}
+
+// Show/hide the Print/PDF button alongside Save-city / Reset, only when results exist.
+function syncPrintButton() {
+  const btn = document.getElementById("print-report-btn");
+  if (!btn) return;
+  btn.hidden = !document.querySelector("#results-grid .card");
 }
 
 function renderResults(city, baseCards) {
@@ -587,6 +713,7 @@ function renderResults(city, baseCards) {
   });
   // Plot discovery-phase map pins (gray/pending); recolored later by upgradeCard.
   addBaseMarkers(baseCards);
+  syncPrintButton();
 }
 
 let currentIntent = "both";  // updated on each search
@@ -815,6 +942,8 @@ document.addEventListener("mouseout", (e) => {
 async function startSearch(city, count, intent) {
   hideQuota();
   renderMarketNote(null);  // clear any stale market note from a previous run
+  // Reset run-summary state carried into the Print/PDF report header.
+  lastRunSummary = null; lastRunMarket = null; lastRunTotal = null; lastRunQueriedAt = null;
   currentIntent = intent;
 
   // Preflight: refresh quota chip and short-circuit cleanly if already capped.
@@ -876,6 +1005,11 @@ async function startSearch(city, count, intent) {
   es.addEventListener("complete", (e) => {
     const d = JSON.parse(e.data);
     currentSlug = d.slug;
+    // Stash the run summary for the Print/PDF report header.
+    lastRunSummary = d.summary || null;
+    lastRunMarket = d.market || null;
+    lastRunTotal = d.total != null ? d.total : null;
+    lastRunQueriedAt = null;  // fresh run → "Generated on" timestamp is now
     hideScoutLoader();  // reveal results + filter bar, re-fit the map
     const s = d.summary || {};
     const cacheNote = (s.from_cache != null && s.fresh != null)
@@ -901,6 +1035,11 @@ async function loadFromHistory(slug) {
   const data = await api.historyOne(slug);
   currentCity = data.city;
   currentSlug = slug;
+  // Archive loads have no SSE run summary; carry what we do know into the report header.
+  lastRunSummary = null;
+  lastRunMarket = data.market || null;
+  lastRunTotal = (data.results || []).length;
+  lastRunQueriedAt = data.queried_at || null;
   const cards = data.results.map(r => ({
     zpid: r.zpid, address: r.address, city: r.city, state: r.state, price: r.purchase_price,
     bedrooms: null, bathrooms: null, sqft: r.sqft, home_type: r.home_type,
@@ -992,6 +1131,9 @@ $("#pf-clear")?.addEventListener("click", () => {
 document.addEventListener("click", (e) => {
   if (!e.target.closest(".dropdown")) closeAllDropdowns();
 });
+
+// --- print / save-as-PDF report ---
+$("#print-report-btn")?.addEventListener("click", () => buildPrintReport());
 
 // --- save city button ---
 $("#save-city-btn").addEventListener("click", async () => {

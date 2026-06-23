@@ -340,8 +340,10 @@ async def stream_search(city: str, count: int = 10, intent: str = "flip",
         _finish_run("ok")
         return
 
-    # Filter sqft=0
-    props = [p for p in props if p.sqft and p.sqft > 0]
+    # Drop bad discovery data: sqft=0, and implausibly-low prices (a real for-sale home
+    # is never < $10k — values like "$300" are a listing that dropped its trailing 000
+    # upstream, which would otherwise produce a nonsensical report, e.g. a 45% cap rate).
+    props = [p for p in props if p.sqft and p.sqft > 0 and (p.price or 0) >= 10000]
 
     # ── Discovery-phase market scan + pre-enrichment filtering (no extra API calls) ──
     # Skolit's /bylocation returns no zestimate, so we rank by how far each listing

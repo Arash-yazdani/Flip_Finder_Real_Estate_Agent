@@ -896,3 +896,111 @@ button, .card-title a, .nav-btn, .tab, .link-btn { padding: 10px 12px; border-ra
 .scout-loader.error .scout-glint { animation-play-state: paused; }
 .scout-loader.error .scout-caption { color: var(--bad); }
 
+/* ══ Print / Save-as-PDF ═══════════════════════════════════ */
+/* On-screen toolbar button (sits next to Save-city / Reset in .fb-right) */
+.print-report {
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--text-2); padding: 0.38rem 0.85rem;
+  font-size: 0.8rem; font-weight: 500;
+  transition: color 0.15s, border-color 0.15s, background 0.15s;
+}
+.print-report:hover { border-color: var(--amber); color: var(--amber); }
+
+/* The print container is built on demand and is invisible on screen — it only
+   becomes visible inside @media print (see below). */
+.print-root { display: none; }
+
+@media print {
+  /* Reset to a clean, light, ink-friendly canvas regardless of screen theme */
+  html, body {
+    background: #fff !important; color: #16191F !important;
+    height: auto !important; overflow: visible !important;
+    font: 11pt/1.5 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+  .app-body { display: block !important; height: auto !important; overflow: visible !important; }
+
+  /* Hide ALL on-screen chrome: topbar, search toolbar, banners, filter bar,
+     map, loader, modals, dropdowns, the live results grid, etc. */
+  .topbar, .search-region, .quota-banner, #filter-bar, .market-note,
+  .scout-loader, .results-split, .map-pane, #map, .modal,
+  .dropdown-menu, #view-toggle, .leaflet-container {
+    display: none !important;
+  }
+  /* Collapse the layout wrappers so only #print-root flows on the page */
+  main.layout, .results, .results-list { all: unset !important; display: block !important; }
+
+  /* Reveal the print report */
+  #print-root.print-root { display: block !important; }
+
+  @page { margin: 14mm 14mm 16mm; }
+
+  .pr-header {
+    border-bottom: 2px solid #E8901A; padding-bottom: 10px; margin-bottom: 14px;
+    break-after: avoid; break-inside: avoid;
+  }
+  .pr-brand {
+    font-size: 9pt; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+    color: #E8901A;
+  }
+  .pr-city { margin: 2px 0 4px; font-size: 22pt; font-weight: 700; color: #16191F; letter-spacing: -0.01em; }
+  .pr-stamp { font-size: 8.5pt; color: #5A636F; font-family: var(--mono); }
+  .pr-summary { margin-top: 4px; font-size: 9.5pt; color: #16191F; font-family: var(--mono); }
+  .pr-count { margin-top: 3px; font-size: 8.5pt; color: #8C95A1; text-transform: uppercase; letter-spacing: 0.05em; }
+
+  /* One property per block; never split a property across a page break */
+  .pr-prop {
+    break-inside: avoid; page-break-inside: avoid;
+    border: 1px solid #C7CED7; border-radius: 6px;
+    padding: 12px 14px; margin-bottom: 12px;
+  }
+  .pr-prop-head { display: flex; align-items: baseline; gap: 10px; margin-bottom: 6px; }
+  .pr-rank {
+    font-family: var(--mono); font-weight: 700; font-size: 11pt; color: #E8901A;
+    border: 1px solid #E8901A; border-radius: 4px; padding: 1px 7px; white-space: nowrap;
+  }
+  .pr-addr { font-weight: 600; font-size: 12pt; color: #16191F; }
+  .pr-meta { font-size: 9.5pt; color: #5A636F; font-family: var(--mono); margin-top: 1px; }
+
+  .pr-verdicts { display: flex; gap: 8px; flex-wrap: wrap; margin: 6px 0; }
+  .pr-headline { font-family: var(--mono); font-size: 9.5pt; color: #5A636F; margin: 4px 0 2px; }
+  .pr-headline .hl { font-weight: 700; }
+  .pr-headline .hl.pos { color: #15A34A; }
+  .pr-headline .hl.neg { color: #DC2626; }
+
+  /* Verdict badges keep their accent colors but print on white with borders so
+     no heavy dark fills bleed ink. Force color printing where supported. */
+  .pr-prop .verdict {
+    -webkit-print-color-adjust: exact; print-color-adjust: exact;
+    display: inline-block; padding: 2px 7px; border-radius: 4px;
+    font-size: 8.5pt; font-weight: 600; font-family: var(--mono);
+    border: 1px solid #C7CED7; background: #fff; color: #16191F;
+  }
+  .pr-prop .verdict.STRONG_FLIP, .pr-prop .verdict.GOOD_RENTAL { color: #15803D; border-color: #BBE6C9; background: #F0FAF3; }
+  .pr-prop .verdict.MARGINAL_FLIP, .pr-prop .verdict.DECENT_RENTAL { color: #A35E00; border-color: #F0DBA8; background: #FCF7EC; }
+  .pr-prop .verdict.RENTAL_PLAY { color: #1D4ED8; border-color: #BFD3F7; background: #F1F5FE; }
+  .pr-prop .verdict.TEAR_DOWN, .pr-prop .verdict.POOR_RENTAL { color: #C0392B; border-color: #F2C4C4; background: #FCF1F1; }
+  .pr-prop .verdict.NO_DEAL, .pr-prop .verdict.NO_RENT_DATA, .pr-prop .verdict.PENDING { color: #5A636F; }
+
+  /* Math breakdown: full, always-expanded; tidy rows + section headers */
+  .pr-breakdown { margin-top: 8px; font-size: 9.5pt; color: #16191F; border-top: 1px solid #E3E7EC; padding-top: 6px; }
+  .pr-breakdown h4 {
+    margin: 9px 0 3px; font-size: 8.5pt; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.05em; color: #5A636F;
+    break-after: avoid;
+  }
+  .pr-breakdown h4:first-child { margin-top: 0; }
+  .pr-breakdown p { margin: 2px 0 4px; color: #16191F; }
+  .pr-breakdown .row { display: flex; justify-content: space-between; gap: 12px; margin: 1.5px 0; break-inside: avoid; }
+  .pr-breakdown .row .v { color: #16191F; font-family: var(--mono); text-align: right; }
+  .pr-breakdown .muted { color: #5A636F; }
+  .pr-breakdown ul { margin: 2px 0 4px; padding-left: 16px; }
+  .pr-breakdown li { margin: 1px 0; break-inside: avoid; }
+
+  .pr-footer {
+    margin-top: 10px; padding-top: 6px; border-top: 1px solid #E3E7EC;
+    font-size: 8pt; color: #8C95A1; font-family: var(--mono); text-align: center;
+  }
+}
+
