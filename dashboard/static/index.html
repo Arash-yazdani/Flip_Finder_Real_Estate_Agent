@@ -51,7 +51,7 @@
     <form id="search-form" class="st-form">
       <input type="text" id="city" class="st-city" placeholder="Search any U.S. city — e.g. Sacramento, CA" autocomplete="off" required>
       <label class="st-field"><span>Results</span>
-        <input type="number" id="count" value="10" min="1" max="30">
+        <input type="number" id="count" value="10" min="1" max="50">
       </label>
       <label class="st-field"><span>Intent</span>
         <select id="intent">
@@ -93,6 +93,13 @@
               </select>
             </label>
           </div>
+          <label class="pf-deep" for="pf-deep">
+            <input type="checkbox" id="pf-deep">
+            <span class="pf-deep-text">
+              <strong>Deep scan</strong> — full market
+              <span class="muted">scans every neighborhood to go past the ~800-listing cap on big cities (slower, uses more API quota)</span>
+            </span>
+          </label>
           <div class="pf-actions">
             <button type="button" id="pf-clear" class="link-btn">Clear</button>
             <span class="muted pf-hint">then hit Run Analysis</span>

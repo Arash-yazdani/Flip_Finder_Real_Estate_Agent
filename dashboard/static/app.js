@@ -963,8 +963,10 @@ async function startSearch(city, count, intent) {
   $("#search-btn").disabled = true;
   showScoutLoader();  // hide results until the run completes — no partial output
   setStatus(`Searching ${city} (${intent})…`);
+  const deep = !!document.getElementById("pf-deep")?.checked;
   const url = `/api/search/stream?city=${encodeURIComponent(city)}&count=${count}&intent=${encodeURIComponent(intent)}`
-            + preFilterQuery();  // pre-search filters → only enrich matches (lower cost)
+            + preFilterQuery()           // pre-search filters → only enrich matches (lower cost)
+            + (deep ? "&deep=1" : "");   // deep scan → fan out per-zip past the ~800 cap
   const es = new EventSource(url, {withCredentials: true});
 
   es.addEventListener("status", (e) => {
@@ -1109,7 +1111,8 @@ function preFilterQuery() {
     .map(([k, val]) => `&${k}=${encodeURIComponent(val)}`).join("");
 }
 function updateFiltersBadge() {
-  const n = Object.keys(preFilters()).length;
+  const deep = !!document.getElementById("pf-deep")?.checked;
+  const n = Object.keys(preFilters()).length + (deep ? 1 : 0);
   const badge = document.getElementById("filters-badge");
   if (badge) { badge.textContent = String(n); badge.hidden = n === 0; }
 }
@@ -1121,10 +1124,12 @@ $("#filters-toggle")?.addEventListener("click", (e) => {
   const el = document.getElementById(id);
   if (el) el.addEventListener("input", updateFiltersBadge);
 });
+document.getElementById("pf-deep")?.addEventListener("change", updateFiltersBadge);
 $("#pf-clear")?.addEventListener("click", () => {
   ["pf-pmin", "pf-pmax"].forEach(id => { const el = document.getElementById(id); if (el) el.value = ""; });
   ["pf-beds", "pf-baths"].forEach(id => { const el = document.getElementById(id); if (el) el.value = "0"; });
   const t = document.getElementById("pf-type"); if (t) t.value = "";
+  const d = document.getElementById("pf-deep"); if (d) d.checked = false;
   updateFiltersBadge();
 });
 // Click anywhere outside an open dropdown closes it.

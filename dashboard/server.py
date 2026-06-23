@@ -214,7 +214,7 @@ def _sse(event: str, data: dict) -> bytes:
 @app.get("/api/search/stream")
 async def search_stream(
     city: str = Query(...),
-    count: int = Query(10, ge=1, le=30),
+    count: int = Query(10, ge=1, le=50),
     intent: str = Query("flip"),
     # Optional pre-enrichment filters — applied to the discovery pool before we pick
     # the 30–50 to enrich, so Bright Data only pays for listings the user wants.
@@ -223,6 +223,8 @@ async def search_stream(
     min_beds: Optional[int] = Query(None, ge=0),
     min_baths: Optional[float] = Query(None, ge=0),
     home_type: Optional[str] = Query(None),
+    # Deep scan: fan out per-zip on capped (~800) cities to assemble the full market.
+    deep: bool = Query(False),
     email: str = Depends(current_user_email),
 ):
     # Cap check
@@ -239,6 +241,7 @@ async def search_stream(
                 city=city, count=count, intent=intent, user_email=email,
                 min_price=min_price, max_price=max_price,
                 min_beds=min_beds, min_baths=min_baths, home_type=home_type,
+                deep=deep,
             ):
                 yield _sse(ev["event"], ev["data"])
         except asyncio.CancelledError:

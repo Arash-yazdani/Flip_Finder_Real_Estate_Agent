@@ -286,6 +286,20 @@ class ZillowAPIScraper:
                                      _loc.get("latitude") or _loc.get("lat"))
                     prop.longitude = (item.get("longitude") or item.get("lng") or
                                       item.get("lon") or _loc.get("longitude") or _loc.get("lng"))
+                    # Zip code — used by deep-scan per-zip fan-out. /bylocation gives a
+                    # flat address string ("123 Main St, Sacramento, CA 95834"), so the
+                    # zip is the trailing 5-digit group; fall back to dict/top-level keys.
+                    _raw_addr = item.get("address")
+                    _zip = ""
+                    if isinstance(_raw_addr, str):
+                        _zm = re.search(r"(\d{5})(?:-\d{4})?\s*$", _raw_addr.strip())
+                        if _zm:
+                            _zip = _zm.group(1)
+                    elif isinstance(_raw_addr, dict):
+                        _zip = str(_raw_addr.get("zipcode") or _raw_addr.get("postalCode") or "")
+                    if not _zip:
+                        _zip = str(item.get("zipcode") or item.get("postalCode") or item.get("zip") or "")
+                    prop.zipcode = _zip.strip()
                     # Discovery-phase signals (used by evaluator as fallback when BD fails)
                     prop.zestimate = (item.get("zestimate") or item.get("zestimateAmount") or 0)
                     prop.days_on_zillow = (item.get("daysOnZillow") or item.get("daysOnMarket") or

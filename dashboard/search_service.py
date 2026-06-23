@@ -174,43 +174,20 @@ def _flip_report_to_dict(a, prop, enriched) -> dict:
     }
 
 
-def _discover(location: str):
-    """Run the RapidAPI scraper as a subprocess and return Property list.
+# Deep-scan tuning. The Skolit /bylocation endpoint caps any single location at ~800
+# listings / 20 pages, so a big city like Sacramento returns a *truncated* market. A
+# zip or neighborhood slug, however, returns its own small market (verified: 95818→49,
+# 95820→65). When the user opts into a deep scan AND the city is capped, we fan out one
+# fetch per active zip and merge+dedupe — assembling well past the 800 ceiling.
+_CAP_THRESHOLD = 800        # market total at/above this ⇒ city is truncated ⇒ fan out
+_DEEP_MAX_ZIPS = 30         # cap zips per deep run (quota guardrail)
+_DEEP_ZIP_PAGES = 2         # pages per zip (scraper early-stops via has_next; usually 1)
+_DEEP_CONCURRENCY = 6       # parallel zip fetches
+_DEEP_CITY_PAGES = 6        # citywide pages in deep mode (just enough to enumerate zips)
 
-    Returns (props, quota_signal). quota_signal is non-None if RapidAPI is at/near limit.
 
-    RAPIDAPI_MAX_PAGES env var controls how many pages to fetch (default 20 = full
-    market — the API tops out at ~20 pages / ~800 listings, and the scraper stops
-    early via pagination.has_next, so smaller cities cost far fewer calls).
-
-    Quota math (Skolit Pro = 10,000 calls/month): requests = runs × pages. At the
-    current scale (2 users × 5/day = 300 runs/mo), even all-20-page markets cost
-    ≤6,000/mo — well within quota — while a full-market scan gives the most accurate
-    citywide $/sqft baseline + complete candidate pool. Lower this (e.g. 4, or 1) as
-    user count grows to trade breadth for headroom.
-    """
-    import os as _os
-    max_pages = _os.environ.get("RAPIDAPI_MAX_PAGES", "20")
-    result = subprocess.run(
-        [sys.executable, "scrapers/zillow_api_scraper.py", location, max_pages],
-        capture_output=True, text=True, timeout=300,  # full-market (20pg) scans run ~2min
-        cwd=str(PROJECT_ROOT),
-    )
-    out = result.stdout
-    stderr = result.stderr
-    quota_signal = None
-    # Cheap quota detect from stderr (we don't have headers exposed to subprocess output)
-    if ("429" in stderr or "QUOTA_EXCEEDED" in stderr or
-            "rate limit" in stderr.lower() or "quota" in stderr.lower()):
-        quota_signal = "RapidAPI rate limit hit"
-    if "JSON_START:" not in out:
-        return [], quota_signal or f"discovery failed: {stderr[-300:]}"
-    try:
-        raw = json.loads(out.split("JSON_START:")[1].split(":JSON_END")[0])
-    except (json.JSONDecodeError, IndexError) as e:
-        # Subprocess crashed mid-output or emitted malformed JSON — fail gracefully
-        # instead of crashing the SSE stream with an unhandled exception.
-        return [], quota_signal or f"discovery JSON parse failed: {str(e)[:200]}"
+def _parse_props(raw: list) -> list:
+    """Build Property objects from the scraper's JSON payload."""
     props = []
     for p in raw:
         prop = Property(
@@ -226,11 +203,107 @@ def _discover(location: str):
         # Geo coords for map pins (available immediately from RapidAPI discovery)
         prop.latitude = p.get("latitude")
         prop.longitude = p.get("longitude")
+        prop.zipcode = (p.get("zipcode") or "").strip()  # deep-scan per-zip fan-out
         # Carry discovery-phase signals from RapidAPI (available before Bright Data)
         prop.zestimate = p.get("zestimate") or 0
         prop.days_on_zillow = p.get("days_on_zillow") or 0
         prop.tax_assessed_value = p.get("tax_assessed_value") or 0
         props.append(prop)
+    return props
+
+
+def _fetch_one(location: str, max_pages) -> tuple:
+    """One RapidAPI scraper subprocess. Returns (props, quota_signal, market_total)."""
+    import re as _re
+    result = subprocess.run(
+        [sys.executable, "scrapers/zillow_api_scraper.py", location, str(max_pages)],
+        capture_output=True, text=True, timeout=300,  # full-market (20pg) scans run ~2min
+        cwd=str(PROJECT_ROOT),
+    )
+    out, stderr = result.stdout, result.stderr
+    quota_signal = None
+    # Cheap quota detect from stderr (we don't have headers exposed to subprocess output)
+    if ("429" in stderr or "QUOTA_EXCEEDED" in stderr or
+            "rate limit" in stderr.lower() or "quota" in stderr.lower()):
+        quota_signal = "RapidAPI rate limit hit"
+    m = _re.search(r"Market total=(\d+)", stderr)
+    market_total = int(m.group(1)) if m else 0
+    if "JSON_START:" not in out:
+        return [], quota_signal or f"discovery failed: {stderr[-300:]}", market_total
+    try:
+        raw = json.loads(out.split("JSON_START:")[1].split(":JSON_END")[0])
+    except (json.JSONDecodeError, IndexError) as e:
+        # Subprocess crashed mid-output or emitted malformed JSON — fail gracefully
+        # instead of crashing the SSE stream with an unhandled exception.
+        return [], quota_signal or f"discovery JSON parse failed: {str(e)[:200]}", market_total
+    return _parse_props(raw), quota_signal, market_total
+
+
+def _deep_fanout(city_props: list) -> list:
+    """Fan out one fetch per active zip (derived from the citywide listings) and merge,
+    deduping by property_id — recovers listings the 800-cap citywide scan truncated."""
+    import re as _re
+    from collections import Counter
+    from concurrent.futures import ThreadPoolExecutor, as_completed
+
+    counts: Counter = Counter()
+    for p in city_props:
+        z = (getattr(p, "zipcode", "") or "").strip()
+        if _re.fullmatch(r"\d{5}", z):
+            counts[z] += 1
+    zips = [z for z, _ in counts.most_common(_DEEP_MAX_ZIPS)]
+    if not zips:
+        return city_props
+
+    seen = {p.property_id for p in city_props}
+    merged = list(city_props)
+
+    def _one(z):
+        zp, _q, _t = _fetch_one(z, _DEEP_ZIP_PAGES)
+        return zp
+
+    with ThreadPoolExecutor(max_workers=_DEEP_CONCURRENCY) as ex:
+        for fut in as_completed([ex.submit(_one, z) for z in zips]):
+            try:
+                for zp in fut.result():
+                    if zp.property_id and zp.property_id not in seen:
+                        seen.add(zp.property_id)
+                        merged.append(zp)
+            except Exception as e:
+                logger.warning("deep zip fetch failed: %s", e)
+
+    logger.info("deep fanout: %d zips, %d→%d listings", len(zips), len(city_props), len(merged))
+    return merged
+
+
+def _discover(location: str, deep: bool = False):
+    """Run the RapidAPI scraper and return (props, quota_signal).
+
+    RAPIDAPI_MAX_PAGES env var controls how many pages to fetch (default 20 = full
+    market — the API tops out at ~20 pages / ~800 listings, and the scraper stops
+    early via pagination.has_next, so smaller cities cost far fewer calls).
+
+    deep=True: if the city is capped at the ~800 ceiling, fan out per-zip and merge to
+    assemble the full market (see _deep_fanout). Opt-in — it spends extra RapidAPI calls
+    (≤ _DEEP_MAX_ZIPS × _DEEP_ZIP_PAGES, typically ~50) only when the city is truncated.
+    In deep mode the citywide pass is capped at _DEEP_CITY_PAGES (just enough to enumerate
+    the zips + detect the cap — the per-zip fan-out supplies the actual depth).
+
+    Quota math (Skolit Pro = 10,000 calls/month): a normal run costs ≤20 calls; a deep
+    run on a capped city costs ~6 + ~50 ≈ 56. At 2 users × 5/day, keep deep scans
+    deliberate (it's an explicit toggle) and quota stays comfortable.
+    """
+    import os as _os
+    max_pages = _os.environ.get("RAPIDAPI_MAX_PAGES", "20")
+    # Deep mode: the per-zip fan-out supersedes the citywide listings, so the citywide
+    # pass only needs enough pages to enumerate active zips + read the cap signal.
+    city_pages = min(int(max_pages), _DEEP_CITY_PAGES) if deep else max_pages
+    props, quota_signal, total = _fetch_one(location, city_pages)
+    if deep and props and total and total >= _CAP_THRESHOLD:
+        try:
+            props = _deep_fanout(props)
+        except Exception as e:
+            logger.warning("deep fanout failed (%s); using citywide pool", e)
     return props, quota_signal
 
 
@@ -254,7 +327,8 @@ async def stream_search(city: str, count: int = 10, intent: str = "flip",
                          max_price: Optional[float] = None,
                          min_beds: Optional[int] = None,
                          min_baths: Optional[float] = None,
-                         home_type: Optional[str] = None) -> AsyncIterator[dict]:
+                         home_type: Optional[str] = None,
+                         deep: bool = False) -> AsyncIterator[dict]:
     """Async generator producing SSE-ready dicts.
 
     intent: 'flip' | 'rent' | 'both' — same analysis, different ranking.
@@ -301,7 +375,7 @@ async def stream_search(city: str, count: int = 10, intent: str = "flip",
 
     loop = asyncio.get_running_loop()
     client_disconnected = False
-    discovery_fut = loop.run_in_executor(_EXECUTOR, _discover, city)
+    discovery_fut = loop.run_in_executor(_EXECUTOR, _discover, city, deep)
     # Poll discovery with periodic heartbeats. A full-market (20-page) scan can take
     # ~2 min, so we keep the SSE stream alive (every ≤4s) and feed the scout loader a
     # live counter — going silent for 2 min risks a proxy dropping the connection.
@@ -320,7 +394,8 @@ async def stream_search(city: str, count: int = 10, intent: str = "flip",
             break
         _elapsed += 4
         if not client_disconnected:
-            yield {"event": "status", "data": {"message": f"Scanning the market — {_elapsed}s…"}}
+            _scan_label = "Deep scan — every neighborhood" if deep else "Scanning the market"
+            yield {"event": "status", "data": {"message": f"{_scan_label} — {_elapsed}s…"}}
     props, quota = discovery_fut.result()
 
     if quota and not props:
@@ -453,12 +528,15 @@ async def stream_search(city: str, count: int = 10, intent: str = "flip",
 
     # Enrichment depth: scan a meaningful slice of the market, not just ~10.
     # Default ≈ max(count*3, 30) so the displayed top `count` are the best of a
-    # real sample. Capped by the discovery pool size and a hard ceiling of 50.
+    # real sample. Capped by the discovery pool size and a hard ceiling
+    # (BRIGHT_DATA_MAX_ENRICH, default 100) — raise the cap to analyze more of the
+    # market per run at higher Bright Data cost.
+    _max_enrich = int(_os.environ.get("BRIGHT_DATA_MAX_ENRICH", "100"))
     if enrich_limit is not None:
         enrich_n = enrich_limit
     else:
         enrich_n = max(count * 3, 30)
-    enrich_n = min(enrich_n, 50, len(props_with_link))
+    enrich_n = min(enrich_n, _max_enrich, len(props_with_link))
 
     candidates = props_with_link[:enrich_n]
     urls = [p.link for p in candidates]
