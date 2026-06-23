@@ -211,8 +211,13 @@ class ZillowAPIScraper:
                 print(f"DEBUG: Page {page}: {len(results)} results", file=sys.stderr)
 
                 for item in results:
-                    # Filter out land/mobile — handle both string and list homeType
-                    home_type = str(item.get("homeType") or item.get("propertyType") or "").upper()
+                    # Filter out land/mobile. The Skolit /bylocation field is `property_type`
+                    # (snake_case) with values like SINGLE_FAMILY/CONDO/TOWNHOUSE/MULTI_FAMILY/
+                    # MANUFACTURED — read that FIRST (the camelCase keys are absent, which used
+                    # to make every listing default to "Single Family" and break type filtering).
+                    home_type = str(
+                        item.get("property_type") or item.get("homeType") or item.get("propertyType") or ""
+                    ).upper()
                     if any(t in home_type for t in ("LOT", "LAND", "MANUFACTURED", "MOBILE")):
                         continue
 
@@ -267,7 +272,7 @@ class ZillowAPIScraper:
                         bathrooms=float(baths) if baths else 2.0,
                         sqft=int(sqft) if sqft else 1500,
                         year_built=int(yr) if yr else 1990,
-                        property_type=item.get("homeType") or item.get("propertyType") or "Single Family",
+                        property_type=item.get("property_type") or item.get("homeType") or item.get("propertyType") or "Single Family",
                         estimated_rent=int(rent_est),
                         hoa_fees=0,
                         property_tax_annual=int(price * 0.0125) if price > 0 else 5000,
