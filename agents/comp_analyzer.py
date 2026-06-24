@@ -126,6 +126,10 @@ def analyze_comps(enriched: dict, subject_home_type: Optional[str] = None,
             continue
         if subj in ("SINGLE_FAMILY", "TOWNHOUSE") and ht == "CONDO":
             continue
+        # Size mismatch: a comp far larger/smaller than the subject isn't comparable
+        # (e.g. a 14,000-sqft estate as a comp for a 720-sqft home). Keep a 0.5x–2.0x band.
+        if subject_sqft and not (0.5 <= sqft / subject_sqft <= 2.0):
+            continue
         addr = h.get("streetAddress") or h.get("address", {}).get("streetAddress") if isinstance(h.get("address"), dict) else h.get("streetAddress", "?")
         cs.comps.append(Comp(
             address=addr or "?",
@@ -136,6 +140,15 @@ def analyze_comps(enriched: dict, subject_home_type: Optional[str] = None,
             baths=h.get("bathrooms") or h.get("baths"),
             rent_zestimate=h.get("rentZestimate"),
         ))
+
+    # Trim $/sqft outliers vs the comp-set median — rejects polluted comps (a $66/sqft
+    # parcel/teardown, or a $700/sqft anomaly) that make the range meaningless. Never trim
+    # below 3 comps (keep the raw set when there isn't enough signal to trust the trim).
+    if len(cs.comps) >= 4:
+        _med = statistics.median([c.psf for c in cs.comps])
+        _kept = [c for c in cs.comps if _med * 0.5 <= c.psf <= _med * 2.0]
+        if len(_kept) >= 3:
+            cs.comps = _kept
 
     raw_psfs = [c.psf for c in cs.comps]
     rents = [c.rent_zestimate for c in cs.comps if c.rent_zestimate]

@@ -574,6 +574,27 @@ async def stream_search(city: str, count: int = 10, intent: str = "flip",
             return type_med[tb]
         return median_psf
 
+    # Drop severe low-$/sqft outliers BEFORE ranking: a listing priced at a tiny fraction of
+    # its neighborhood's $/sqft is almost always a manufactured/mobile home, a fractional or
+    # non-arms-length sale, or a data error — not a real flip (e.g. a $50k "SINGLE_FAMILY" at
+    # ~20% of local $/sqft). Adaptive (relative to local comps) so it works in any market.
+    _outlier_frac = float(_os.environ.get("DISCOVERY_OUTLIER_FRACTION", "0.4"))
+
+    def _severe_low_outlier(p):
+        v = _psf(p)
+        b = _baseline(p)
+        return v is not None and b > 0 and v < b * _outlier_frac
+
+    _n_before = len(pool)
+    pool = [p for p in pool if not _severe_low_outlier(p)]
+    if _n_before != len(pool):
+        logger.info("dropped %d severe low-$/sqft outliers (likely manufactured/bad data)",
+                    _n_before - len(pool))
+    if not pool:
+        yield {"event": "error", "data": {"message": "No valid listings remained after removing data outliers."}}
+        _finish_run("ok")
+        return
+
     def _discovery_rank(p):
         # Higher = better deal: priced furthest below its own local/type comps.
         psf = _psf(p)

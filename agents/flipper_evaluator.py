@@ -18,7 +18,11 @@ from typing import List, Optional, Tuple
 from agents.comp_analyzer import CompSet, analyze_comps, estimate_arv, estimate_rent
 
 
-# --- Rehab base cost ---
+# --- Rehab base cost ($/sqft) ---
+# This table is the HEAVY/FIXER (near-gut) renovation cost by age. The default case —
+# a 'neutral' listing with no fixer/turnkey signal — is assumed to need only a
+# cosmetic-to-moderate refresh, so it pays REHAB_NEUTRAL_MULT × this (most listed homes
+# are livable, not gut jobs). Only a description that flags a fixer pays the full amount.
 REHAB_PSF_BY_AGE = [
     (1950, 90),    # pre-1950 (heaviest)
     (1980, 60),
@@ -26,6 +30,9 @@ REHAB_PSF_BY_AGE = [
     (9999, 20),
 ]
 DEFAULT_REHAB_PSF = 50  # used when yearBuilt is None
+REHAB_NEUTRAL_MULT = 0.5   # unknown-condition / no signal → cosmetic-moderate (~half of fixer)
+REHAB_FIXER_MULT = 1.0     # description flags a fixer → full age-based (gut) cost
+REHAB_TURNKEY_MULT = 0.25  # already updated → light touch-up only
 
 # --- Description signal vocab ---
 FIXER_KEYWORDS = (
@@ -339,15 +346,19 @@ class FlipperEvaluator:
         listed_below_as_is = bool(zest and price <= as_is_value * 0.92)
 
         # --- Rehab cost (rehab_signal already classified above) ---
+        # Base = age-based FIXER (gut) cost; scale DOWN for the common case where the
+        # listing isn't flagged as a fixer (a livable home needs cosmetic-moderate work).
         psf = _rehab_psf(year_built)
         rehab = int((sqft or 1500) * psf)
         if rehab_signal == "teardown":
             rehab = int((sqft or 1500) * 250)  # tear-down + new build is ~$250+/sqft
             risks.append("Description suggests TEAR-DOWN / development — not a traditional flip")
         elif rehab_signal == "fixer":
-            rehab = int(rehab * 1.5)
+            rehab = int(rehab * REHAB_FIXER_MULT)     # full gut cost
         elif rehab_signal == "turnkey":
-            rehab = int(rehab * 0.3)
+            rehab = int(rehab * REHAB_TURNKEY_MULT)   # light touch-up
+        else:
+            rehab = int(rehab * REHAB_NEUTRAL_MULT)   # neutral → cosmetic-moderate (default)
 
         # --- Holding cost (6 months) ---
         tax_rate = float(enriched.get("propertyTaxRate") or 1.25) / 100.0
@@ -493,7 +504,7 @@ class FlipperEvaluator:
             comp_count=len(cs.comps),
             comp_psf_range=(cs.psf_low, cs.psf_high),
             rehab_estimate=rehab,
-            rehab_psf=psf if rehab_signal != "teardown" else 250,
+            rehab_psf=(int(rehab / sqft) if sqft else psf) if rehab_signal != "teardown" else 250,
             rehab_signal=rehab_signal,
             holding_cost_6mo=holding,
             financing_cost=financing_6mo,
