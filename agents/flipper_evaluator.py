@@ -304,7 +304,8 @@ class FlipperEvaluator:
             # No usable comps — approximate ARV from the as-is zestimate + rehab uplift.
             arv = int(zest * arv_uplift)
             arv_source = "zestimate_uplift"
-            arv_confidence = "medium" if rehab_signal in ("fixer", "neutral") else "low"
+            arv_confidence = "low"  # 0 comps ⇒ never better than low confidence
+            risks.append("ARV from Zestimate (no comparable sales) — unverified against comps")
         elif sqft:
             arv = int(self.fallback_psf * sqft * arv_uplift)
             arv_source = "fallback"
