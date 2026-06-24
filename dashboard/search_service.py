@@ -59,6 +59,7 @@ def _base_card(prop) -> dict:
         "link": getattr(prop, "link", ""),
         "latitude": getattr(prop, "latitude", None),
         "longitude": getattr(prop, "longitude", None),
+        "zipcode": getattr(prop, "zipcode", "") or "",  # per-area grouping/labels
         "zestimate": getattr(prop, "zestimate", 0) or 0,
         "days_on_zillow": getattr(prop, "days_on_zillow", 0) or 0,
         "enriched": False,
@@ -185,6 +186,14 @@ _DEEP_ZIP_PAGES = 2         # pages per zip (scraper early-stops via has_next; u
 _DEEP_CONCURRENCY = 6       # parallel zip fetches
 _DEEP_CITY_PAGES = 6        # citywide pages in deep mode (just enough to enumerate zips)
 
+# County/city SCOPE fan-out (crosswalk-driven, dashboard/geo.py). Unlike deep scan, the zip
+# set is the COMPLETE authoritative list for the scope — so no neighborhood is missed. A
+# county is never covered by one query, so we always fan out over every zip. Env-overridable.
+import os as _os_mod  # noqa: E402
+_COUNTY_MAX_ZIPS = int(_os_mod.environ.get("COUNTY_MAX_ZIPS", "120"))   # guardrail for huge counties
+_COUNTY_ZIP_PAGES = int(_os_mod.environ.get("COUNTY_ZIP_PAGES", "4"))   # per-zip depth (dense zips)
+_COUNTY_CONCURRENCY = int(_os_mod.environ.get("COUNTY_CONCURRENCY", "4"))  # Render free = 1 worker
+
 
 def _parse_props(raw: list) -> list:
     """Build Property objects from the scraper's JSON payload."""
@@ -239,30 +248,40 @@ def _fetch_one(location: str, max_pages) -> tuple:
     return _parse_props(raw), quota_signal, market_total
 
 
-def _deep_fanout(city_props: list) -> list:
-    """Fan out one fetch per active zip (derived from the citywide listings) and merge,
-    deduping by property_id — recovers listings the 800-cap citywide scan truncated."""
+def _deep_fanout(city_props: list, zips: Optional[list] = None,
+                 zip_pages: int = _DEEP_ZIP_PAGES, max_zips: int = _DEEP_MAX_ZIPS,
+                 concurrency: int = _DEEP_CONCURRENCY, on_progress=None) -> list:
+    """Fan out one fetch per zip and merge into city_props, deduping by property_id.
+
+    zips=None → derive the zip set from the citywide listings (scan-derived deep scan).
+    zips=[...] → fan out over an EXPLICIT, complete list (crosswalk-driven county/city scope) —
+    this is what guarantees every neighborhood is scanned, including ones a single capped scan
+    never surfaced. on_progress(done, total) is called after each zip completes, if provided."""
     import re as _re
     from collections import Counter
     from concurrent.futures import ThreadPoolExecutor, as_completed
 
-    counts: Counter = Counter()
-    for p in city_props:
-        z = (getattr(p, "zipcode", "") or "").strip()
-        if _re.fullmatch(r"\d{5}", z):
-            counts[z] += 1
-    zips = [z for z, _ in counts.most_common(_DEEP_MAX_ZIPS)]
+    if zips is None:
+        counts: Counter = Counter()
+        for p in city_props:
+            z = (getattr(p, "zipcode", "") or "").strip()
+            if _re.fullmatch(r"\d{5}", z):
+                counts[z] += 1
+        zips = [z for z, _ in counts.most_common(max_zips)]
+    else:
+        zips = [z for z in zips if _re.fullmatch(r"\d{5}", str(z))][:max_zips]
     if not zips:
         return city_props
 
     seen = {p.property_id for p in city_props}
     merged = list(city_props)
+    done = 0
 
     def _one(z):
-        zp, _q, _t = _fetch_one(z, _DEEP_ZIP_PAGES)
+        zp, _q, _t = _fetch_one(z, zip_pages)
         return zp
 
-    with ThreadPoolExecutor(max_workers=_DEEP_CONCURRENCY) as ex:
+    with ThreadPoolExecutor(max_workers=concurrency) as ex:
         for fut in as_completed([ex.submit(_one, z) for z in zips]):
             try:
                 for zp in fut.result():
@@ -271,37 +290,59 @@ def _deep_fanout(city_props: list) -> list:
                         merged.append(zp)
             except Exception as e:
                 logger.warning("deep zip fetch failed: %s", e)
+            done += 1
+            if on_progress:
+                try:
+                    on_progress(done, len(zips))
+                except Exception:
+                    pass
 
     logger.info("deep fanout: %d zips, %d→%d listings", len(zips), len(city_props), len(merged))
     return merged
 
 
-def _discover(location: str, deep: bool = False):
+def _discover(location: str, deep: bool = False, scope=None, on_progress=None):
     """Run the RapidAPI scraper and return (props, quota_signal).
 
-    RAPIDAPI_MAX_PAGES env var controls how many pages to fetch (default 20 = full
-    market — the API tops out at ~20 pages / ~800 listings, and the scraper stops
-    early via pagination.has_next, so smaller cities cost far fewer calls).
+    RAPIDAPI_MAX_PAGES controls how many pages a single-location scan fetches (default 20 —
+    the API tops out at ~800 listings, scraper early-stops via has_next).
 
-    deep=True: if the city is capped at the ~800 ceiling, fan out per-zip and merge to
-    assemble the full market (see _deep_fanout). Opt-in — it spends extra RapidAPI calls
-    (≤ _DEEP_MAX_ZIPS × _DEEP_ZIP_PAGES, typically ~50) only when the city is truncated.
-    In deep mode the citywide pass is capped at _DEEP_CITY_PAGES (just enough to enumerate
-    the zips + detect the cap — the per-zip fan-out supplies the actual depth).
+    scope (dashboard.geo.Scope), with deep=True, drives a COMPLETE crosswalk-based fan-out:
+      • county → always fan out over EVERY residential zip in the county (one query can never
+        cover a whole county) — this is the core "don't miss any neighborhood" guarantee.
+      • city → if the single city scan is capped (≥800), fan out over the city's authoritative
+        zip list (more complete than scan-derived); if not capped, the one scan is already the
+        full city market.
+    deep without a resolvable scope (kind='raw') keeps the original scan-derived fan-out.
 
-    Quota math (Skolit Pro = 10,000 calls/month): a normal run costs ≤20 calls; a deep
-    run on a capped city costs ~6 + ~50 ≈ 56. At 2 users × 5/day, keep deep scans
-    deliberate (it's an explicit toggle) and quota stays comfortable.
+    Quota: a normal run ≤20 calls; a county run ≈ len(zips) × COUNTY_ZIP_PAGES (Sacramento ~66
+    zips × ~2 effective pages ≈ ~120 calls — ~1–2% of the 10k/mo Pro quota).
     """
     import os as _os
     max_pages = _os.environ.get("RAPIDAPI_MAX_PAGES", "20")
-    # Deep mode: the per-zip fan-out supersedes the citywide listings, so the citywide
-    # pass only needs enough pages to enumerate active zips + read the cap signal.
+    kind = getattr(scope, "kind", "raw") if scope else "raw"
+    scope_zips = (getattr(scope, "zips", None) or []) if scope else []
+
+    # County scope: fan out over the complete authoritative zip list (always).
+    if deep and kind == "county" and scope_zips:
+        zips = scope_zips[:_COUNTY_MAX_ZIPS]
+        first, quota_signal, _ = _fetch_one(zips[0], _COUNTY_ZIP_PAGES)
+        props = _deep_fanout(first, zips=zips[1:], zip_pages=_COUNTY_ZIP_PAGES,
+                             max_zips=_COUNTY_MAX_ZIPS, concurrency=_COUNTY_CONCURRENCY,
+                             on_progress=on_progress)
+        return props, quota_signal
+
+    # City / raw: single scan first; fan out only if the market is capped.
     city_pages = min(int(max_pages), _DEEP_CITY_PAGES) if deep else max_pages
     props, quota_signal, total = _fetch_one(location, city_pages)
     if deep and props and total and total >= _CAP_THRESHOLD:
         try:
-            props = _deep_fanout(props)
+            if kind == "city" and scope_zips:
+                props = _deep_fanout(props, zips=scope_zips, zip_pages=_DEEP_ZIP_PAGES,
+                                     max_zips=_COUNTY_MAX_ZIPS, concurrency=_DEEP_CONCURRENCY,
+                                     on_progress=on_progress)
+            else:
+                props = _deep_fanout(props, on_progress=on_progress)
         except Exception as e:
             logger.warning("deep fanout failed (%s); using citywide pool", e)
     return props, quota_signal
@@ -373,9 +414,23 @@ async def stream_search(city: str, count: int = 10, intent: str = "flip",
         except Exception:
             logger.exception("add_run_event failed")
 
+    # Resolve geographic scope (county / city / raw) → complete zip list for the fan-out.
+    from dashboard.geo import resolve_scope
+    scope = resolve_scope(city)
+    if scope.kind == "county":
+        deep = True  # a county is never covered by one query — always fan out over every zip
+        n_zips = min(len(scope.zips), _COUNTY_MAX_ZIPS)
+        if len(scope.zips) > _COUNTY_MAX_ZIPS:
+            yield {"event": "status", "data": {"message":
+                f"{scope.label}: {len(scope.zips)} zips — scanning the first {_COUNTY_MAX_ZIPS}. "
+                f"Narrow to a city for full depth."}}
+        yield {"event": "scope", "data": {"kind": "county", "label": scope.label, "zip_count": n_zips}}
+    elif scope.kind == "city" and scope.zips:
+        yield {"event": "scope", "data": {"kind": "city", "label": scope.label, "zip_count": len(scope.zips)}}
+
     loop = asyncio.get_running_loop()
     client_disconnected = False
-    discovery_fut = loop.run_in_executor(_EXECUTOR, _discover, city, deep)
+    discovery_fut = loop.run_in_executor(_EXECUTOR, _discover, city, deep, scope)
     # Poll discovery with periodic heartbeats. A full-market (20-page) scan can take
     # ~2 min, so we keep the SSE stream alive (every ≤4s) and feed the scout loader a
     # live counter — going silent for 2 min risks a proxy dropping the connection.
@@ -394,7 +449,12 @@ async def stream_search(city: str, count: int = 10, intent: str = "flip",
             break
         _elapsed += 4
         if not client_disconnected:
-            _scan_label = "Deep scan — every neighborhood" if deep else "Scanning the market"
+            if scope.kind == "county":
+                _scan_label = f"Scanning {scope.label} — {min(len(scope.zips), _COUNTY_MAX_ZIPS)} neighborhoods"
+            elif deep:
+                _scan_label = "Deep scan — every neighborhood"
+            else:
+                _scan_label = "Scanning the market"
             yield {"event": "status", "data": {"message": f"{_scan_label} — {_elapsed}s…"}}
     props, quota = discovery_fut.result()
 
@@ -531,14 +591,32 @@ async def stream_search(city: str, count: int = 10, intent: str = "flip",
     # real sample. Capped by the discovery pool size and a hard ceiling
     # (BRIGHT_DATA_MAX_ENRICH, default 100) — raise the cap to analyze more of the
     # market per run at higher Bright Data cost.
-    _max_enrich = int(_os.environ.get("BRIGHT_DATA_MAX_ENRICH", "100"))
+    _is_scope = scope.kind in ("county", "city") and bool(getattr(scope, "zips", None))
+    _max_enrich = int(_os.environ.get(
+        "COUNTY_MAX_ENRICH" if _is_scope else "BRIGHT_DATA_MAX_ENRICH",
+        "200" if _is_scope else "100"))
     if enrich_limit is not None:
         enrich_n = enrich_limit
     else:
         enrich_n = max(count * 3, 30)
-    enrich_n = min(enrich_n, _max_enrich, len(props_with_link))
 
-    candidates = props_with_link[:enrich_n]
+    if _is_scope:
+        # Guarantee every neighborhood is represented: reserve the top-K per zip (each zip's
+        # slice is already in local-comp rank order), then fill the rest of the budget with the
+        # global leaders — so a uniformly-pricier area (e.g. Arden-Arcade) still gets analyzed.
+        from collections import defaultdict as _dd
+        k_per_zip = int(_os.environ.get("ENRICH_PER_ZIP_K", "2"))
+        by_zip: dict = _dd(list)
+        for p in props_with_link:
+            by_zip[(getattr(p, "zipcode", "") or "_")].append(p)
+        reserved = [p for plist in by_zip.values() for p in plist[:k_per_zip]]
+        reserved_ids = {id(p) for p in reserved}
+        rest = [p for p in props_with_link if id(p) not in reserved_ids]
+        enrich_n = min(max(enrich_n, len(reserved)), _max_enrich, len(props_with_link))
+        candidates = (reserved + rest)[:enrich_n]
+    else:
+        enrich_n = min(enrich_n, _max_enrich, len(props_with_link))
+        candidates = props_with_link[:enrich_n]
     urls = [p.link for p in candidates]
 
     # Telemetry (not persisted) so we can tune ranking quality.

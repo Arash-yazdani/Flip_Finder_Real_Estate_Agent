@@ -32,6 +32,7 @@ let lastRunSummary = null;   // { enriched, requested, from_cache, fresh, cost_u
 let lastRunMarket = null;    // { scanned, strong, marginal, quality, ... }
 let lastRunTotal = null;     // ranked count from the `complete` event
 let lastRunQueriedAt = null; // ISO timestamp when loaded from the Archive
+let lastRunScope = null;     // { kind, label, zip_count } from the `scope` event
 
 // --- auth gate ---
 async function ensureAuth() {
@@ -197,6 +198,9 @@ function renderMarketNote(m) {
     cls = "market-none";
     msg = `🔴 Scanned ${m.scanned} listings — none met the deal criteria in this market. ` +
           `Showing the closest near-misses (ranked best-first), not recommended buys.`;
+  }
+  if (lastRunScope && lastRunScope.kind === "county" && lastRunScope.zip_count) {
+    msg += ` Coverage: all ${lastRunScope.zip_count} ZIP areas across ${lastRunScope.label}.`;
   }
   el.className = `market-note ${cls}`;
   el.textContent = msg;
@@ -943,7 +947,7 @@ async function startSearch(city, count, intent) {
   hideQuota();
   renderMarketNote(null);  // clear any stale market note from a previous run
   // Reset run-summary state carried into the Print/PDF report header.
-  lastRunSummary = null; lastRunMarket = null; lastRunTotal = null; lastRunQueriedAt = null;
+  lastRunSummary = null; lastRunMarket = null; lastRunTotal = null; lastRunQueriedAt = null; lastRunScope = null;
   currentIntent = intent;
 
   // Preflight: refresh quota chip and short-circuit cleanly if already capped.
@@ -960,6 +964,19 @@ async function startSearch(city, count, intent) {
     }
   } catch (_) { /* non-fatal — let the server enforce */ }
 
+  // County reports are heavier (scan every ZIP in the county). Confirm the cost up front.
+  if (/\bcounty\b/i.test(city)) {
+    try {
+      const r = await fetch(`/api/scope?q=${encodeURIComponent(city)}`, { credentials: "include" });
+      const sc = await r.json();
+      if (sc.kind === "county") {
+        const trunc = sc.truncated ? `\n\n(${sc.total_zips} ZIPs total — only the first ${sc.zip_count} will be scanned; narrow to a city for full depth.)` : "";
+        const msg = `Full-county report — ${sc.label}\n\nScans ${sc.zip_count} ZIP codes (~${sc.est_calls} API calls) to cover every neighborhood. This is heavier than a normal search and counts against your daily limit.${trunc}\n\nRun it?`;
+        if (!window.confirm(msg)) return;
+      }
+    } catch (_) { /* estimate failed — proceed; backend still gates by daily cap */ }
+  }
+
   $("#search-btn").disabled = true;
   showScoutLoader();  // hide results until the run completes — no partial output
   setStatus(`Searching ${city} (${intent})…`);
@@ -971,6 +988,11 @@ async function startSearch(city, count, intent) {
 
   es.addEventListener("status", (e) => {
     const d = JSON.parse(e.data); setStatus(d.message);
+  });
+  es.addEventListener("scope", (e) => {
+    const d = JSON.parse(e.data);
+    lastRunScope = d;  // surfaced in the coverage line on completion
+    if (d.kind === "county") setStatus(`Scanning ${d.label} — ${d.zip_count} neighborhoods…`);
   });
   es.addEventListener("discovery", (e) => {
     const d = JSON.parse(e.data);

@@ -211,6 +211,23 @@ def _sse(event: str, data: dict) -> bytes:
     return f"event: {event}\ndata: {json.dumps(data)}\n\n".encode()
 
 
+@app.get("/api/scope")
+async def api_scope(q: str = Query(...), email: str = Depends(current_user_email)):
+    """Resolve a search string to its geographic scope + estimated API cost, so the UI can
+    show a confirm before launching a heavy county report."""
+    from dashboard.geo import resolve_scope
+    from dashboard.search_service import _COUNTY_MAX_ZIPS, _COUNTY_ZIP_PAGES
+    sc = resolve_scope(q)
+    total = len(sc.zips)
+    n = min(total, _COUNTY_MAX_ZIPS) if sc.kind == "county" else total
+    return {
+        "kind": sc.kind, "label": sc.label,
+        "zip_count": n, "total_zips": total,
+        "est_calls": (n * _COUNTY_ZIP_PAGES) if sc.kind == "county" else 0,
+        "truncated": sc.kind == "county" and total > _COUNTY_MAX_ZIPS,
+    }
+
+
 @app.get("/api/search/stream")
 async def search_stream(
     city: str = Query(...),
