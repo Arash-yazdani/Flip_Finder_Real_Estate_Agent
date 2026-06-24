@@ -228,6 +228,32 @@ async def api_scope(q: str = Query(...), email: str = Depends(current_user_email
     }
 
 
+@app.post("/api/report/pdf")
+async def report_pdf(request: Request, email: str = Depends(current_user_email)):
+    """Render the on-screen report to a real vector PDF server-side (fpdf2) — no browser
+    print chrome (no onrender.com URL/timestamp header-footer)."""
+    try:
+        payload = await request.json()
+    except Exception:
+        raise HTTPException(status_code=400, detail="Invalid JSON body")
+    props = (payload or {}).get("properties") or []
+    if not props:
+        raise HTTPException(status_code=400, detail="No properties to render")
+    payload["properties"] = props[:200]  # sane upper bound
+    from dashboard.pdf_report import build_pdf
+    try:
+        pdf_bytes = build_pdf(payload)
+    except Exception:
+        logger.exception("PDF generation failed")
+        raise HTTPException(status_code=500, detail="PDF generation failed")
+    import re as _re
+    safe = _re.sub(r"[^A-Za-z0-9]+", "_", str(payload.get("city") or "report")).strip("_") or "report"
+    return Response(
+        content=pdf_bytes, media_type="application/pdf",
+        headers={"Content-Disposition": f'attachment; filename="FlipFinder Report - {safe}.pdf"'},
+    )
+
+
 @app.get("/api/search/stream")
 async def search_stream(
     city: str = Query(...),

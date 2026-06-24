@@ -701,9 +701,47 @@ function buildPrintReport() {
 
 // Show/hide the Print/PDF button alongside Save-city / Reset, only when results exist.
 function syncPrintButton() {
+  const has = !!document.querySelector("#results-grid .card");
   const btn = document.getElementById("print-report-btn");
-  if (!btn) return;
-  btn.hidden = !document.querySelector("#results-grid .card");
+  if (btn) btn.hidden = !has;
+  const dl = document.getElementById("download-pdf-btn");
+  if (dl) dl.hidden = !has;
+}
+
+// Server-side PDF: POST the on-screen (sorted/filtered) reports → clean branded PDF with no
+// browser print chrome. Falls back to the browser print path if the server can't render.
+async function downloadPdf() {
+  const cards = $$("#results-grid .card").filter(c => c.style.display !== "none");
+  const properties = cards.map(c => _reports[c.dataset.zpid]).filter(Boolean);
+  if (!properties.length) return;
+  const btn = document.getElementById("download-pdf-btn");
+  const label = btn ? btn.textContent : "";
+  if (btn) { btn.disabled = true; btn.textContent = "Generating…"; }
+  try {
+    const res = await fetch("/api/report/pdf", {
+      method: "POST", credentials: "include",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        city: currentCity || "Flip & Rental Report",
+        generated: lastRunQueriedAt ? `Queried ${lastRunQueriedAt}` : `Generated ${new Date().toLocaleString()}`,
+        summary: printSummaryLine(),
+        properties,
+      }),
+    });
+    if (!res.ok) throw new Error("pdf " + res.status);
+    const blob = await res.blob();
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = `FlipFinder Report - ${(currentCity || "report").replace(/[^A-Za-z0-9]+/g, "_")}.pdf`;
+    document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(() => URL.revokeObjectURL(url), 1000);
+  } catch (e) {
+    // Fallback: the in-browser print path still works (just with browser print chrome).
+    buildPrintReport();
+  } finally {
+    if (btn) { btn.disabled = false; btn.textContent = label; }
+  }
 }
 
 function renderResults(city, baseCards) {
@@ -1184,6 +1222,7 @@ document.addEventListener("click", (e) => {
 
 // --- print / save-as-PDF report ---
 $("#print-report-btn")?.addEventListener("click", () => buildPrintReport());
+$("#download-pdf-btn")?.addEventListener("click", () => downloadPdf());
 
 // --- save city button ---
 $("#save-city-btn").addEventListener("click", async () => {
