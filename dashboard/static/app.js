@@ -747,7 +747,7 @@ function _primaryScore(r, intent) {
   else if (v === "RENTAL_PLAY")   { tier = 3; within = r.rental_score; }
   else if (rv === "GOOD_RENTAL" || rv === "DECENT_RENTAL") { tier = 2; within = r.rental_score; }
   else if (v === "TEAR_DOWN")     { tier = 0; within = r.flip_score; }
-  else                            { tier = 1; within = r.flip_score; }  // NO_DEAL near-miss
+  else { tier = 1; within = Math.max(-400, Math.min(400, r.profit_margin_pct || 0)); }  // near-miss: closest-to-viable first
   return tier * 1000 + (within || 0);
 }
 

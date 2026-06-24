@@ -505,7 +505,7 @@ class FlipperEvaluator:
             comp_count=len(cs.comps),
             comp_psf_range=(cs.psf_low, cs.psf_high),
             rehab_estimate=rehab,
-            rehab_psf=(int(rehab / sqft) if sqft else psf) if rehab_signal != "teardown" else 250,
+            rehab_psf=(round(rehab / sqft) if sqft else psf) if rehab_signal != "teardown" else 250,
             rehab_signal=rehab_signal,
             holding_cost_6mo=holding,
             financing_cost=financing_6mo,

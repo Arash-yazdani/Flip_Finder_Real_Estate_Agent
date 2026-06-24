@@ -11,6 +11,7 @@ Notes:
   - We also fold in the subject's own zestimate and rentZestimate when present.
 """
 import json
+import math
 import re
 import statistics
 from dataclasses import dataclass, field
@@ -160,7 +161,18 @@ def analyze_comps(enriched: dict, subject_home_type: Optional[str] = None,
     adj_psfs = [c.adj_psf for c in cs.comps]
 
     if raw_psfs:
-        cs.median_psf = round(statistics.median(adj_psfs), 2)   # size-adjusted ⇒ ARV basis
+        # ARV basis = SIZE-WEIGHTED mean of the size-adjusted $/sqft: comps closer to the
+        # subject's footprint carry more weight, so a 0.6x or 1.6x comp can't drag the
+        # midpoint as hard as a same-size neighbor. Falls back to the plain median.
+        if subject_sqft:
+            _num = _den = 0.0
+            for c in cs.comps:
+                w = 1.0 / (1.0 + abs(math.log((c.sqft or subject_sqft) / subject_sqft))) if c.sqft else 0.5
+                _num += c.adj_psf * w
+                _den += w
+            cs.median_psf = round(_num / _den, 2) if _den else round(statistics.median(adj_psfs), 2)
+        else:
+            cs.median_psf = round(statistics.median(adj_psfs), 2)
         cs.raw_median_psf = round(statistics.median(raw_psfs), 2)
         cs.psf_low = round(min(raw_psfs), 2)
         cs.psf_high = round(max(raw_psfs), 2)

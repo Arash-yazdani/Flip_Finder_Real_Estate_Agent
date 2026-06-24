@@ -140,6 +140,8 @@ def _flip_report_to_dict(a, prop, enriched) -> dict:
         "verdict_reason": a.verdict_reason,
         "flip_score": a.flip_score,
         "purchase_price": a.purchase_price,
+        "bedrooms": (enriched.get("bedrooms") if enriched else None) or getattr(prop, "bedrooms", None),
+        "bathrooms": (enriched.get("bathrooms") if enriched else None) or getattr(prop, "bathrooms", None),
         "sqft": a.sqft,
         "year_built": a.year_built,
         "home_type": a.home_type,
@@ -769,8 +771,8 @@ async def stream_search(city: str, count: int = 10, intent: str = "flip",
             tier, within = 2, r.rental_score
         elif v == "TEAR_DOWN":
             tier, within = 0, r.flip_score
-        else:  # NO_DEAL near-miss — least-negative (higher flip_score) ranks first
-            tier, within = 1, r.flip_score
+        else:  # NO_DEAL near-miss — closest-to-viable (highest profit margin) ranks first
+            tier, within = 1, max(-400, min(400, r.profit_margin_pct or 0))
         return tier * 1000 + (within or 0)
     scored.sort(key=_sort_key, reverse=True)
 
