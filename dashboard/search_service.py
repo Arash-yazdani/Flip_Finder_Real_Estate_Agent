@@ -748,12 +748,29 @@ async def stream_search(city: str, count: int = 10, intent: str = "flip",
             logger.error(f"score failed for {prop.address}: {e}")
 
     def _sort_key(item):
+        # Tiered so a genuine FLIP always leads, then rental plays, then near-misses — a
+        # money-losing flip never tops the list just because it happens to cash-flow.
+        # within-tier score (0-100) breaks ties; tier*1000 keeps the bands separate.
         r = item["report"]
         if intent == "rent":
             return r.rental_score
-        if intent == "both":
-            return max(r.flip_score, r.rental_score)
-        return r.flip_score
+        if intent == "flip":
+            return r.flip_score
+        # "both": rank by deal tier, then the score relevant to that tier.
+        v, rv = r.verdict, r.rental_verdict
+        if v == "STRONG_FLIP":
+            tier, within = 5, r.flip_score
+        elif v == "MARGINAL_FLIP":
+            tier, within = 4, r.flip_score
+        elif v == "RENTAL_PLAY":
+            tier, within = 3, r.rental_score
+        elif rv in ("GOOD_RENTAL", "DECENT_RENTAL"):
+            tier, within = 2, r.rental_score
+        elif v == "TEAR_DOWN":
+            tier, within = 0, r.flip_score
+        else:  # NO_DEAL near-miss — least-negative (higher flip_score) ranks first
+            tier, within = 1, r.flip_score
+        return tier * 1000 + (within or 0)
     scored.sort(key=_sort_key, reverse=True)
 
     # ── Honest market summary over the WHOLE scanned pool ─────────────────────

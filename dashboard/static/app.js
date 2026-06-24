@@ -722,10 +722,20 @@ function renderResults(city, baseCards) {
 
 let currentIntent = "both";  // updated on each search
 
+// Mirrors the server _sort_key: tiered so genuine flips lead, then rental plays, then
+// near-misses — a money-losing flip never tops the list just because it cash-flows.
 function _primaryScore(r, intent) {
   if (intent === "rent") return r.rental_score || 0;
-  if (intent === "both") return Math.max(r.flip_score || 0, r.rental_score || 0);
-  return r.flip_score || 0;
+  if (intent === "flip") return r.flip_score || 0;
+  const v = r.verdict, rv = r.rental_verdict;
+  let tier, within;
+  if (v === "STRONG_FLIP")        { tier = 5; within = r.flip_score; }
+  else if (v === "MARGINAL_FLIP") { tier = 4; within = r.flip_score; }
+  else if (v === "RENTAL_PLAY")   { tier = 3; within = r.rental_score; }
+  else if (rv === "GOOD_RENTAL" || rv === "DECENT_RENTAL") { tier = 2; within = r.rental_score; }
+  else if (v === "TEAR_DOWN")     { tier = 0; within = r.flip_score; }
+  else                            { tier = 1; within = r.flip_score; }  // NO_DEAL near-miss
+  return tier * 1000 + (within || 0);
 }
 
 function upgradeCard(report) {
