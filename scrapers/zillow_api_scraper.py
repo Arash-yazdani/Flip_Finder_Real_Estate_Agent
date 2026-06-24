@@ -267,10 +267,14 @@ class ZillowAPIScraper:
                         address=street,
                         city=city,
                         state=state,
-                        price=price if price > 0 else 400000,
+                        # NEVER fabricate price/sqft: a missing value becomes 0 so the
+                        # discovery sanity guard (price>=10k, sqft>0) drops the listing rather
+                        # than scoring a fictional deal. (Previously defaulted to a fake price/
+                        # sqft, which manufactured phantom homes that polluted the rankings.)
+                        price=price if price > 0 else 0,
                         bedrooms=int(beds) if beds else 3,
                         bathrooms=float(baths) if baths else 2.0,
-                        sqft=int(sqft) if sqft else 1500,
+                        sqft=int(sqft) if sqft else 0,
                         year_built=int(yr) if yr else 1990,
                         property_type=item.get("property_type") or item.get("homeType") or item.get("propertyType") or "Single Family",
                         estimated_rent=int(rent_est),

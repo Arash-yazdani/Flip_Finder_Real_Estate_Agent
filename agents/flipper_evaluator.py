@@ -194,6 +194,29 @@ def _price_history_signals(enriched: dict) -> List[str]:
     return flags
 
 
+def _no_price_report(base_prop, price: int, sqft: int) -> "FlipReport":
+    """Minimal NO_DEAL report for a listing with no usable price or sqft — these can never be
+    a real opportunity, so we never run the deal math on them (guards against a missing or
+    fabricated price producing a phantom profit)."""
+    reason = ("No list price available — cannot analyze" if price <= 0
+              else "No square-footage data — cannot analyze")
+    return FlipReport(
+        property_id=getattr(base_prop, "property_id", ""),
+        address=getattr(base_prop, "address", ""),
+        verdict="NO_DEAL", verdict_reason=reason, flip_score=0.0,
+        purchase_price=max(int(price), 0), sqft=max(int(sqft), 0),
+        year_built=None, home_type=getattr(base_prop, "property_type", "?") or "?",
+        days_on_market=0, list_psf=0.0,
+        arv=0, arv_source="none", arv_confidence="none", comp_count=0, comp_psf_range=(None, None),
+        rehab_estimate=0, rehab_psf=0, rehab_signal="neutral",
+        holding_cost_6mo=0, financing_cost=0, selling_cost=0, all_in_cost=0,
+        net_resale=0, projected_profit=0, profit_margin_pct=0.0, mao_70_rule=0, passes_70_rule=False,
+        monthly_rent_est=None, monthly_noi=0, cap_rate_pct=0.0, monthly_cash_flow=0, brrrr_refi_proceeds=0,
+        rental_verdict="NO_RENT_DATA", rental_verdict_reason=reason, rental_score=0.0,
+        risk_flags=[reason], comps_summary=[],
+    )
+
+
 class FlipperEvaluator:
     def __init__(self,
                  hold_months: int = DEFAULT_HOLD_MONTHS,
@@ -212,8 +235,13 @@ class FlipperEvaluator:
         enriched = enriched or {}
         risks: List[str] = []
 
-        price = int(base_prop.price)
+        # Prefer the Bright Data list price (authoritative) over the discovery price; never
+        # analyze a listing with no real price — return an explicit NO_DEAL so a missing/
+        # fabricated price can never surface as an opportunity.
+        price = int(enriched.get("price") or enriched.get("unformattedPrice") or base_prop.price or 0)
         sqft = int(enriched.get("livingArea") or base_prop.sqft or 0)
+        if price <= 0 or sqft <= 0:
+            return _no_price_report(base_prop, price, sqft)
         home_type = enriched.get("homeType") or base_prop.property_type or "?"
         year_built = enriched.get("yearBuilt")
         if not year_built and base_prop.year_built and base_prop.year_built != 1990:
