@@ -142,12 +142,12 @@ def analyze_comps(enriched: dict, subject_home_type: Optional[str] = None,
         ))
 
     # Trim $/sqft outliers vs the comp-set median — rejects polluted comps (a $66/sqft
-    # parcel/teardown, or a $700/sqft anomaly) that make the range meaningless. Never trim
-    # below 3 comps (keep the raw set when there isn't enough signal to trust the trim).
-    if len(cs.comps) >= 4:
+    # parcel/teardown, or a $700/sqft anomaly) that make the range meaningless. Fires at
+    # 3+ comps and keeps at least 2 clean ones (2 good comps beat 3 with a parcel).
+    if len(cs.comps) >= 3:
         _med = statistics.median([c.psf for c in cs.comps])
         _kept = [c for c in cs.comps if _med * 0.5 <= c.psf <= _med * 2.0]
-        if len(_kept) >= 3:
+        if len(_kept) >= 2:
             cs.comps = _kept
 
     raw_psfs = [c.psf for c in cs.comps]
