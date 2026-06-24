@@ -793,10 +793,13 @@ async def stream_search(city: str, count: int = 10, intent: str = "flip",
         market_quality = "some"
     else:
         market_quality = "none"
+    _zip_total = len(getattr(scope, "zips", []) or []) if scope and scope.kind in ("county", "city") else 0
+    _zip_scanned = min(_zip_total, _COUNTY_MAX_ZIPS) if _zip_total else 0  # big counties truncate
     market_summary = {
         "scanned": len(scored),           # analyzed/enriched in depth
         "discovered": _discovered_total,  # full for-sale market scanned
-        "zips": len(getattr(scope, "zips", []) or []) if scope and scope.kind in ("county", "city") else 0,
+        "zips": _zip_scanned,             # ZIPs actually fanned out over
+        "zips_total": _zip_total,         # ZIPs in the scope (may exceed the scan cap)
         "scope_kind": getattr(scope, "kind", "raw") if scope else "raw",
         "strong": strong,
         "marginal": marginal,

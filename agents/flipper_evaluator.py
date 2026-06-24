@@ -316,29 +316,29 @@ class FlipperEvaluator:
             arv_confidence = "none"
             risks.append("No sqft data — ARV is a flat 10% bump (unreliable)")
 
-        # Guard ranking trust: a couple of noisy/mismatched comps can inflate ARV to
-        # an implausible multiple of list. Cap the spread by comp confidence so thin
-        # comp sets can't manufacture fake "STRONG_FLIP" deals. The cap also adds a
-        # risk flag, denting the score so capped deals don't unfairly top the ranking.
-        if arv_source == "comps" and price:
+        # Guard ranking trust: cap the ARV at a confidence-scaled multiple of list price so
+        # NO source can manufacture a fake "STRONG_FLIP". Applies to EVERY arv_source — a
+        # comp-less fallback ($600/sqft default) or a Zestimate-uplift must be capped too,
+        # or a 4,500-sqft mislabeled-commercial listing fabricates a $1.7M "profit". The cap
+        # adds a risk flag, denting the score so capped deals don't unfairly top the ranking.
+        if price:
             cap_mult = {"high": 2.0, "medium": 1.6, "low": 1.4}.get(arv_confidence, 1.4)
             if arv > price * cap_mult:
                 arv = int(price * cap_mult)
                 risks.append(
-                    f"ARV spread capped at {cap_mult}x list ({arv_confidence}-confidence comps)"
+                    f"ARV spread capped at {cap_mult}x list ({arv_confidence}-confidence ARV)"
                 )
 
-        # As-is sanity ceiling: a renovated home should sit between its as-is value and
-        # the renovated-comp ceiling — never implausibly above it. This catches the
-        # small-comp-on-large-subject failure mode the multiple-of-list cap above misses
-        # (e.g. a $40k cosmetic rehab "adding" $214k). Binds with a risk flag.
-        if arv_source == "comps" and as_is_value:
+        # As-is sanity ceiling: a renovated home should sit between its as-is value and the
+        # renovated ceiling — never implausibly above it. Applies to every source (for a
+        # fallback/no-data ARV the anchor is the list price, so it can't run away from list).
+        if as_is_value:
             as_is_ceiling = int(as_is_value * _as_is_ceiling_premium(rehab_signal))
             if arv > as_is_ceiling:
                 arv = as_is_ceiling
                 risks.append(
                     f"ARV capped at {_as_is_ceiling_premium(rehab_signal):.2f}x as-is value "
-                    f"(${as_is_value:,}) — comps implied an unrealistic post-rehab jump"
+                    f"(${as_is_value:,}) — implied an unrealistic post-rehab jump"
                 )
 
         # Motivated-seller / discount signal: list price below the as-is value.

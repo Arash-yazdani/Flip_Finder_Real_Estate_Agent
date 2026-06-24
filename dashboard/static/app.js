@@ -181,6 +181,15 @@ function scoutError(msg) {
 }
 
 // Honest market-quality note shown after a run completes.
+// " across N ZIPs" — or " across N of M ZIPs (large county…)" when the scan was truncated.
+function zipScanLabel(m) {
+  if (!m || !m.zips) return "";
+  if (m.zips_total && m.zips_total > m.zips) {
+    return ` across ${m.zips} of ${m.zips_total} ZIPs (large county — narrow to a city for full coverage)`;
+  }
+  return ` across ${m.zips} ZIPs`;
+}
+
 function renderMarketNote(m) {
   const el = $("#market-note");
   if (!el) return;
@@ -188,7 +197,7 @@ function renderMarketNote(m) {
   // Honest coverage framing: distinguish the full market scanned from the top slice we
   // deep-analyze, so "scanned 112" never reads as "the whole market is 112".
   const cov = (m.discovered && m.discovered > m.scanned)
-    ? `Scanned ${m.discovered.toLocaleString()} listings${m.zips ? ` across ${m.zips} ZIPs` : ""} — deep-analyzed the top ${m.scanned}`
+    ? `Scanned ${m.discovered.toLocaleString()} listings${zipScanLabel(m)} — deep-analyzed the top ${m.scanned}`
     : `Analyzed ${m.scanned} listings`;
   let cls = "market-none", msg = "";
   if (m.quality === "strong") {
@@ -639,7 +648,7 @@ function printSummaryLine() {
   if (m && m.scanned != null) {
     const strong = m.strong || 0, marginal = m.marginal || 0;
     const cov = (m.discovered && m.discovered > m.scanned)
-      ? `Scanned ${m.discovered.toLocaleString()} listings${m.zips ? ` across ${m.zips} ZIPs` : ""} · deep-analyzed top ${m.scanned}`
+      ? `Scanned ${m.discovered.toLocaleString()} listings${zipScanLabel(m)} · deep-analyzed top ${m.scanned}`
       : `Analyzed ${m.scanned} listings`;
     parts.push(`${cov} · ${strong} strong + ${marginal} marginal`);
   } else if (lastRunTotal != null) {
