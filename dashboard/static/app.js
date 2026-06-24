@@ -185,22 +185,24 @@ function renderMarketNote(m) {
   const el = $("#market-note");
   if (!el) return;
   if (!m || m.scanned == null) { el.hidden = true; return; }
+  // Honest coverage framing: distinguish the full market scanned from the top slice we
+  // deep-analyze, so "scanned 112" never reads as "the whole market is 112".
+  const cov = (m.discovered && m.discovered > m.scanned)
+    ? `Scanned ${m.discovered.toLocaleString()} listings${m.zips ? ` across ${m.zips} ZIPs` : ""} — deep-analyzed the top ${m.scanned}`
+    : `Analyzed ${m.scanned} listings`;
   let cls = "market-none", msg = "";
   if (m.quality === "strong") {
     cls = "market-strong";
-    msg = `🟢 Scanned ${m.scanned} listings — found ${m.strong} strong` +
+    msg = `🟢 ${cov} — found ${m.strong} strong` +
           (m.marginal ? ` + ${m.marginal} marginal` : "") + ` flip opportunit${(m.strong + m.marginal) === 1 ? "y" : "ies"}.`;
   } else if (m.quality === "some") {
     cls = "market-some";
-    msg = `🟡 Scanned ${m.scanned} listings — no strong flips, but ${m.opportunities} ` +
+    msg = `🟡 ${cov} — no strong flips, but ${m.opportunities} ` +
           `marginal/rental opportunit${m.opportunities === 1 ? "y" : "ies"}. Showing the best of the market.`;
   } else {
     cls = "market-none";
-    msg = `🔴 Scanned ${m.scanned} listings — none met the deal criteria in this market. ` +
+    msg = `🔴 ${cov} — none cleared the deal criteria in this market. ` +
           `Showing the closest near-misses (ranked best-first), not recommended buys.`;
-  }
-  if (lastRunScope && lastRunScope.kind === "county" && lastRunScope.zip_count) {
-    msg += ` Coverage: all ${lastRunScope.zip_count} ZIP areas across ${lastRunScope.label}.`;
   }
   el.className = `market-note ${cls}`;
   el.textContent = msg;
@@ -636,7 +638,10 @@ function printSummaryLine() {
   const m = lastRunMarket;
   if (m && m.scanned != null) {
     const strong = m.strong || 0, marginal = m.marginal || 0;
-    parts.push(`Scanned ${m.scanned} listings — ${strong} strong + ${marginal} marginal`);
+    const cov = (m.discovered && m.discovered > m.scanned)
+      ? `Scanned ${m.discovered.toLocaleString()} listings${m.zips ? ` across ${m.zips} ZIPs` : ""} · deep-analyzed top ${m.scanned}`
+      : `Analyzed ${m.scanned} listings`;
+    parts.push(`${cov} · ${strong} strong + ${marginal} marginal`);
   } else if (lastRunTotal != null) {
     parts.push(`${lastRunTotal} propert${lastRunTotal === 1 ? "y" : "ies"} analyzed`);
   }
@@ -677,10 +682,18 @@ function buildPrintReport() {
       <div class="pr-stamp">${genStamp}</div>
       ${summary ? `<div class="pr-summary">${escapeHtml(summary)}</div>` : ""}
       <div class="pr-count">${reports.length} propert${reports.length === 1 ? "y" : "ies"} in this report</div>
+      <div class="pr-disclaimer">
+        <strong>Estimates, not appraisals.</strong> ARV, rehab, rent, cap rate, and projected profit are
+        automated estimates derived from public listing &amp; comparable-sale data — not appraisals,
+        guarantees, or financial advice. Projected profit is a modeled figure that can swing materially
+        with the true purchase price, rehab scope, and resale value; verify every number independently
+        before making an offer. <em>Comp confidence:</em> high = 5+ tight comps, medium = 3+, low = under 3;
+        an ARV pinned to a cap multiple of the list or as-is value is model-limited and warrants manual review.
+      </div>
     </header>`;
 
   const body = reports.map((r, i) => printPropertyHtml(r, i + 1)).join("");
-  const footer = `<footer class="pr-footer">Real Estate Analyzer — ${escapeHtml(currentCity || "")} — generated ${new Date().toLocaleDateString()}</footer>`;
+  const footer = `<footer class="pr-footer">Real Estate Analyzer — ${escapeHtml(currentCity || "")} — generated ${new Date().toLocaleDateString()} — estimates only, not financial advice; verify independently before any offer.</footer>`;
 
   root.innerHTML = header + body + footer;
   window.print();

@@ -479,6 +479,7 @@ async def stream_search(city: str, count: int = 10, intent: str = "flip",
     # is never < $10k — values like "$300" are a listing that dropped its trailing 000
     # upstream, which would otherwise produce a nonsensical report, e.g. a 45% cap rate).
     props = [p for p in props if p.sqft and p.sqft > 0 and (p.price or 0) >= 10000]
+    _discovered_total = len(props)  # full for-sale market scanned (vs the top slice we enrich)
 
     # ── Discovery-phase market scan + pre-enrichment filtering (no extra API calls) ──
     # Skolit's /bylocation returns no zestimate, so we rank by how far each listing
@@ -791,7 +792,10 @@ async def stream_search(city: str, count: int = 10, intent: str = "flip",
     else:
         market_quality = "none"
     market_summary = {
-        "scanned": len(scored),
+        "scanned": len(scored),           # analyzed/enriched in depth
+        "discovered": _discovered_total,  # full for-sale market scanned
+        "zips": len(getattr(scope, "zips", []) or []) if scope and scope.kind in ("county", "city") else 0,
+        "scope_kind": getattr(scope, "kind", "raw") if scope else "raw",
         "strong": strong,
         "marginal": marginal,
         "rental": rental,
