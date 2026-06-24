@@ -141,6 +141,21 @@ def _arv_uplift(rehab_signal: str) -> float:
     return ARV_UPLIFT_BY_SIGNAL.get(rehab_signal, 1.07)
 
 
+# Sanity ceiling: ARV may not exceed the subject's own as-is value by more than this
+# (a renovated home should land between its as-is value and the renovated-comp ceiling,
+# not implausibly above it). Bounds the "$40k rehab adds $214k" failure mode.
+AS_IS_MAX_PREMIUM = {
+    "fixer":    1.25,   # heavier transformation justifies a bigger lift
+    "neutral":  1.15,
+    "turnkey":  1.06,
+    "teardown": 1.10,   # teardown short-circuits its own verdict; ceiling rarely used
+}
+
+
+def _as_is_ceiling_premium(rehab_signal: str) -> float:
+    return AS_IS_MAX_PREMIUM.get(rehab_signal, 1.12)
+
+
 def _classify_description(desc: str) -> str:
     if not desc:
         return "neutral"
@@ -216,7 +231,14 @@ class FlipperEvaluator:
         risks.extend(_price_history_signals(enriched))
 
         # --- Comp analysis ---
-        cs: CompSet = analyze_comps(enriched, subject_home_type=home_type)
+        # zpid + address let analyze_comps drop the subject from its own nearbyHomes;
+        # sqft drives the size-adjustment of each comp's $/sqft to the subject.
+        subj_zpid = enriched.get("zpid") or (
+            base_prop.property_id.split("-")[-1] if getattr(base_prop, "property_id", "") else "")
+        cs: CompSet = analyze_comps(
+            enriched, subject_home_type=home_type, subject_sqft=sqft,
+            subject_zpid=subj_zpid, subject_address=getattr(base_prop, "address", None),
+        )
 
         # --- Renovation signal (classified before ARV: the ARV uplift depends on it) ---
         rehab_signal = _classify_description(description)
@@ -230,7 +252,9 @@ class FlipperEvaluator:
         # and build ARV from renovated comps, or from the as-is value × a rehab uplift
         # when comps are unavailable.
         zest = enriched.get("zestimate") or getattr(base_prop, "zestimate", 0) or 0
-        as_is_value = int(zest) if zest else price
+        # As-is value anchor: the zestimate, else the subject's own value if it surfaced
+        # in its own nearbyHomes, else the list price.
+        as_is_value = int(zest) if zest else (cs.subject_self_value or price)
 
         arv: int = 0
         arv_source = "fallback"
@@ -266,6 +290,19 @@ class FlipperEvaluator:
                 arv = int(price * cap_mult)
                 risks.append(
                     f"ARV spread capped at {cap_mult}x list ({arv_confidence}-confidence comps)"
+                )
+
+        # As-is sanity ceiling: a renovated home should sit between its as-is value and
+        # the renovated-comp ceiling — never implausibly above it. This catches the
+        # small-comp-on-large-subject failure mode the multiple-of-list cap above misses
+        # (e.g. a $40k cosmetic rehab "adding" $214k). Binds with a risk flag.
+        if arv_source == "comps" and as_is_value:
+            as_is_ceiling = int(as_is_value * _as_is_ceiling_premium(rehab_signal))
+            if arv > as_is_ceiling:
+                arv = as_is_ceiling
+                risks.append(
+                    f"ARV capped at {_as_is_ceiling_premium(rehab_signal):.2f}x as-is value "
+                    f"(${as_is_value:,}) — comps implied an unrealistic post-rehab jump"
                 )
 
         # Motivated-seller / discount signal: list price below the as-is value.

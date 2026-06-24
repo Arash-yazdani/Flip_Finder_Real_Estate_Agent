@@ -11,6 +11,7 @@ Notes:
   - We also fold in the subject's own zestimate and rentZestimate when present.
 """
 import json
+import re
 import statistics
 from dataclasses import dataclass, field
 from typing import List, Optional
@@ -25,17 +26,41 @@ class Comp:
     beds: Optional[int] = None
     baths: Optional[float] = None
     rent_zestimate: Optional[int] = None
+    adj_psf: Optional[float] = None  # size-adjusted $/sqft (to the subject's size)
 
 
 @dataclass
 class CompSet:
     comps: List[Comp] = field(default_factory=list)
-    median_psf: Optional[float] = None
-    psf_low: Optional[float] = None
+    median_psf: Optional[float] = None       # size-adjusted median — drives ARV
+    raw_median_psf: Optional[float] = None    # unadjusted median (telemetry)
+    psf_low: Optional[float] = None           # raw comp range (for display)
     psf_high: Optional[float] = None
     median_rent: Optional[int] = None
     median_rent_psf: Optional[float] = None
     confidence: str = "none"  # 'high' | 'medium' | 'low' | 'none'
+    subject_self_value: Optional[int] = None  # subject's own value if it appears in its
+                                              # own nearbyHomes — used as an as-is anchor
+
+
+# psf ∝ (subject_sqft / comp_sqft) ** (-SIZE_PSF_EXPONENT): larger homes carry a LOWER
+# $/sqft, so a small comp's psf is scaled DOWN when applied to a bigger subject (and
+# vice-versa). Exponent 0.30 ≈ a price-size elasticity of 0.70, a moderate market norm.
+SIZE_PSF_EXPONENT = 0.30
+
+
+def _norm_addr(s: Optional[str]) -> str:
+    return re.sub(r"[^a-z0-9]", "", (s or "").lower())
+
+
+def _size_adjust_psf(comp_psf: float, comp_sqft: int, subject_sqft: int) -> float:
+    """Adjust a comp's $/sqft to the subject's size, bounded to ±20% so a single odd
+    comp can't wildly swing ARV. Without subject_sqft, returns the raw psf unchanged."""
+    if not (comp_sqft and subject_sqft) or comp_sqft <= 0 or subject_sqft <= 0:
+        return comp_psf
+    factor = (subject_sqft / comp_sqft) ** (-SIZE_PSF_EXPONENT)
+    factor = max(0.80, min(1.20, factor))
+    return comp_psf * factor
 
 
 def _parse_nearby(entries) -> List[dict]:
@@ -52,8 +77,16 @@ def _parse_nearby(entries) -> List[dict]:
     return out
 
 
-def analyze_comps(enriched: dict, subject_home_type: Optional[str] = None) -> CompSet:
-    """Build a CompSet from an enriched Zillow record."""
+def analyze_comps(enriched: dict, subject_home_type: Optional[str] = None,
+                  subject_sqft: Optional[int] = None,
+                  subject_zpid: Optional[str] = None,
+                  subject_address: Optional[str] = None) -> CompSet:
+    """Build a CompSet from an enriched Zillow record.
+
+    subject_sqft, when provided, size-adjusts each comp's $/sqft to the subject (so a
+    2000-sqft home isn't valued at a 1200-sqft comp's inflated $/sqft). subject_zpid /
+    subject_address exclude the subject from its own nearbyHomes (its value is captured
+    as an as-is anchor instead)."""
     cs = CompSet()
     nearby = _parse_nearby(enriched.get("nearbyHomes"))
 
@@ -62,10 +95,26 @@ def analyze_comps(enriched: dict, subject_home_type: Optional[str] = None) -> Co
     # SINGLE_FAMILY subjects in real Bright Data records).
     NON_COMP_TYPES = {"MULTI_FAMILY", "LOT", "LAND", "MANUFACTURED", "MOBILE", "APARTMENT"}
 
+    subj_zpid = str(subject_zpid or enriched.get("zpid") or "").strip()
+    _enr_addr = enriched.get("streetAddress")
+    if not _enr_addr and isinstance(enriched.get("address"), dict):
+        _enr_addr = enriched["address"].get("streetAddress")
+    subj_addr_norm = _norm_addr(subject_address or _enr_addr)
+
     for h in nearby:
         price = h.get("price") or h.get("unformattedPrice") or 0
         sqft = h.get("livingArea") or h.get("area") or 0
         if not (price and sqft and price > 50_000 and sqft > 200):
+            continue
+        # Exclude the subject from its own comp set; keep its value as an as-is anchor.
+        h_zpid = str(h.get("zpid") or "").strip()
+        h_addr = h.get("streetAddress") or (
+            h["address"].get("streetAddress") if isinstance(h.get("address"), dict) else "")
+        is_subject = ((subj_zpid and h_zpid and h_zpid == subj_zpid)
+                      or (subj_addr_norm and _norm_addr(h_addr) == subj_addr_norm))
+        if is_subject:
+            if not cs.subject_self_value:
+                cs.subject_self_value = int(price)
             continue
         ht = (h.get("homeType") or "").upper()
         subj = (subject_home_type or "").upper()
@@ -88,22 +137,20 @@ def analyze_comps(enriched: dict, subject_home_type: Optional[str] = None) -> Co
             rent_zestimate=h.get("rentZestimate"),
         ))
 
-    # Also use the subject's own zestimate / rentZestimate as anchor points if usable
-    subj_zest = enriched.get("zestimate")
-    subj_sqft = enriched.get("livingArea") or 0
-    if subj_zest and subj_sqft:
-        # Don't pollute comps list, but use as anchor for psf
-        anchor_psf = subj_zest / subj_sqft
-        # Treat as a soft floor: ensure median doesn't undershoot it badly
-        cs._anchor_psf = anchor_psf  # type: ignore
-
-    psfs = [c.psf for c in cs.comps]
+    raw_psfs = [c.psf for c in cs.comps]
     rents = [c.rent_zestimate for c in cs.comps if c.rent_zestimate]
 
-    if psfs:
-        cs.median_psf = round(statistics.median(psfs), 2)
-        cs.psf_low = round(min(psfs), 2)
-        cs.psf_high = round(max(psfs), 2)
+    # Size-adjust each comp's $/sqft to the subject; the ARV median uses adjusted values,
+    # while the displayed range stays raw (actual sale data).
+    for c in cs.comps:
+        c.adj_psf = round(_size_adjust_psf(c.psf, c.sqft, subject_sqft), 2) if subject_sqft else c.psf
+    adj_psfs = [c.adj_psf for c in cs.comps]
+
+    if raw_psfs:
+        cs.median_psf = round(statistics.median(adj_psfs), 2)   # size-adjusted ⇒ ARV basis
+        cs.raw_median_psf = round(statistics.median(raw_psfs), 2)
+        cs.psf_low = round(min(raw_psfs), 2)
+        cs.psf_high = round(max(raw_psfs), 2)
 
     if rents:
         cs.median_rent = int(statistics.median(rents))
@@ -117,10 +164,10 @@ def analyze_comps(enriched: dict, subject_home_type: Optional[str] = None) -> Co
         if rz:
             cs.median_rent = int(rz)
 
-    # Confidence: count + tightness
-    n = len(psfs)
+    # Confidence: count + tightness (spread measured on raw comps)
+    n = len(raw_psfs)
     if n >= 5:
-        spread = (cs.psf_high - cs.psf_low) / cs.median_psf if cs.median_psf else 1.0
+        spread = (cs.psf_high - cs.psf_low) / cs.raw_median_psf if cs.raw_median_psf else 1.0
         cs.confidence = "high" if spread < 0.4 else "medium"
     elif n >= 3:
         cs.confidence = "medium"
