@@ -100,6 +100,13 @@
               <span class="muted">scans every neighborhood to go past the ~800-listing cap on big cities. Search "<em>County, ST</em>" for a whole-county report (auto-confirms cost; slower, uses more API quota).</span>
             </span>
           </label>
+          <label class="pf-deep" for="pf-hud">
+            <input type="checkbox" id="pf-hud">
+            <span class="pf-deep-text">
+              <strong>HUD foreclosures</strong> — distressed leads
+              <span class="muted">free HUD/FHA bank-owned (REO) listings for this area, shown as leads (no price/analysis — HUD doesn't publish it). Sparse: ~622 nationwide, often 0 locally.</span>
+            </span>
+          </label>
           <div class="pf-actions">
             <button type="button" id="pf-clear" class="link-btn">Clear</button>
             <span class="muted pf-hint">then hit Run Analysis</span>
@@ -133,6 +140,7 @@
   <main class="layout">
     <section class="results">
       <div id="market-note" class="market-note" hidden></div>
+      <div id="hud-section" class="hud-section" hidden></div>
 
       <div id="filter-bar" class="filter-bar" hidden>
         <label class="fb-field">Sort

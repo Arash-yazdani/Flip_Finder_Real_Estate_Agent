@@ -391,6 +391,20 @@ a:hover { color: var(--amber-hi); }
 .market-note.market-some   { background: #FCF3E0; color: #A35E00; border-color: #F0DBA8; }
 .market-note.market-none   { background: #FBEAEA; color: #C0392B; border-color: #F2C4C4; }
 
+.hud-section {
+  margin: 0 0 1rem; padding: 0.6rem 0.9rem;
+  border: 1px solid var(--border); border-radius: var(--radius-sm);
+  background: var(--surface);
+}
+.hud-section .hud-head { font-size: 0.82rem; font-weight: 600; margin-bottom: 0.4rem; }
+.hud-row {
+  display: flex; justify-content: space-between; gap: 0.8rem; align-items: baseline;
+  padding: 0.35rem 0; border-top: 1px solid var(--border);
+  font-size: 0.82rem; text-decoration: none; color: var(--text);
+}
+.hud-row:hover { color: var(--amber); }
+.hud-row .hud-meta { font-family: var(--mono); font-size: 0.72rem; color: var(--muted); white-space: nowrap; }
+
 .save-city {
   background: var(--surface-2);
   border: 1px solid var(--border);

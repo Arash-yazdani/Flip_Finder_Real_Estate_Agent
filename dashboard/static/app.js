@@ -190,6 +190,29 @@ function zipScanLabel(m) {
   return ` across ${m.zips} ZIPs`;
 }
 
+// HUD/FHA bank-owned (REO) foreclosure leads — separate from the flip pipeline (no price).
+function renderHud(props) {
+  const el = $("#hud-section");
+  if (!el) return;
+  if (!props || !props.length) { el.hidden = true; el.innerHTML = ""; return; }
+  const rows = props.map(p => `
+    <a class="hud-row" href="${p.link}" target="_blank" rel="noopener">
+      <span class="hud-addr">${escapeHtml(p.address)}</span>
+      <span class="hud-meta">case ${escapeHtml(p.case_num || "—")} · View ↗</span>
+    </a>`).join("");
+  el.innerHTML = `<div class="hud-head">🏛 HUD foreclosures (${props.length})` +
+    ` <span class="muted">— bank-owned REO leads; no price/analysis, click to view</span></div>${rows}`;
+  el.hidden = false;
+}
+
+async function maybeFetchHud(city) {
+  if (!$("#pf-hud")?.checked || !city) { renderHud(null); return; }
+  try {
+    const r = await fetch(`/api/hud?q=${encodeURIComponent(city)}`, { credentials: "include" });
+    renderHud((await r.json()).properties || []);
+  } catch (_) { renderHud(null); }
+}
+
 function renderMarketNote(m) {
   const el = $("#market-note");
   if (!el) return;
@@ -1016,6 +1039,7 @@ document.addEventListener("mouseout", (e) => {
 async function startSearch(city, count, intent) {
   hideQuota();
   renderMarketNote(null);  // clear any stale market note from a previous run
+  renderHud(null);         // clear stale HUD leads
   // Reset run-summary state carried into the Print/PDF report header.
   lastRunSummary = null; lastRunMarket = null; lastRunTotal = null; lastRunQueriedAt = null; lastRunScope = null;
   currentIntent = intent;
@@ -1111,6 +1135,7 @@ async function startSearch(city, count, intent) {
       : "";
     setStatus(`✅ Done — ${d.total} ranked. Enriched ${s.enriched}/${s.requested}${cacheNote}.`);
     renderMarketNote(d.market);
+    maybeFetchHud(currentCity);  // free HUD foreclosure leads, if the toggle is on
     hideSpinner();
     es.close();
     $("#search-btn").disabled = false;
@@ -1203,8 +1228,8 @@ function preFilterQuery() {
     .map(([k, val]) => `&${k}=${encodeURIComponent(val)}`).join("");
 }
 function updateFiltersBadge() {
-  const deep = !!document.getElementById("pf-deep")?.checked;
-  const n = Object.keys(preFilters()).length + (deep ? 1 : 0);
+  const extra = ["pf-deep", "pf-hud"].filter(id => document.getElementById(id)?.checked).length;
+  const n = Object.keys(preFilters()).length + extra;
   const badge = document.getElementById("filters-badge");
   if (badge) { badge.textContent = String(n); badge.hidden = n === 0; }
 }
@@ -1216,12 +1241,12 @@ $("#filters-toggle")?.addEventListener("click", (e) => {
   const el = document.getElementById(id);
   if (el) el.addEventListener("input", updateFiltersBadge);
 });
-document.getElementById("pf-deep")?.addEventListener("change", updateFiltersBadge);
+["pf-deep", "pf-hud"].forEach(id => document.getElementById(id)?.addEventListener("change", updateFiltersBadge));
 $("#pf-clear")?.addEventListener("click", () => {
   ["pf-pmin", "pf-pmax"].forEach(id => { const el = document.getElementById(id); if (el) el.value = ""; });
   ["pf-beds", "pf-baths"].forEach(id => { const el = document.getElementById(id); if (el) el.value = "0"; });
   const t = document.getElementById("pf-type"); if (t) t.value = "";
-  const d = document.getElementById("pf-deep"); if (d) d.checked = false;
+  ["pf-deep", "pf-hud"].forEach(id => { const el = document.getElementById(id); if (el) el.checked = false; });
   updateFiltersBadge();
 });
 // Click anywhere outside an open dropdown closes it.

@@ -228,6 +228,19 @@ async def api_scope(q: str = Query(...), email: str = Depends(current_user_email
     }
 
 
+@app.get("/api/hud")
+async def api_hud(q: str = Query(...), email: str = Depends(current_user_email)):
+    """HUD/FHA bank-owned (REO) foreclosures for the searched area — a free leads feed,
+    separate from the flip analysis (HUD has no price/comps to value)."""
+    import re as _re
+    from dashboard.geo import resolve_scope
+    from dashboard.hud import fetch_hud_reo
+    sc = resolve_scope(q)
+    state = sc.state or (lambda m: m.group(1).upper() if m else "")(_re.search(r",\s*([A-Za-z]{2})\b", q or ""))
+    zips = sc.zips if sc.kind in ("county", "city") else None
+    return {"properties": fetch_hud_reo(state, zips)}
+
+
 @app.post("/api/report/pdf")
 async def report_pdf(request: Request, email: str = Depends(current_user_email)):
     """Render the on-screen report to a real vector PDF server-side (fpdf2) — no browser
