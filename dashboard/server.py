@@ -237,8 +237,9 @@ async def api_hud(q: str = Query(...), email: str = Depends(current_user_email))
     from dashboard.hud import fetch_hud_reo
     sc = resolve_scope(q)
     state = sc.state or (lambda m: m.group(1).upper() if m else "")(_re.search(r",\s*([A-Za-z]{2})\b", q or ""))
-    zips = sc.zips if sc.kind in ("county", "city") else None
-    return {"properties": fetch_hud_reo(state, zips)}
+    # ponytail: state-level — HUD REO is ~19/state, so zip-scoping mostly returns 0. Label as
+    # "statewide" in the UI so it's never mistaken for local. Narrow by ZIP if it ever gets dense.
+    return {"state": state, "properties": fetch_hud_reo(state)}
 
 
 @app.post("/api/report/pdf")

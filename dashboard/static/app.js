@@ -191,7 +191,10 @@ function zipScanLabel(m) {
 }
 
 // HUD/FHA bank-owned (REO) foreclosure leads — separate from the flip pipeline (no price).
-function renderHud(props) {
+// Sparse (~19/state), so it's scoped to the STATE and labeled "statewide", and carried into the PDF.
+let lastHud = [], lastHudState = "";
+function renderHud(props, state) {
+  lastHud = props || []; lastHudState = state || "";
   const el = $("#hud-section");
   if (!el) return;
   if (!props || !props.length) { el.hidden = true; el.innerHTML = ""; return; }
@@ -200,16 +203,16 @@ function renderHud(props) {
       <span class="hud-addr">${escapeHtml(p.address)}</span>
       <span class="hud-meta">case ${escapeHtml(p.case_num || "—")} · View ↗</span>
     </a>`).join("");
-  el.innerHTML = `<div class="hud-head">🏛 HUD foreclosures (${props.length})` +
-    ` <span class="muted">— bank-owned REO leads; no price/analysis, click to view</span></div>${rows}`;
+  el.innerHTML = `<div class="hud-head">🏛 HUD/REO foreclosures — ${escapeHtml(state || "")} statewide (${props.length})` +
+    ` <span class="muted">— bank-owned leads, no price/analysis; click to view</span></div>${rows}`;
   el.hidden = false;
 }
 
 async function maybeFetchHud(city) {
   if (!$("#pf-hud")?.checked || !city) { renderHud(null); return; }
   try {
-    const r = await fetch(`/api/hud?q=${encodeURIComponent(city)}`, { credentials: "include" });
-    renderHud((await r.json()).properties || []);
+    const d = await (await fetch(`/api/hud?q=${encodeURIComponent(city)}`, { credentials: "include" })).json();
+    renderHud(d.properties || [], d.state);
   } catch (_) { renderHud(null); }
 }
 
@@ -725,9 +728,14 @@ function buildPrintReport() {
     </header>`;
 
   const body = reports.map((r, i) => printPropertyHtml(r, i + 1)).join("");
+  const hud = lastHud.length ? `<div class="pr-hud">
+      <h2>HUD / FHA Foreclosure Leads — ${escapeHtml(lastHudState || "")} statewide (${lastHud.length})</h2>
+      <p class="muted">Bank-owned (REO) leads. No price/beds/comps — NOT analyzed; verify at hudhomestore.gov.</p>
+      ${lastHud.map(h => `<div class="pr-hud-row"><span>${escapeHtml(h.address || "")}</span><span>case ${escapeHtml(h.case_num || "")}</span></div>`).join("")}
+    </div>` : "";
   const footer = `<footer class="pr-footer">Real Estate Analyzer — ${escapeHtml(currentCity || "")} — generated ${new Date().toLocaleDateString()} — estimates only, not financial advice; verify independently before any offer.</footer>`;
 
-  root.innerHTML = header + body + footer;
+  root.innerHTML = header + body + hud + footer;
   window.print();
 }
 
@@ -758,6 +766,8 @@ async function downloadPdf() {
         generated: lastRunQueriedAt ? `Queried ${lastRunQueriedAt}` : `Generated ${new Date().toLocaleString()}`,
         summary: printSummaryLine(),
         properties,
+        hud: lastHud,
+        hud_state: lastHudState,
       }),
     });
     if (!res.ok) throw new Error("pdf " + res.status);

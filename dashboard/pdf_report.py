@@ -224,5 +224,35 @@ def build_pdf(payload: dict) -> bytes:
     for i, p in enumerate(props, 1):
         _property_card(pdf, p, i)
 
+    _hud_section(pdf, payload.get("hud") or [], payload.get("hud_state") or "")
+
     out = pdf.output()
     return bytes(out)
+
+
+def _hud_section(pdf, hud, state):
+    """Appends the HUD/FHA REO foreclosure leads (location-only — no price/analysis)."""
+    if not hud:
+        return
+    if pdf.get_y() > 225:
+        pdf.add_page()
+    pdf.ln(3)
+    pdf.set_font("Helvetica", "B", 12)
+    pdf.set_text_color(*INK)
+    label = f"HUD / FHA Foreclosure Leads — {state} statewide ({len(hud)})" if state \
+        else f"HUD / FHA Foreclosure Leads ({len(hud)})"
+    pdf.cell(0, 7, _san(label), new_x=XPos.LMARGIN, new_y=YPos.NEXT)
+    pdf.set_font("Helvetica", "I", 8)
+    pdf.set_text_color(*MUTED)
+    pdf.multi_cell(0, 4, _san("Bank-owned (REO) leads. HUD publishes no price/beds/comps, so these "
+                              "are NOT analyzed — verify each at hudhomestore.gov."),
+                   new_x=XPos.LMARGIN, new_y=YPos.NEXT)
+    pdf.ln(1)
+    for h in hud:
+        pdf.set_font("Helvetica", "", 9)
+        pdf.set_text_color(*INK)
+        pdf.cell(150, 4.8, _san(h.get("address", "")))
+        pdf.set_font("Courier", "", 8)
+        pdf.set_text_color(*MUTED)
+        pdf.cell(0, 4.8, _san("case " + (h.get("case_num") or "")),
+                 new_x=XPos.LMARGIN, new_y=YPos.NEXT)

@@ -1031,5 +1031,10 @@ button, .card-title a, .nav-btn, .tab, .link-btn { padding: 10px 12px; border-ra
     break-inside: avoid;
   }
   .pr-disclaimer strong { color: #16191F; }
+  .pr-hud { margin-top: 12px; break-inside: avoid; }
+  .pr-hud h2 { font-size: 11pt; margin: 0 0 2px; color: #16191F; }
+  .pr-hud .muted { font-size: 8pt; color: #5A636F; margin: 0 0 4px; }
+  .pr-hud-row { display: flex; justify-content: space-between; gap: 12px; font-size: 9pt;
+    padding: 1.5px 0; border-top: 1px solid #E3E7EC; }
 }
 
