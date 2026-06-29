@@ -114,6 +114,39 @@
         </div>
       </div>
       <div class="dropdown">
+        <button id="assume-toggle" class="nav-btn" type="button" aria-haspopup="true" aria-expanded="false">Assumptions <span id="assume-badge" class="badge" hidden>0</span> ▾</button>
+        <div id="assume-menu" class="dropdown-menu filters-menu" hidden>
+          <div class="dropdown-head">Underwriting assumptions <span class="muted">— tune the deal math; applies to the next search</span></div>
+          <div class="pf-grid">
+            <label class="pf-field"><span>Hard-money APR %</span>
+              <input type="number" id="as-apr" min="0" max="40" step="0.5" placeholder="12">
+            </label>
+            <label class="pf-field"><span>Hold months</span>
+              <input type="number" id="as-hold" min="1" max="24" step="1" placeholder="6">
+            </label>
+            <label class="pf-field"><span>Buy closing %</span>
+              <input type="number" id="as-close" min="0" max="6" step="0.25" placeholder="2">
+            </label>
+            <label class="pf-field"><span>Loan points %</span>
+              <input type="number" id="as-points" min="0" max="6" step="0.25" placeholder="2">
+            </label>
+            <label class="pf-field"><span>Selling %</span>
+              <input type="number" id="as-sell" min="0" max="15" step="0.5" placeholder="8">
+            </label>
+            <label class="pf-field"><span>Rental OpEx %</span>
+              <input type="number" id="as-opex" min="10" max="70" step="1" placeholder="45">
+            </label>
+            <label class="pf-field"><span>Refi APR %</span>
+              <input type="number" id="as-refi" min="0" max="20" step="0.25" placeholder="7">
+            </label>
+          </div>
+          <div class="pf-actions">
+            <button type="button" id="as-clear" class="link-btn">Reset to defaults</button>
+            <span class="muted pf-hint">blank = default</span>
+          </div>
+        </div>
+      </div>
+      <div class="dropdown">
         <button id="archive-toggle" class="nav-btn" type="button" aria-haspopup="true" aria-expanded="false">Archive ▾</button>
         <div id="archive-menu" class="dropdown-menu" hidden>
           <div class="dropdown-head">Recent searches</div>

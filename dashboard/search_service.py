@@ -155,6 +155,7 @@ def _flip_report_to_dict(a, prop, enriched) -> dict:
         "rehab_estimate": a.rehab_estimate,
         "rehab_psf": a.rehab_psf,
         "rehab_signal": a.rehab_signal,
+        "buy_closing_cost": a.buy_closing_cost,
         "holding_cost_6mo": a.holding_cost_6mo,
         "financing_cost": a.financing_cost,
         "selling_cost": a.selling_cost,
@@ -363,6 +364,39 @@ def _detect_bd_quota_error(exc: Exception) -> Optional[str]:
     return None
 
 
+# Tunable financial assumptions the dashboard can pass through to FlipperEvaluator.
+# Each maps to an evaluator kwarg with a (min, max) clamp — a hard guardrail at this trust
+# boundary so a hand-crafted query string can't inject a nonsensical (or non-numeric) value.
+_ASSUMPTION_BOUNDS = {
+    "hold_months":      (1, 24),
+    "hard_money_apr":   (0.0, 0.40),
+    "ltv":              (0.50, 0.95),
+    "selling_cost_pct": (0.0, 0.15),
+    "buy_closing_pct":  (0.0, 0.06),
+    "points_pct":       (0.0, 0.06),
+    "rental_opex_pct":  (0.10, 0.70),
+    "refi_apr":         (0.0, 0.20),
+    "refi_ltv":         (0.50, 0.90),
+}
+
+
+def _clean_assumptions(assumptions: Optional[dict]) -> dict:
+    """Whitelist + range-clamp user-supplied assumptions into safe FlipperEvaluator kwargs.
+    Unknown keys are dropped; non-numeric values are skipped; everything else is clamped to
+    its bound so the evaluator only ever sees sane inputs."""
+    out: dict = {}
+    for key, (lo, hi) in _ASSUMPTION_BOUNDS.items():
+        if not assumptions or key not in assumptions or assumptions[key] is None:
+            continue
+        try:
+            val = float(assumptions[key])
+        except (TypeError, ValueError):
+            continue
+        val = max(lo, min(hi, val))
+        out[key] = int(round(val)) if key == "hold_months" else val
+    return out
+
+
 async def stream_search(city: str, count: int = 10, intent: str = "flip",
                          enrich_limit: Optional[int] = None,
                          user_email: Optional[str] = None,
@@ -371,7 +405,8 @@ async def stream_search(city: str, count: int = 10, intent: str = "flip",
                          min_beds: Optional[int] = None,
                          min_baths: Optional[float] = None,
                          home_type: Optional[str] = None,
-                         deep: bool = False) -> AsyncIterator[dict]:
+                         deep: bool = False,
+                         assumptions: Optional[dict] = None) -> AsyncIterator[dict]:
     """Async generator producing SSE-ready dicts.
 
     intent: 'flip' | 'rent' | 'both' — same analysis, different ranking.
@@ -739,7 +774,7 @@ async def stream_search(city: str, count: int = 10, intent: str = "flip",
             }}
 
     # Score the ENTIRE enriched pool so we can pick the top `count` by score.
-    evaluator = FlipperEvaluator()
+    evaluator = FlipperEvaluator(**_clean_assumptions(assumptions))
     scored = []
     for prop in candidates:
         zpid = _zpid_of(prop)

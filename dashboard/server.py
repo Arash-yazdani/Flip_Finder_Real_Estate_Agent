@@ -282,6 +282,15 @@ async def search_stream(
     home_type: Optional[str] = Query(None),
     # Deep scan: fan out per-zip on capped (~800) cities to assemble the full market.
     deep: bool = Query(False),
+    # Tunable underwriting assumptions (all optional; omitted → evaluator defaults). Fractions,
+    # not whole percents (0.12 = 12%). FastAPI ge/le rejects out-of-range before we ever run.
+    hm_apr: Optional[float] = Query(None, ge=0, le=0.40),
+    hold_months: Optional[int] = Query(None, ge=1, le=24),
+    buy_closing_pct: Optional[float] = Query(None, ge=0, le=0.06),
+    points_pct: Optional[float] = Query(None, ge=0, le=0.06),
+    selling_pct: Optional[float] = Query(None, ge=0, le=0.15),
+    opex_pct: Optional[float] = Query(None, ge=0, le=0.70),
+    refi_apr: Optional[float] = Query(None, ge=0, le=0.20),
     email: str = Depends(current_user_email),
 ):
     # Cap check
@@ -292,13 +301,23 @@ async def search_stream(
             detail="Daily run limit reached. Try again tomorrow or contact your admin.",
         )
 
+    # Map the query knobs to FlipperEvaluator kwarg names; drop the ones not supplied.
+    assumptions = {
+        k: v for k, v in {
+            "hard_money_apr": hm_apr, "hold_months": hold_months,
+            "buy_closing_pct": buy_closing_pct, "points_pct": points_pct,
+            "selling_cost_pct": selling_pct, "rental_opex_pct": opex_pct,
+            "refi_apr": refi_apr,
+        }.items() if v is not None
+    }
+
     async def gen():
         try:
             async for ev in stream_search(
                 city=city, count=count, intent=intent, user_email=email,
                 min_price=min_price, max_price=max_price,
                 min_beds=min_beds, min_baths=min_baths, home_type=home_type,
-                deep=deep,
+                deep=deep, assumptions=assumptions or None,
             ):
                 yield _sse(ev["event"], ev["data"])
         except asyncio.CancelledError:

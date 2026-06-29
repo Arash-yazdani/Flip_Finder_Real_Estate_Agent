@@ -33,7 +33,8 @@ class Comp:
 @dataclass
 class CompSet:
     comps: List[Comp] = field(default_factory=list)
-    median_psf: Optional[float] = None       # size-adjusted median — drives ARV
+    median_psf: Optional[float] = None       # size-WEIGHTED MEAN of adjusted $/sqft (falls back
+                                             # to the plain median when no subject_sqft) — drives ARV
     raw_median_psf: Optional[float] = None    # unadjusted median (telemetry)
     psf_low: Optional[float] = None           # raw comp range (for display)
     psf_high: Optional[float] = None

@@ -33,6 +33,7 @@ let lastRunMarket = null;    // { scanned, strong, marginal, quality, ... }
 let lastRunTotal = null;     // ranked count from the `complete` event
 let lastRunQueriedAt = null; // ISO timestamp when loaded from the Archive
 let lastRunScope = null;     // { kind, label, zip_count } from the `scope` event
+let lastRunAssumptions = null; // human-readable underwriting assumptions used by the run (PDF header)
 
 // --- auth gate ---
 async function ensureAuth() {
@@ -604,6 +605,7 @@ function breakdownRows(r, expandLists) {
     <h4>Flip math</h4>
     <div class="row"><span>ARV</span><span class="v">${fmtMoney(r.arv)} <span class="muted">(${r.arv_source}, ${r.arv_confidence}, ${r.comp_count} comps ${compRange})</span></span></div>
     <div class="row"><span>Rehab</span><span class="v">${fmtMoney(r.rehab_estimate)} <span class="muted">($${r.rehab_psf}/sqft, ${r.rehab_signal})</span></span></div>
+    <div class="row"><span>Buy-side closing</span><span class="v">${fmtMoney(r.buy_closing_cost)}</span></div>
     <div class="row"><span>Hold 6mo / Financing / Sell</span><span class="v">${fmtMoney(r.holding_cost_6mo)} / ${fmtMoney(r.financing_cost)} / ${fmtMoney(r.selling_cost)}</span></div>
     <div class="row"><span>All-in cost</span><span class="v">${fmtMoney(r.all_in_cost)}</span></div>
     <div class="row"><span>Net resale</span><span class="v">${fmtMoney(r.net_resale)}</span></div>
@@ -765,6 +767,7 @@ async function downloadPdf() {
         city: currentCity || "Flip & Rental Report",
         generated: lastRunQueriedAt ? `Queried ${lastRunQueriedAt}` : `Generated ${new Date().toLocaleString()}`,
         summary: printSummaryLine(),
+        assumptions: lastRunAssumptions,
         properties,
         hud: lastHud,
         hud_state: lastHudState,
@@ -1087,7 +1090,9 @@ async function startSearch(city, count, intent) {
   const deep = !!document.getElementById("pf-deep")?.checked;
   const url = `/api/search/stream?city=${encodeURIComponent(city)}&count=${count}&intent=${encodeURIComponent(intent)}`
             + preFilterQuery()           // pre-search filters → only enrich matches (lower cost)
+            + assumptionsQuery()         // user-tuned underwriting assumptions (blank → defaults)
             + (deep ? "&deep=1" : "");   // deep scan → fan out per-zip past the ~800 cap
+  lastRunAssumptions = effectiveAssumptions();  // snapshot for the report header
   const es = new EventSource(url, {withCredentials: true});
 
   es.addEventListener("status", (e) => {
@@ -1166,6 +1171,7 @@ async function loadFromHistory(slug) {
   currentSlug = slug;
   // Archive loads have no SSE run summary; carry what we do know into the report header.
   lastRunSummary = null;
+  lastRunAssumptions = null;  // history doesn't store the assumptions a past run used
   lastRunMarket = data.market || null;
   lastRunTotal = (data.results || []).length;
   lastRunQueriedAt = data.queried_at || null;
@@ -1258,6 +1264,74 @@ $("#pf-clear")?.addEventListener("click", () => {
   const t = document.getElementById("pf-type"); if (t) t.value = "";
   ["pf-deep", "pf-hud"].forEach(id => { const el = document.getElementById(id); if (el) el.checked = false; });
   updateFiltersBadge();
+});
+
+// --- underwriting assumptions (tune the deal math; applied to the next search) ---
+// [inputId, query key (FlipperEvaluator-mapped), shown default, isPercent]
+// Percent fields are entered as whole numbers (12 = 12%) and sent as fractions (0.12); the
+// backend clamps every value, so a blank or out-of-range box just falls back to the default.
+const ASSUMPTION_FIELDS = [
+  ["as-apr",    "hm_apr",          12, true],
+  ["as-hold",   "hold_months",      6, false],
+  ["as-close",  "buy_closing_pct",  2, true],
+  ["as-points", "points_pct",       2, true],
+  ["as-sell",   "selling_pct",      8, true],
+  ["as-opex",   "opex_pct",        45, true],
+  ["as-refi",   "refi_apr",         7, true],
+];
+function assumptions() {
+  const q = {};
+  for (const [id, key, , isPct] of ASSUMPTION_FIELDS) {
+    const el = document.getElementById(id);
+    if (!el || el.value === "") continue;       // blank → backend default
+    const n = parseFloat(el.value);
+    if (!isFinite(n)) continue;
+    q[key] = isPct ? n / 100 : Math.round(n);
+  }
+  return q;
+}
+function assumptionsQuery() {
+  return Object.entries(assumptions())
+    .map(([k, val]) => `&${k}=${encodeURIComponent(val)}`).join("");
+}
+// [label, unit] for the human-readable snapshot shown in the report header.
+const ASSUMPTION_LABELS = {
+  "as-apr":    ["Hard-money APR", "%"], "as-hold":   ["Hold", " mo"],
+  "as-close":  ["Buy closing", "%"],   "as-points": ["Loan points", "%"],
+  "as-sell":   ["Selling", "%"],       "as-opex":   ["Rental OpEx", "%"],
+  "as-refi":   ["Refi APR", "%"],
+};
+// Full effective set (defaults + overrides), captured at search time so a shared PDF says
+// exactly what numbers produced it. Overrides are flagged "(adj)".
+function effectiveAssumptions() {
+  return ASSUMPTION_FIELDS.map(([id, , def]) => {
+    const el = document.getElementById(id);
+    const entered = el && el.value !== "" ? parseFloat(el.value) : NaN;
+    const val = isFinite(entered) ? entered : def;
+    const [label, unit] = ASSUMPTION_LABELS[id];
+    return `${label}: ${val}${unit}${val !== def ? " (adj)" : ""}`;
+  });
+}
+function updateAssumeBadge() {
+  let n = 0;
+  for (const [id, , def] of ASSUMPTION_FIELDS) {
+    const el = document.getElementById(id);
+    if (el && el.value !== "" && parseFloat(el.value) !== def) n++;
+  }
+  const badge = document.getElementById("assume-badge");
+  if (badge) { badge.textContent = String(n); badge.hidden = n === 0; }
+}
+$("#assume-toggle")?.addEventListener("click", (e) => {
+  e.stopPropagation();
+  toggleDropdown("assume-menu", e.currentTarget);
+});
+ASSUMPTION_FIELDS.forEach(([id]) => {
+  const el = document.getElementById(id);
+  if (el) el.addEventListener("input", updateAssumeBadge);
+});
+$("#as-clear")?.addEventListener("click", () => {
+  ASSUMPTION_FIELDS.forEach(([id]) => { const el = document.getElementById(id); if (el) el.value = ""; });
+  updateAssumeBadge();
 });
 // Click anywhere outside an open dropdown closes it.
 document.addEventListener("click", (e) => {

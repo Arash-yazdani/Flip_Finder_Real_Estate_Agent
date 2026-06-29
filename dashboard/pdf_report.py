@@ -156,6 +156,7 @@ def _property_card(pdf, p, rank):
                      f"{p.get('arv_confidence', '?')}, {p.get('comp_count', 0)} comps)")
     _row(pdf, "Rehab", f"{_money(p.get('rehab_estimate'))}  (${p.get('rehab_psf', '?')}/sqft, "
                        f"{p.get('rehab_signal', '?')})")
+    _row(pdf, "Buy-side closing", _money(p.get("buy_closing_cost")))
     _row(pdf, "Holding / Financing / Selling",
          f"{_money(p.get('holding_cost_6mo'))} / {_money(p.get('financing_cost'))} / "
          f"{_money(p.get('selling_cost'))}")
@@ -217,6 +218,18 @@ def build_pdf(payload: dict) -> bytes:
     pdf.set_text_color(*INK)
     pdf.cell(0, 6, _san(f"{len(props)} propert{'y' if len(props) == 1 else 'ies'} in this report"),
              new_x=XPos.LMARGIN, new_y=YPos.NEXT)
+
+    # Underwriting assumptions used by this run — makes a shared PDF self-documenting.
+    assumptions = payload.get("assumptions") or []
+    if assumptions:
+        pdf.ln(1)
+        pdf.set_font("Helvetica", "B", 7.5)
+        pdf.set_text_color(*MUTED)
+        pdf.cell(0, 4, _san("ASSUMPTIONS"), new_x=XPos.LMARGIN, new_y=YPos.NEXT)
+        pdf.set_font("Courier", "", 8)
+        pdf.set_text_color(*INK)
+        pdf.multi_cell(0, 4, _san("  |  ".join(str(a) for a in assumptions)),
+                       new_x=XPos.LMARGIN, new_y=YPos.NEXT)
     pdf.ln(1)
     _disclaimer(pdf)
     pdf.ln(3)

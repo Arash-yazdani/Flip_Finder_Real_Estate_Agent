@@ -62,6 +62,8 @@ INSURANCE_ANNUAL = 1200
 UTILITIES_MONTHLY = 250
 REFI_LTV = 0.75       # cash-out refi LTV at ARV
 RENTAL_OPEX_PCT = 0.45  # vacancy + maintenance + mgmt + capex reserve
+BUY_CLOSING_PCT = 0.02      # acquisition closing on purchase: title, escrow, transfer/recording tax, doc fees
+HARD_MONEY_POINTS_PCT = 0.02  # hard-money origination points (1-3 typical), upfront on loan amount
 
 
 @dataclass
@@ -95,6 +97,7 @@ class FlipReport:
     rehab_signal: str
 
     # Flip P&L
+    buy_closing_cost: int
     holding_cost_6mo: int
     financing_cost: int
     selling_cost: int
@@ -216,7 +219,7 @@ def _no_price_report(base_prop, price: int, sqft: int) -> "FlipReport":
         days_on_market=0, list_psf=0.0,
         arv=0, arv_source="none", arv_confidence="none", comp_count=0, comp_psf_range=(None, None),
         rehab_estimate=0, rehab_psf=0, rehab_signal="neutral",
-        holding_cost_6mo=0, financing_cost=0, selling_cost=0, all_in_cost=0,
+        buy_closing_cost=0, holding_cost_6mo=0, financing_cost=0, selling_cost=0, all_in_cost=0,
         net_resale=0, projected_profit=0, profit_margin_pct=0.0, mao_70_rule=0, passes_70_rule=False,
         monthly_rent_est=None, monthly_noi=0, cap_rate_pct=0.0, monthly_cash_flow=0, brrrr_refi_proceeds=0,
         rental_verdict="NO_RENT_DATA", rental_verdict_reason=reason, rental_score=0.0,
@@ -230,12 +233,28 @@ class FlipperEvaluator:
                  hard_money_apr: float = HARD_MONEY_APR,
                  ltv: float = HARD_MONEY_LTV,
                  selling_cost_pct: float = SELLING_COST_PCT,
+                 buy_closing_pct: float = BUY_CLOSING_PCT,
+                 points_pct: float = HARD_MONEY_POINTS_PCT,
+                 rental_opex_pct: float = RENTAL_OPEX_PCT,
+                 refi_apr: float = 0.07,
+                 refi_ltv: float = REFI_LTV,
+                 insurance_annual: float = INSURANCE_ANNUAL,
+                 utilities_monthly: float = UTILITIES_MONTHLY,
                  fallback_psf: float = 600.0):
-        # fallback_psf: only used when both zestimate AND comps are absent
+        # Every financial assumption is a constructor knob so the dashboard can let the user
+        # tune them per-search (the module constants are just the defaults).
+        # fallback_psf: only used when both zestimate AND comps are absent.
         self.hold_months = hold_months
         self.hard_money_apr = hard_money_apr
         self.ltv = ltv
         self.selling_cost_pct = selling_cost_pct
+        self.buy_closing_pct = buy_closing_pct
+        self.points_pct = points_pct
+        self.rental_opex_pct = rental_opex_pct
+        self.refi_apr = refi_apr
+        self.refi_ltv = refi_ltv
+        self.insurance_annual = insurance_annual
+        self.utilities_monthly = utilities_monthly
         self.fallback_psf = fallback_psf
 
     def evaluate(self, base_prop, enriched: Optional[dict] = None) -> FlipReport:
@@ -290,6 +309,11 @@ class FlipperEvaluator:
         # As-is value anchor: the zestimate, else the subject's own value if it surfaced
         # in its own nearbyHomes, else the list price.
         as_is_value = int(zest) if zest else (cs.subject_self_value or price)
+        # True only when as_is_value is a REAL as-is signal (zestimate or the subject's own
+        # comp value) — not the bare list-price fallback. The as-is ceiling below is skipped
+        # when this is False, so a missing zestimate can't crush a legitimate comp-derived
+        # ARV down to ~1.15x list and erase the very spread the model exists to find.
+        as_is_anchored = bool(zest or cs.subject_self_value)
 
         arv: int = 0
         arv_source = "fallback"
@@ -332,7 +356,7 @@ class FlipperEvaluator:
         # As-is sanity ceiling: a renovated home should sit between its as-is value and the
         # renovated ceiling — never implausibly above it. Applies to every source (for a
         # fallback/no-data ARV the anchor is the list price, so it can't run away from list).
-        if as_is_value:
+        if as_is_value and as_is_anchored:
             as_is_ceiling = int(as_is_value * _as_is_ceiling_premium(rehab_signal))
             if arv > as_is_ceiling:
                 arv = as_is_ceiling
@@ -376,16 +400,24 @@ class FlipperEvaluator:
             monthly_hoa = int(enriched.get("monthlyHoaFee") or base_prop.hoa_fees or 0)
 
         loan_amt = price * self.ltv
-        financing_6mo = int(loan_amt * self.hard_money_apr * (self.hold_months / 12))
+        financing_6mo = int(
+            loan_amt * self.hard_money_apr * (self.hold_months / 12)  # interest carry over the hold
+            + loan_amt * self.points_pct                             # origination points (upfront)
+        )
         holding = (
             int(annual_tax * (self.hold_months / 12))
-            + int(INSURANCE_ANNUAL * (self.hold_months / 12))
+            + int(self.insurance_annual * (self.hold_months / 12))
             + monthly_hoa * self.hold_months
-            + UTILITIES_MONTHLY * self.hold_months
+            + self.utilities_monthly * self.hold_months
         )
 
         selling = int(arv * self.selling_cost_pct)
-        all_in = price + rehab + holding + financing_6mo
+        buy_closing = int(price * self.buy_closing_pct)  # acquisition closing (its own report line)
+        all_in = price + buy_closing + rehab + holding + financing_6mo
+        # Rental yield basis = acquisition + stabilization capital only. The 6-mo hard-money
+        # interest and vacant-hold carry in all_in are FLIP-phase costs a long-term hold never
+        # pays, so cap rate is measured against this basis, not all_in.
+        rental_basis = price + buy_closing + rehab
         net_resale = arv - selling
         profit = net_resale - all_in
         profit_margin_pct = round((profit / all_in) * 100, 1) if all_in else 0.0
@@ -398,12 +430,12 @@ class FlipperEvaluator:
         rent_est = estimate_rent(cs, sqft) if sqft else None
         if rent_est:
             gross_rent_annual = rent_est * 12
-            noi_annual = gross_rent_annual * (1 - RENTAL_OPEX_PCT) - annual_tax - INSURANCE_ANNUAL - (monthly_hoa * 12)
+            noi_annual = gross_rent_annual * (1 - self.rental_opex_pct) - annual_tax - self.insurance_annual - (monthly_hoa * 12)
             monthly_noi = int(noi_annual / 12)
-            cap_rate = round((noi_annual / all_in) * 100, 2) if all_in else 0.0
-            # Permanent financing assumption: 30yr at 7% on 75% of all-in (post-rehab refi)
-            refi_amount = arv * REFI_LTV
-            r_monthly = 0.07 / 12
+            cap_rate = round((noi_annual / rental_basis) * 100, 2) if rental_basis else 0.0
+            # Permanent financing assumption: 30yr at refi_apr on refi_ltv of ARV (post-rehab refi)
+            refi_amount = arv * self.refi_ltv
+            r_monthly = self.refi_apr / 12
             n = 360
             mortgage_payment = refi_amount * (r_monthly * (1 + r_monthly) ** n) / ((1 + r_monthly) ** n - 1) if r_monthly else 0
             monthly_cash_flow = int(monthly_noi - mortgage_payment)
@@ -434,28 +466,40 @@ class FlipperEvaluator:
                     f"Cap rate {cap_rate}% / cash flow ${monthly_cash_flow}/mo — "
                     f"won't cover financing without significant down payment"
                 )
-                rental_score = max(0, 25 + cap_rate * 3 + (monthly_cash_flow / 200))
+                # Same base/slope as DECENT so the score is CONTINUOUS at the cap=5,cf=0
+                # boundary (both → 60). Previously POOR used base 25/slope 3, which dropped
+                # the score ~20 pts for an infinitesimal cap change across the line. A genuinely
+                # weak rental still scores low here because cap_rate itself is low; the
+                # POOR_RENTAL label carries the quality warning.
+                rental_score = max(0, 40 + cap_rate * 4 + (monthly_cash_flow / 200))
             rental_score = round(min(100, rental_score), 1)
 
         # --- Verdict ---
+        # A real flip leads; failing that, a qualifying cash-flow rental is surfaced as a
+        # RENTAL_PLAY *before* the thin-spread NO_DEAL gate — so a strong rental with no flip
+        # upside is never buried as "no spread." RENTAL_PLAY tracks the same GOOD/DECENT rental
+        # gate used above (rental_verdict), so the headline and rental tracks can't disagree.
+        # The profit floor scales with price: a flat $20k is a trivial margin on a $1M home.
+        rental_qualifies = rental_verdict in ("GOOD_RENTAL", "DECENT_RENTAL")
+        min_profit = max(20_000, int(0.05 * price))
         verdict = "NO_DEAL"
         verdict_reason = ""
         if rehab_signal == "teardown":
             verdict = "TEAR_DOWN"
             verdict_reason = "Listing framed as land/development — not a value-add rehab"
-        elif arv < price * 1.05:
-            verdict = "NO_DEAL"
-            verdict_reason = f"ARV (${arv:,}) is at or below list (${price:,}); no spread for profit"
         elif passes_70 and profit_margin_pct >= 15:
             verdict = "STRONG_FLIP"
             verdict_reason = f"Passes 70% rule with {profit_margin_pct}% margin (${profit:,})"
-        elif profit > 20_000 and profit_margin_pct >= 7:
+        elif profit > min_profit and profit_margin_pct >= 7:
             # Balanced calibration: a real (if slim) spread still surfaces as a flip.
             verdict = "MARGINAL_FLIP"
             verdict_reason = f"Slim margin {profit_margin_pct}% — flip works but needs tight execution"
-        elif monthly_cash_flow >= 250 and cap_rate >= 5:
+        elif rental_qualifies and monthly_cash_flow >= 200 and cap_rate >= 5:
             verdict = "RENTAL_PLAY"
             verdict_reason = f"Doesn't flip but cash-flows ${monthly_cash_flow}/mo at {cap_rate}% cap"
+        elif arv < price * 1.05:
+            verdict = "NO_DEAL"
+            verdict_reason = f"ARV (${arv:,}) is at or below list (${price:,}); no spread for profit"
         else:
             verdict = "NO_DEAL"
             verdict_reason = f"No flip spread (${profit:,} profit) and weak rental (cash flow ${monthly_cash_flow}/mo)"
@@ -473,14 +517,28 @@ class FlipperEvaluator:
         else:
             score = max(0, 30 + profit_margin_pct)  # negative margin pushes score down
 
-        # Adjust for risk count
-        score = max(0, score - 3 * len(risks))
-        # Adjust for motivated-seller signals (DOM, price cuts, listed below as-is value)
-        if dom >= 90 and verdict in ("MARGINAL_FLIP", "NO_DEAL"):
-            score += 5  # negotiation upside
+        # Adjust for risk count — penalty CAPPED at -15 so a risk-heavy STRONG_FLIP can't be
+        # driven down into a lower verdict's score band (the ARV caps that add risk flags
+        # already dent the margin that feeds the base score).
+        score = max(0, score - 3 * min(len(risks), 5))
+        # Motivated-seller upside (stale DOM, priced below as-is). STRONG_FLIP shares this
+        # negotiation upside, so it's included — its prior omission let a clean MARGINAL
+        # out-bonus a STRONG and invert the displayed scores.
+        if dom >= 90 and verdict in ("STRONG_FLIP", "MARGINAL_FLIP", "NO_DEAL"):
+            score += 5
         if listed_below_as_is and verdict in ("STRONG_FLIP", "MARGINAL_FLIP", "NO_DEAL"):
             score += 5  # priced below as-is value = equity/negotiation upside
-        score = round(min(100, score), 1)
+        # Clamp to the verdict's band so the displayed score can NEVER contradict the verdict
+        # (e.g. a STRONG_FLIP showing below a MARGINAL_FLIP). Bands are non-overlapping for the
+        # flip tiers; risk/bonus adjustments move the score only WITHIN the band.
+        _band = {
+            "STRONG_FLIP": (80, 100),
+            "MARGINAL_FLIP": (55, 79),
+            "RENTAL_PLAY": (40, 60),
+            "TEAR_DOWN": (10, 20),
+            "NO_DEAL": (0, 54),
+        }.get(verdict, (0, 100))
+        score = round(min(_band[1], max(_band[0], score)), 1)
 
         # --- Comp summary lines for display ---
         comp_lines: List[str] = []
@@ -507,6 +565,7 @@ class FlipperEvaluator:
             rehab_estimate=rehab,
             rehab_psf=(round(rehab / sqft) if sqft else psf) if rehab_signal != "teardown" else 250,
             rehab_signal=rehab_signal,
+            buy_closing_cost=buy_closing,
             holding_cost_6mo=holding,
             financing_cost=financing_6mo,
             selling_cost=selling,
