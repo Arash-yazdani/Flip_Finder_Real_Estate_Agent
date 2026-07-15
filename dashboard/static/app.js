@@ -1271,13 +1271,13 @@ $("#pf-clear")?.addEventListener("click", () => {
 // Percent fields are entered as whole numbers (12 = 12%) and sent as fractions (0.12); the
 // backend clamps every value, so a blank or out-of-range box just falls back to the default.
 const ASSUMPTION_FIELDS = [
-  ["as-apr",    "hm_apr",          12, true],
+  ["as-apr",    "hm_apr",        10.5, true],
   ["as-hold",   "hold_months",      6, false],
-  ["as-close",  "buy_closing_pct",  2, true],
-  ["as-points", "points_pct",       2, true],
-  ["as-sell",   "selling_pct",      8, true],
-  ["as-opex",   "opex_pct",        45, true],
-  ["as-refi",   "refi_apr",         7, true],
+  ["as-close",  "buy_closing_pct", 1.5, true],
+  ["as-points", "points_pct",     2.5, true],
+  ["as-sell",   "selling_pct",   6.25, true],
+  ["as-opex",   "opex_pct",        25, true],
+  ["as-refi",   "refi_apr",       7.5, true],
 ];
 function assumptions() {
   const q = {};

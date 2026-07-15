@@ -12,6 +12,7 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from models.property import Property
 from agents.flipper_evaluator import (
     FlipperEvaluator, BUY_CLOSING_PCT, HARD_MONEY_POINTS_PCT,
+    HARD_MONEY_APR, HARD_MONEY_LTV, RENTAL_OPEX_PCT, INSURANCE_ANNUAL,
 )
 
 
@@ -45,13 +46,14 @@ encA = {
 A = ev.evaluate(_prop("A", a_price, a_sqft), enriched=encA)
 
 buy_closing = int(a_price * BUY_CLOSING_PCT)
-assert buy_closing == 8000, buy_closing
 # HIGH-1: all_in = price + buy_closing + rehab + holding + financing (identity)
 assert A.all_in_cost == (A.purchase_price + buy_closing + A.rehab_estimate
                          + A.holding_cost_6mo + A.financing_cost), A.all_in_cost
-# HIGH-2: financing = interest carry + origination points
-expect_fin = int(a_price * 0.75 * 0.12 * 0.5 + a_price * 0.75 * HARD_MONEY_POINTS_PCT)
-assert A.financing_cost == expect_fin == 24000, (A.financing_cost, expect_fin)
+# HIGH-2: financing = interest carry + origination points. Derived from the constants, not
+# magic numbers, so retuning a default (e.g. per-market) can't silently rot this test.
+expect_fin = int(a_price * HARD_MONEY_LTV * HARD_MONEY_APR * 0.5
+                 + a_price * HARD_MONEY_LTV * HARD_MONEY_POINTS_PCT)
+assert A.financing_cost == expect_fin, (A.financing_cost, expect_fin)
 # HIGH-4: no zestimate ⇒ as-is ceiling skipped ⇒ comp ARV (~551k) NOT crushed to 1.15x list (460k)
 assert A.arv > a_price * 1.15, (A.arv, a_price * 1.15)
 # MEDIUM-8: verdict/score band consistency
@@ -76,7 +78,7 @@ assert B.rental_verdict == "GOOD_RENTAL", B.rental_verdict
 assert B.verdict == "RENTAL_PLAY", (B.verdict, B.cap_rate_pct, B.monthly_cash_flow)  # MEDIUM-5/6
 # HIGH-3: cap rate divides by rental_basis (price+closing+rehab), not all_in
 rental_basis = b_price + int(b_price * BUY_CLOSING_PCT) + B.rehab_estimate
-noi_annual = 4500 * 12 * (1 - 0.45) - b_price * 0.0125 - 1200
+noi_annual = 4500 * 12 * (1 - RENTAL_OPEX_PCT) - b_price * 0.0125 - INSURANCE_ANNUAL
 assert B.cap_rate_pct == round(noi_annual / rental_basis * 100, 2), B.cap_rate_pct
 assert 40 <= B.rental_score <= 100
 print(f"B  RENTAL_PLAY  cap={B.cap_rate_pct}%  cf=${B.monthly_cash_flow}/mo  score={B.flip_score}")
@@ -94,7 +96,7 @@ assert max(20_000, int(0.05 * 300_000)) == 20_000
 assert max(20_000, int(0.05 * 1_000_000)) == 50_000
 
 # ── Buy-closing as its own field + user-tunable assumptions ─────────────────────
-assert A.buy_closing_cost == int(a_price * BUY_CLOSING_PCT) == 8000, A.buy_closing_cost
+assert A.buy_closing_cost == int(a_price * BUY_CLOSING_PCT), A.buy_closing_cost
 
 # Engine honors overridden assumptions: closing 2%→5%, points 2%→3%, APR 12%→15%.
 ev2 = FlipperEvaluator(buy_closing_pct=0.05, points_pct=0.03, hard_money_apr=0.15)

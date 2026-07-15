@@ -54,16 +54,28 @@ TEARDOWN_KEYWORDS = (
 )
 
 # --- Financial defaults ---
-DEFAULT_HOLD_MONTHS = 6
-HARD_MONEY_APR = 0.12
+# Calibrated to the SACRAMENTO, CA market as of July 2026 (see each line for basis).
+# These are only defaults — every one is a FlipperEvaluator kwarg the dashboard's
+# Assumptions panel can override per-search. Re-check them when modeling another metro
+# or after ~6 months; rates and commissions move.
+DEFAULT_HOLD_MONTHS = 6       # ATTOM Q1'26 avg days-to-flip 165d (~5.5mo); 6 also clears
+                              # Fannie's 6-mo cash-out seasoning (Selling Guide B2-1.3-03)
+HARD_MONEY_APR = 0.105        # Sacramento Q2'26 funded avg 10.21%, CA 9.94%; small-balance
+                              # SFR flips price above those institutional-size pools
 HARD_MONEY_LTV = 0.75
-SELLING_COST_PCT = 0.08
+SELLING_COST_PCT = 0.0625     # 5.25% commission + ~1.0% seller costs. Commissions did NOT
+                              # fall post-NAR settlement (Redfin: buy-side 2.36%→2.42%)
 INSURANCE_ANNUAL = 1200
 UTILITIES_MONTHLY = 250
-REFI_LTV = 0.75       # cash-out refi LTV at ARV
-RENTAL_OPEX_PCT = 0.45  # vacancy + maintenance + mgmt + capex reserve
-BUY_CLOSING_PCT = 0.02      # acquisition closing on purchase: title, escrow, transfer/recording tax, doc fees
-HARD_MONEY_POINTS_PCT = 0.02  # hard-money origination points (1-3 typical), upfront on loan amount
+REFI_LTV = 0.75               # cash-out refi LTV at ARV (agency max for a 1-unit investment SFR)
+REFI_APR = 0.075              # investor CASH-OUT at 75% LTV — NOT the owner-occupied headline
+                              # (~6.5%); adds an occupancy premium + cash-out LLPA
+RENTAL_OPEX_PCT = 0.25        # vacancy + maintenance + mgmt + capex reserve ONLY. Taxes,
+                              # insurance and HOA are itemized separately below, so this must
+                              # NOT be a "50% rule" number — that rule bundles taxes+insurance.
+BUY_CLOSING_PCT = 0.015       # Sacramento custom: SELLER pays owner's title + county transfer
+                              # tax, so the buyer side is light (~1.35% outside city limits)
+HARD_MONEY_POINTS_PCT = 0.025  # CA Q1'26 funded avg 2.3 pts; small loans carry more
 
 
 @dataclass
@@ -236,7 +248,7 @@ class FlipperEvaluator:
                  buy_closing_pct: float = BUY_CLOSING_PCT,
                  points_pct: float = HARD_MONEY_POINTS_PCT,
                  rental_opex_pct: float = RENTAL_OPEX_PCT,
-                 refi_apr: float = 0.07,
+                 refi_apr: float = REFI_APR,
                  refi_ltv: float = REFI_LTV,
                  insurance_annual: float = INSURANCE_ANNUAL,
                  utilities_monthly: float = UTILITIES_MONTHLY,
