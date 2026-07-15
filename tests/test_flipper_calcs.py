@@ -13,6 +13,7 @@ from models.property import Property
 from agents.flipper_evaluator import (
     FlipperEvaluator, BUY_CLOSING_PCT, HARD_MONEY_POINTS_PCT,
     HARD_MONEY_APR, HARD_MONEY_LTV, RENTAL_OPEX_PCT, INSURANCE_ANNUAL,
+    STRONG_MARGIN_PCT, RENTAL_SCORE_BANDS, _rental_verdict_and_score,
 )
 
 
@@ -84,12 +85,28 @@ assert 40 <= B.rental_score <= 100
 print(f"B  RENTAL_PLAY  cap={B.cap_rate_pct}%  cf=${B.monthly_cash_flow}/mo  score={B.flip_score}")
 
 # ── Pure-formula invariants ────────────────────────────────────────────────────
-# MEDIUM-7: DECENT and POOR rental-score curves are CONTINUOUS at the cap=5, cf=0 boundary.
-decent = lambda cap, cf: 40 + cap * 4 + max(0, cf / 100)
-poor   = lambda cap, cf: max(0, 40 + cap * 4 + cf / 200)
-assert decent(5, 0) == poor(5, 0) == 60, (decent(5, 0), poor(5, 0))
-# Step across the old cliff is now ~0, not ~20
-assert abs(decent(5.0, 0) - poor(4.99, 0)) < 0.5
+# MEDIUM-7 (superseded): the rental score is clamped to its verdict's band, so it can never
+# contradict the label. Exercises the REAL function — an earlier version of this test re-declared
+# the formula in local lambdas, so it asserted behaviour the module no longer had and still passed.
+assert _rental_verdict_and_score(8, -100)[0] == "POOR_RENTAL"      # high cap, negative cash flow
+assert _rental_verdict_and_score(5, 0)[0] == "DECENT_RENTAL"
+assert _rental_verdict_and_score(7, 200)[0] == "GOOD_RENTAL"
+# The inversion that motivated the clamp: POOR used to score 71.5 vs DECENT's 60.
+assert _rental_verdict_and_score(8, -100)[2] < _rental_verdict_and_score(5, 0)[2]
+# Exhaustive: no POOR may ever out-score any DECENT/GOOD, and bands must not overlap.
+_grid = [(c / 4, f) for c in range(0, 80) for f in range(-2000, 2001, 50)]
+_by_verdict = {}
+for _c, _f in _grid:
+    _v, _, _s = _rental_verdict_and_score(_c, _f)
+    _lo, _hi = RENTAL_SCORE_BANDS[_v]
+    assert _lo <= _s <= _hi, (_c, _f, _v, _s)          # score always inside its band
+    _by_verdict.setdefault(_v, []).append(_s)
+assert max(_by_verdict["POOR_RENTAL"]) < min(_by_verdict["DECENT_RENTAL"]), "POOR out-scores DECENT"
+assert max(_by_verdict["DECENT_RENTAL"]) < min(_by_verdict["GOOD_RENTAL"]), "DECENT out-scores GOOD"
+
+# STRONG_FLIP is driven by our own P&L, and the bar subsumes the 70% rule (a price at the 70% MAO
+# already implies ~23.7% margin), so the old `passes_70 AND margin>=15` gate is gone.
+assert STRONG_MARGIN_PCT < 23.7, "strong bar must sit under the 70%-rule-implied margin"
 
 # LOW-9: profit floor scales with price (flat $20k on cheap, 5% on expensive)
 assert max(20_000, int(0.05 * 300_000)) == 20_000

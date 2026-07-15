@@ -60,6 +60,18 @@ TEARDOWN_KEYWORDS = (
 # or after ~6 months; rates and commissions move.
 DEFAULT_HOLD_MONTHS = 6       # ATTOM Q1'26 avg days-to-flip 165d (~5.5mo); 6 also clears
                               # Fannie's 6-mo cash-out seasoning (Selling Guide B2-1.3-03)
+# STRONG_FLIP bar, measured on OUR OWN P&L (profit / all-in cost) rather than the 70% rule.
+# Why: at a price exactly equal to the 70% MAO, these cost assumptions imply
+#   margin = (0.9375*ARV - 1.083*price - rehab) / all_in  ->  ~0.1794/0.7581 ~= 23.7%
+# So `passes_70` ALREADY implies ~23.7% margin — the old `passes_70 AND margin >= 15` gate was
+# really one condition (the 70% rule) carrying a hidden ~24% bar, and the 15% test was dead code.
+# That made STRONG unreachable: a full 775-listing Sacramento scan produced 0 STRONG, while deals
+# at 18-24% margin were labelled "slim". The 70% rule is a heuristic calibrated to costs we now
+# model directly and more accurately, so it should not out-rank our own math. 20% return on total
+# project cost over a ~6-month hold is a genuinely strong deal, and since 23.7% > 20% this bar
+# SUBSUMES the 70% rule (anything passing it still qualifies). passes_70/mao stay computed and
+# displayed as an investor-facing flag — informational, not a gate.
+STRONG_MARGIN_PCT = 20
 HARD_MONEY_APR = 0.105        # Sacramento Q2'26 funded avg 10.21%, CA 9.94%; small-balance
                               # SFR flips price above those institutional-size pools
 HARD_MONEY_LTV = 0.75
@@ -237,6 +249,44 @@ def _no_price_report(base_prop, price: int, sqft: int) -> "FlipReport":
         rental_verdict="NO_RENT_DATA", rental_verdict_reason=reason, rental_score=0.0,
         risk_flags=[reason], comps_summary=[],
     )
+
+
+# Non-overlapping score bands per rental verdict. The score is clamped into its verdict's band
+# so it can NEVER contradict the label — the same invariant the flip score enforces.
+# This deliberately gives up an earlier "make POOR continuous with DECENT at the boundary" fix:
+# you cannot have both a continuous score AND bands tracking a discontinuous label. Smoothing the
+# score across a boundary where the LABEL jumps was incoherent (score said "identical", label said
+# "different") and it is exactly what created the inversion below. Tiers jump; the score
+# discriminates WITHIN a tier.
+RENTAL_SCORE_BANDS = {
+    "GOOD_RENTAL":   (75, 100),
+    "DECENT_RENTAL": (50, 74),
+    "POOR_RENTAL":   (0, 49),
+}
+
+
+def _rental_verdict_and_score(cap_rate: float, monthly_cash_flow: int) -> Tuple[str, str, float]:
+    """(verdict, reason, 0-100 score) for the rental/BRRRR case.
+
+    Split out of evaluate() so the band invariant is directly testable: before the clamp, a
+    POOR_RENTAL at cap 8 / -$100 cash flow scored 71.5 and out-ranked a DECENT_RENTAL at cap 5 /
+    $0 (60) — a real mis-ranking, since an intent=rent search ranks on rental_score alone.
+    """
+    if cap_rate >= 7 and monthly_cash_flow >= 200:
+        verdict = "GOOD_RENTAL"
+        reason = f"Strong rental: {cap_rate}% cap, ${monthly_cash_flow}/mo cash flow"
+        score = min(100, 60 + cap_rate * 3 + max(0, monthly_cash_flow / 50))
+    elif cap_rate >= 5 and monthly_cash_flow >= 0:
+        verdict = "DECENT_RENTAL"
+        reason = f"Marginal rental: {cap_rate}% cap, ${monthly_cash_flow}/mo cash flow"
+        score = 40 + cap_rate * 4 + max(0, monthly_cash_flow / 100)
+    else:
+        verdict = "POOR_RENTAL"
+        reason = (f"Cap rate {cap_rate}% / cash flow ${monthly_cash_flow}/mo — "
+                  f"won't cover financing without significant down payment")
+        score = max(0, 25 + cap_rate * 3 + (monthly_cash_flow / 200))
+    lo, hi = RENTAL_SCORE_BANDS[verdict]
+    return verdict, reason, round(min(hi, max(lo, score)), 1)
 
 
 class FlipperEvaluator:
@@ -464,27 +514,8 @@ class FlipperEvaluator:
         rental_verdict_reason = "No rent comps available"
         rental_score = 0.0
         if rent_est:
-            if cap_rate >= 7 and monthly_cash_flow >= 200:
-                rental_verdict = "GOOD_RENTAL"
-                rental_verdict_reason = f"Strong rental: {cap_rate}% cap, ${monthly_cash_flow}/mo cash flow"
-                rental_score = min(100, 60 + cap_rate * 3 + max(0, monthly_cash_flow / 50))
-            elif cap_rate >= 5 and monthly_cash_flow >= 0:
-                rental_verdict = "DECENT_RENTAL"
-                rental_verdict_reason = f"Marginal rental: {cap_rate}% cap, ${monthly_cash_flow}/mo cash flow"
-                rental_score = 40 + cap_rate * 4 + max(0, monthly_cash_flow / 100)
-            else:
-                rental_verdict = "POOR_RENTAL"
-                rental_verdict_reason = (
-                    f"Cap rate {cap_rate}% / cash flow ${monthly_cash_flow}/mo — "
-                    f"won't cover financing without significant down payment"
-                )
-                # Same base/slope as DECENT so the score is CONTINUOUS at the cap=5,cf=0
-                # boundary (both → 60). Previously POOR used base 25/slope 3, which dropped
-                # the score ~20 pts for an infinitesimal cap change across the line. A genuinely
-                # weak rental still scores low here because cap_rate itself is low; the
-                # POOR_RENTAL label carries the quality warning.
-                rental_score = max(0, 40 + cap_rate * 4 + (monthly_cash_flow / 200))
-            rental_score = round(min(100, rental_score), 1)
+            rental_verdict, rental_verdict_reason, rental_score = _rental_verdict_and_score(
+                cap_rate, monthly_cash_flow)
 
         # --- Verdict ---
         # A real flip leads; failing that, a qualifying cash-flow rental is surfaced as a
@@ -499,13 +530,15 @@ class FlipperEvaluator:
         if rehab_signal == "teardown":
             verdict = "TEAR_DOWN"
             verdict_reason = "Listing framed as land/development — not a value-add rehab"
-        elif passes_70 and profit_margin_pct >= 15:
+        elif profit > min_profit and profit_margin_pct >= STRONG_MARGIN_PCT:
             verdict = "STRONG_FLIP"
-            verdict_reason = f"Passes 70% rule with {profit_margin_pct}% margin (${profit:,})"
+            _r70 = ("passes the 70% rule" if passes_70
+                    else f"misses the 70% rule by ${price - mao:,}")
+            verdict_reason = f"Strong {profit_margin_pct}% margin (${profit:,}) — {_r70}"
         elif profit > min_profit and profit_margin_pct >= 7:
-            # Balanced calibration: a real (if slim) spread still surfaces as a flip.
             verdict = "MARGINAL_FLIP"
-            verdict_reason = f"Slim margin {profit_margin_pct}% — flip works but needs tight execution"
+            verdict_reason = (f"{profit_margin_pct}% margin (${profit:,}) — under the "
+                              f"{STRONG_MARGIN_PCT}% strong bar; works but needs tight execution")
         elif rental_qualifies and monthly_cash_flow >= 200 and cap_rate >= 5:
             verdict = "RENTAL_PLAY"
             verdict_reason = f"Doesn't flip but cash-flows ${monthly_cash_flow}/mo at {cap_rate}% cap"
