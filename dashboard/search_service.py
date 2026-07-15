@@ -665,19 +665,28 @@ async def stream_search(city: str, count: int = 10, intent: str = "flip",
 
     props_with_link = sorted(pool, key=_discovery_rank, reverse=True)
 
-    # Enrichment depth: scan a meaningful slice of the market, not just ~10.
-    # Default ≈ max(count*3, 30) so the displayed top `count` are the best of a
-    # real sample. Capped by the discovery pool size and a hard ceiling
-    # (BRIGHT_DATA_MAX_ENRICH, default 100) — raise the cap to analyze more of the
-    # market per run at higher Bright Data cost.
+    # Enrichment depth: analyze the WHOLE discovered market by default, not a slice.
+    #
+    # This used to default to max(count*3, 30) — i.e. ~30 of a ~780-listing city scan (4%) —
+    # with the rest never enriched, never scored, and therefore unable to appear at any rank.
+    # That funnel existed to save Bright Data spend, but at ~$0.0015/listing a full ~800-listing
+    # scan is ~$1.20: it was analyzing 4% of the market to save ~$1.13, and it silently dropped
+    # real deals purely on DISCOVERY rank — a pre-enrichment proxy (list $/sqft vs an area
+    # median) that cannot see condition, comp quality, or ARV, and so has genuine false
+    # negatives. Verified case: 4060 Black Tail Dr, Sacramento ranked #35, missed the top-30 cut,
+    # and enriching it by hand scored a MARGINAL_FLIP at $78,598 / 23.7% off 8 high-confidence
+    # comps. Ranking now only decides DISPLAY order, not what exists.
+    #
+    # Cost/latency knobs: enrichment is one Bright Data snapshot (POLL_TIMEOUT_SEC=1200s) and
+    # results are cached per-zpid, so repeat scans of a market are near-free. Lower
+    # BRIGHT_DATA_MAX_ENRICH / COUNTY_MAX_ENRICH to trade coverage back for run time.
     _is_scope = scope.kind in ("county", "city") and bool(getattr(scope, "zips", None))
     _max_enrich = int(_os.environ.get(
-        "COUNTY_MAX_ENRICH" if _is_scope else "BRIGHT_DATA_MAX_ENRICH",
-        "200" if _is_scope else "100"))
+        "COUNTY_MAX_ENRICH" if _is_scope else "BRIGHT_DATA_MAX_ENRICH", "800"))
     if enrich_limit is not None:
         enrich_n = enrich_limit
     else:
-        enrich_n = max(count * 3, 30)
+        enrich_n = len(props_with_link)  # everything discovered; _max_enrich clamps it below
 
     if _is_scope:
         # Guarantee every neighborhood is represented: reserve the top-K per zip (each zip's
