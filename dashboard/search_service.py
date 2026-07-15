@@ -583,10 +583,19 @@ async def stream_search(city: str, count: int = 10, intent: str = "flip",
             _finish_run("ok")
             return
 
-    # ── Local, type-segmented $/sqft baselines (local → type → citywide fallback) ──
+    # ── Local, type-segmented $/sqft baselines ──
+    # Fallback chain, most → least local: cell+type → ZIP+type → ZIP → citywide type → citywide.
+    # The ZIP tiers matter: a ~1.1km cell needs MIN_GROUP same-type listings to qualify, and on a
+    # single capped (~800-listing) citywide scan only ~18% of listings had a dense enough cell —
+    # the other 82% silently fell through to the CITYWIDE median. That made the ranker score homes
+    # against the whole city, so it favored cheap ZIPs wholesale (every South Sac house looks
+    # "below baseline") instead of finding homes underpriced against their OWN neighborhood.
+    # A ZIP is the natural real-estate unit and is almost always dense enough (95823: 47 listings).
     MIN_GROUP = 5
     cell_type: Dict = {}
     by_type: Dict = {}
+    zip_type: Dict = {}
+    zip_all: Dict = {}
     all_psf: List[float] = []
     for p in pool:
         v = _psf(p)
@@ -595,11 +604,17 @@ async def stream_search(city: str, count: int = 10, intent: str = "flip",
         all_psf.append(v)
         tb = _type_bucket(p)
         by_type.setdefault(tb, []).append(v)
+        z = (getattr(p, "zipcode", "") or "").strip()
+        if z:
+            zip_type.setdefault((z, tb), []).append(v)
+            zip_all.setdefault(z, []).append(v)
         c = _cell(p)
         if c is not None:
             cell_type.setdefault((c, tb), []).append(v)
 
     local_med = {k: median(vs) for k, vs in cell_type.items() if len(vs) >= MIN_GROUP}
+    zip_type_med = {k: median(vs) for k, vs in zip_type.items() if len(vs) >= MIN_GROUP}
+    zip_med = {k: median(vs) for k, vs in zip_all.items() if len(vs) >= MIN_GROUP}
     type_med = {k: median(vs) for k, vs in by_type.items() if len(vs) >= MIN_GROUP}
     median_psf = median(all_psf) if all_psf else 0.0  # citywide baseline (+ telemetry)
 
@@ -608,6 +623,11 @@ async def stream_search(city: str, count: int = 10, intent: str = "flip",
         c = _cell(p)
         if c is not None and (c, tb) in local_med:
             return local_med[(c, tb)]
+        z = (getattr(p, "zipcode", "") or "").strip()
+        if z and (z, tb) in zip_type_med:
+            return zip_type_med[(z, tb)]
+        if z and z in zip_med:
+            return zip_med[z]
         if tb in type_med:
             return type_med[tb]
         return median_psf
