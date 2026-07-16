@@ -152,8 +152,13 @@ def _property_card(pdf, p, rank):
         pdf.multi_cell(0, 4, _san("Rent: " + p["rental_verdict_reason"]), new_x=XPos.LMARGIN, new_y=YPos.NEXT)
 
     _section(pdf, "FLIP MATH")
+    prov = p.get("comp_provenance") or {}
+    n_comps = p.get("comp_count", 0) or 0
+    prov_txt = f", {prov.get('sold', 0)} sold / {n_comps - prov.get('sold', 0)} est" if n_comps else ""
     _row(pdf, "ARV", f"{_money(p.get('arv'))}  ({p.get('arv_source', '?')}, "
-                     f"{p.get('arv_confidence', '?')}, {p.get('comp_count', 0)} comps)")
+                     f"{p.get('arv_confidence', '?')}, {n_comps} comps{prov_txt})")
+    if p.get("enriched_at"):
+        _row(pdf, "Data as of", str(p["enriched_at"]))
     _row(pdf, "Rehab", f"{_money(p.get('rehab_estimate'))}  (${p.get('rehab_psf', '?')}/sqft, "
                        f"{p.get('rehab_signal', '?')})")
     _row(pdf, "Buy-side closing", _money(p.get("buy_closing_cost")))

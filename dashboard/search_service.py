@@ -152,6 +152,8 @@ def _flip_report_to_dict(a, prop, enriched) -> dict:
         "arv_confidence": a.arv_confidence,
         "comp_count": a.comp_count,
         "comp_psf_range": list(a.comp_psf_range) if a.comp_psf_range else [None, None],
+        "comp_provenance": a.comp_provenance,
+        "enriched_at": a.enriched_at,
         "rehab_estimate": a.rehab_estimate,
         "rehab_psf": a.rehab_psf,
         "rehab_signal": a.rehab_signal,

@@ -25,10 +25,11 @@ def _prop(pid, price, sqft, year=1985, ptype="Single Family"):
     )
 
 
-def _comp(addr, psf, sqft):
+def _comp(addr, psf, sqft, hdp="RecentlySold"):
     return json.dumps({
         "streetAddress": addr, "price": int(psf * sqft), "livingArea": sqft,
         "homeType": "SINGLE_FAMILY", "bedrooms": 3, "bathrooms": 2,
+        "hdpTypeDimension": hdp,
     })
 
 
@@ -41,6 +42,7 @@ a_price, a_sqft = 400_000, 2000
 encA = {
     "price": a_price, "livingArea": a_sqft, "homeType": "SINGLE_FAMILY",
     "yearBuilt": 1985, "propertyTaxRate": 1.25, "description": "",
+    "_cached_at": 1784159751.0,  # provenance: enrichment snapshot timestamp
     "nearbyHomes": [_comp("11 A", 250, 2000), _comp("12 A", 255, 2000),
                     _comp("13 A", 260, 2000), _comp("14 A", 265, 2000)],
 }
@@ -107,6 +109,28 @@ assert max(_by_verdict["DECENT_RENTAL"]) < min(_by_verdict["GOOD_RENTAL"]), "DEC
 # STRONG_FLIP is driven by our own P&L, and the bar subsumes the 70% rule (a price at the 70% MAO
 # already implies ~23.7% margin), so the old `passes_70 AND margin>=15` gate is gone.
 assert STRONG_MARGIN_PCT < 23.7, "strong bar must sit under the 70%-rule-implied margin"
+
+# ── Comp provenance: every report discloses what its comp prices ARE and when fetched ──
+assert A.comp_provenance == {"sold": 4}, A.comp_provenance
+assert A.enriched_at == "2026-07-15T23:55:51Z", A.enriched_at   # UTC of 1784159751 (16:55:51 PDT)
+assert all(l.endswith("[sold]") for l in A.comps_summary), A.comps_summary
+assert not any("0 actual sales" in r for r in A.risk_flags)      # real sales → no flag
+
+# Scenario C: 5 tight comps, ALL Zestimates (the dominant real-world case — 67.7% measured).
+# Tight spread would earn "high" confidence, but zero actual sales must demote it to medium
+# and disclose the fact as a risk flag.
+encC = {
+    "price": 400_000, "livingArea": 2000, "homeType": "SINGLE_FAMILY",
+    "yearBuilt": 1985, "propertyTaxRate": 1.25, "description": "",
+    "nearbyHomes": [_comp(f"{i} C", psf, 2000, hdp="Zestimate")
+                    for i, psf in enumerate([250, 252, 254, 256, 258])],
+}
+C = ev.evaluate(_prop("C", 400_000, 2000), enriched=encC)
+assert C.comp_provenance == {"zestimate": 5}, C.comp_provenance
+assert C.arv_source == "comps" and C.arv_confidence == "medium", (C.arv_source, C.arv_confidence)
+assert any("0 actual sales" in r for r in C.risk_flags), C.risk_flags
+assert C.enriched_at is None                                     # no _cached_at supplied
+print(f"C  zero-sold comps -> confidence demoted to {C.arv_confidence}, flag present")
 
 # LOW-9: profit floor scales with price (flat $20k on cheap, 5% on expensive)
 assert max(20_000, int(0.05 * 300_000)) == 20_000

@@ -581,6 +581,14 @@ function breakdownRows(r, expandLists) {
   const compRange = (r.comp_psf_range && r.comp_psf_range[0] != null)
     ? `$${Math.round(r.comp_psf_range[0])}–$${Math.round(r.comp_psf_range[1])}/sqft`
     : "n/a";
+  // Comp provenance: what the comp prices actually are (sold sales vs Zillow estimates).
+  const prov = r.comp_provenance || {};
+  const provText = r.comp_count
+    ? ` · ${prov.sold || 0} sold / ${r.comp_count - (prov.sold || 0)} est`
+    : "";
+  const dataAsOf = r.enriched_at
+    ? `<div class="row"><span>Data as of</span><span class="v muted">${new Date(r.enriched_at).toLocaleString()}</span></div>`
+    : "";
   const passEmoji = r.passes_70_rule ? "✅" : "❌";
   const compsHtml = (r.comps_summary || []).map(c => `<li>${c}</li>`).join("") || "<li>(no comps)</li>";
   const risksHtml = (r.risk_flags || []).map(f => `<li>${f}</li>`).join("") || "<li>none flagged</li>";
@@ -603,7 +611,8 @@ function breakdownRows(r, expandLists) {
     <p>${r.rental_verdict_reason || ''}</p>
 
     <h4>Flip math</h4>
-    <div class="row"><span>ARV</span><span class="v">${fmtMoney(r.arv)} <span class="muted">(${r.arv_source}, ${r.arv_confidence}, ${r.comp_count} comps ${compRange})</span></span></div>
+    <div class="row"><span>ARV</span><span class="v">${fmtMoney(r.arv)} <span class="muted">(${r.arv_source}, ${r.arv_confidence}, ${r.comp_count} comps ${compRange}${provText})</span></span></div>
+    ${dataAsOf}
     <div class="row"><span>Rehab</span><span class="v">${fmtMoney(r.rehab_estimate)} <span class="muted">($${r.rehab_psf}/sqft, ${r.rehab_signal})</span></span></div>
     <div class="row"><span>Buy-side closing</span><span class="v">${fmtMoney(r.buy_closing_cost)}</span></div>
     <div class="row"><span>Hold 6mo / Financing / Sell</span><span class="v">${fmtMoney(r.holding_cost_6mo)} / ${fmtMoney(r.financing_cost)} / ${fmtMoney(r.selling_cost)}</span></div>

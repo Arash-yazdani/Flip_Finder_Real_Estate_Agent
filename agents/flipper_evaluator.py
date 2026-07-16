@@ -114,6 +114,14 @@ class FlipReport:
     arv_confidence: str     # 'high' | 'medium' | 'low' | 'none'
     comp_count: int
     comp_psf_range: Tuple[Optional[float], Optional[float]]
+    # Data provenance — what the comp prices actually represent (status → count), and when
+    # the enrichment snapshot behind this report was fetched. Makes every report auditable
+    # without access to the environment (or the moment) that produced it: local and deployed
+    # runs never share cache, and nearbyHomes is a moving target that can change between
+    # scrapes of the same property. (No defaults — a defaulted field here would break the
+    # dataclass's later non-default fields; both construction sites pass kwargs explicitly.)
+    comp_provenance: dict
+    enriched_at: Optional[str]  # ISO-8601 UTC, None when never enriched
 
     # Rehab
     rehab_estimate: int
@@ -242,6 +250,7 @@ def _no_price_report(base_prop, price: int, sqft: int) -> "FlipReport":
         year_built=None, home_type=getattr(base_prop, "property_type", "?") or "?",
         days_on_market=0, list_psf=0.0,
         arv=0, arv_source="none", arv_confidence="none", comp_count=0, comp_psf_range=(None, None),
+        comp_provenance={}, enriched_at=None,
         rehab_estimate=0, rehab_psf=0, rehab_signal="neutral",
         buy_closing_cost=0, holding_cost_6mo=0, financing_cost=0, selling_cost=0, all_in_cost=0,
         net_resale=0, projected_profit=0, profit_margin_pct=0.0, mao_70_rule=0, passes_70_rule=False,
@@ -386,6 +395,17 @@ class FlipperEvaluator:
             arv = comp_arv
             arv_source = "comps"
             arv_confidence = cs.confidence
+            # Honesty gate: "comps" here are Zillow nearbyHomes, and most carry Zestimate
+            # prices, not sale prices (measured: 67.7% of 5,082 cached comps). If not one
+            # comp in the set is an actual sale, the report must say so — a tight spread of
+            # one algorithm's guesses about neighboring tract homes is self-consistency,
+            # not market evidence, so it cannot claim better than medium confidence either.
+            if not cs.provenance.get("sold"):
+                risks.append(
+                    f"ARV comps contain 0 actual sales ({len(cs.comps)} price(s) are "
+                    f"Zillow estimates/asking prices) — verify against closed sales")
+                if arv_confidence == "high":
+                    arv_confidence = "medium"
         elif zest:
             # No usable comps — approximate ARV from the as-is zestimate + rehab uplift.
             arv = int(zest * arv_uplift)
@@ -585,10 +605,21 @@ class FlipperEvaluator:
         }.get(verdict, (0, 100))
         score = round(min(_band[1], max(_band[0], score)), 1)
 
-        # --- Comp summary lines for display ---
+        # --- Comp summary lines for display (tagged with what each price IS) ---
         comp_lines: List[str] = []
         for c in cs.comps[:5]:
-            comp_lines.append(f"{c.address}: ${c.price:,} / {c.sqft}sqft = ${int(c.psf)}/sqft")
+            comp_lines.append(
+                f"{c.address}: ${c.price:,} / {c.sqft}sqft = ${int(c.psf)}/sqft [{c.status}]")
+
+        # Snapshot timestamp of the enrichment this report was computed from (stamped by the
+        # enricher on both fresh and cached records). ISO/UTC for the report contract.
+        _ts = enriched.get("_cached_at")
+        try:
+            from datetime import datetime, timezone
+            enriched_at = (datetime.fromtimestamp(float(_ts), tz=timezone.utc)
+                           .strftime("%Y-%m-%dT%H:%M:%SZ")) if _ts else None
+        except (TypeError, ValueError, OSError):
+            enriched_at = None
 
         return FlipReport(
             property_id=base_prop.property_id,
@@ -607,6 +638,8 @@ class FlipperEvaluator:
             arv_confidence=arv_confidence,
             comp_count=len(cs.comps),
             comp_psf_range=(cs.psf_low, cs.psf_high),
+            comp_provenance=dict(cs.provenance),
+            enriched_at=enriched_at,
             rehab_estimate=rehab,
             rehab_psf=(round(rehab / sqft) if sqft else psf) if rehab_signal != "teardown" else 250,
             rehab_signal=rehab_signal,

@@ -28,11 +28,42 @@ class Comp:
     baths: Optional[float] = None
     rent_zestimate: Optional[int] = None
     adj_psf: Optional[float] = None  # size-adjusted $/sqft (to the subject's size)
+    status: str = "unknown"  # what the price MEANS: 'sold' | 'zestimate' | 'pending' | 'for_sale' | 'for_rent' | 'unknown'
+
+
+# Zillow's hdpTypeDimension tells us what a nearbyHomes price actually represents —
+# an algorithmic Zestimate vs a real recent sale vs an asking price. Measured on 5,082
+# cached comps: 67.7% Zestimate, 17% RecentlySold, 0 carry sale dates. Provenance is
+# recorded per-comp so every report can disclose what its ARV actually rests on.
+_HDP_STATUS = {
+    "recentlysold": "sold",
+    "zestimate": "zestimate",
+    "pending": "pending",
+    "forsale": "for_sale",
+    "forrent": "for_rent",
+}
+
+
+def _comp_status(h: dict) -> str:
+    hdp = str(h.get("hdpTypeDimension") or "").replace(" ", "").lower()
+    if hdp in _HDP_STATUS:
+        return _HDP_STATUS[hdp]
+    hs = str(h.get("homeStatus") or "").upper()
+    if hs in ("SOLD", "RECENTLY_SOLD"):
+        return "sold"
+    if hs == "PENDING":
+        return "pending"
+    if hs == "FOR_SALE":
+        return "for_sale"
+    if hs == "FOR_RENT":
+        return "for_rent"
+    return "unknown"
 
 
 @dataclass
 class CompSet:
     comps: List[Comp] = field(default_factory=list)
+    provenance: dict = field(default_factory=dict)  # status → count over the comps actually USED
     median_psf: Optional[float] = None       # size-WEIGHTED MEAN of adjusted $/sqft (falls back
                                              # to the plain median when no subject_sqft) — drives ARV
     raw_median_psf: Optional[float] = None    # unadjusted median (telemetry)
@@ -141,6 +172,7 @@ def analyze_comps(enriched: dict, subject_home_type: Optional[str] = None,
             beds=h.get("bedrooms") or h.get("beds"),
             baths=h.get("bathrooms") or h.get("baths"),
             rent_zestimate=h.get("rentZestimate"),
+            status=_comp_status(h),
         ))
 
     # Trim $/sqft outliers vs the comp-set median — rejects polluted comps (a $66/sqft
@@ -151,6 +183,10 @@ def analyze_comps(enriched: dict, subject_home_type: Optional[str] = None,
         _kept = [c for c in cs.comps if _med * 0.5 <= c.psf <= _med * 2.0]
         if len(_kept) >= 2:
             cs.comps = _kept
+
+    # Provenance over the comps that survived every filter — what the ARV actually rests on.
+    for c in cs.comps:
+        cs.provenance[c.status] = cs.provenance.get(c.status, 0) + 1
 
     raw_psfs = [c.psf for c in cs.comps]
     rents = [c.rent_zestimate for c in cs.comps if c.rent_zestimate]
