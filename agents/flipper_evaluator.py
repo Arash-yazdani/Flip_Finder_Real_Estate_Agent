@@ -328,7 +328,8 @@ class FlipperEvaluator:
         self.utilities_monthly = utilities_monthly
         self.fallback_psf = fallback_psf
 
-    def evaluate(self, base_prop, enriched: Optional[dict] = None) -> FlipReport:
+    def evaluate(self, base_prop, enriched: Optional[dict] = None,
+                 extra_comp_candidates: Optional[List[dict]] = None) -> FlipReport:
         enriched = enriched or {}
         risks: List[str] = []
 
@@ -363,6 +364,7 @@ class FlipperEvaluator:
         cs: CompSet = analyze_comps(
             enriched, subject_home_type=home_type, subject_sqft=sqft,
             subject_zpid=subj_zpid, subject_address=getattr(base_prop, "address", None),
+            extra_candidates=extra_comp_candidates,
         )
 
         # --- Renovation signal (classified before ARV: the ARV uplift depends on it) ---

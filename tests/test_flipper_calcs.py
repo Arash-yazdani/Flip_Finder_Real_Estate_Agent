@@ -132,6 +132,35 @@ assert any("0 actual sales" in r for r in C.risk_flags), C.risk_flags
 assert C.enriched_at is None                                     # no _cached_at supplied
 print(f"C  zero-sold comps -> confidence demoted to {C.arv_confidence}, flag present")
 
+# ── Cross-subject comp pooling: pooled SOLD comps within range upgrade the ARV set ──
+def _pool_comp(zpid, addr, psf, sqft):
+    return {"zpid": zpid, "streetAddress": addr, "price": int(psf * sqft), "livingArea": sqft,
+            "homeType": "SINGLE_FAMILY", "hdpTypeDimension": "RecentlySold",
+            "latitude": 38.47, "longitude": -121.45}
+
+pool = [_pool_comp(901, "1 Pool St", 255, 2000),
+        _pool_comp(902, "2 Pool St", 260, 2000),
+        _pool_comp(903, "3 Pool St", 265, 2000)]
+# Same subject as C (5 tight Zestimate-only own comps) + 3 pooled real sales:
+# sold-priority (>= SOLD_PRIORITY_MIN) must narrow the ARV set to the 3 solds,
+# clear the zero-sold flag, and keep confidence undemoted.
+D = ev.evaluate(_prop("D", 400_000, 2000), enriched=encC, extra_comp_candidates=pool)
+assert D.comp_provenance == {"sold": 3}, D.comp_provenance
+assert not any("0 actual sales" in r for r in D.risk_flags), D.risk_flags
+assert all(l.endswith("[sold]") for l in D.comps_summary), D.comps_summary
+assert D.comp_count == 3, D.comp_count
+print(f"D  pooled solds -> ARV rests on {D.comp_provenance}, no zero-sold flag")
+
+# Dedupe: a pool candidate sharing a zpid with the subject's own comps counts once.
+encE = dict(encC)
+encE["nearbyHomes"] = [json.dumps({"zpid": 901, "streetAddress": "1 Pool St",
+                                   "price": 510_000, "livingArea": 2000,
+                                   "homeType": "SINGLE_FAMILY", "bedrooms": 3, "bathrooms": 2,
+                                   "hdpTypeDimension": "Zestimate"})]
+E = ev.evaluate(_prop("E", 400_000, 2000), enriched=encE, extra_comp_candidates=pool)
+assert E.comp_count == 3, (E.comp_count, E.comps_summary)  # 901 own + 902/903 pooled, not 4
+print(f"E  zpid dedupe -> {E.comp_count} comps (shared zpid not double-counted)")
+
 # LOW-9: profit floor scales with price (flat $20k on cheap, 5% on expensive)
 assert max(20_000, int(0.05 * 300_000)) == 20_000
 assert max(20_000, int(0.05 * 1_000_000)) == 50_000

@@ -81,6 +81,10 @@ class CompSet:
 # vice-versa). Exponent 0.30 ≈ a price-size elasticity of 0.70, a moderate market norm.
 SIZE_PSF_EXPONENT = 0.30
 
+# Minimum ACTUAL-SALE comps required before the ARV set narrows to sold comps only
+# (3 = the URAR/Fannie minimum closed-comp count).
+SOLD_PRIORITY_MIN = 3
+
 
 def _norm_addr(s: Optional[str]) -> str:
     return re.sub(r"[^a-z0-9]", "", (s or "").lower())
@@ -113,15 +117,29 @@ def _parse_nearby(entries) -> List[dict]:
 def analyze_comps(enriched: dict, subject_home_type: Optional[str] = None,
                   subject_sqft: Optional[int] = None,
                   subject_zpid: Optional[str] = None,
-                  subject_address: Optional[str] = None) -> CompSet:
+                  subject_address: Optional[str] = None,
+                  extra_candidates: Optional[List[dict]] = None) -> CompSet:
     """Build a CompSet from an enriched Zillow record.
 
     subject_sqft, when provided, size-adjusts each comp's $/sqft to the subject (so a
     2000-sqft home isn't valued at a 1200-sqft comp's inflated $/sqft). subject_zpid /
     subject_address exclude the subject from its own nearbyHomes (its value is captured
-    as an as-is anchor instead)."""
+    as an as-is anchor instead).
+
+    extra_candidates: additional nearbyHomes-shaped dicts pooled from OTHER subjects'
+    enrichments in the same market scan (geo-selected by the caller). Deduped by zpid
+    against the subject's own list, then subject to every filter below identically —
+    pooling widens the candidate set, never loosens the bar."""
     cs = CompSet()
     nearby = _parse_nearby(enriched.get("nearbyHomes"))
+    if extra_candidates:
+        _seen_zpids = {str(h.get("zpid") or "").strip() for h in nearby}
+        for h in extra_candidates:
+            z = str(h.get("zpid") or "").strip()
+            if z and z in _seen_zpids:
+                continue
+            _seen_zpids.add(z)
+            nearby.append(h)
 
     # Property types that should never be used as comps for a residential flip
     # (they distort $/sqft badly — verified: MULTI_FAMILY listings were polluting
@@ -184,12 +202,24 @@ def analyze_comps(enriched: dict, subject_home_type: Optional[str] = None,
         if len(_kept) >= 2:
             cs.comps = _kept
 
-    # Provenance over the comps that survived every filter — what the ARV actually rests on.
+    # Rent signals come from the FULL filtered set (sold comps rarely carry rentZestimate),
+    # captured before any sold-priority narrowing of the ARV set below.
+    _full_set = list(cs.comps)
+    rents = [c.rent_zestimate for c in _full_set if c.rent_zestimate]
+
+    # Sold-priority ARV: when enough ACTUAL SALES survive the filters (>= 3, the appraisal
+    # minimum), the ARV rests on those alone — a real transaction outranks a Zestimate or an
+    # asking price. Below that threshold we keep the mixed set (coverage beats purity when
+    # sales are scarce).
+    _solds = [c for c in cs.comps if c.status == "sold"]
+    if len(_solds) >= SOLD_PRIORITY_MIN:
+        cs.comps = _solds
+
+    # Provenance over the comps the ARV actually rests on.
     for c in cs.comps:
         cs.provenance[c.status] = cs.provenance.get(c.status, 0) + 1
 
     raw_psfs = [c.psf for c in cs.comps]
-    rents = [c.rent_zestimate for c in cs.comps if c.rent_zestimate]
 
     # Size-adjust each comp's $/sqft to the subject; the ARV median uses adjusted values,
     # while the displayed range stays raw (actual sale data).
@@ -217,7 +247,7 @@ def analyze_comps(enriched: dict, subject_home_type: Optional[str] = None,
     if rents:
         cs.median_rent = int(statistics.median(rents))
         # Per-sqft rent (avg) for cross-application
-        rent_psfs = [c.rent_zestimate / c.sqft for c in cs.comps if c.rent_zestimate and c.sqft]
+        rent_psfs = [c.rent_zestimate / c.sqft for c in _full_set if c.rent_zestimate and c.sqft]
         if rent_psfs:
             cs.median_rent_psf = round(statistics.median(rent_psfs), 3)
     else:
