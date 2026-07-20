@@ -13,6 +13,7 @@ Pipeline:
 """
 import re
 from dataclasses import dataclass, field
+from datetime import datetime, timezone
 from typing import List, Optional, Tuple
 
 from agents.comp_analyzer import CompSet, analyze_comps, estimate_arv, estimate_rent
@@ -617,7 +618,6 @@ class FlipperEvaluator:
         # enricher on both fresh and cached records). ISO/UTC for the report contract.
         _ts = enriched.get("_cached_at")
         try:
-            from datetime import datetime, timezone
             enriched_at = (datetime.fromtimestamp(float(_ts), tz=timezone.utc)
                            .strftime("%Y-%m-%dT%H:%M:%SZ")) if _ts else None
         except (TypeError, ValueError, OSError):
