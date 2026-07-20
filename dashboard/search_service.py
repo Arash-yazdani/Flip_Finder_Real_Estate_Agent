@@ -387,7 +387,7 @@ def _build_sold_pool(enriched_map: dict) -> list:
                     continue
             if not isinstance(e, dict):
                 continue
-            if str(e.get("hdpTypeDimension") or "").lower() != "recentlysold":
+            if str(e.get("hdpTypeDimension") or "").replace(" ", "").lower() != "recentlysold":
                 continue
             z = str(e.get("zpid") or "").strip()
             if not (z and e.get("price") and e.get("livingArea")
