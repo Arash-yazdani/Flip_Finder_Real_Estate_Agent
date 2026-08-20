@@ -76,7 +76,22 @@ function renderUserChip(me) {
 async function refreshQuotaChip() {
   try {
     const r = await api.me();
-    if (r.authenticated) renderUserChip(r);
+    if (r.authenticated) {
+      renderUserChip(r);
+      // The status dot was static before; reflect real backend health.
+      fetch("/api/health", {credentials: "include"})
+        .then(x => x.json())
+        .then(h => {
+          const dot = document.getElementById("api-status");
+          if (!dot) return;
+          const ok = h && h.ok && h.bright_data_token;
+          dot.classList.toggle("status-ok", ok);
+          dot.classList.toggle("status-err", !ok);
+          const label = dot.nextElementSibling;
+          if (label) label.textContent = ok ? "APIs healthy" : "API config issue";
+        })
+        .catch(() => {});
+    }
   } catch (_) { /* non-fatal */ }
 }
 
@@ -200,7 +215,7 @@ function renderHud(props, state) {
   if (!el) return;
   if (!props || !props.length) { el.hidden = true; el.innerHTML = ""; return; }
   const rows = props.map(p => `
-    <a class="hud-row" href="${p.link}" target="_blank" rel="noopener">
+    <a class="hud-row" href="${safeUrl(p.link)}" target="_blank" rel="noopener">
       <span class="hud-addr">${escapeHtml(p.address)}</span>
       <span class="hud-meta">case ${escapeHtml(p.case_num || "—")} · View ↗</span>
     </a>`).join("");
@@ -412,13 +427,13 @@ function removeMarkersNotIn(keepZpids) {
 
 function _popupHtml(r) {
   const thumb = r.photo
-    ? `<div class="pin-pop-thumb" style="background-image:url('${r.photo}')"></div>` : "";
+    ? `<div class="pin-pop-thumb" style="background-image:url('${safeUrl(r.photo)}')"></div>` : "";
   const profit = (r.projected_profit != null)
     ? `<div class="pin-pop-row">Profit <b class="${r.projected_profit >= 0 ? "pos" : "neg"}">${fmtMoney(r.projected_profit)}</b> · ${fmtPct(r.profit_margin_pct)}</div>` : "";
   return `<div class="pin-pop">
       ${thumb}
       <div class="pin-pop-body">
-        <div class="pin-pop-addr">${r.address || ""}</div>
+        <div class="pin-pop-addr">${escapeHtml(r.address || "")}</div>
         <div class="pin-pop-price">${fmtMoney(r.purchase_price || r.price)}</div>
         <div class="pin-pop-verdicts">
           <span class="verdict ${r.verdict || "PENDING"}">${(r.verdict || "PENDING").replace(/_/g, " ")}</span>
@@ -563,8 +578,8 @@ function cardSkeleton(card, idx) {
         <span class="carousel-counter" hidden></span>
       </div>
       <div class="card-body">
-        <div class="card-title"><a href="${card.link}" target="_blank" rel="noopener">${card.address}, ${card.city}, ${card.state}</a></div>
-        <div class="card-meta">$${(card.price || 0).toLocaleString()} · ${card.bedrooms || '?'}bd / ${card.bathrooms || '?'}ba · ${card.sqft || '?'} sqft · ${card.home_type || ''}</div>
+        <div class="card-title"><a href="${safeUrl(card.link)}" target="_blank" rel="noopener">${escapeHtml(card.address)}, ${escapeHtml(card.city)}, ${escapeHtml(card.state)}</a></div>
+        <div class="card-meta">$${(card.price || 0).toLocaleString()} · ${card.bedrooms || '?'}bd / ${card.bathrooms || '?'}ba · ${card.sqft || '?'} sqft · ${escapeHtml(card.home_type || '')}</div>
         <div class="verdict-row">
           <span class="verdict PENDING">analyzing…</span>
         </div>
@@ -642,6 +657,11 @@ function breakdownHtml(r) {
 // @media print reveals while hiding all on-screen chrome. We read the cards in
 // their on-screen DOM order so the report honors the active sort/filter + ranks,
 // and pull each report object from the _reports registry for the full math.
+function safeUrl(u) {
+  // Third-party listing data flows into href/style attributes; allow only http(s).
+  u = String(u == null ? "" : u);
+  return /^https?:\/\//i.test(u) ? escapeHtml(u) : "#";
+}
 function escapeHtml(s) {
   return String(s == null ? "" : s)
     .replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;")
@@ -723,7 +743,7 @@ function buildPrintReport() {
 
   const header = `
     <header class="pr-header">
-      <div class="pr-brand">Real Estate Analyzer</div>
+      <div class="pr-brand">FlipFinder</div>
       <h1 class="pr-city">${escapeHtml(currentCity || "Flip & Rental Report")}</h1>
       <div class="pr-stamp">${genStamp}</div>
       ${summary ? `<div class="pr-summary">${escapeHtml(summary)}</div>` : ""}
@@ -1508,7 +1528,9 @@ $("#search-form").addEventListener("submit", (e) => {
 });
 
 $("#logout-btn").addEventListener("click", async () => {
-  await api.logout();
+  // Redirect even if the logout call fails (network blip, cold start) — the server-side
+  // cookie clear is best-effort; landing on /login is the part the user must always get.
+  try { await api.logout(); } catch (_) { /* proceed */ }
   window.location = "/login";
 });
 

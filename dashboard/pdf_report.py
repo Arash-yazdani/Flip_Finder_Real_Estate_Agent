@@ -70,7 +70,7 @@ class ReportPDF(FPDF):
         self.line(14, self.get_y() - 1, 201.9, self.get_y() - 1)
         self.set_font("Helvetica", "", 7)
         self.set_text_color(*MUTED)
-        left = f"Real Estate Analyzer  -  {self.city}  -  estimates only, not financial advice; verify independently"
+        left = f"FlipFinder  -  {self.city}  -  estimates only, not financial advice; verify independently"
         self.cell(150, 5, _san(left), align="L")
         self.cell(0, 5, f"Page {self.page_no()}/{{nb}}", align="R")
 
@@ -207,7 +207,7 @@ def build_pdf(payload: dict) -> bytes:
 
     pdf.set_font("Helvetica", "B", 9)
     pdf.set_text_color(*ACCENT)
-    pdf.cell(0, 5, _san("REAL ESTATE ANALYZER"), new_x=XPos.LMARGIN, new_y=YPos.NEXT)
+    pdf.cell(0, 5, _san("FLIPFINDER"), new_x=XPos.LMARGIN, new_y=YPos.NEXT)
     pdf.set_font("Helvetica", "B", 20)
     pdf.set_text_color(*INK)
     pdf.cell(0, 9, _san(city), new_x=XPos.LMARGIN, new_y=YPos.NEXT)

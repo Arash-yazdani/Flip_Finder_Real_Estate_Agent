@@ -62,6 +62,9 @@ def _load_env_file():
 _load_env_file()
 
 SECRET_KEY = os.environ.get("DASHBOARD_SECRET_KEY", "dev-secret-change-me-" + os.urandom(8).hex())
+# secure=True only when served over HTTPS (COOKIE_SECURE=1 in production). Module-level so
+# login and logout always agree on cookie attributes (Safari requires an exact match to clear).
+COOKIE_SECURE = os.environ.get("COOKIE_SECURE", "").lower() in ("1", "true", "yes")
 SESSION_COOKIE = "dashboard_session"
 SESSION_MAX_AGE = 60 * 60 * 24 * 30  # 30 days
 
@@ -157,20 +160,24 @@ async def login(request: Request, response: Response):
     if not user:
         raise HTTPException(status_code=401, detail="invalid email or password")
     token = _issue_session(user.email)
-    # secure=True only when served over HTTPS (set COOKIE_SECURE=1 in production).
-    # Left off by default so local HTTP development still works.
-    _cookie_secure = os.environ.get("COOKIE_SECURE", "").lower() in ("1", "true", "yes")
     response.set_cookie(
         SESSION_COOKIE, token,
         max_age=SESSION_MAX_AGE,
-        httponly=True, samesite="lax", secure=_cookie_secure,
+        httponly=True, samesite="lax", secure=COOKIE_SECURE,
     )
     return {"ok": True, "email": user.email, "is_admin": user.is_admin}
 
 
 @app.post("/api/logout")
 async def logout(response: Response):
-    response.delete_cookie(SESSION_COOKIE)
+    # The delete MUST mirror the attributes the cookie was set with. WebKit/iOS Safari
+    # refuses to clear a Secure+HttpOnly cookie when the expiring Set-Cookie lacks those
+    # attributes, which left users signed in after "Sign out" once COOKIE_SECURE went on
+    # in production. (Chrome is lenient here; Safari is not.)
+    response.delete_cookie(
+        SESSION_COOKIE, path="/",
+        httponly=True, samesite="lax", secure=COOKIE_SECURE,
+    )
     return {"ok": True}
 
 
@@ -526,12 +533,16 @@ async def root():
 
 @app.get("/app")
 async def app_page():
-    return FileResponse(STATIC_DIR / "index.html")
+    # no-store: after sign-out, Back must not resurrect a cached authenticated-looking
+    # page from bfcache — the page reload re-runs the /api/me gate instead.
+    return FileResponse(STATIC_DIR / "index.html",
+                        headers={"Cache-Control": "no-store"})
 
 
 @app.get("/login")
 async def login_page():
-    return FileResponse(STATIC_DIR / "login.html")
+    return FileResponse(STATIC_DIR / "login.html",
+                        headers={"Cache-Control": "no-store"})
 
 
 @app.get("/admin")

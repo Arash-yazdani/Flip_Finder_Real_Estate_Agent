@@ -15,3 +15,7 @@ services:
         sync: false
       - key: COOKIE_SECURE
         value: "1"
+      # Render generates and persists this value; without it the server falls back to a
+      # random per-boot secret and every deploy/restart signs everyone out.
+      - key: DASHBOARD_SECRET_KEY
+        generateValue: true

@@ -13,9 +13,31 @@
     }
     .request-note { margin-top: 1.1rem; font-size: 0.84rem; }
     .request-note a { color: #C97A0E; font-weight: 600; }
+
+    /* The commercial plays behind the sign-in card: the ad works on people while they
+       contemplate signing in. Scrim keeps the card readable; card lifts above it. */
+    /* Positive stacking: an opaque body background paints OVER negative-z fixed
+       children (root stacking context), so the layers sit above it instead and the
+       card rises above them. pointer-events: none keeps the form clickable. */
+    .bg-video, .bg-scrim { position: fixed; inset: 0; pointer-events: none; }
+    .bg-video {
+      width: 100%; height: 100%; object-fit: cover; z-index: 0;
+      background: #F4F6F8 url("/static/landing-poster.jpg") center/cover no-repeat;
+    }
+    .bg-scrim { z-index: 1; background: rgba(244, 246, 248, 0.62); backdrop-filter: blur(1.5px); }
+    .login-card {
+      position: relative; z-index: 2; background: #FFFFFF;
+      box-shadow: 0 24px 70px rgba(20, 30, 50, 0.28);
+    }
+    @media (prefers-reduced-motion: reduce) { .bg-video { display: none; } }
   </style>
 </head>
 <body class="login-body">
+  <video class="bg-video" autoplay muted loop playsinline preload="metadata"
+         poster="/static/landing-poster.jpg" aria-hidden="true">
+    <source src="/static/flipfinder-commercial.mp4" type="video/mp4">
+  </video>
+  <div class="bg-scrim" aria-hidden="true"></div>
   <main class="login-card">
     <h1>FlipFinder.</h1>
     <p class="muted">Sign in with your approved account</p>
