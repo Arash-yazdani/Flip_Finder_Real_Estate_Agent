@@ -3,13 +3,22 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Sign in — Real Estate Analyzer</title>
+  <title>Sign in - FlipFinder</title>
   <link rel="stylesheet" href="/static/styles.css">
+  <style>
+    .login-card h1 { position: relative; display: inline-block; }
+    .login-card h1::after {
+      content: ""; position: absolute; left: 0; bottom: -5px;
+      width: 34px; height: 4px; border-radius: 3px; background: #E8901A;
+    }
+    .request-note { margin-top: 1.1rem; font-size: 0.84rem; }
+    .request-note a { color: #C97A0E; font-weight: 600; }
+  </style>
 </head>
 <body class="login-body">
   <main class="login-card">
-    <h1>Real Estate Analyzer</h1>
-    <p class="muted">Sign in to continue</p>
+    <h1>FlipFinder.</h1>
+    <p class="muted">Sign in with your approved account</p>
     <form id="login-form">
       <input type="email" id="email" name="email" autocomplete="username"
              placeholder="Email" autofocus required>
@@ -18,6 +27,9 @@
       <button type="submit">Sign in</button>
       <p id="error" class="error" hidden></p>
     </form>
+    <p class="muted request-note">No account yet? FlipFinder is invite only.
+      <a href="mailto:hello@modeo.io?subject=FlipFinder%20access%20request&body=Name%3A%0AMarkets%20I%20invest%20in%3A%0ADeals%20in%20the%20last%2012%20months%3A%0AEmail%20to%20provision%3A%0A%0AAnything%20else%3A%0A">Request access</a>
+    </p>
   </main>
   <script>
     document.getElementById("login-form").addEventListener("submit", async (e) => {
@@ -34,7 +46,7 @@
           body: JSON.stringify({email: email, password: pw}),
         });
         if (r.ok) {
-          window.location = "/";
+          window.location = "/app";
         } else {
           const data = await r.json().catch(() => ({}));
           err.textContent = data.detail || "Sign-in failed";

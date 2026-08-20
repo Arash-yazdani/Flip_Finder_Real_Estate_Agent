@@ -7,7 +7,11 @@ services:
     autoDeploy: true
     buildCommand: pip install -r requirements.txt
     startCommand: uvicorn dashboard.server:app --host 0.0.0.0 --port $PORT
+    domains:
+      - flipfinder.modeo.io
     envVars:
       - key: DASHBOARD_PORT
         value: "8000"
         sync: false
+      - key: COOKIE_SECURE
+        value: "1"

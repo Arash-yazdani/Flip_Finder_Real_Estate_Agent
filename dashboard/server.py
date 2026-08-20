@@ -519,6 +519,13 @@ STATIC_DIR.mkdir(exist_ok=True)
 
 @app.get("/")
 async def root():
+    # Public marketing landing page (SaaS front door). The app itself lives at /app —
+    # its client redirects unauthenticated visitors to /login via /api/me.
+    return FileResponse(STATIC_DIR / "landing.html")
+
+
+@app.get("/app")
+async def app_page():
     return FileResponse(STATIC_DIR / "index.html")
 
 
